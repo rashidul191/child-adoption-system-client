@@ -1,10 +1,17 @@
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Footer from "./Pages/Shared/Footer/Footer";
+import Navbar from "./Pages/Shared/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-     <h1>Welcome to our Child-Adoption-System web site.</h1>
-     <h1>Maruf and Rased</h1>
+    <div>
+      <Navbar></Navbar>
+      <Routes>
+        <Route></Route>
+      </Routes>
+
+      <Footer></Footer>
     </div>
   );
 }
