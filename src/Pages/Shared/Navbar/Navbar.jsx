@@ -1,27 +1,27 @@
 import React from "react";
-
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import CustomLink from "../CustomLink/CustomLink";
 
 const Navbar = () => {
   const menubar = [
     <>
       <li>
-        <Link to="/">Home</Link>
+        <CustomLink to="/">Home</CustomLink>
       </li>
 
       <li>
-        <Link to="/about">About</Link>
+        <CustomLink to="/about">About</CustomLink>
       </li>
 
       <li>
-        <Link to="/blog">Blog</Link>
+        <CustomLink to="/blog">Blog</CustomLink>
       </li>
 
       <li>
-        <Link to="/contact-us">Contact Us</Link>
+        <CustomLink to="/contact-us">Contact Us</CustomLink>
       </li>
       <li>
-        <Link to="/login">Login</Link>
+        <CustomLink to="/login">Login</CustomLink>
       </li>
     </>,
   ];
@@ -53,7 +53,9 @@ const Navbar = () => {
               {menubar}
             </ul>
           </div>
-          <Link to="/" class="btn btn-ghost normal-case text-xl">child-Adoption-System</Link>
+          <Link to="/" class="btn btn-ghost normal-case text-xl">
+            child-Adoption-System
+          </Link>
         </div>
         <div class="navbar-end hidden lg:flex">
           <ul class="menu menu-horizontal p-0">{menubar}</ul>

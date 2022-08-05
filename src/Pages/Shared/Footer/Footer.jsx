@@ -1,5 +1,8 @@
 import React from "react";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faFacebook } from "@fortawesome/free-brands-svg-icons"
 import { Link } from "react-router-dom";
+
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
@@ -11,6 +14,11 @@ const Footer = () => {
             <br />
             Providing reliable tech since 1992
           </p>
+          {/* <p>
+            <FontAwesomeIcon icon={faFacebook} />
+
+            <FontAwesomeIcon icon="fa-brands fa-square-facebook" />
+          </p> */}
         </div>
         <div>
           <span class="footer-title">Services</span>
