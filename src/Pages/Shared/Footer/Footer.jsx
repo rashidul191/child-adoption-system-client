@@ -1,8 +1,7 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Footer = () => {
-
-    const year = new Date().getFullYear()
+  const year = new Date().getFullYear();
   return (
     <footer className="bg-base-200 py-5">
       <div class="footer p-10 text-base-content">
@@ -15,23 +14,45 @@ const Footer = () => {
         </div>
         <div>
           <span class="footer-title">Services</span>
-          <a class="link link-hover">Branding</a>
-          <a class="link link-hover">Design</a>
-          <a class="link link-hover">Marketing</a>
-          <a class="link link-hover">Advertisement</a>
+          <Link to="/" class="link link-hover">
+            Branding
+          </Link>
+          <Link to="/" class="link link-hover">
+            Design
+          </Link>
+          <Link to="/" class="link link-hover">
+            Marketing
+          </Link>
+          <Link to="/" class="link link-hover">
+            Advertisement
+          </Link>
         </div>
         <div>
           <span class="footer-title">Company</span>
-          <a class="link link-hover">About us</a>
-          <a class="link link-hover">Contact</a>
-          <a class="link link-hover">Jobs</a>
-          <a class="link link-hover">Press kit</a>
+          <Link to="/" class="link link-hover">
+            About us
+          </Link>
+          <Link to="/" class="link link-hover">
+            Contact
+          </Link>
+          <Link to="/" class="link link-hover">
+            Jobs
+          </Link>
+          <Link to="/" class="link link-hover">
+            Press kit
+          </Link>
         </div>
         <div>
           <span class="footer-title">Legal</span>
-          <a class="link link-hover">Terms of use</a>
-          <a class="link link-hover">Privacy policy</a>
-          <a class="link link-hover">Cookie policy</a>
+          <Link to="/" class="link link-hover">
+            Terms of use
+          </Link>
+          <Link to="/" class="link link-hover">
+            Privacy policy
+          </Link>
+          <Link to="/" class="link link-hover">
+            Cookie policy
+          </Link>
         </div>
       </div>
       <div className=" footer-center p-4 bg-white text-base-content">
