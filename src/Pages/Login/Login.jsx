@@ -1,10 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin/SocialLogin";
 import bgImage from "../../images/login-bg-img.png";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import Loading from "../Shared/Loading/Loading";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
   const {
     register,
     formState: { errors },
@@ -12,8 +19,43 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const email = data?.email;
+    const password = data?.password;
+    if (email && password) {
+      signInWithEmailAndPassword(email, password);
+    }
   };
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
+  if (user) {
+    navigate("/");
+  }
+  let errorElement;
+  if (error) {
+    errorElement = (
+      <div class="alert alert-error shadow-lg">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="stroke-current flex-shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span className="text-white">{error?.message}</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <section
@@ -42,6 +84,7 @@ const Login = () => {
 
         <div className="grid grid-cols-1">
           <div className="card w-96 bg-base-100 shadow-xl sm:ml-10 md:ml-32 pt-5 pb-10">
+            <span>{errorElement}</span>
             <div className="text-center">
               <h1 className="text-3xl">Welcome Back !</h1>
               <h2 className="text-xl">Login to continue</h2>
