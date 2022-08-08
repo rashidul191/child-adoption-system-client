@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import SocialLogin from "./SocialLogin/SocialLogin";
 import { Link } from "react-router-dom";
+import SocialLogin from "./SocialLogin/SocialLogin";
 import bgImage from "../../images/login-bg-img.png";
 
 const Login = () => {
@@ -20,14 +20,15 @@ const Login = () => {
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundRepeat: "no-repeat",
-        backgroundColor:"gray"
+        backgroundColor: "gray",
       }}
     >
-      <div 
-       style={{
-       
-        backgroundColor:"rgb(0,0,0,0.8)"
-      }} className="py-10 md:pt-5 md:pb-20 ">
+      <div
+        style={{
+          backgroundColor: "rgb(0,0,0,0.8)",
+        }}
+        className="py-10 md:pt-5 md:pb-20 "
+      >
         <div className="text-end m-5 sm:mx-6">
           <p>
             <small className="font-bold text-blue-200">
@@ -40,16 +41,16 @@ const Login = () => {
         </div>
 
         <div className="grid grid-cols-1">
-          <div class="card w-96 bg-base-100 shadow-xl sm:ml-10 md:ml-32 pt-5 pb-10">
+          <div className="card w-96 bg-base-100 shadow-xl sm:ml-10 md:ml-32 pt-5 pb-10">
             <div className="text-center">
               <h1 className="text-3xl">Welcome Back !</h1>
               <h2 className="text-xl">Login to continue</h2>
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="form-control w-full max-w-xs">
-                  <label class="label">
-                    <span class="label-text">Email:</span>
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Email:</span>
                   </label>
                   <input
                     {...register("email", {
@@ -61,25 +62,25 @@ const Login = () => {
                     })}
                     type="email"
                     placeholder="example@gmail.com"
-                    class="input input-bordered w-full max-w-xs"
+                    className="input input-bordered w-full max-w-xs"
                   />
-                  <label class="label">
+                  <label className="label">
                     {errors.email?.type === "required" && (
-                      <span class="label-text-alt text-error">
+                      <span className="label-text-alt text-error">
                         {errors.email?.message}
                       </span>
                     )}
                     {errors.email?.type === "pattern" && (
-                      <span class="label-text-alt text-error">
+                      <span className="label-text-alt text-error">
                         {errors.email?.message}
                       </span>
                     )}
                   </label>
                 </div>
 
-                <div class="form-control w-full max-w-xs">
-                  <label class="label">
-                    <span class="label-text">Password:</span>
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Password:</span>
                   </label>
                   <input
                     {...register("password", {
@@ -87,30 +88,41 @@ const Login = () => {
                         value: true,
                         message: "Password is required",
                       },
-                      minLength: {
-                        value: 6,
-                        message: "Must be 6 characters or longer",
+                      pattern: {
+                        value: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
+                        message: (
+                          <>
+                            <li>Must be 6 characters or longer</li>
+                            <li>Must be 1 Letters</li>
+                            <li>Must be 1 Digits</li>
+                            <li>Must be 1 Special characters</li>
+                          </>
+                        ),
                       },
                     })}
                     type="password"
                     placeholder="password"
-                    class="input input-bordered w-full max-w-xs"
+                    className="input input-bordered w-full max-w-xs"
                   />
-                  <label class="label">
+                  <label className="label">
                     {errors.password?.type === "required" && (
-                      <span class="label-text-alt text-error">
+                      <span className="label-text-alt text-error">
                         {errors.password?.message}
                       </span>
                     )}
                     {errors.password?.type === "minLength" && (
-                      <span class="label-text-alt text-error">
-                        {errors.password?.message}
+                      <span className="label-text-alt text-error">
+                        {errors.pattern?.message}
                       </span>
                     )}
                   </label>
                 </div>
 
-                <input className="btn btn-secondary" type="submit" />
+                <input
+                  className="btn btn-secondary"
+                  type="submit"
+                  value={`Login`}
+                />
               </form>
             </div>
 
