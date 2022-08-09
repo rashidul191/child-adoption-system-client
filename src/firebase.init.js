@@ -12,13 +12,6 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_storage_Bucket,
   messagingSenderId: process.env.REACT_APP_messaging_Sender_Id,
   appId: process.env.REACT_APP_app_Id,
-
-  // apiKey: "AIzaSyDxbiM3UG7NrzeEor_3gXwp3PcDGW-pAsg",
-  // authDomain: "child-adoption-system.firebaseapp.com",
-  // projectId: "child-adoption-system",
-  // storageBucket: "child-adoption-system.appspot.com",
-  // messagingSenderId: "529778703643",
-  // appId: "1:529778703643:web:30e8642fafb4e1f54827be",
 };
 
 // Initialize Firebase

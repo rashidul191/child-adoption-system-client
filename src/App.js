@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import AllChild from "./Pages/Home/ChildTypes/AllChild/AllChild";
+import Child from "./Pages/Home/ChildTypes/Child/Child";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register/Register";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/childType/:childType" element={<AllChild></AllChild>}></Route>
+        <Route path="/child/:id" element={<Child></Child>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
        
