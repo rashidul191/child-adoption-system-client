@@ -20,7 +20,13 @@ const AllChild = () => {
 
   return (
     <div>
-      <h1 className="text-2xl text-center font-bold uppercase">{childType}</h1>
+      <div>
+        <h1 className="text-center text-2xl font-bold uppercase">
+          {childType}
+        </h1>
+        <div className="bg-yellow-500 w-28 h-1 mx-auto mt-1"></div>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {childrens?.map((children) => (
           <Children key={children._id} children={children}></Children>

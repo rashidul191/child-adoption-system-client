@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 const ChildTypes = () => {
   return (
     <div className="my-10 md:my-28">
-      <h1 className="text-center text-2xl">Child Info</h1>
+      <div>
+        <h1 className="text-center text-2xl font-bold uppercase">Child Type</h1>
+        <div className="bg-yellow-500 w-28 h-1 mx-auto mt-1"></div>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-auto">
         <div className="card w-96 bg-base-100 shadow-xl">
@@ -37,7 +40,7 @@ const ChildTypes = () => {
           <div className="card-body items-center text-center">
             <p className="link link-hover text-blue-500">
               <Link to={`/childType/Foster-Care-Child`}>
-              Foster Care Child
+                Foster Care Child
                 <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
               </Link>
             </p>
@@ -54,7 +57,7 @@ const ChildTypes = () => {
           <div className="card-body items-center text-center">
             <p className="link link-hover text-blue-500">
               <Link to={`/childType/Street-Child`}>
-              Street Child
+                Street Child
                 <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
               </Link>
             </p>

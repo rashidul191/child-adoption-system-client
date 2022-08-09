@@ -12,13 +12,15 @@ const Child = () => {
     isLoading,
     error,
   } = useQuery(["child"], () =>
-    fetch(`http://localhost:5000/child/${id}`).then((res) => res.json())
+    fetch(`http://localhost:5000/child/${id}`, {
+      method: "GET",
+    }).then((res) => res.json())
   );
 
   if (isLoading) {
     return <Loading></Loading>;
   }
-  console.log(child);
+//   console.log(child);
   const { img, name, age, location, childType, gender, religion, description } =
     child;
 
@@ -28,16 +30,16 @@ const Child = () => {
   return (
     <section className="card w-10/12 bg-base-100 shadow-xl mx-auto my-10 md:mb-28">
       <div className="grid grid-cols-1 md:grid-cols-2 ml-10 mt mx-auto">
-        <div class="md:ml-28">
+        <div className="md:ml-28">
           <img width={180} src={img} alt={name} />
           <h2 className="text-xl">
             Name: <span className="text-2xl font-bold">{name}</span>
           </h2>
           <p>Age: {age}</p>
         </div>
-        <div class="">
-          <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div className="">
+          <div className="overflow-x-auto">
+            <table className="table w-full">
               <tbody>
                 <tr>
                   <td>
@@ -66,7 +68,9 @@ const Child = () => {
                 <tr>
                   <td>
                     {" "}
-                   <button className="btn btn-info text-white rounded-none btn-block">Child Adaption</button>
+                    <button className="btn btn-info text-white rounded-none btn-block">
+                      Child Adaption
+                    </button>
                   </td>
                 </tr>
               </tbody>
