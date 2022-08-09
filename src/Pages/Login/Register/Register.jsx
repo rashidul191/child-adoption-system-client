@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
@@ -9,6 +9,7 @@ import Loading from "../../Shared/Loading/Loading";
 
 const Register = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   let errorElement;
@@ -28,29 +29,30 @@ const Register = () => {
       );
     }
   };
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   if (loading) {
     return <Loading></Loading>;
   }
 
-  if (user) {
-    navigate("/");
-  }
-
   if (error) {
     errorElement = (
-      <div class="alert alert-error shadow-lg">
+      <div className="alert alert-error shadow-lg">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="stroke-current flex-shrink-0 h-6 w-6"
+            className="stroke-current flex-shrink-0 h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2"
+              strokeWidth="2"
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
@@ -125,7 +127,7 @@ const Register = () => {
                     {...register("email", {
                       required: { value: true, message: "Email is required" },
                       pattern: {
-                        value: /[a-zA-Z_]+?\.[a-zA-Z]{2,20}$/,
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                         message: "Provide a valid Email",
                       },
                     })}
@@ -169,7 +171,7 @@ const Register = () => {
                         ),
                       },
                     })}
-                    type="password"
+                    type={`${showPassword ? "text" : "password"}`}
                     placeholder="password"
                     className="input input-bordered w-full max-w-xs"
                   />
@@ -202,7 +204,7 @@ const Register = () => {
                         message: "Must be 6 characters or longer",
                       },
                     })}
-                    type="password"
+                    type={`${showPassword ? "text" : "password"}`}
                     placeholder="Confirm password"
                     className="input input-bordered w-full max-w-xs"
                   />
@@ -219,6 +221,15 @@ const Register = () => {
                     )}
                   </label>
                 </div>
+                <div className="mb-3">
+                  <input
+                    onClick={() => setShowPassword(!showPassword)}
+                    type="checkbox"
+                    name=""
+                    id="showPassword"
+                  />
+                  <label htmlFor="showPassword"> Show Password</label>
+                </div>
 
                 <span>
                   {errors.password?.type === "pattern" && (
@@ -229,7 +240,7 @@ const Register = () => {
                 </span>
 
                 <input
-                  className="btn btn-secondary"
+                  className="btn btn-secondary rounded-none"
                   type="submit"
                   value="Registration"
                 />

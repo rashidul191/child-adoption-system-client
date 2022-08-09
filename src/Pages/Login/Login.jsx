@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin/SocialLogin";
 import bgImage from "../../images/login-bg-img.png";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading/Loading";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
+  const emailRef = useRef("");
+  const [emptyEmailFiled, setEmptyEmailFiled] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, forgotPasswordError] =
+    useSendPasswordResetEmail(auth);
 
   const {
     register,
@@ -21,41 +30,69 @@ const Login = () => {
   const onSubmit = (data) => {
     const email = data?.email;
     const password = data?.password;
-    if (email && password) {
+    if (
+      email &&
+      /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/.test(password)
+    ) {
       signInWithEmailAndPassword(email, password);
+      // toast.success("Login Successfully");
+    } else {
+      toast.error("Provide a valid email and password");
     }
   };
+  useEffect(()=>{
+    if (user) {
+      navigate("/");
+    }
+  },[user, navigate])
 
-  if (loading) {
+  if (loading || sending) {
     return <Loading></Loading>;
   }
 
-  if (user) {
-    navigate("/");
-  }
+ 
   let errorElement;
-  if (error) {
+  if (error || forgotPasswordError) {
+    // toast.error(`${error?.message}`);
     errorElement = (
-      <div class="alert alert-error shadow-lg">
+      <div className="alert alert-error shadow-lg">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="stroke-current flex-shrink-0 h-6 w-6"
+            className="stroke-current flex-shrink-0 h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2"
+              strokeWidth="2"
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span className="text-white">{error?.message}</span>
+          <span className="text-white">
+            {error?.message} {forgotPasswordError?.message}
+          </span>
         </div>
       </div>
     );
   }
+
+  const handleForgotPassword = async () => {
+    const email = emailRef.current.value;
+    if (email) {
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        await sendPasswordResetEmail(email);
+        setEmptyEmailFiled(false);
+        toast.success("Send Email and check spam folder");
+      } else {
+        toast.error("Provide a valid email");
+      }
+    } else {
+      toast.error("Email Filed is empty");
+      setEmptyEmailFiled(true);
+    }
+  };
 
   return (
     <section
@@ -99,7 +136,7 @@ const Login = () => {
                     {...register("email", {
                       required: { value: true, message: "Email is required" },
                       pattern: {
-                        value: /[a-zA-Z_]+?\.[a-zA-Z]{2,20}$/,
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                         message: "Provide a valid Email",
                       },
                     })}
@@ -143,7 +180,7 @@ const Login = () => {
                         ),
                       },
                     })}
-                    type="password"
+                    type={`${showPassword ? "text" : "password"}`}
                     placeholder="password"
                     className="input input-bordered w-full max-w-xs"
                   />
@@ -160,13 +197,65 @@ const Login = () => {
                     )}
                   </label>
                 </div>
+                <div className="mb-3">
+                  <input
+                    onClick={() => setShowPassword(!showPassword)}
+                    type="checkbox"
+                    name=""
+                    id="showPassword"
+                  />
+                  <label htmlFor="showPassword"> Show Password</label>
+                </div>
 
                 <input
-                  className="btn btn-secondary"
+                  className="btn btn-secondary rounded-none"
                   type="submit"
                   value={`Login`}
                 />
+                <label htmlFor="forgot-password-modal" className="btn btn-link">
+                  <small>Forgot password?</small>
+                </label>
               </form>
+            </div>
+
+            {/* Forgot Password modal */}
+
+            <input
+              type="checkbox"
+              id="forgot-password-modal"
+              className="modal-toggle"
+            />
+            <div className="modal modal-bottom sm:modal-middle">
+              <div className="modal-box">
+                <label
+                  htmlFor="forgot-password-modal"
+                  className="btn btn-sm btn-circle absolute right-2 top-2"
+                >
+                  ✕
+                </label>
+
+                <label className="label">
+                  <span className="label-text">Email:</span>
+                </label>
+                <input
+                  ref={emailRef}
+                  type="email"
+                  placeholder="example@gmail.com"
+                  className={`input input-bordered w-full max-w-xs ${
+                    emptyEmailFiled && "border-4 border-error"
+                  }`}
+                  name=""
+                  id=""
+                />
+                <button onClick={handleForgotPassword} className="btn btn-info">
+                  Send Email
+                </button>
+                {/* <div className="modal-action">
+                  <label htmlFor="forgot-password-modal" className="btn btn-info">
+                    Send Email
+                  </label>
+                </div> */}
+              </div>
             </div>
 
             <SocialLogin></SocialLogin>
