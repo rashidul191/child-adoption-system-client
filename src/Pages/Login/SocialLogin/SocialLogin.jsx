@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
@@ -7,17 +7,18 @@ const SocialLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  let errorElement;
+
+  let from = location.state?.from?.pathname || "/";
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
 
   if (loading) {
     return <p className="text-center">Loading.....</p>;
   }
-  let from = location.state?.from?.pathname || "/";
-  if (user) {
-    console.log(user)
-    // navigate("/");
-    navigate(from, { replace: true });
-  }
+  let errorElement;
   if (error) {
     errorElement = (
       <div className="alert alert-error shadow-lg">
@@ -29,7 +30,7 @@ const SocialLogin = () => {
             viewBox="0 0 24 24"
           >
             <path
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
               strokeWidth="2"
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"

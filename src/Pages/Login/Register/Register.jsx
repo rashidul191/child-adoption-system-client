@@ -3,7 +3,10 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import bgImage from "../../../images/login-bg-img.png";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 
@@ -13,6 +16,8 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
   let errorElement;
   const {
     register,
@@ -20,9 +25,13 @@ const Register = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (data?.password === data?.confirmPassword) {
-      createUserWithEmailAndPassword(data?.email, data?.password);
+      const displayName = data?.displayName;
+      const email = data?.email;
+      const password = data?.password;
+      await createUserWithEmailAndPassword(email, password);
+      await updateProfile({ displayName });
       //   console.log(data);
     } else {
       errorElement = (
@@ -34,17 +43,16 @@ const Register = () => {
   let from = location.state?.from?.pathname || "/";
   useEffect(() => {
     if (user) {
-      // navigate("/");
       // console.log(user)
       navigate(from, { replace: true });
     }
   }, [user, navigate, from]);
 
-  if (loading) {
+  if (loading || updating) {
     return <Loading></Loading>;
   }
 
-  if (error) {
+  if (error || updateError) {
     errorElement = (
       <div className="alert alert-error shadow-lg">
         <div>
@@ -55,13 +63,15 @@ const Register = () => {
             viewBox="0 0 24 24"
           >
             <path
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
               strokeWidth="2"
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span className="text-white">{error?.message}</span>
+          <span className="text-white">
+            {error?.message} {updateError?.message}
+          </span>
         </div>
       </div>
     );
@@ -105,7 +115,7 @@ const Register = () => {
                     <span className="label-text">Full Name:</span>
                   </label>
                   <input
-                    {...register("name", {
+                    {...register("displayName", {
                       required: {
                         value: true,
                         message: "Full Name is required",
@@ -116,9 +126,9 @@ const Register = () => {
                     className="input input-bordered w-full max-w-xs"
                   />
                   <label className="label">
-                    {errors.name?.type === "required" && (
+                    {errors.displayName?.type === "required" && (
                       <span className="label-text-alt text-error">
-                        {errors.name?.message}
+                        {errors.displayName?.message}
                       </span>
                     )}
                   </label>

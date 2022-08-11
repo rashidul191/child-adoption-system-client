@@ -9,7 +9,6 @@ const EmailVerification = () => {
   const handleEmailVerification = async () => {
     await sendEmailVerification();
     toast.success("sent email, Please check spam folder");
-    // alert("Sent email");
   };
 
   return (

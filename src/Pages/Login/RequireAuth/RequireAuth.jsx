@@ -13,7 +13,7 @@ const RequireAuth = ({ children }) => {
     return <Loading></Loading>;
   }
 
-  if (user?.providerId !== "google.com" && user?.emailVerified === false) {
+  if (user?.providerData[0]?.providerId === "password" && !user?.emailVerified) {
     return <EmailVerification></EmailVerification>;
   }
   if (!user) {
