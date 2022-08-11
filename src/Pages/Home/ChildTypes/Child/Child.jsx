@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../../../Shared/Loading/Loading";
 
 const Child = () => {
@@ -20,7 +20,7 @@ const Child = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-//   console.log(child);
+  //   console.log(child);
   const { img, name, age, location, childType, gender, religion, description } =
     child;
 
@@ -68,9 +68,11 @@ const Child = () => {
                 <tr>
                   <td>
                     {" "}
-                    <button className="btn btn-info text-white rounded-none btn-block">
-                      Child Adaption
-                    </button>
+                    <Link to={`/child-adaption-form`}>
+                      <button className="btn btn-info text-white rounded-none btn-block">
+                        Child Adaption
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               </tbody>

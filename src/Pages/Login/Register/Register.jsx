@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import bgImage from "../../../images/login-bg-img.png";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -9,9 +9,10 @@ import Loading from "../../Shared/Loading/Loading";
 
 const Register = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   let errorElement;
   const {
     register,
@@ -29,11 +30,15 @@ const Register = () => {
       );
     }
   };
+
+  let from = location.state?.from?.pathname || "/";
   useEffect(() => {
     if (user) {
-      navigate("/");
+      // navigate("/");
+      // console.log(user)
+      navigate(from, { replace: true });
     }
-  }, [user, navigate]);
+  }, [user, navigate, from]);
 
   if (loading) {
     return <Loading></Loading>;

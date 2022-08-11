@@ -11,11 +11,11 @@ const ChildTypes = () => {
         <div className="bg-yellow-500 w-28 h-1 mx-auto mt-1"></div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-auto">
-        <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <div className="card w-80 md:w-96 bg-base-100 shadow-xl mx-auto">
           <figure className="px-10 pt-10">
             <img
-              src="https://placeimg.com/400/225/arch"
+              src="https://i.ibb.co/BLTd83g/Infant-Child.png"
               alt="Shoes"
               className="rounded-xl"
             />
@@ -29,10 +29,10 @@ const ChildTypes = () => {
             </p>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-80 md:w-96 bg-base-100 shadow-xl mx-auto">
           <figure className="px-10 pt-10">
             <img
-              src="https://placeimg.com/400/225/arch"
+              src="https://i.ibb.co/z7bmSD1/Foster-Care-Child.png"
               alt="Shoes"
               className="rounded-xl"
             />
@@ -46,10 +46,10 @@ const ChildTypes = () => {
             </p>
           </div>
         </div>
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-80 md:w-96 bg-base-100 shadow-xl mx-auto">
           <figure className="px-10 pt-10">
             <img
-              src="https://placeimg.com/400/225/arch"
+              src="https://i.ibb.co/0YgbbPC/Street-Child.png"
               alt="Shoes"
               className="rounded-xl"
             />

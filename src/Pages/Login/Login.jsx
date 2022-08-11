@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin/SocialLogin";
 import bgImage from "../../images/login-bg-img.png";
 import {
@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const emailRef = useRef("");
   const [emptyEmailFiled, setEmptyEmailFiled] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -40,17 +41,19 @@ const Login = () => {
       toast.error("Provide a valid email and password");
     }
   };
-  useEffect(()=>{
+
+  let from = location.state?.from?.pathname || "/";
+  useEffect(() => {
     if (user) {
-      navigate("/");
+      // navigate("/");
+      navigate(from, { replace: true });
     }
-  },[user, navigate])
+  }, [user, navigate, from]);
 
   if (loading || sending) {
     return <Loading></Loading>;
   }
 
- 
   let errorElement;
   if (error || forgotPasswordError) {
     // toast.error(`${error?.message}`);
