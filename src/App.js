@@ -3,6 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ChildApplyForm from "./Pages/ChildApplyForm/ChildApplyForm";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
+import MyReview from "./Pages/Dashboard/MyReview/MyReview";
 import AllChild from "./Pages/Home/ChildTypes/AllChild/AllChild";
 import Child from "./Pages/Home/ChildTypes/Child/Child";
 import Home from "./Pages/Home/Home";
@@ -27,6 +30,26 @@ function App() {
         <Route path="/child/:id" element={<Child></Child>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
+        <Route
+          path="/child-adaption-form"
+          element={
+            <RequireAuth>
+              <ChildApplyForm></ChildApplyForm>
+            </RequireAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
+            </RequireAuth>
+          }
+        >
+          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path="review" element={<MyReview></MyReview>}></Route>
+        </Route>
         <Route
           path="/child-adaption-form"
           element={

@@ -10,6 +10,7 @@ import {
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading/Loading";
 import { toast } from "react-toastify";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, forgotPasswordError] =
     useSendPasswordResetEmail(auth);
+
+  const [token] = useToken(user);
 
   const {
     register,
@@ -42,13 +45,16 @@ const Login = () => {
     }
   };
 
+  const email = user?.user?.email;
+  console.log("user email: ", email);
+
   let from = location.state?.from?.pathname || "/";
   useEffect(() => {
-    if (user) {
-      console.log(user);
+    if (token) {
+      // console.log(user);
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
   if (loading || sending) {
     return <Loading></Loading>;
@@ -56,7 +62,6 @@ const Login = () => {
 
   let errorElement;
   if (error || forgotPasswordError) {
-    // toast.error(`${error?.message}`);
     errorElement = (
       <div className="alert alert-error shadow-lg">
         <div>
@@ -75,6 +80,7 @@ const Login = () => {
           </svg>
           <span className="text-white">
             {error?.message} {forgotPasswordError?.message}
+            {/* { toast.error(`${error?.message}`)}; */}
           </span>
         </div>
       </div>

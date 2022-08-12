@@ -9,6 +9,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
+import useToken from "../../../hooks/useToken";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Register = () => {
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+  const [token] = useToken(user);
   let errorElement;
   const {
     register,
@@ -42,11 +44,11 @@ const Register = () => {
 
   let from = location.state?.from?.pathname || "/";
   useEffect(() => {
-    if (user) {
+    if (token) {
       // console.log(user)
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
   if (loading || updating) {
     return <Loading></Loading>;
