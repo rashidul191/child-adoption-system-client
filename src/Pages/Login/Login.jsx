@@ -45,9 +45,6 @@ const Login = () => {
     }
   };
 
-  const email = user?.user?.email;
-  console.log("user email: ", email);
-
   let from = location.state?.from?.pathname || "/";
   useEffect(() => {
     if (token) {

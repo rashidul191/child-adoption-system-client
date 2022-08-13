@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ChildApplyForm from "./Pages/ChildApplyForm/ChildApplyForm";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
 import MyReview from "./Pages/Dashboard/MyReview/MyReview";
 import AllChild from "./Pages/Home/ChildTypes/AllChild/AllChild";
@@ -49,7 +50,9 @@ function App() {
         >
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
+          <Route path="make-admin" element={<MakeAdmin></MakeAdmin>}></Route>
         </Route>
+
         <Route
           path="/child-adaption-form"
           element={

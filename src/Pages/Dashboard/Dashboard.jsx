@@ -25,6 +25,9 @@ const Dashboard = () => {
           <li className="bg-white">
             <CustomLink to={`/dashboard/review`}>Add a Review</CustomLink>
           </li>
+          <li className="bg-white">
+            <CustomLink to={`/dashboard/make-admin`}>Make Admin</CustomLink>
+          </li>
         </ul>
       </div>
     </div>
