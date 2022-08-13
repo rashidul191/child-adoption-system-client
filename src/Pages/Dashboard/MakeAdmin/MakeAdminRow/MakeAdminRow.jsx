@@ -11,9 +11,15 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 403) {
+          toast.error("Failed To make Admin");
+        }
+        return res.json();
+      })
       .then((data) => {
         if (data?.modifiedCount > 0) {
           //   console.log(data);
