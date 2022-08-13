@@ -1,26 +1,29 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Outlet } from "react-router-dom";
+import auth from "../../firebase.init";
 import CustomLink from "../Shared/CustomLink/CustomLink";
 
 const Dashboard = () => {
+  const [user] = useAuthState(auth);
   return (
-    <div class="drawer drawer-mobile">
+    <div class="drawer drawer-mobile md:mb-20">
       <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content ml-5 md:ml-10">
-        {/* <!-- Page content here --> */}
-        <h2 className="text-4xl text-sky-400">Welcome to Dashboard</h2>
-        <Outlet />      
-
+      <div class="drawer-content mx-5 md:mx-10">
+        <h2 className="text-xl md:text-4xl text-sky-400 uppercase">
+          Welcome to <span className="text-black">{user?.displayName}</span>{" "}
+          Dashboard
+        </h2>
+        <Outlet />
       </div>
-      <div class="drawer-side">
+      <div class="drawer-side md:ml-10">
         <label for="dashboard-drawer" class="drawer-overlay"></label>
-        <ul class="menu p-4 overflow-y-auto w-72 bg-accent text-base-content">
-          {/* <!-- Sidebar content here --> */}
+        <ul class="menu p-4 overflow-y-auto w-52 md:w-auto rounded-lg bg-accent text-base-content">
           <li className="bg-white">
-            <CustomLink to={`/dashboard`} >My Profile</CustomLink>
+            <CustomLink to={`/dashboard`}>My Profile</CustomLink>
           </li>
           <li className="bg-white">
-          <CustomLink to={`/dashboard/review`}>Add a Review</CustomLink>
+            <CustomLink to={`/dashboard/review`}>Add a Review</CustomLink>
           </li>
         </ul>
       </div>

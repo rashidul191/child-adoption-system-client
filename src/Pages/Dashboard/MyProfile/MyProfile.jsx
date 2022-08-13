@@ -10,8 +10,8 @@ const MyProfile = () => {
   const { displayName, img, email, phone, address, zip } = user;
   return (
     <div>
-      <div className="flex justify-between mr-10">
-        <h1 className="text-2xl font-bold">My Profile</h1>
+      <div className="flex justify-between">
+        <h1 className=" md:text-xl font-bold uppercase">My Profile</h1>
         <button className="text-error underline">
           <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
           Edit
