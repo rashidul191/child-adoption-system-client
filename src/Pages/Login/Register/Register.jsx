@@ -245,7 +245,7 @@ const Register = () => {
                     name=""
                     id="showPassword"
                   />
-                  <label htmlFor="showPassword"> Show Password</label>
+                  <label htmlhtmlFor="showPassword"> Show Password</label>
                 </div>
 
                 <span>

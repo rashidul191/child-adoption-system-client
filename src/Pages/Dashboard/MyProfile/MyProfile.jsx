@@ -19,7 +19,7 @@ const MyProfile = () => {
       </div>
       <hr />
 
-      <div class="grid grid-cols-1 md:grid-cols-2 card bg-base-100 shadow-xl ">
+      <div className="grid grid-cols-1 md:grid-cols-2 card bg-base-100 shadow-xl ">
         <div className="flex justify-center ">
           <div>
             <img
@@ -32,7 +32,7 @@ const MyProfile = () => {
             </button>
           </div>
         </div>
-        <div class="card-body">
+        <div className="card-body">
           <span>Name:</span>
           <h2 className="text-xl font-bold">{displayName}</h2>
           <span>Email:</span>

@@ -19,7 +19,7 @@ const SocialLogin = () => {
   if (loading) {
     return (
       <div className="text-center">
-        <button class="btn btn-square loading "></button>
+        <button className="btn btn-square loading "></button>
       </div>
     );
   }

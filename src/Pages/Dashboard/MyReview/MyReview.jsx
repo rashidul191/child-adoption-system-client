@@ -46,9 +46,9 @@ const MyReview = () => {
       <hr />
       <div className=" bg-base-100 ">
         <form onSubmit={handleReviewSubmit}>
-          <div class="form-control w-full max-w-md">
-            <label class="label">
-              <span class="label-text">Name: </span>
+          <div className="form-control w-full max-w-md">
+            <label className="label">
+              <span className="label-text">Name: </span>
             </label>
             <input
               type="text"
@@ -57,13 +57,13 @@ const MyReview = () => {
               value={user?.displayName}
               readOnly
               disabled
-              class="input input-accent w-full max-w-md"
+              className="input input-accent w-full max-w-md"
             />
           </div>
 
-          <div class="form-control w-full max-w-md">
-            <label class="label">
-              <span class="label-text">Email: </span>
+          <div className="form-control w-full max-w-md">
+            <label className="label">
+              <span className="label-text">Email: </span>
             </label>
             <input
               type="email"
@@ -72,18 +72,18 @@ const MyReview = () => {
               value={user?.email}
               readOnly
               disabled
-              class="input input-accent w-full max-w-md"
+              className="input input-accent w-full max-w-md"
             />
           </div>
 
           <div>
-            <label htmlFor="rating" class="label">
-              <span class="label-text">Rating: </span>
+            <label htmlhtmlFor="rating" className="label">
+              <span className="label-text">Rating: </span>
             </label>
             <select
               id="rating"
               name="rating"
-              class="select select-accent w-full max-w-md"
+              className="select select-accent w-full max-w-md"
             >
               <option selected value={5}>
                 5
@@ -93,12 +93,12 @@ const MyReview = () => {
               <option value={2}>2</option>
               <option value={1}>1</option>
             </select>
-            <div class="form-control">
-              <label htmlFor="comment" class="label">
-                <span class="label-text">Comment: </span>
+            <div className="form-control">
+              <label htmlhtmlFor="comment" className="label">
+                <span className="label-text">Comment: </span>
               </label>
               <textarea
-                class="textarea textarea-accent h-24  w-full max-w-md"
+                className="textarea textarea-accent h-24  w-full max-w-md"
                 id="comment"
                 name="comment"
                 placeholder="any comment and feedback here"

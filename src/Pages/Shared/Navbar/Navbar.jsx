@@ -89,7 +89,7 @@ const Navbar = () => {
         {user && (
           <div className="navbar-end lg:hidden">
             <label
-              for="dashboard-drawer"
+              htmlFor="dashboard-drawer"
               tabIndex="1"
               className="btn btn-ghost lg:hidden"
             >
