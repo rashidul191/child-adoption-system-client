@@ -8,7 +8,6 @@ import { signOut } from "firebase/auth";
 import auth from "../../../../firebase.init";
 
 const MakeAdminRow = ({ user, index, refetch }) => {
-  // console.log(user);
   const navigate = useNavigate();
   const { email, role } = user;
 
@@ -16,12 +15,12 @@ const MakeAdminRow = ({ user, index, refetch }) => {
   const handleMakeAdmin = () => {
     Swal.fire({
       title: "Are you sure?",
-      text: `User from make an Admin, ${email}`,
+      text: `User from make an admin, ${email}`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Admin it!",
+      confirmButtonText: "Yes, admin it!",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/users/admin/${email}`, {
@@ -42,51 +41,12 @@ const MakeAdminRow = ({ user, index, refetch }) => {
           })
           .then((data) => {
             if (data?.modifiedCount > 0) {
-              toast.success(`Now ${email} Admin successfully`);
+              toast.success(`Now ${email} admin successfully`);
               refetch();
             }
           });
 
         Swal.fire("Admin!", `Now, ${email} is admin`, "success");
-      }
-    });
-  };
-  // handle Make Employer
-  const handleMakeEmployer = () => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: `User from make an Employer, ${email}`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Employer it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/employer/${email}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("access-token")}`,
-          },
-        })
-          .then((res) => {
-            if (res.status === 403 || res.status === 401) {
-              signOut(auth);
-              localStorage.removeItem("access-token");
-              navigate("/login");
-              toast.error("Failed To make Employer");
-            }
-            return res.json();
-          })
-          .then((data) => {
-            if (data?.modifiedCount > 0) {
-              toast.success(`Now ${email} Employer successfully`);
-              refetch();
-            }
-          });
-
-        Swal.fire("Employer!", `Now, ${email} is employer`, "success");
       }
     });
   };
@@ -150,7 +110,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       <td className="font-bold">{email}</td>
       <td>
         {role === "admin" ? (
-          <p className="text-green-500 font-bold uppercase">Already Admin</p>
+          <p className="text-green-500">Already Admin</p>
         ) : (
           <button
             onClick={handleMakeAdmin}
@@ -161,16 +121,9 @@ const MakeAdminRow = ({ user, index, refetch }) => {
         )}
       </td>
       <td>
-        {role === "employer" ? (
-          <p className="text-green-500 font-bold uppercase">Already Employer</p>
-        ) : (
-          <button
-            onClick={handleMakeEmployer}
-            className="btn btn-info btn-sm text-white"
-          >
-            Make Employer
-          </button>
-        )}
+        <button className="btn btn-info btn-sm text-white">
+          Make Employer
+        </button>
       </td>
       <td>
         <button

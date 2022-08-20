@@ -210,7 +210,7 @@ const Login = () => {
                     name=""
                     id="showPassword"
                   />
-                  <label htmlhtmlFor="showPassword"> Show Password</label>
+                  <label htmlFor="showPassword"> Show Password</label>
                 </div>
 
                 <input
@@ -218,7 +218,7 @@ const Login = () => {
                   type="submit"
                   value={`Login`}
                 />
-                <label htmlhtmlFor="forgot-password-modal" className="btn btn-link">
+                <label htmlFor="forgot-password-modal" className="btn btn-link">
                   <small>Forgot password?</small>
                 </label>
               </form>
@@ -234,7 +234,7 @@ const Login = () => {
             <div className="modal modal-bottom sm:modal-middle">
               <div className="modal-box">
                 <label
-                  htmlhtmlFor="forgot-password-modal"
+                  htmlFor="forgot-password-modal"
                   className="btn btn-sm btn-circle absolute right-2 top-2"
                 >
                   ✕
@@ -257,7 +257,7 @@ const Login = () => {
                   Send Email
                 </button>
                 {/* <div className="modal-action">
-                  <label htmlhtmlFor="forgot-password-modal" className="btn btn-info">
+                  <label htmlFor="forgot-password-modal" className="btn btn-info">
                     Send Email
                   </label>
                 </div> */}

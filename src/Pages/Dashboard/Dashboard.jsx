@@ -2,10 +2,13 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Outlet } from "react-router-dom";
 import auth from "../../firebase.init";
+import useAdmin from "../../hooks/useAdmin";
 import CustomLink from "../Shared/CustomLink/CustomLink";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+
   return (
     <div className="drawer drawer-mobile md:mb-20">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
@@ -22,12 +25,16 @@ const Dashboard = () => {
           <li className="bg-white">
             <CustomLink to={`/dashboard`}>My Profile</CustomLink>
           </li>
-          <li className="bg-white">
-            <CustomLink to={`/dashboard/review`}>Add a Review</CustomLink>
-          </li>
-          <li className="bg-white">
-            <CustomLink to={`/dashboard/make-admin`}>Make Admin</CustomLink>
-          </li>
+          {!admin && (
+            <li className="bg-white">
+              <CustomLink to={`/dashboard/review`}>Add a Review</CustomLink>
+            </li>
+          )}
+          {admin && (
+            <li className="bg-white">
+              <CustomLink to={`/dashboard/make-admin-or-employer`}>Make Admin or Employer </CustomLink>
+            </li>
+          )}
         </ul>
       </div>
     </div>

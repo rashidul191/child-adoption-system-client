@@ -4,10 +4,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { useQuery } from "@tanstack/react-query";
+import { signOut } from "firebase/auth";
+import { Navigate } from "react-router-dom";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
   const { displayName, img, email, phone, address, zip } = user;
+
+  const { data, isLoading } = useQuery(["userDB"], () =>
+    fetch(`http://localhost:5000/user?email=${email}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        localStorage.removeItem("access-token");
+        Navigate("/login");
+      }
+      return res.json;
+    })
+  );
+  console.log("user: ", data);
+
+  if (isLoading) {
+    return <p className="text-center">Loading........</p>;
+  }
+
   return (
     <div>
       <div className="flex justify-between">

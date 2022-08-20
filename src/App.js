@@ -50,7 +50,10 @@ function App() {
         >
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
-          <Route path="make-admin" element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route
+            path="make-admin-or-employer"
+            element={<MakeAdmin></MakeAdmin>}
+          ></Route>
         </Route>
 
         <Route

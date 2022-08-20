@@ -77,7 +77,7 @@ const MyReview = () => {
           </div>
 
           <div>
-            <label htmlhtmlFor="rating" className="label">
+            <label htmlFor="rating" className="label">
               <span className="label-text">Rating: </span>
             </label>
             <select
@@ -94,7 +94,7 @@ const MyReview = () => {
               <option value={1}>1</option>
             </select>
             <div className="form-control">
-              <label htmlhtmlFor="comment" className="label">
+              <label htmlFor="comment" className="label">
                 <span className="label-text">Comment: </span>
               </label>
               <textarea
