@@ -8,7 +8,6 @@ const MyReview = () => {
 
   const handleReviewSubmit = (event) => {
     event.preventDefault();
-
     const displayName = user?.displayName;
     const email = user?.email;
     const rating = event.target.rating.value;
@@ -41,7 +40,7 @@ const MyReview = () => {
   };
 
   return (
-    <div>
+    <section>
       <h1 className="md:text-xl font-bold uppercase">My Review</h1>
       <hr />
       <div className=" bg-base-100 ">
@@ -112,7 +111,7 @@ const MyReview = () => {
           />
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 

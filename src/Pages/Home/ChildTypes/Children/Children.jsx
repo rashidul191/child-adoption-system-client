@@ -7,7 +7,7 @@ const Children = (props) => {
   const { img, name, age, location, _id } = props.children;
   // console.log(props.children);
   return (
-    <div className="card md:w-60  lg:w-96 bg-base-100 shadow-xl mx-auto my-10">
+    <div className="card md:w-60  lg:w-96 bg-base-100 shadow-xl mx-auto my-3">
       <figure className="px-10 pt-10">
         <img width={180} src={img} alt={name} className="rounded-xl" />
       </figure>

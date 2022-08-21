@@ -7,7 +7,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-base-200 py-5">
-      <div className="footer p-10 text-base-content">
+      <div className="footer grid grid-cols-2 md:grid-cols-3 p-10 text-base-content">
         <div>
           <p>
             ACME Industries Ltd.

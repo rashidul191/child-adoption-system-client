@@ -31,9 +31,16 @@ const Dashboard = () => {
             </li>
           )}
           {admin && (
-            <li className="bg-white">
-              <CustomLink to={`/dashboard/make-admin-or-employer`}>Make Admin or Employer </CustomLink>
-            </li>
+            <>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/add-child`}>Add Child</CustomLink>
+              </li>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/make-admin-or-employer`}>
+                  Make Admin or Employer{" "}
+                </CustomLink>
+              </li>
+            </>
           )}
         </ul>
       </div>

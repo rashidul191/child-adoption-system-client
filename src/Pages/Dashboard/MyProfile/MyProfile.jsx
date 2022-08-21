@@ -7,6 +7,7 @@ import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { signOut } from "firebase/auth";
 import { Navigate } from "react-router-dom";
+import Loading from "../../Shared/Loading/Loading";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
@@ -31,7 +32,7 @@ const MyProfile = () => {
   console.log("user: ", data);
 
   if (isLoading) {
-    return <p className="text-center">Loading........</p>;
+    return <Loading></Loading>
   }
 
   return (

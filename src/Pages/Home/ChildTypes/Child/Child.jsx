@@ -21,15 +21,24 @@ const Child = () => {
     return <Loading></Loading>;
   }
   //   console.log(child);
-  const { img, name, age, location, childType, gender, religion, description } =
-    child;
+  const {
+    img,
+    name,
+    age,
+    location,
+    childType,
+    gender,
+    religion,
+    agency,
+    description,
+  } = child;
 
   if (error) {
     console.log(error);
   }
   return (
-    <section className="card w-10/12 bg-base-100 shadow-xl mx-auto my-10 md:mb-28">
-      <div className="grid grid-cols-1 md:grid-cols-2 ml-10 mt mx-auto">
+    <section className="card w-10/12 bg-base-100 shadow-xl mx-auto my-10 md:mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 ml-10 mx-auto">
         <div className="md:ml-28">
           <img width={180} src={img} alt={name} />
           <h2 className="text-xl">
@@ -37,7 +46,7 @@ const Child = () => {
           </h2>
           <p>Age: {age}</p>
         </div>
-        <div className="">
+        <div className="md:ml-5">
           <div className="overflow-x-auto">
             <table className="table w-full">
               <tbody>
@@ -63,6 +72,12 @@ const Child = () => {
                   <td>
                     {" "}
                     Location: <span className="font-bold">{location}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {" "}
+                    Agency: <span className="font-bold">{agency}</span>
                   </td>
                 </tr>
                 <tr>
