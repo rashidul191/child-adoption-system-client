@@ -13,7 +13,7 @@ const ChildTypes = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         <div className="card w-80 md:w-96 bg-base-100 shadow-xl mx-auto">
-          <figure className="px-10 pt-10">
+          <figure className="px-10 pt-10 ">
             <img
               src="https://i.ibb.co/BLTd83g/Infant-Child.png"
               alt="Shoes"

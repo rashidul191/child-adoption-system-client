@@ -1,3 +1,5 @@
+import { faCloudUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useRef } from "react";
@@ -61,12 +63,11 @@ const AddChild = () => {
               return res.json();
             })
             .then((data) => {
-              console.log(data);
               if (data?.insertedId) {
-                toast.success("Child is added successfully");
+                toast.success("Child Information added successfully");
                 data = "";
               } else {
-                toast.error("Failed to add tool");
+                toast.error("Failed to add Information");
               }
             });
         }
@@ -75,24 +76,32 @@ const AddChild = () => {
   return (
     <section>
       <h1 className="md:text-xl font-bold uppercase">Add Child</h1>
-      <div>
+      <hr />
+  
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div className="form-control w-full max-w-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 ">
+            <div className="form-control w-full max-w-xs mt-0">
               <label className="label">
                 <span className="label-text">Child Image:</span>
               </label>
-              <input
-                {...childInfo("img", {
-                  required: {
-                    value: true,
-                    message: "Child Image is required",
-                  },
-                })}
-                type="file"
-                name="img"
-                id=""
-              />
+              <div className="flex items-center">
+                <label className="w-full  px-4 py-3 bg-white text-blue rounded-lg tracking-wide uppercase border border-blue-100 cursor-pointer hover:bg-blue-500 hover:text-white">
+                  <FontAwesomeIcon className="text-xl mr-4" icon={faCloudUpload}></FontAwesomeIcon>
+                  <span className="mt-2 text-base leading-normal">Upload</span>
+                  <input
+                    {...childInfo("img", {
+                      required: {
+                        value: true,
+                        message: "Child Image is required",
+                      },
+                    })}
+                    type="file"
+                    name="img"
+                    id=""
+                    className="hidden"
+                  />
+                </label>
+              </div>
 
               <label className="label">
                 {errors.img?.type === "required" && (
@@ -102,7 +111,7 @@ const AddChild = () => {
                 )}
               </label>
             </div>
-            <div className="form-control w-full max-w-xs">
+            <div className="form-control w-full max-w-xs mt-0">
               <label className="label">
                 <span className="label-text">Child Full Name:</span>
               </label>
@@ -296,12 +305,12 @@ const AddChild = () => {
           </div>
 
           <input
-            className="btn btn-secondary rounded-none"
+            className="btn btn-primary text-white w-full md:w-96 rounded-none mt-3"
             type="submit"
             value="Add Child"
           />
         </form>
-      </div>
+
     </section>
   );
 };

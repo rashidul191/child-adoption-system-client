@@ -1,13 +1,17 @@
-import React from "react";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { toast } from "react-toastify";
+import { signOut } from "firebase/auth";
+import React from "react";
+import { Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import auth from "../../../../firebase.init";
+import { toast } from "react-toastify";
 
-const ChildRow = ({ index, child, refetch }) => {
-  const { _id, img, name, location, childType } = child;
+const AgencyRow = ({ index, agency, refetch }) => {
+  const { _id, agencyImg, agencyName, agencyLocation, agencyDirectorName } =
+    agency;
 
-  const handleChildDelete = (_id) => {
+  const handleAgencyDelete = (_id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -19,7 +23,7 @@ const ChildRow = ({ index, child, refetch }) => {
     swalWithBootstrapButtons
       .fire({
         title: "Are you sure?",
-        text: `You won't be able to revert this! ${name}`,
+        text: `You won't be able to revert this! ${agencyName}`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, delete it!",
@@ -28,16 +32,24 @@ const ChildRow = ({ index, child, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/allChilds/${_id}`, {
+          fetch(`http://localhost:5000/allAgency/${_id}`, {
             method: "DELETE",
             headers: {
               authorization: `Bearer ${localStorage.getItem("access-token")}`,
             },
           })
-            .then((res) => res.json())
+            .then((res) => {
+              if (res.status === 401 || res.status === 403) {
+                signOut(auth);
+                localStorage.removeItem("access-token");
+                Navigate("/login");
+              }
+              return res.json();
+            })
             .then((data) => {
+              console.log(data);
               if (data?.deletedCount > 0) {
-                toast.success(`${name} is delete successfully`);
+                toast.success(`${agencyName} delete successfully`);
                 refetch();
               }
             });
@@ -66,22 +78,22 @@ const ChildRow = ({ index, child, refetch }) => {
         <div className="flex items-center space-x-3">
           <div className="avatar">
             <div className="mask mask-squircle w-16 h-12">
-              <img src={img} alt={name} />
+              <img src={agencyImg} alt={agencyName} />
             </div>
           </div>
           <div>
-            <div className="font-bold">{name}</div>
-            <div className="text-sm opacity-50">{location}</div>
+            <div className="font-bold">{agencyName}</div>
+            <div className="text-sm opacity-50">{agencyLocation}</div>
           </div>
         </div>
       </td>
-      <td>{childType}</td>
+      <td>By : {agencyDirectorName}</td>
       <th>
         <button className="btn btn-info btn-sm text-white">Edit</button>
       </th>
       <th>
         <button
-          onClick={() => handleChildDelete(_id)}
+          onClick={() => handleAgencyDelete(_id)}
           className="btn btn-error btn-sm text-white"
         >
           <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
@@ -91,4 +103,4 @@ const ChildRow = ({ index, child, refetch }) => {
   );
 };
 
-export default ChildRow;
+export default AgencyRow;

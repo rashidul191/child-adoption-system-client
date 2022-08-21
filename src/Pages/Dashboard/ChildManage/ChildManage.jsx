@@ -22,12 +22,12 @@ const ChildManage = () => {
     return <Loading></Loading>;
   }
   return (
-    <div>
+    <section>
       <h1 className="md:text-xl font-bold uppercase">User Manage</h1>
       <hr />
 
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>S/N</th>
@@ -49,7 +49,7 @@ const ChildManage = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
   );
 };
 

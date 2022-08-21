@@ -39,6 +39,12 @@ const Dashboard = () => {
                 <CustomLink to={`/dashboard/child-manage`}>Child Manage</CustomLink>
               </li>
               <li className="bg-white">
+                <CustomLink to={`/dashboard/add-agency`}>Add Agency</CustomLink>
+              </li>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/agency-manage`}>Agency Manage</CustomLink>
+              </li>
+              <li className="bg-white">
                 <CustomLink to={`/dashboard/user-manage`}>
                   User Manage{" "}
                 </CustomLink>
