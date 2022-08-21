@@ -155,7 +155,7 @@ const AddChild = () => {
                 <span className="label-text">Child Type:</span>
               </label>
               <select
-                class="select select-bordered w-full max-w-xs"
+                className="select select-bordered w-full max-w-xs"
                 {...childInfo("childType", {
                   required: {
                     value: true,
@@ -183,7 +183,7 @@ const AddChild = () => {
                 <span className="label-text">Child Gander:</span>
               </label>
               <select
-                class="select select-bordered w-full max-w-xs"
+                className="select select-bordered w-full max-w-xs"
                 {...childInfo("gender", {
                   required: {
                     value: true,
@@ -211,7 +211,7 @@ const AddChild = () => {
                 <span className="label-text">Child Religion:</span>
               </label>
               <select
-                class="select select-bordered w-full max-w-xs"
+                className="select select-bordered w-full max-w-xs"
                 {...childInfo("religion", {
                   required: {
                     value: true,
@@ -284,13 +284,13 @@ const AddChild = () => {
             </div>
           </div>
 
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">About Child</span>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">About Child</span>
             </label>
             <textarea
               ref={aboutChildRef}
-              class="textarea textarea-bordered h-24"
+              className="textarea textarea-bordered h-24"
               placeholder="Bio"
             ></textarea>
           </div>

@@ -26,13 +26,12 @@ const MyProfile = () => {
         localStorage.removeItem("access-token");
         Navigate("/login");
       }
-      return res.json;
+      return res.json();
     })
   );
-  console.log("user: ", data);
 
   if (isLoading) {
-    return <Loading></Loading>
+    return <Loading></Loading>;
   }
 
   return (
@@ -63,7 +62,7 @@ const MyProfile = () => {
           <span>Name:</span>
           <h2 className="text-xl font-bold">{displayName}</h2>
           <span>Email:</span>
-          <h2 className="text-xl font-bold"> {email}</h2>
+          <h2 className="text-xl font-bold"> {data?.email}</h2>
           <span>Address:</span>
           <h2 className="text-xl font-bold"> {address}</h2>
           <span>Zip Code:</span>

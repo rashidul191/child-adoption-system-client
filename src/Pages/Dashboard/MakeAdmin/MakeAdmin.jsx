@@ -31,14 +31,12 @@ const MakeAdmin = () => {
     })
   );
 
-  // console.log(users)
-
   if (isLoading) {
     return <Loading></Loading>;
   }
   return (
     <div>
-      <h1 className="md:text-xl font-bold uppercase">Make Admin</h1>
+      <h1 className="md:text-xl font-bold uppercase">User Manage</h1>
       <hr />
       <div>
         <div className="overflow-x-auto w-full">

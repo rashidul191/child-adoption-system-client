@@ -36,8 +36,11 @@ const Dashboard = () => {
                 <CustomLink to={`/dashboard/add-child`}>Add Child</CustomLink>
               </li>
               <li className="bg-white">
-                <CustomLink to={`/dashboard/make-admin-or-employer`}>
-                  Make Admin or Employer{" "}
+                <CustomLink to={`/dashboard/child-manage`}>Child Manage</CustomLink>
+              </li>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/user-manage`}>
+                  User Manage{" "}
                 </CustomLink>
               </li>
             </>

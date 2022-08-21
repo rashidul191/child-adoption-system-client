@@ -5,7 +5,6 @@ import Loading from "../../../Shared/Loading/Loading";
 
 const Child = () => {
   const { id } = useParams();
-
   // react query
   const {
     data: child,
