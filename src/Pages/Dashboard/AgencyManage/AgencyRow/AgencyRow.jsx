@@ -19,7 +19,6 @@ const AgencyRow = ({ index, agency, refetch }) => {
       },
       buttonsStyling: false,
     });
-
     swalWithBootstrapButtons
       .fire({
         title: "Are you sure?",

@@ -19,7 +19,7 @@ const AddAgency = () => {
 
   const onSubmit = async (data) => {
     const image = data.img[0];
-    console.log("Image: ", image);
+
     const formData = new FormData();
     formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
@@ -29,7 +29,6 @@ const AddAgency = () => {
     })
       .then((res) => res.json())
       .then((imgStoreOutput) => {
-        console.log(imgStoreOutput);
         if (imgStoreOutput.success) {
           const img = imgStoreOutput.data.url;
           const childInfo = {

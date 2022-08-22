@@ -19,7 +19,6 @@ const Child = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-  //   console.log(child);
   const {
     img,
     name,

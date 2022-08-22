@@ -1,11 +1,60 @@
-import React from 'react';
+import React from "react";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useQuery } from "@tanstack/react-query";
+import AgencyGrid from "./AgencyGrid/AgencyGrid";
+import Loading from "../../Shared/Loading/Loading";
+import { Link } from "react-router-dom";
 
 const Agency = () => {
-    return (
-        <div>
-            <h2>Agency</h2>
-        </div>
-    );
+  // react query
+  const { data: allAgency, isLoading } = useQuery(["allAgency"], () =>
+    fetch("http://localhost:5000/allAgency", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
+  if (allAgency === undefined) {
+    return <Loading></Loading>;
+  }
+
+  let allAgencyInfo;
+  if (allAgency.length > 3) {
+    allAgencyInfo = allAgency.slice(0, 3);
+  } else {
+    allAgencyInfo = allAgency;
+  }
+  return (
+    <section className="bg-gray-100 md:my-28 md:py-10">
+      <div>
+        <h1 className="text-center text-2xl font-bold uppercase">Agency</h1>
+        <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {allAgencyInfo?.map((agency) => (
+          <AgencyGrid key={agency._id} agency={agency}></AgencyGrid>
+        ))}
+      </div>
+
+      <div className="text-center ">
+        <Link to={`/all-agency`}>
+          <button className="btn btn-secondary rounded-none w-60 hover:w-72 text-white hover:text-xl">
+            See More
+            <FontAwesomeIcon
+              className="ml-4"
+              icon={faArrowRight}
+            ></FontAwesomeIcon>
+          </button>
+        </Link>
+      </div>
+    </section>
+  );
 };
 
 export default Agency;

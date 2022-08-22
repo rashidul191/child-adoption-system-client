@@ -11,6 +11,8 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
 import MyReview from "./Pages/Dashboard/MyReview/MyReview";
+import AgencyInfo from "./Pages/Home/Agency/AgencyInfo/AgencyInfo";
+import AllAgency from "./Pages/Home/Agency/AllAgency/AllAgency";
 import AllChild from "./Pages/Home/ChildTypes/AllChild/AllChild";
 import Child from "./Pages/Home/ChildTypes/Child/Child";
 import Home from "./Pages/Home/Home";
@@ -33,6 +35,8 @@ function App() {
           element={<AllChild></AllChild>}
         ></Route>
         <Route path="/child/:id" element={<Child></Child>}></Route>
+        <Route path="/all-agency" element={<AllAgency></AllAgency>}></Route>
+        <Route path="/agency/:id" element={<AgencyInfo></AgencyInfo>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route
@@ -55,9 +59,15 @@ function App() {
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
           <Route path="add-child" element={<AddChild></AddChild>}></Route>
-          <Route path="child-manage" element={<ChildManage></ChildManage>}></Route>
+          <Route
+            path="child-manage"
+            element={<ChildManage></ChildManage>}
+          ></Route>
           <Route path="add-agency" element={<AddAgency></AddAgency>}></Route>
-          <Route path="agency-manage" element={<AgencyManage></AgencyManage>}></Route>
+          <Route
+            path="agency-manage"
+            element={<AgencyManage></AgencyManage>}
+          ></Route>
           <Route path="user-manage" element={<MakeAdmin></MakeAdmin>}></Route>
         </Route>
 

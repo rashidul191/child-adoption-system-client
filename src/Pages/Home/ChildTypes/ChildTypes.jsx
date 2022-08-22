@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ChildTypes = () => {
   return (
-    <div className="my-10 md:my-28">
+    <div className="my-10 md:my-16">
       <div>
         <h1 className="text-center text-2xl font-bold uppercase">Child Type</h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
