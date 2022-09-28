@@ -14,8 +14,7 @@ const Dashboard = () => {
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content mx-5 md:mx-10">
         <h2 className="text-xl md:text-4xl text-sky-400 uppercase">
-          Welcome to <span className="text-black">{user?.displayName}</span>{" "}
-          Dashboard
+          Welcome to <span className="text-black">{user?.displayName}</span>
         </h2>
         <Outlet />
       </div>
@@ -36,13 +35,17 @@ const Dashboard = () => {
                 <CustomLink to={`/dashboard/add-child`}>Add Child</CustomLink>
               </li>
               <li className="bg-white">
-                <CustomLink to={`/dashboard/child-manage`}>Child Manage</CustomLink>
+                <CustomLink to={`/dashboard/child-manage`}>
+                  Child Manage
+                </CustomLink>
               </li>
               <li className="bg-white">
                 <CustomLink to={`/dashboard/add-agency`}>Add Agency</CustomLink>
               </li>
               <li className="bg-white">
-                <CustomLink to={`/dashboard/agency-manage`}>Agency Manage</CustomLink>
+                <CustomLink to={`/dashboard/agency-manage`}>
+                  Agency Manage
+                </CustomLink>
               </li>
               <li className="bg-white">
                 <CustomLink to={`/dashboard/user-manage`}>

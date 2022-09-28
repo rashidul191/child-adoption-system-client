@@ -11,8 +11,7 @@ import Loading from "../../Shared/Loading/Loading";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
-  const { displayName, img, email, phone, address, zip } = user;
-
+  const { displayName, photoURL, email, phone, address, zip } = user;
   const { data, isLoading } = useQuery(["userDB"], () =>
     fetch(`http://localhost:5000/user?email=${email}`, {
       method: "GET",
@@ -48,11 +47,18 @@ const MyProfile = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 card bg-base-100 shadow-xl ">
         <div className="flex justify-center ">
           <div>
-            <img
-              width={120}
-              src={img ? img : `https://i.ibb.co/tmprR1w/profile-icon.webp`}
-              alt={displayName}
-            />
+            <div className="mt-3">
+              <img
+                width={120}
+                src={
+                  photoURL
+                    ? photoURL
+                    : `https://i.ibb.co/tmprR1w/profile-icon.webp`
+                }
+                alt={displayName}
+              />
+            </div>
+
             <button className="btn btn-error text-white mt-5">
               Edit Profile
             </button>
