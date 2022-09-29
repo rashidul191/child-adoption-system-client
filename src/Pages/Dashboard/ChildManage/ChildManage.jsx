@@ -23,7 +23,7 @@ const ChildManage = () => {
   }
   return (
     <section>
-      <h1 className="md:text-xl font-bold uppercase">User Manage</h1>
+      <h1 className="md:text-xl font-bold uppercase">Child Manage</h1>
       <hr />
 
       <div className="overflow-x-auto w-full">
