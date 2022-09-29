@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import Loading from "../Shared/Loading/Loading";
 
 const ChildApplyForm = () => {
-  const [countryAll, setCountryAll] = useState({});
-
-  useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((data) => setCountryAll(data));
-  }, []);
-
-  // console.log(countryAll);
   const {
     register,
     formState: { errors },
@@ -20,6 +13,15 @@ const ChildApplyForm = () => {
   const onSubmit = async (data) => {
     console.log(data);
   };
+
+  const { data: countryAll, isLoading } = useQuery(["countries"], () =>
+    fetch(`https://restcountries.com/v3.1/all`).then((res) => res.json())
+  );
+
+  // console.log(countryAll);
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div className="md:mt-8 mb-16">
@@ -98,13 +100,11 @@ const ChildApplyForm = () => {
                   })}
                 >
                   <option selected>Please select Citizenship</option>
-
-                  {countryAll?.map((country) => console.log(country))}
-
-                  
-                  <option value={`Male`}>Male</option>
-                  <option value={`Female`}>Female</option>
-                  <option value={`Other`}>Other</option>
+                  {countryAll?.map((country, index) => (
+                    <option key={index} value={country?.name?.common}>
+                      {country?.name?.common}
+                    </option>
+                  ))}
                 </select>
                 <label className="label">
                   {errors.citizenship?.type === "required" && (
@@ -134,6 +134,39 @@ const ChildApplyForm = () => {
                   {errors.birthDate?.type === "required" && (
                     <span className="label-text-alt text-error">
                       {errors.birthDate?.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+
+              <div className="form-control w-full max-w-md">
+                <label className="label">
+                  <span className="label-text">NID / Passport Number:</span>
+                </label>
+                <input
+                  {...register("nidPassport", {
+                    required: {
+                      value: true,
+                      message: "NID / Passport Number is required",
+                    },
+                    pattern: {
+                      value: /1?([1-9])/,
+                      message: "Provide a valid NID / Passport Number",
+                    },
+                  })}
+                  type="text"
+                  placeholder="NID / Passport Number"
+                  className="input input-bordered w-full max-w-"
+                />
+                <label className="label">
+                  {errors.nidPassport?.type === "required" && (
+                    <span className="label-text-alt text-error">
+                      {errors.nidPassport?.message}
+                    </span>
+                  )}
+                  {errors.nidPassport?.type === "pattern" && (
+                    <span className="label-text-alt text-error">
+                      {errors.nidPassport?.message}
                     </span>
                   )}
                 </label>
@@ -193,6 +226,7 @@ const ChildApplyForm = () => {
                   )}
                 </label>
               </div>
+
               <div className="form-control w-full max-w-lg">
                 <label className="label">
                   <span className="label-text">Citizenship:</span>
@@ -207,9 +241,11 @@ const ChildApplyForm = () => {
                   })}
                 >
                   <option selected>Please select Citizenship</option>
-                  <option value={`Male`}>Male</option>
-                  <option value={`Female`}>Female</option>
-                  <option value={`Other`}>Other</option>
+                  {countryAll?.map((country, index) => (
+                    <option key={index} value={country?.name?.common}>
+                      {country?.name?.common}
+                    </option>
+                  ))}
                 </select>
                 <label className="label">
                   {errors.citizenship2?.type === "required" && (
@@ -239,6 +275,39 @@ const ChildApplyForm = () => {
                   {errors.birthDate2?.type === "required" && (
                     <span className="label-text-alt text-error">
                       {errors.birthDate2?.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+
+              <div className="form-control w-full max-w-md">
+                {/* <label className="label">
+                    <span className="label-text">Phone Number:</span>
+                  </label> */}
+                <input
+                  {...register("nidPassport2", {
+                    required: {
+                      value: true,
+                      message: "NID / Passport Number is required",
+                    },
+                    pattern: {
+                      value: /1?([1-9])/,
+                      message: "Provide a valid NID / Passport Number",
+                    },
+                  })}
+                  type="text"
+                  placeholder="NID / Passport Number"
+                  className="input input-bordered w-full max-w-"
+                />
+                <label className="label">
+                  {errors.nidPassport2?.type === "required" && (
+                    <span className="label-text-alt text-error">
+                      {errors.nidPassport2?.message}
+                    </span>
+                  )}
+                  {errors.nidPassport2?.type === "pattern" && (
+                    <span className="label-text-alt text-error">
+                      {errors.nidPassport2?.message}
                     </span>
                   )}
                 </label>
@@ -416,18 +485,25 @@ const ChildApplyForm = () => {
                   </label>
                 </div>
 
-                <div className="form-control w-full max-w-md">
-                  <input
+                <div className="form-control w-full max-w-lg">
+                  <select
+                    className="select select-bordered w-full max-w-lg"
                     {...register("country", {
                       required: {
                         value: true,
-                        message: "Country is required",
+                        message: "country required",
                       },
                     })}
-                    type="text"
-                    placeholder="Country"
-                    className="input input-bordered w-full max-w-"
-                  />
+                  >
+                    <option selected placeholder="Country">
+                      Country Name
+                    </option>
+                    {countryAll?.map((country, index) => (
+                      <option key={index} value={country?.name?.common}>
+                        {country?.name?.common}
+                      </option>
+                    ))}
+                  </select>
                   <label className="label">
                     {errors.country?.type === "required" && (
                       <span className="label-text-alt text-error">
