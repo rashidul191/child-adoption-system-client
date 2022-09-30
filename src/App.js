@@ -6,6 +6,8 @@ import ChildApplyForm from "./Pages/ChildApplyForm/ChildApplyForm";
 import AddAgency from "./Pages/Dashboard/AddAgency/AddAgency";
 import AddChild from "./Pages/Dashboard/AddChild/AddChild";
 import AgencyManage from "./Pages/Dashboard/AgencyManage/AgencyManage";
+import CheckApplyResult from "./Pages/Dashboard/CheckApplyResult/CheckApplyResult";
+import CheckForApply from "./Pages/Dashboard/CheckForApply/CheckForApply";
 import ChildManage from "./Pages/Dashboard/ChildManage/ChildManage";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
@@ -58,6 +60,8 @@ function App() {
         >
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
+          <Route path="check-for-apply" element={<CheckForApply></CheckForApply>}></Route>
+          <Route path="check-apply-result" element={<CheckApplyResult></CheckApplyResult>}></Route>
           <Route path="add-child" element={<AddChild></AddChild>}></Route>
           <Route
             path="child-manage"

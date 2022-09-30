@@ -34,7 +34,7 @@ const MyProfile = () => {
   }
 
   return (
-    <div>
+    <section>
       <div className="flex justify-between">
         <h1 className=" md:text-xl font-bold uppercase">My Profile</h1>
         <button className="text-error underline">
@@ -76,9 +76,8 @@ const MyProfile = () => {
           <span>Phone:</span>
           <h2 className="text-xl font-bold"> {phone}</h2>
         </div>
-        {/* </div> */}
       </div>
-    </div>
+    </section>
   );
 };
 

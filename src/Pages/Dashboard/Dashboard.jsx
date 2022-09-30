@@ -25,9 +25,17 @@ const Dashboard = () => {
             <CustomLink to={`/dashboard`}>My Profile</CustomLink>
           </li>
           {!admin && (
-            <li className="bg-white">
-              <CustomLink to={`/dashboard/review`}>Add a Review</CustomLink>
-            </li>
+            <>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/review`}>Add a Review</CustomLink>
+              </li>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/check-for-apply`}>Check for Apply</CustomLink>
+              </li>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/check-apply-result`}>Check Apply Result</CustomLink>
+              </li>
+            </>
           )}
           {admin && (
             <>

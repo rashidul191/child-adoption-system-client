@@ -33,7 +33,7 @@ const ChildApplyForm = () => {
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <h2 className="text-3xl">Parent 1 Information</h2>
+              <h2 className="text-xl md:text-3xl font-bold">Parent 1 Information</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
               <div className="form-control w-full max-w-md">
@@ -173,7 +173,7 @@ const ChildApplyForm = () => {
               </div>
             </div>
             <div>
-              <h2 className="text-3xl">Parent 2 Information</h2>
+              <h2 className="text-xl md:text-3xl font-bold">Parent 2 Information</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
               <div className="form-control w-full max-w-md">
@@ -316,7 +316,7 @@ const ChildApplyForm = () => {
 
             <div>
               <div>
-                <h2 className="text-3xl">Contact Information</h2>
+                <h2 className="text-xl md:text-3xl font-bold">Contact Information</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
                 <div className="form-control w-full max-w-md">
