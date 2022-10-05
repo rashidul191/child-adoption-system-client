@@ -30,10 +30,14 @@ const Dashboard = () => {
                 <CustomLink to={`/dashboard/review`}>Add a Review</CustomLink>
               </li>
               <li className="bg-white">
-                <CustomLink to={`/dashboard/check-for-apply`}>Check for Apply</CustomLink>
+                <CustomLink to={`/dashboard/check-for-apply`}>
+                  Check for Apply
+                </CustomLink>
               </li>
               <li className="bg-white">
-                <CustomLink to={`/dashboard/check-apply-result`}>Check Apply Result</CustomLink>
+                <CustomLink to={`/dashboard/check-apply-result`}>
+                  Check Apply Result
+                </CustomLink>
               </li>
             </>
           )}
@@ -58,6 +62,11 @@ const Dashboard = () => {
               <li className="bg-white">
                 <CustomLink to={`/dashboard/user-manage`}>
                   User Manage{" "}
+                </CustomLink>
+              </li>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/all-donation`}>
+                  All Donation{" "}
                 </CustomLink>
               </li>
             </>

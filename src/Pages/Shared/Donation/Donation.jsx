@@ -1,5 +1,12 @@
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
 import { useForm } from "react-hook-form";
+import CheckoutForm from "./CheckoutForm/CheckoutForm";
+
+const stripePromise = loadStripe(
+  "pk_test_51LpY8iE01qgurHugwgq5f5TBPj3khq3unaaKZRf9OOn5lOI5fxLskN6TeOc1y2kak2kNf5Y9gU6e36gmbZcbWLy100l4rI3NqF"
+);
 
 const Donation = () => {
   // personal number donate event handle
@@ -13,19 +20,9 @@ const Donation = () => {
     console.log(data);
   };
 
-  // Card Donate event handle
-  const handleCardSubmit = (event) => {
-    event.preventDefault();
-    const cardAmountDonate = {
-      cardNumber: event.target.cardNumber.value,
-      cardAmount: event.target.cardAmount.value,
-    };
-    console.log(cardAmountDonate);
-  };
-
   return (
     <section>
-      <div className="card w-full bg-base-100 shadow-xl mb-10">
+      <div className="card bg-base-100 shadow-xl mb-10">
         <div className="card-body">
           <div className="flex flex-col w-full lg:flex-row">
             <div className="grid flex-grow card bg-base-300 rounded-box place-items-center">
@@ -153,44 +150,10 @@ const Donation = () => {
               </form>
             </div>
             <div className="divider lg:divider-horizontal">OR</div>
-            <div className="grid flex-grow card bg-base-300 rounded-box place-items-center">
-              <form onSubmit={handleCardSubmit}>
-                <div className="form-control w-full max-w-xs">
-                  <label className="label" htmlFor="cardNumber">
-                    Card Number * :
-                  </label>
-                  <input
-                    type="text"
-                    id="cardNumber"
-                    placeholder="Card Number"
-                    name="cardNumber"
-                    required
-                    className="input input-bordered input-sm w-72 max-w-xs"
-                  />
-                </div>
-
-                <div className="form-control w-full max-w-xs">
-                  <label className="label" htmlFor="cardAmount">
-                    Amount * :
-                  </label>
-                  <input
-                    type="number"
-                    id="cardAmount"
-                    placeholder="Amount"
-                    name="cardAmount"
-                    required
-                    className="input input-bordered input-sm w-full max-w-xs"
-                  />
-                </div>
-
-                <div>
-                  <input
-                    className="btn btn-secondary rounded-none my-10"
-                    type="submit"
-                    value="Donated"
-                  />
-                </div>
-              </form>
+            <div className="grid flex-grow bg-base-300 rounded-box place-items-center">
+              <Elements stripe={stripePromise}>
+                <CheckoutForm />
+              </Elements>
             </div>
           </div>
         </div>
