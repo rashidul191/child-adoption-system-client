@@ -35,7 +35,7 @@ const Navbar = () => {
             <CustomLink to="/dashboard">Dashboard</CustomLink>
           </li>
           <li>
-            <button className="btn btn-error text-white" onClick={logout}>
+            <button className="btn btn-error text-white mr-4" onClick={logout}>
               Sign Out
             </button>
           </li>
@@ -47,6 +47,10 @@ const Navbar = () => {
           </li>
         </>
       )}
+
+      <li>
+        <CustomLink to="/donation">Donate</CustomLink>
+      </li>
     </>
   );
   return (

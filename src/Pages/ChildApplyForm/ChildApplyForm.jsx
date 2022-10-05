@@ -49,7 +49,7 @@ const ChildApplyForm = () => {
                   })}
                   type="text"
                   placeholder="Full Name"
-                  className="input input-bordered w-full"
+                  className="input input-bordered                          l"
                 />
                 <label className="label">
                   {errors.displayName?.type === "required" && (
@@ -156,7 +156,7 @@ const ChildApplyForm = () => {
                   })}
                   type="text"
                   placeholder="NID / Passport Number"
-                  className="input input-bordered w-full max-w-"
+                  className="input input-bordered w-full max-w-md"
                 />
                 <label className="label">
                   {errors.nidPassport?.type === "required" && (

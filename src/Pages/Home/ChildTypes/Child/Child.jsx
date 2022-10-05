@@ -19,11 +19,15 @@ const Child = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
+
+  console.log(child)
   const {
     img,
     name,
     age,
     location,
+    city,
+    disabilities,
     childType,
     gender,
     religion,
@@ -75,6 +79,18 @@ const Child = () => {
                 <tr>
                   <td>
                     {" "}
+                    City: <span className="font-bold">{city}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {" "}
+                    Disabilities: <span className="font-bold">{disabilities}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {" "}
                     Agency: <span className="font-bold">{agency}</span>
                   </td>
                 </tr>
@@ -93,7 +109,7 @@ const Child = () => {
           </div>
         </div>
       </div>
-      <p className="ml-10 mb-10 mt-4 md:mx-36">Description: {description}</p>
+      <p className="ml-10 mb-10 mt-4 md:mx-36"><span className="font-bold">Description:</span> {description}</p>
     </section>
   );
 };

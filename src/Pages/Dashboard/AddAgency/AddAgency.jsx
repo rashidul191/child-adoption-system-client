@@ -110,7 +110,7 @@ const AddAgency = () => {
               })}
               type="text"
               placeholder="Agency Full Name"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered input-sm md:w-96 max-w-xs"
             />
             <label className="label">
               {errors.agencyName?.type === "required" && (
@@ -134,7 +134,7 @@ const AddAgency = () => {
               })}
               type="text"
               placeholder="Agency Location"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered input-sm md:w-96 max-w-xs"
             />
             <label className="label">
               {errors.location?.type === "required" && (
@@ -157,7 +157,7 @@ const AddAgency = () => {
               })}
               type="text"
               placeholder="Agency Director Full Name"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered input-sm md:w-96 max-w-xs"
             />
             <label className="label">
               {errors.directorName?.type === "required" && (

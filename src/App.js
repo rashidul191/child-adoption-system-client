@@ -21,6 +21,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register/Register";
 import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
+import Donation from "./Pages/Shared/Donation/Donation";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Navbar from "./Pages/Shared/Navbar/Navbar";
 import NotFound from "./Pages/Shared/NotFound/NotFound";
@@ -38,6 +39,7 @@ function App() {
         ></Route>
         <Route path="/child/:id" element={<Child></Child>}></Route>
         <Route path="/all-agency" element={<AllAgency></AllAgency>}></Route>
+        <Route path="/donation" element={<Donation></Donation>}></Route>
         <Route path="/agency/:id" element={<AgencyInfo></AgencyInfo>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
