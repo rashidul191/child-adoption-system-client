@@ -49,7 +49,6 @@ const AgencyInfo = () => {
                 <span className="font-bold">{agency?.agencyName}</span>
               </h2>
               <hr />
-
               <p>
                 Agency Director Name:{" "}
                 <span className="font-bold">{agency?.agencyDirectorName}</span>
@@ -61,7 +60,10 @@ const AgencyInfo = () => {
               </p>
 
               <hr />
-              <p>About Agency: {agency?.description}</p>
+              <p>
+                <span className="font-bold">About Agency:</span>{" "}
+                {agency?.description}
+              </p>
             </div>
           </div>
         </div>

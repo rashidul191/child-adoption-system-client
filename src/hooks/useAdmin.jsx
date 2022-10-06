@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
   const email = user?.email;

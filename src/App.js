@@ -63,8 +63,14 @@ function App() {
         >
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
-          <Route path="check-for-apply" element={<CheckForApply></CheckForApply>}></Route>
-          <Route path="check-apply-result" element={<CheckApplyResult></CheckApplyResult>}></Route>
+          <Route
+            path="check-eligibility"
+            element={<CheckForApply></CheckForApply>}
+          ></Route>
+          <Route
+            path="eligibility-score"
+            element={<CheckApplyResult></CheckApplyResult>}
+          ></Route>
           <Route path="add-child" element={<AddChild></AddChild>}></Route>
           <Route
             path="child-manage"
@@ -76,7 +82,10 @@ function App() {
             element={<AgencyManage></AgencyManage>}
           ></Route>
           <Route path="user-manage" element={<MakeAdmin></MakeAdmin>}></Route>
-          <Route path="all-donation" element={<AllDonation></AllDonation>}></Route>
+          <Route
+            path="all-donation"
+            element={<AllDonation></AllDonation>}
+          ></Route>
         </Route>
 
         <Route path="/*" element={<NotFound></NotFound>}></Route>

@@ -6,10 +6,10 @@ import ChildRow from "./ChildRow/ChildRow";
 const ChildManage = () => {
   // react query
   const {
-    data: allChilds,
+    data: allChild,
     isLoading,
     refetch,
-  } = useQuery(["allChilds"], () =>
+  } = useQuery(["allChildManage"], () =>
     fetch(`http://localhost:5000/allChilds`, {
       method: "GET",
       headers: {
@@ -38,7 +38,7 @@ const ChildManage = () => {
             </tr>
           </thead>
           <tbody>
-            {allChilds?.map((child, index) => (
+            {allChild?.map((child, index) => (
               <ChildRow
                 key={child._id}
                 child={child}

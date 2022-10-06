@@ -16,7 +16,7 @@ import {
 const CheckApplyResult = () => {
   const data = [
     {
-      name: "Page A",
+      name: "Eligibility",
       yes: 70,
       no: -30,
     },
@@ -53,8 +53,8 @@ const CheckApplyResult = () => {
   ];
   // pieChart data
   const pieChartData = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
+    { name: "Yes", value: 70 },
+    { name: "No", value: 30 },
     // { name: "Group C", value: 300 },
     // { name: "Group D", value: 200 },
   ];

@@ -46,7 +46,7 @@ const Child = () => {
           <h2 className="text-xl">
             Name: <span className="text-2xl font-bold">{name}</span>
           </h2>
-          <p>Age: {age}</p>
+          <p>Age: <span className="font-bold">{age}</span></p>
         </div>
         <div className="md:ml-5">
           <div className="overflow-x-auto">
