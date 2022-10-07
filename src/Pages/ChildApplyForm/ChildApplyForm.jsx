@@ -33,10 +33,12 @@ const ChildApplyForm = () => {
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <h2 className="text-xl md:text-3xl font-bold">Parent 1 Information</h2>
+              <h2 className="text-xl md:text-3xl font-bold">
+                Parent 1 Information
+              </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
-              <div className="form-control w-full max-w-md">
+              <div className="form-control w-full max-w-xs">
                 <label className="label">
                   <span className="label-text">Full Name:</span>
                 </label>
@@ -49,7 +51,7 @@ const ChildApplyForm = () => {
                   })}
                   type="text"
                   placeholder="Full Name"
-                  className="input input-bordered                          l"
+                  className="input input-bordered input-sm md:w-96 max-w-lg"
                 />
                 <label className="label">
                   {errors.displayName?.type === "required" && (
@@ -60,12 +62,12 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-lg">
+              <div className="form-control w-full max-w-xs">
                 <label className="label">
                   <span className="label-text">Gander:</span>
                 </label>
                 <select
-                  className="select select-bordered w-full max-w-lg"
+                  className="select-bordered input input-sm md:w-96 max-w-lg"
                   {...register("gender", {
                     required: {
                       value: true,
@@ -91,7 +93,7 @@ const ChildApplyForm = () => {
                   <span className="label-text">Citizenship:</span>
                 </label>
                 <select
-                  className="select select-bordered w-full max-w-lg"
+                  className="select-bordered input input-sm md:w-96 max-w-lg"
                   {...register("citizenship", {
                     required: {
                       value: true,
@@ -115,7 +117,7 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-md">
+              <div className="form-control w-full max-w-xs">
                 <label className="label">
                   <span className="label-text">Birth Date:</span>
                 </label>
@@ -128,7 +130,7 @@ const ChildApplyForm = () => {
                   })}
                   type="date"
                   placeholder="Birth Date"
-                  className="input input-bordered w-full"
+                  className="input input-bordered input-sm md:w-96 max-w-lg"
                 />
                 <label className="label">
                   {errors.birthDate?.type === "required" && (
@@ -139,7 +141,7 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-md">
+              <div className="form-control w-full max-w-xs">
                 <label className="label">
                   <span className="label-text">NID / Passport Number:</span>
                 </label>
@@ -156,7 +158,7 @@ const ChildApplyForm = () => {
                   })}
                   type="text"
                   placeholder="NID / Passport Number"
-                  className="input input-bordered w-full max-w-md"
+                  className="input input-bordered input-sm md:w-96 max-w-lg"
                 />
                 <label className="label">
                   {errors.nidPassport?.type === "required" && (
@@ -173,10 +175,12 @@ const ChildApplyForm = () => {
               </div>
             </div>
             <div>
-              <h2 className="text-xl md:text-3xl font-bold">Parent 2 Information</h2>
+              <h2 className="text-xl md:text-3xl font-bold">
+                Parent 2 Information
+              </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
-              <div className="form-control w-full max-w-md">
+              <div className="form-control w-full max-w-xs">
                 <label className="label">
                   <span className="label-text">Full Name:</span>
                 </label>
@@ -189,7 +193,7 @@ const ChildApplyForm = () => {
                   })}
                   type="text"
                   placeholder="Full Name"
-                  className="input input-bordered w-full"
+                  className="input input-bordered input-sm md:w-96"
                 />
                 <label className="label">
                   {errors.displayName2?.type === "required" && (
@@ -205,7 +209,7 @@ const ChildApplyForm = () => {
                   <span className="label-text">Gander:</span>
                 </label>
                 <select
-                  className="select select-bordered w-full max-w-lg"
+                  className="select-bordered input input-sm md:w-96 max-w-lg"
                   {...register("gender2", {
                     required: {
                       value: true,
@@ -232,7 +236,7 @@ const ChildApplyForm = () => {
                   <span className="label-text">Citizenship:</span>
                 </label>
                 <select
-                  className="select select-bordered w-full max-w-lg"
+                  className="select-bordered input input-sm md:w-96 max-w-lg"
                   {...register("citizenship2", {
                     required: {
                       value: true,
@@ -256,7 +260,7 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-md">
+              <div className="form-control w-full max-w-xs">
                 <label className="label">
                   <span className="label-text">Birth Date:</span>
                 </label>
@@ -269,7 +273,7 @@ const ChildApplyForm = () => {
                   })}
                   type="date"
                   placeholder="Birth Date"
-                  className="input input-bordered w-full"
+                  className="input input-bordered input-sm md:w-96"
                 />
                 <label className="label">
                   {errors.birthDate2?.type === "required" && (
@@ -280,10 +284,7 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-md">
-                {/* <label className="label">
-                    <span className="label-text">Phone Number:</span>
-                  </label> */}
+              <div className="form-control w-full max-w-xs">
                 <input
                   {...register("nidPassport2", {
                     required: {
@@ -297,7 +298,7 @@ const ChildApplyForm = () => {
                   })}
                   type="text"
                   placeholder="NID / Passport Number"
-                  className="input input-bordered w-full max-w-"
+                  className="input input-bordered input-sm md:w-96 max-w-"
                 />
                 <label className="label">
                   {errors.nidPassport2?.type === "required" && (
@@ -316,13 +317,12 @@ const ChildApplyForm = () => {
 
             <div>
               <div>
-                <h2 className="text-xl md:text-3xl font-bold">Contact Information</h2>
+                <h2 className="text-xl md:text-3xl font-bold">
+                  Contact Information
+                </h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
-                <div className="form-control w-full max-w-md">
-                  {/* <label className="label">
-                    <span className="label-text">Email:</span>
-                  </label> */}
+                <div className="form-control w-full max-w-xs">
                   <input
                     {...register("email", {
                       required: {
@@ -336,7 +336,7 @@ const ChildApplyForm = () => {
                     })}
                     type="email"
                     placeholder="example@gmail.com"
-                    className="input input-bordered w-full max-w-lg"
+                    className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
                   <label className="label">
                     {errors.email?.type === "required" && (
@@ -352,10 +352,7 @@ const ChildApplyForm = () => {
                   </label>
                 </div>
 
-                <div className="form-control w-full max-w-md">
-                  {/* <label className="label">
-                    <span className="label-text">Phone Number:</span>
-                  </label> */}
+                <div className="form-control w-full max-w-xs">
                   <input
                     {...register("phoneNumber", {
                       required: {
@@ -369,7 +366,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="Phone Number"
-                    className="input input-bordered w-full max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-"
                   />
                   <label className="label">
                     {errors.phoneNumber?.type === "required" && (
@@ -385,7 +382,7 @@ const ChildApplyForm = () => {
                   </label>
                 </div>
 
-                <div className="form-control w-full max-w-md">
+                <div className="form-control w-full max-w-xs">
                   <input
                     {...register("address", {
                       required: {
@@ -395,7 +392,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="Address line 1"
-                    className="input input-bordered w-full max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-"
                   />
                   <label className="label">
                     {errors.address?.type === "required" && (
@@ -405,15 +402,15 @@ const ChildApplyForm = () => {
                     )}
                   </label>
                 </div>
-                <div className="form-control w-full max-w-md">
+                <div className="form-control w-full max-w-xs">
                   <input
                     type="text"
                     placeholder="Address line 2 optional"
-                    className="input input-bordered w-full max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-"
                   />
                 </div>
 
-                <div className="form-control w-full max-w-md">
+                <div className="form-control w-full max-w-xs">
                   <input
                     {...register("city", {
                       required: {
@@ -423,7 +420,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="City"
-                    className="input input-bordered w-full max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-"
                   />
                   <label className="label">
                     {errors.city?.type === "required" && (
@@ -434,7 +431,7 @@ const ChildApplyForm = () => {
                   </label>
                 </div>
 
-                <div className="form-control w-full max-w-md">
+                <div className="form-control w-full max-w-xs">
                   <input
                     {...register("state", {
                       required: {
@@ -444,7 +441,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="State"
-                    className="input input-bordered w-full max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-"
                   />
                   <label className="label">
                     {errors.state?.type === "required" && (
@@ -455,7 +452,7 @@ const ChildApplyForm = () => {
                   </label>
                 </div>
 
-                <div className="form-control w-full max-w-md">
+                <div className="form-control w-full max-w-xs">
                   <input
                     {...register("zipCode", {
                       required: {
@@ -469,7 +466,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="Zip code"
-                    className="input input-bordered w-full max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-"
                   />
                   <label className="label">
                     {errors.zipCode?.type === "required" && (
@@ -487,7 +484,7 @@ const ChildApplyForm = () => {
 
                 <div className="form-control w-full max-w-lg">
                   <select
-                    className="select select-bordered w-full max-w-lg"
+                    className="select-bordered input input-sm md:w-96 max-w-lg"
                     {...register("country", {
                       required: {
                         value: true,

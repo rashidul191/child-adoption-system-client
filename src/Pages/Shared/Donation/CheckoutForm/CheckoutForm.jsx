@@ -12,6 +12,8 @@ const CheckoutForm = () => {
   const amountRef = useRef("");
   let amount = amountRef.current.value || 0.5;
 
+  console.log(amount);
+
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -26,7 +28,6 @@ const CheckoutForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data?.clientSecret) {
           setClientSecret(data?.clientSecret);
         }
@@ -53,7 +54,6 @@ const CheckoutForm = () => {
       type: "card",
       card,
     });
-    console.log(paymentMethod?.card?.last4);
 
     setCardError(error?.message || "");
     setSuccess("");
@@ -73,11 +73,13 @@ const CheckoutForm = () => {
     const donation = {
       date: currentDate,
       paymentSystem: "card",
-      amount: paymentIntent.amount,
+      amount: amount * 100,
       cardNumber: paymentMethod?.card?.last4,
       name: user?.displayName || "",
       email: user?.email || "",
     };
+
+    console.log(donation);
 
     if (intentError) {
       setCardError(intentError?.message);
@@ -127,6 +129,7 @@ const CheckoutForm = () => {
             }}
           />
 
+          <label htmlFor="cardAmount">Amount: </label>
           <input
             type="number"
             id="cardAmount"

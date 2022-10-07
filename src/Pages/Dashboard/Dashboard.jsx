@@ -65,6 +65,12 @@ const Dashboard = () => {
                   Agency Manage
                 </CustomLink>
               </li>
+
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/all-donation`}>
+                  All Donation{" "}
+                </CustomLink>
+              </li>
             </>
           )}
 
@@ -76,11 +82,7 @@ const Dashboard = () => {
                 </CustomLink>
               </li>
 
-              <li className="bg-white">
-                <CustomLink to={`/dashboard/all-donation`}>
-                  All Donation{" "}
-                </CustomLink>
-              </li>
+              
             </>
           )}
         </ul>
