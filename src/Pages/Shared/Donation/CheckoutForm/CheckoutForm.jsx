@@ -103,7 +103,7 @@ const CheckoutForm = () => {
     }
   };
   return (
-    <div className="card w-3/4 bg-base-100 shadow-xl">
+    <div className="">
       {cardError && (
         <p className="text-error text-center font-bold mt-4">{cardError}</p>
       )}
@@ -129,7 +129,7 @@ const CheckoutForm = () => {
             }}
           />
 
-          <label htmlFor="cardAmount">Amount: </label>
+          {/* <label htmlFor="cardAmount">Amount: </label> */}
           <input
             type="number"
             id="cardAmount"
