@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <>
       <section>
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 mt-0 fixed w-full z-10 top-0">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -76,10 +76,16 @@ const Navbar = () => {
               child-Adoption-System
             </Link>
           </div>
-          <div className="navbar-center hidden lg:flex">
+          <div
+            className={`${
+              !user ? "navbar-end" : "navbar-center"
+            } hidden lg:flex`}
+          >
             <ul className="menu menu-horizontal p-0">{menubar}</ul>
           </div>
-          <div className="navbar-end">
+          <div  className={`${
+              user && "navbar-end md:mr-5"
+            }`}>
             {user && (
               <div className="flex-none gap-2">
                 <div className="dropdown dropdown-end">

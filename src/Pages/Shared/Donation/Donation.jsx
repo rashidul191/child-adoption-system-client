@@ -28,7 +28,7 @@ const Donation = () => {
     <section className="mb-20">
       <div className="w-full md:w-2/5 bg-base-100 border border-3 mx-auto">
         <div className="">
-          <div className="bg-blue-300 text-center py-3   uppercase text-white">
+          <div className="bg-blue-300 text-center py-3 uppercase text-white">
             {" "}
             <p>
               <span

@@ -7,61 +7,73 @@ const ChildTypes = () => {
   return (
     <div className="my-10 md:my-16">
       <div>
-        <h1 className="text-center text-2xl font-bold uppercase">Child Types</h1>
+        <h1 className="text-center text-2xl font-bold uppercase">
+          Child Types
+        </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         <div className="card w-80 md:w-96 bg-base-100 shadow-xl mx-auto">
-          <figure className="px-10 pt-10 ">
-            <img
-              src="https://i.ibb.co/BLTd83g/Infant-Child.png"
-              alt="Shoes"
-              className="rounded-xl"
-            />
-          </figure>
-          <div className="card-body items-center text-center">
-            <p className="link link-hover text-blue-500">
-              <Link to={`/childType/Infant-Child`}>
+          <Link to={`/childType/Infant-Child`}>
+            <figure className="px-10 pt-10 ">
+              <img
+                src="https://i.ibb.co/BLTd83g/Infant-Child.png"
+                alt="Shoes"
+                className="rounded-xl"
+              />
+            </figure>
+            <div className="card-body items-center text-center">
+              <p className="link link-hover text-blue-500">
                 Infant Child
-                <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
-              </Link>
-            </p>
-          </div>
+                <FontAwesomeIcon
+                  className="ml-2"
+                  icon={faArrowRight}
+                ></FontAwesomeIcon>
+              </p>
+            </div>
+          </Link>
         </div>
+
         <div className="card w-80 md:w-96 bg-base-100 shadow-xl mx-auto">
-          <figure className="px-10 pt-10">
-            <img
-              src="https://i.ibb.co/z7bmSD1/Foster-Care-Child.png"
-              alt="Shoes"
-              className="rounded-xl"
-            />
-          </figure>
-          <div className="card-body items-center text-center">
-            <p className="link link-hover text-blue-500">
-              <Link to={`/childType/Foster-Care-Child`}>
+          <Link to={`/childType/Foster-Care-Child`}>
+            <figure className="px-10 pt-10">
+              <img
+                src="https://i.ibb.co/z7bmSD1/Foster-Care-Child.png"
+                alt="Shoes"
+                className="rounded-xl"
+              />
+            </figure>
+            <div className="card-body items-center text-center">
+              <p className="link link-hover text-blue-500">
                 Foster Care Child
-                <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
-              </Link>
-            </p>
-          </div>
+                <FontAwesomeIcon
+                  className="ml-2"
+                  icon={faArrowRight}
+                ></FontAwesomeIcon>
+              </p>
+            </div>
+          </Link>
         </div>
         <div className="card w-80 md:w-96 bg-base-100 shadow-xl mx-auto">
-          <figure className="px-10 pt-10">
-            <img
-              src="https://i.ibb.co/0YgbbPC/Street-Child.png"
-              alt="Shoes"
-              className="rounded-xl"
-            />
-          </figure>
-          <div className="card-body items-center text-center">
-            <p className="link link-hover text-blue-500">
-              <Link to={`/childType/Street-Child`}>
+          <Link to={`/childType/Street-Child`}>
+            <figure className="px-10 pt-10">
+              <img
+                src="https://i.ibb.co/0YgbbPC/Street-Child.png"
+                alt="Shoes"
+                className="rounded-xl"
+              />
+            </figure>
+            <div className="card-body items-center text-center">
+              <p className="link link-hover text-blue-500">
                 Street Child
-                <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
-              </Link>
-            </p>
-          </div>
+                <FontAwesomeIcon
+                  className="ml-2"
+                  icon={faArrowRight}
+                ></FontAwesomeIcon>
+              </p>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

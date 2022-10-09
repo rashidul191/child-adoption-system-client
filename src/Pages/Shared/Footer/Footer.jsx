@@ -1,6 +1,4 @@
 import React from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faFacebook } from "@fortawesome/free-brands-svg-icons"
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -10,15 +8,10 @@ const Footer = () => {
       <div className="footer grid grid-cols-2 md:grid-cols-3 p-10 text-base-content">
         <div>
           <p>
-            ACME Industries Ltd.
+          Child-Adoption-System
             <br />
-            Providing reliable tech since 1992
+            Providing reliable services since 2022
           </p>
-          {/* <p>
-            <FontAwesomeIcon icon={faFacebook} />
-
-            <FontAwesomeIcon icon="fa-brands fa-square-facebook" />
-          </p> */}
         </div>
         <div>
           <span className="footer-title">Services</span>
@@ -44,23 +37,19 @@ const Footer = () => {
             Contact
           </Link>
           <Link to="/" className="link link-hover">
-            Jobs
-          </Link>
-          <Link to="/" className="link link-hover">
-            Press kit
-          </Link>
-        </div>
-        <div>
-          <span className="footer-title">Legal</span>
-          <Link to="/" className="link link-hover">
             Terms of use
           </Link>
           <Link to="/" className="link link-hover">
             Privacy policy
           </Link>
-          <Link to="/" className="link link-hover">
-            Cookie policy
-          </Link>
+        </div>
+        <div>
+          <span className="footer-title">Payment Support</span>
+          <img
+            width={400}
+            src="https://i.ibb.co/8YJ313G/payment.png"
+            alt="payment method"
+          />
         </div>
       </div>
       <div className=" footer-center p-4 bg-white text-base-content">
