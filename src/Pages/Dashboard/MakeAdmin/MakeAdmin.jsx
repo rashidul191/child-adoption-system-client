@@ -6,8 +6,10 @@ import MakeAdminRow from "./MakeAdminRow/MakeAdminRow";
 
 import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const MakeAdmin = () => {
+  DynamicTitle("User Manage");
   const navigate = useNavigate();
   const {
     data: users,

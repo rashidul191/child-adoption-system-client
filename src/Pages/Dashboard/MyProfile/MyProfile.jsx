@@ -8,8 +8,10 @@ import { useQuery } from "@tanstack/react-query";
 import { signOut } from "firebase/auth";
 import { Navigate } from "react-router-dom";
 import Loading from "../../Shared/Loading/Loading";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const MyProfile = () => {
+  DynamicTitle("My Profile");
   const [user] = useAuthState(auth);
   const { displayName, photoURL, email, phone, address, zip } = user;
   const { data, isLoading } = useQuery(["userDB"], () =>

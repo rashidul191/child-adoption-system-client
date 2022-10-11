@@ -12,8 +12,10 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const CheckApplyResult = () => {
+  DynamicTitle("Eligibility Score");
   const data = [
     {
       name: "Eligibility",
@@ -59,8 +61,8 @@ const CheckApplyResult = () => {
     // { name: "Group D", value: 200 },
   ];
 
-//   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-  const COLORS = [ "#00C49F", "#FF8042"];
+  //   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const COLORS = ["#00C49F", "#FF8042"];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
@@ -91,7 +93,7 @@ const CheckApplyResult = () => {
   return (
     <section>
       <div className="flex justify-between">
-        <h1 className=" md:text-xl font-bold uppercase">Check apply result</h1>
+        <h1 className=" md:text-xl font-bold uppercase">Eligibility Score</h1>
       </div>
       <hr />
 

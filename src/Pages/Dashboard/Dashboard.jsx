@@ -17,7 +17,10 @@ const Dashboard = () => {
         <h2 className="text-xl md:text-4xl text-sky-400 uppercase">
           Welcome to{" "}
           <span className="text-black">
-            {user?.displayName} <span className="text-green-500">{admin && "(Admin)"} {employer && "(Employer)"}</span>
+            {user?.displayName}{" "}
+            <span className="text-green-500">
+              {admin && "(Admin)"} {employer && "(Employer)"}
+            </span>
           </span>
         </h2>
         <Outlet />
@@ -81,8 +84,6 @@ const Dashboard = () => {
                   User Manage{" "}
                 </CustomLink>
               </li>
-
-              
             </>
           )}
         </ul>

@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const CheckForApply = () => {
+  DynamicTitle("Check Eligibility");
   const [q1Yes, setQ1Yes] = useState(0);
   const [q1No, setQ1No] = useState(0);
   const [q2Yes, setQ2Yes] = useState(0);

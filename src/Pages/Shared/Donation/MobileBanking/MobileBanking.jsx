@@ -98,7 +98,7 @@ const MobileBanking = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="trxId">
+            <label className="label" htmlFor="trx-id">
               Trx ID * :
             </label>
             <input
@@ -114,6 +114,7 @@ const MobileBanking = () => {
               })}
               type="text"
               placeholder="trxId"
+              id="trx-id"
               className="input input-bordered input-sm w-72 md:w-52 max-w-xs"
             />
             <label className="label">

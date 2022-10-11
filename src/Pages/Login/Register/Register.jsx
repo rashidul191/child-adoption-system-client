@@ -10,8 +10,10 @@ import {
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import useToken from "../../../hooks/useToken";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const Register = () => {
+  DynamicTitle("Registration");
   const navigate = useNavigate();
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);

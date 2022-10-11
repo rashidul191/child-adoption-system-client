@@ -2,6 +2,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
 import { useState } from "react";
+import DynamicTitle from "../DynamicTitle/DynamicTitle";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
 import MobileBanking from "./MobileBanking/MobileBanking";
 
@@ -10,6 +11,7 @@ const stripePromise = loadStripe(
 );
 
 const Donation = () => {
+  DynamicTitle("Donate");
   const [card, setCard] = useState(true);
   const [mobileBanking, setMobileBanking] = useState(false);
 
@@ -25,9 +27,9 @@ const Donation = () => {
   };
 
   return (
-    <section className="mb-20">
+    <section className="my-5 md:mt-10 md:mb-20">
       <div className="w-full md:w-2/5 bg-base-100 border border-3 mx-auto">
-        <div className="">
+        <div className="card-body">
           <div className="bg-blue-300 text-center py-3 uppercase text-white">
             {" "}
             <p>
@@ -50,21 +52,19 @@ const Donation = () => {
             </p>{" "}
           </div>
 
-         <div className="card-body">
-         <div className={`${card ? "block" : "hidden"}`}>
-            <Elements stripe={stripePromise}>
-              <CheckoutForm />
-            </Elements>
-          </div>
+          <div className="">
+            <div className={`${card ? "block" : "hidden"}`}>
+              <Elements stripe={stripePromise}>
+                <CheckoutForm />
+              </Elements>
+            </div>
 
-          <div className={`${mobileBanking ? "block" : "hidden"}`}>
-            <MobileBanking></MobileBanking>
+            <div className={`${mobileBanking ? "block" : "hidden"}`}>
+              <MobileBanking/>
+            </div>
           </div>
-         </div>
         </div>
       </div>
-
-      
     </section>
   );
 };

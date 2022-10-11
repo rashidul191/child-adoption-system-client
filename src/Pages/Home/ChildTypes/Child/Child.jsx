@@ -2,8 +2,10 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../../../Shared/Loading/Loading";
+import DynamicTitle from "../../../Shared/DynamicTitle/DynamicTitle";
 
 const Child = () => {
+  DynamicTitle("Child Details");
   const { id } = useParams();
   // react query
   const {

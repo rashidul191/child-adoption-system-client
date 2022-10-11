@@ -5,8 +5,10 @@ import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const AddChild = () => {
+  DynamicTitle("Add Child");
   const aboutChildRef = useRef("");
   const {
     register: childInfo,

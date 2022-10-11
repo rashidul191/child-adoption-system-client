@@ -10,7 +10,7 @@ const CheckoutForm = () => {
   const currentDate = format(date, "PP");
   const [user] = useAuthState(auth);
   const amountRef = useRef("");
-  let amount = amountRef.current.value || 0.5;
+  let amount = amountRef.current.value || 10;
 
   console.log(amount);
 
@@ -135,6 +135,7 @@ const CheckoutForm = () => {
             id="cardAmount"
             placeholder="Amount"
             name="cardAmount"
+            defaultValue={amount}
             required
             ref={amountRef}
             className="input input-bordered input-sm w-full max-w-xs mt-8"

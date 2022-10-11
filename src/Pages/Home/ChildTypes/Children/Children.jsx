@@ -2,7 +2,10 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
+import DynamicTitle from "../../../Shared/DynamicTitle/DynamicTitle";
+
 const Children = (props) => {
+  DynamicTitle("Children");
   const { img, name, age, location, _id } = props.children;
 
   return (

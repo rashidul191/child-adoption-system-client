@@ -2,8 +2,10 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Shared/Loading/Loading";
 import ChildRow from "./ChildRow/ChildRow";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const ChildManage = () => {
+  DynamicTitle("Child Manage");
   // react query
   const {
     data: allChild,

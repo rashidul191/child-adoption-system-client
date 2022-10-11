@@ -1,4 +1,7 @@
+import { signOut } from "firebase/auth";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import auth from "../firebase.init";
 
 const useEmployer = (user) => {
   const [employer, setEmployer] = useState(false);
@@ -12,7 +15,14 @@ const useEmployer = (user) => {
         // authorization: `Bearer ${localStorage.getItem("access-token")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("access-token");
+          Navigate("/login");
+        }
+        return res.json();
+      })
       .then((data) => {
         setEmployer(data?.employer);
       });

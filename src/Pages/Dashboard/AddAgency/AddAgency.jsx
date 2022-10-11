@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import { toast } from "react-toastify";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const AddAgency = () => {
+  DynamicTitle("Add Agency");
   const aboutAgencyRef = useRef("");
   const {
     register: agencyInfo,

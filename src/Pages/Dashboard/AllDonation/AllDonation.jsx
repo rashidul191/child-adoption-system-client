@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 import Loading from "../../Shared/Loading/Loading";
 import DonationRow from "./DonationRow/DonationRow";
 
 const AllDonation = () => {
+  DynamicTitle("All Donation");
   const { data: allDonation, isLoading } = useQuery(["donation"], () =>
     fetch(`http://localhost:5000/allDonation`, {
       method: "GET",

@@ -2,8 +2,10 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading/Loading";
+import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
 
 const ChildApplyForm = () => {
+  DynamicTitle("Child Application");
   const {
     register,
     formState: { errors },

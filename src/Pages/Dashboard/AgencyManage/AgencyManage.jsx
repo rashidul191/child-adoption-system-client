@@ -2,8 +2,10 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Shared/Loading/Loading";
 import AgencyRow from "./AgencyRow/AgencyRow";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const AgencyManage = () => {
+  DynamicTitle("Agency Manage");
   // react query
   const {
     data: allAgency,

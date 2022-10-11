@@ -2,8 +2,10 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const MyReview = () => {
+  DynamicTitle("Add Review");
   const [user] = useAuthState(auth);
 
   const handleReviewSubmit = (event) => {

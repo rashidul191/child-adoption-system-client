@@ -11,8 +11,10 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading/Loading";
 import { toast } from "react-toastify";
 import useToken from "../../hooks/useToken";
+import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
 
 const Login = () => {
+  DynamicTitle("Login");
   const navigate = useNavigate();
   const location = useLocation();
   const emailRef = useRef("");
