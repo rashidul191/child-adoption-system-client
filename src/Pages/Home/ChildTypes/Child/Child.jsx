@@ -44,7 +44,7 @@ const Child = () => {
     <section className="card w-10/12 bg-base-100 shadow-xl mx-auto my-10 md:mb-16">
       <div className="grid grid-cols-1 md:grid-cols-2 ml-10 mx-auto">
         <div className="md:ml-28">
-          <img width={180} src={img} alt={name} />
+          <img width={200} src={img} alt={name} />
           <h2 className="text-xl">
             Name: <span className="text-2xl font-bold">{name}</span>
           </h2>

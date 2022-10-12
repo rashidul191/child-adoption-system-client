@@ -108,11 +108,11 @@ const Register = () => {
 
         <div className="grid grid-cols-1">
           <span className="w-1/3 sm:ml-10 md:ml-32">{errorElement}</span>
-          <div className="card w-1/3 bg-base-100 shadow-xl sm:ml-10 md:ml-32 pt-5 pb-10">
+          <div className="card md:w-1/3 bg-base-100 shadow-xl sm:ml-10 md:ml-32 pt-5 pb-10">
             <div className="text-center">
               <h2 className="text-2xl">Please! Registration</h2>
             </div>
-            <div className="card-body">
+            <div className="ml-8 md:ml-12">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
@@ -195,16 +195,16 @@ const Register = () => {
                     className="input input-bordered w-full max-w-xs"
                   />
                   <label className="label">
-                    {errors.password?.type === "required" && (
+                    {errors?.password?.type === "required" && (
                       <span className="label-text-alt text-error">
-                        {errors.password?.message}
+                        {errors?.password?.message}
                       </span>
                     )}
-                    {/* {errors.password?.type === "pattern" && (
+                    {errors?.password?.type === "pattern" && (
                       <span className="label-text-alt text-error">
-                        {errors.password?.message}
+                        {errors?.password?.message}
                       </span>
-                    )} */}
+                    )}
                   </label>
                 </div>
 
@@ -246,6 +246,7 @@ const Register = () => {
                     type="checkbox"
                     name=""
                     id="showPassword"
+                    className="mr-2"
                   />
                   <label htmlFor="showPassword">Show Password</label>
                 </div>

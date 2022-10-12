@@ -166,7 +166,9 @@ const MakeAdminRow = ({ user, index, refetch }) => {
         ) : (
           <button
             onClick={handleMakeEmployer}
-            className="btn btn-info btn-sm text-white"
+            className={`btn btn-info btn-sm text-white ${
+              role === "admin" && "hidden"
+            }`}
           >
             Make Employer
           </button>

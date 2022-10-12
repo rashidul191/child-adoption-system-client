@@ -92,7 +92,7 @@ const Login = () => {
       if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         await sendPasswordResetEmail(email);
         setEmptyEmailFiled(false);
-        toast.success("Send Email and check spam folder");
+        toast.success("Send Email !! please check index/spam folder");
       } else {
         toast.error("Provide a valid email");
       }
@@ -134,7 +134,7 @@ const Login = () => {
               <h1 className="text-3xl">Welcome Back !</h1>
               <h2 className="text-xl">Login to continue</h2>
             </div>
-            <div className="card-body">
+            <div className="ml-8">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
@@ -211,6 +211,7 @@ const Login = () => {
                     type="checkbox"
                     name=""
                     id="showPassword"
+                    className="mr-2"
                   />
                   <label htmlFor="showPassword"> Show Password</label>
                 </div>
