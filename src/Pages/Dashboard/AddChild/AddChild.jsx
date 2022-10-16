@@ -1,6 +1,5 @@
 import { signOut } from "firebase/auth";
-import React from "react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -172,6 +171,7 @@ const AddChild = () => {
             <label className="label" htmlFor="childType">
               Child Type:
             </label>
+
             <select
               id="childType"
               className="select-bordered input input-sm md:w-96 max-w-xs"

@@ -12,6 +12,8 @@ import Loading from "../Shared/Loading/Loading";
 import { toast } from "react-toastify";
 import useToken from "../../hooks/useToken";
 import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   DynamicTitle("Login");
@@ -170,28 +172,44 @@ const Login = () => {
                   <label className="label">
                     <span className="label-text">Password:</span>
                   </label>
-                  <input
-                    {...register("password", {
-                      required: {
-                        value: true,
-                        message: "Password is required",
-                      },
-                      pattern: {
-                        value: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
-                        message: (
-                          <>
-                            <li>Must be 6 characters or longer</li>
-                            <li>Must be 1 Letters</li>
-                            <li>Must be 1 Digits</li>
-                            <li>Must be 1 Special characters</li>
-                          </>
-                        ),
-                      },
-                    })}
-                    type={`${showPassword ? "text" : "password"}`}
-                    placeholder="password"
-                    className="input input-bordered w-full max-w-xs"
-                  />
+
+                  <div class="flex">
+                    <input
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Password is required",
+                        },
+                        pattern: {
+                          value:
+                            /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
+                          message: (
+                            <>
+                              <li>Must be 6 characters or longer</li>
+                              <li>Must be 1 Letters</li>
+                              <li>Must be 1 Digits</li>
+                              <li>Must be 1 Special characters</li>
+                            </>
+                          ),
+                        },
+                      })}
+                      type={`${showPassword ? "text" : "password"}`}
+                      placeholder="password"
+                      className="input input-bordered w-full max-w-xs rounded-none rounded-l-lg  "
+                    />
+                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-r-md border border-r-0  cursor-pointer">
+                      <FontAwesomeIcon
+                       onClick={() => setShowPassword(false)}
+                        className={`text-xl ${showPassword ? "blok": "hidden"}`}
+                        icon={faEye}
+                      ></FontAwesomeIcon>
+                      <FontAwesomeIcon
+                       onClick={() => setShowPassword(true)}
+                       className={`text-xl ${showPassword ? "hidden": "blok"}`}
+                        icon={faEyeSlash}
+                      ></FontAwesomeIcon>
+                    </span>                  
+                  </div>
                   <label className="label">
                     {errors.password?.type === "required" && (
                       <span className="label-text-alt text-error">
@@ -205,7 +223,8 @@ const Login = () => {
                     )}
                   </label>
                 </div>
-                <div className="mb-3">
+
+                {/* <div className="mb-3">
                   <input
                     onClick={() => setShowPassword(!showPassword)}
                     type="checkbox"
@@ -214,7 +233,7 @@ const Login = () => {
                     className="mr-2"
                   />
                   <label htmlFor="showPassword"> Show Password</label>
-                </div>
+                </div> */}
 
                 <input
                   className="btn btn-secondary rounded-none"

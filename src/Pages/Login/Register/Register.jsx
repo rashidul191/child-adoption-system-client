@@ -11,12 +11,16 @@ import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import useToken from "../../../hooks/useToken";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Register = () => {
   DynamicTitle("Registration");
   const navigate = useNavigate();
   const location = useLocation();
+  const [agree, setAgree] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
@@ -172,7 +176,7 @@ const Register = () => {
                   <label className="label">
                     <span className="label-text">Password:</span>
                   </label>
-                  <input
+                  {/* <input
                     {...register("password", {
                       required: {
                         value: true,
@@ -193,7 +197,50 @@ const Register = () => {
                     type={`${showPassword ? "text" : "password"}`}
                     placeholder="password"
                     className="input input-bordered w-full max-w-xs"
-                  />
+                  /> */}
+
+                  <div class="flex">
+                    <input
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Password is required",
+                        },
+                        pattern: {
+                          value:
+                            /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
+                          message: (
+                            <>
+                              <li>Must be 6 characters or longer</li>
+                              <li>Must be 1 Letters</li>
+                              <li>Must be 1 Digits</li>
+                              <li>Must be 1 Special characters</li>
+                            </>
+                          ),
+                        },
+                      })}
+                      type={`${showPassword ? "text" : "password"}`}
+                      placeholder="password"
+                      className="input input-bordered w-full max-w-xs rounded-none rounded-l-lg  "
+                    />
+                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-r-md border border-r-0  cursor-pointer">
+                      <FontAwesomeIcon
+                        onClick={() => setShowPassword(false)}
+                        className={`text-xl ${
+                          showPassword ? "blok" : "hidden"
+                        }`}
+                        icon={faEye}
+                      ></FontAwesomeIcon>
+                      <FontAwesomeIcon
+                        onClick={() => setShowPassword(true)}
+                        className={`text-xl ${
+                          showPassword ? "hidden" : "blok"
+                        }`}
+                        icon={faEyeSlash}
+                      ></FontAwesomeIcon>
+                    </span>
+                  </div>
+
                   <label className="label">
                     {errors?.password?.type === "required" && (
                       <span className="label-text-alt text-error">
@@ -212,7 +259,7 @@ const Register = () => {
                   <label className="label">
                     <span className="label-text">Confirm Password:</span>
                   </label>
-                  <input
+                  {/* <input
                     {...register("confirmPassword", {
                       required: {
                         value: true,
@@ -226,7 +273,50 @@ const Register = () => {
                     type={`${showPassword ? "text" : "password"}`}
                     placeholder="Confirm password"
                     className="input input-bordered w-full max-w-xs"
-                  />
+                  /> */}
+
+                  <div class="flex">
+                    <input
+                      {...register("confirmPassword", {
+                        required: {
+                          value: true,
+                          message: "Confirm Password is required",
+                        },
+                        pattern: {
+                          value:
+                            /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
+                          message: (
+                            <>
+                              <li>Must be 6 characters or longer</li>
+                              <li>Must be 1 Letters</li>
+                              <li>Must be 1 Digits</li>
+                              <li>Must be 1 Special characters</li>
+                            </>
+                          ),
+                        },
+                      })}
+                      type={`${showConfirmPassword ? "text" : "password"}`}
+                      placeholder="password"
+                      className="input input-bordered w-full max-w-xs rounded-none rounded-l-lg  "
+                    />
+                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-r-md border border-r-0  cursor-pointer">
+                      <FontAwesomeIcon
+                        onClick={() => setShowConfirmPassword(false)}
+                        className={`text-xl ${
+                          showConfirmPassword ? "blok" : "hidden"
+                        }`}
+                        icon={faEye}
+                      ></FontAwesomeIcon>
+                      <FontAwesomeIcon
+                        onClick={() => setShowConfirmPassword(true)}
+                        className={`text-xl ${
+                          showConfirmPassword ? "hidden" : "blok"
+                        }`}
+                        icon={faEyeSlash}
+                      ></FontAwesomeIcon>
+                    </span>
+                  </div>
+
                   <label className="label">
                     {errors.confirmPassword?.type === "required" && (
                       <span className="label-text-alt text-error">
@@ -240,15 +330,16 @@ const Register = () => {
                     )}
                   </label>
                 </div>
+
                 <div className="mb-3">
                   <input
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setAgree(!agree)}
                     type="checkbox"
                     name=""
                     id="showPassword"
                     className="mr-2"
                   />
-                  <label htmlFor="showPassword">Show Password</label>
+                  <label htmlFor="showPassword">Terms & Conditions</label>
                 </div>
 
                 <span>
@@ -260,7 +351,9 @@ const Register = () => {
                 </span>
 
                 <input
-                  className="btn btn-secondary rounded-none"
+                 className={`btn btn-secondary rounded-none ${
+                  agree ? "none" : "btn-disabled"
+                }`}
                   type="submit"
                   value="Registration"
                 />

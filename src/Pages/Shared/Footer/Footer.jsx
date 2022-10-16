@@ -8,39 +8,36 @@ const Footer = () => {
       <div className="footer grid grid-cols-2 md:grid-cols-3 p-10 text-base-content">
         <div>
           <p>
-          Child-Adoption-System
+            Child-Adoption-System
             <br />
             Providing reliable services since 2022
           </p>
         </div>
         <div>
-          <span className="footer-title">Services</span>
-          <Link to="/" className="link link-hover">
-            Branding
+          <span className="footer-title">Help</span>
+          <Link to="/about" className="link link-hover">
+            About Us
+          </Link>
+          <Link to="/contact-us" className="link link-hover">
+            Contact Us
           </Link>
           <Link to="/" className="link link-hover">
-            Design
-          </Link>
-          <Link to="/" className="link link-hover">
-            Marketing
-          </Link>
-          <Link to="/" className="link link-hover">
-            Advertisement
+            Members
           </Link>
         </div>
         <div>
           <span className="footer-title">Company</span>
-          <Link to="/" className="link link-hover">
-            About us
+          <Link to="/our-project" className="link link-hover">
+            Our Project
           </Link>
-          <Link to="/" className="link link-hover">
-            Contact
+          <Link to="/blog" className="link link-hover">
+            Blog
           </Link>
-          <Link to="/" className="link link-hover">
-            Terms of use
+          <Link to="/donation" className="link link-hover">
+            Donate
           </Link>
-          <Link to="/" className="link link-hover">
-            Privacy policy
+          <Link to="/terms-of-service" className="link link-hover">
+            Terms & Conditions
           </Link>
         </div>
         <div>
