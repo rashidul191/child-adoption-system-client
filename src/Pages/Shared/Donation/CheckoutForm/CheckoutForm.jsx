@@ -113,6 +113,7 @@ const CheckoutForm = () => {
       <div className="card-body">
         <form onSubmit={handleSubmit}>
           <CardElement
+          className="mb-5"
             options={{
               style: {
                 base: {
@@ -129,7 +130,7 @@ const CheckoutForm = () => {
             }}
           />
 
-          {/* <label htmlFor="cardAmount">Amount: </label> */}
+          <label htmlFor="cardAmount">Amount: </label>
           <input
             type="number"
             id="cardAmount"
@@ -138,7 +139,7 @@ const CheckoutForm = () => {
             defaultValue={amount}
             required
             ref={amountRef}
-            className="input input-bordered input-sm w-full max-w-xs mt-8"
+            className="input input-bordered input-sm w-full max-w-xs"
           />
 
           <button
