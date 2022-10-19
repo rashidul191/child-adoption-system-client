@@ -26,6 +26,7 @@ import About from "./Pages/Shared/About/About";
 import ContactUs from "./Pages/Shared/ContactUs/ContactUs";
 import Donation from "./Pages/Shared/Donation/Donation";
 import Footer from "./Pages/Shared/Footer/Footer";
+import Members from "./Pages/Shared/Members/Members";
 import Navbar from "./Pages/Shared/Navbar/Navbar";
 import NotFound from "./Pages/Shared/NotFound/NotFound";
 import TermsAndCondition from "./Pages/Shared/TermsAndCondition/TermsAndCondition";
@@ -47,6 +48,7 @@ function App() {
         <Route path="/agency/:id" element={<AgencyInfo></AgencyInfo>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/terms-of-service" element={<TermsAndCondition></TermsAndCondition>}></Route>
+        <Route path="/members" element={<Members></Members>}></Route>
         <Route path="/contact-us" element={<ContactUs></ContactUs>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>

@@ -1,4 +1,5 @@
 import React from "react";
+import DesignDonatePage from "../Shared/Donation/DesignDonatePage";
 import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
 import Agency from "./Agency/Agency";
 import Banner from "./Banner/Banner";
@@ -12,6 +13,7 @@ const Home = () => {
       <Banner></Banner>
       <ChildTypes></ChildTypes>
       <Agency></Agency>
+      <DesignDonatePage></DesignDonatePage>
     </>
   );
 };

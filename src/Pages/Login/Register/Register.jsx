@@ -112,11 +112,11 @@ const Register = () => {
 
         <div className="grid grid-cols-1">
           <span className="w-1/3 sm:ml-10 md:ml-32">{errorElement}</span>
-          <div className="card md:w-1/3 bg-base-100 shadow-xl sm:ml-10 md:ml-32 pt-5 pb-10">
+          <div className="card w-80 md:w-1/3 bg-base-100 shadow-xl sm:ml-10 md:ml-32 pt-5 pb-10  mx-auto">
             <div className="text-center">
               <h2 className="text-2xl">Please! Registration</h2>
             </div>
-            <div className="ml-8 md:ml-12">
+            <div className="mx-5 md:ml-12">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full max-w-xs">
                   <label className="label">

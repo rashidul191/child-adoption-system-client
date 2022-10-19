@@ -130,13 +130,13 @@ const Login = () => {
         </div>
 
         <div className="grid grid-cols-1">
-          <div className="card w-96 bg-base-100 shadow-xl sm:ml-10 md:ml-32 pt-5 pb-10">
+        <div className="card w-72 md:w-96 mx-auto bg-base-100 shadow-xl md:ml-32 pt-5 pb-10">
             <span>{errorElement}</span>
             <div className="text-center">
               <h1 className="text-3xl">Welcome Back !</h1>
               <h2 className="text-xl">Login to continue</h2>
             </div>
-            <div className="ml-8">
+            <div className="mx-5 md:ml-8">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
@@ -223,17 +223,6 @@ const Login = () => {
                     )}
                   </label>
                 </div>
-
-                {/* <div className="mb-3">
-                  <input
-                    onClick={() => setShowPassword(!showPassword)}
-                    type="checkbox"
-                    name=""
-                    id="showPassword"
-                    className="mr-2"
-                  />
-                  <label htmlFor="showPassword"> Show Password</label>
-                </div> */}
 
                 <input
                   className="btn btn-secondary rounded-none"

@@ -39,7 +39,7 @@ const ContactUs = () => {
             <div className="text-center md:text-right md:mr-14">
               <div className=" mb-5">
                 <div className="md:pr-3 md:border-r-2 md:border-indigo-500">
-                  <h2 className="text-xl font-bold uppercase">
+                  <h2 className="text-xl uppercase text-[#8EA246]">
                     {" "}
                     <span>
                       <FontAwesomeIcon className="text-2xl" icon={faPhone} />
@@ -54,7 +54,7 @@ const ContactUs = () => {
             <div className="text-center md:text-right md:mr-14">
               <div className=" mb-5">
                 <div className="md:pr-3 md:border-r-2 md:border-indigo-500">
-                  <h2 className="text-xl font-bold uppercase">
+                  <h2 className="text-xl uppercase text-[#8EA246]">
                     {" "}
                     <span>
                       <FontAwesomeIcon className="text-2xl" icon={faEnvelope} />
@@ -69,7 +69,7 @@ const ContactUs = () => {
             <div className="text-center md:text-right md:mr-14">
               <div className="">
                 <div className="md:pr-3 md:border-r-2 md:border-indigo-500">
-                  <h2 className="text-xl font-bold uppercase">
+                  <h2 className="text-xl uppercase text-[#8EA246]">
                     {" "}
                     <span>
                       <FontAwesomeIcon
@@ -152,14 +152,14 @@ const ContactUs = () => {
                     className="input input-bordered input-sm w-full md:w-56 max-w-xs"
                   />
                   <label className="label">
-                    {errors.email?.type === "required" && (
+                    {errors.phone?.type === "required" && (
                       <span className="label-text-alt text-error">
-                        {errors.email?.message}
+                        {errors.phone?.message}
                       </span>
                     )}
-                    {errors.email?.type === "pattern" && (
+                    {errors.phone?.type === "pattern" && (
                       <span className="label-text-alt text-error">
-                        {errors.email?.message}
+                        {errors.phone?.message}
                       </span>
                     )}
                   </label>
@@ -176,7 +176,7 @@ const ContactUs = () => {
                   })}
                   type="text"
                   placeholder="Subject"
-                  className="input input-bordered input-sm w-full"
+                  className="input input-bordered input-md w-full "
                 />
                 <label className="label">
                   {errors.subject?.type === "required" && (
@@ -196,7 +196,7 @@ const ContactUs = () => {
               </div>
 
               <input
-                className="btn btn-primary mt-5 w-48 md:w-96"
+                className="btn btn-primary text-white mt-5 w-48 md:w-96"
                 type="submit"
                 value="Send"
               />

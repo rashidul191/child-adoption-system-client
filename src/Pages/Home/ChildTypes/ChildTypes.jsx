@@ -16,7 +16,7 @@ const ChildTypes = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-10">
         <div className="card w-80 md:w-96 bg-base-100 shadow-xl md:shadow-none md:border mx-auto">
           <Link to={`/childType/Infant-Child`}>
-            <figure className="px-10 pt-10 ">
+            <figure className="px-10 hover:px-6 pt-10 ">
               <img
                 src="https://i.ibb.co/BLTd83g/Infant-Child.png"
                 alt="Shoes"
@@ -37,7 +37,7 @@ const ChildTypes = () => {
 
         <div className="card w-80 md:w-96 bg-base-100 shadow-xl md:shadow-none md:border mx-auto">
           <Link to={`/childType/Foster-Care-Child`}>
-            <figure className="px-10 pt-10">
+            <figure className="px-10 hover:px-6 pt-10">
               <img
                 src="https://i.ibb.co/z7bmSD1/Foster-Care-Child.png"
                 alt="Shoes"
@@ -48,7 +48,7 @@ const ChildTypes = () => {
               <p className="link link-hover text-blue-500">
                 Foster Care Child
                 <FontAwesomeIcon
-                  className="ml-2"
+                  className="ml-2"px-9
                   icon={faArrowRight}
                 ></FontAwesomeIcon>
               </p>
@@ -57,7 +57,7 @@ const ChildTypes = () => {
         </div>
         <div className="card w-80 md:w-96 bg-base-100 shadow-xl md:shadow-none md:border mx-auto">
           <Link to={`/childType/Street-Child`}>
-            <figure className="px-10 pt-10">
+            <figure className="px-10 hover:px-6 pt-10">
               <img
                 src="https://i.ibb.co/0YgbbPC/Street-Child.png"
                 alt="Shoes"
