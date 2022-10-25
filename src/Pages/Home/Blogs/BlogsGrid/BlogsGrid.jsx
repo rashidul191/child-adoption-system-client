@@ -1,12 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const BlogsGrid = ({ blog }) => {
-  console.log(blog);
+  const navigate = useNavigate();
   const { _id, blogImg, blogTitle, currentDate } = blog;
 
   const handleBlogsDetails = (id) => {
-    console.log(id);
+    navigate(`/blog/${id}`);
   };
+
   return (
     <div
       onClick={() => handleBlogsDetails(_id)}
@@ -16,7 +18,7 @@ const BlogsGrid = ({ blog }) => {
         <img src={blogImg} alt="img" />
       </figure>
       <div className="card-body text-center">
-        <h2 className="text-2xl mt-32 cursor-pointer hover:underline">
+        <h2 className="text-2xl text-white font-semibold mt-8 md:mt-32 cursor-pointer hover:underline">
           {blogTitle}
         </h2>
         <p>{currentDate}</p>

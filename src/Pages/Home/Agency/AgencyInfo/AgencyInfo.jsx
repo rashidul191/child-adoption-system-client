@@ -5,7 +5,6 @@ import Loading from "../../../Shared/Loading/Loading";
 
 const AgencyInfo = () => {
   const { id } = useParams();
-
   const { data: agency, isLoading } = useQuery(["agency"], () =>
     fetch(`http://localhost:5000/agency/${id}`, {
       method: "GET",

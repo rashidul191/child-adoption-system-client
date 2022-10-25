@@ -9,9 +9,12 @@ import { signOut } from "firebase/auth";
 import { Navigate } from "react-router-dom";
 import Loading from "../../Shared/Loading/Loading";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
+import EditMyProfile from "./EditMyProfile";
+import { useState } from "react";
 
 const MyProfile = () => {
   DynamicTitle("My Profile");
+  const [profileEdit, setProfileEdit] = useState(true);
   const [user] = useAuthState(auth);
   const { displayName, photoURL, email, phone, address, zip } = user;
   const { data, isLoading } = useQuery(["userDB"], () =>
@@ -39,14 +42,14 @@ const MyProfile = () => {
     <section>
       <div className="flex justify-between">
         <h1 className=" md:text-xl font-bold uppercase">My Profile</h1>
-        <button className="text-error underline">
+        <button onClick={()=> setProfileEdit(!profileEdit)} className="text-[#FF428D] underline">
           <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
           Edit
         </button>
       </div>
       <hr />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 card bg-base-100 shadow-xl ">
+      <div className={`${profileEdit || "hidden"}  grid grid-cols-1 md:grid-cols-2 card bg-base-100 shadow-md `}>
         <div className="flex justify-center ">
           <div>
             <div className="mt-3">
@@ -61,7 +64,7 @@ const MyProfile = () => {
               />
             </div>
 
-            <button className="btn btn-error text-white mt-5">
+            <button onClick={()=> setProfileEdit(!profileEdit)}  className="btn bg-[#FF428D] border-none text-white mt-5">
               Edit Profile
             </button>
           </div>
@@ -78,6 +81,10 @@ const MyProfile = () => {
           <span>Phone:</span>
           <h2 className="text-xl font-bold"> {phone}</h2>
         </div>
+      </div>
+
+      <div className={`${profileEdit && "hidden"}`}>
+        <EditMyProfile user={user} data={data}></EditMyProfile>
       </div>
     </section>
   );

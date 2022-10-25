@@ -1,11 +1,14 @@
 import { format } from "date-fns";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const AllBlogGrid = ({ blog }) => {
+  const navigate = useNavigate();
   const { _id, blogImg, blogTitle, displayName, postDate, description } = blog;
 
   const handleBlogsDetails = (id) => {
     console.log(id);
+    navigate(`/blog/${id}`);
   };
 
   const currentDate = format(new Date(), "PP");

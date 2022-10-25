@@ -351,9 +351,9 @@ const Register = () => {
                 </span>
 
                 <input
-                 className={`btn btn-secondary rounded-none ${
-                  agree ? "none" : "btn-disabled"
-                }`}
+                  className={`btn btn-secondary rounded-none ${
+                    agree ? "none" : "btn-disabled"
+                  }`}
                   type="submit"
                   value="Registration"
                 />

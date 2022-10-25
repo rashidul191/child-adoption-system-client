@@ -19,6 +19,7 @@ import PostABlog from "./Pages/Dashboard/PostABlog/PostABlog";
 import AgencyInfo from "./Pages/Home/Agency/AgencyInfo/AgencyInfo";
 import AllAgency from "./Pages/Home/Agency/AllAgency/AllAgency";
 import AllBlogs from "./Pages/Home/Blogs/AllBlogs/AllBlogs";
+import BlogDetails from "./Pages/Home/Blogs/BlogDetails/BlogDetails";
 import Blogs from "./Pages/Home/Blogs/Blogs";
 import AllChild from "./Pages/Home/ChildTypes/AllChild/AllChild";
 import Child from "./Pages/Home/ChildTypes/Child/Child";
@@ -53,6 +54,7 @@ function App() {
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/all-blogs" element={<AllBlogs></AllBlogs>}></Route>
+        <Route path="/blog/:id" element={<BlogDetails></BlogDetails>}></Route>
         <Route
           path="/terms-of-service"
           element={<TermsAndCondition></TermsAndCondition>}

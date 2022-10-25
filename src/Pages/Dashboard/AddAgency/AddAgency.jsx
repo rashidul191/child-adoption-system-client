@@ -73,7 +73,7 @@ const AddAgency = () => {
       <h1 className="md:text-xl font-bold uppercase">Add Agency</h1>
       <hr />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2">
           <div className="form-control w-full max-w-xs mt-0">
             <label className="label">
               <span className="label-text">Agency Image:</span>
