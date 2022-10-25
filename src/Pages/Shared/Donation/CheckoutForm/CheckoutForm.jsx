@@ -134,7 +134,7 @@ const CheckoutForm = () => {
           <input
             type="number"
             id="cardAmount"
-            placeholder="Amount"
+            placeholder="$ amount"
             name="cardAmount"
             defaultValue={amount}
             required

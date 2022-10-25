@@ -12,11 +12,10 @@ const AgencyGrid = ({ agency }) => {
   }
 
   const handleAgencyLearnMore = (id) => {
-    console.log(id);
     navigate(`/agency/${id}`);
   };
   return (
-    <div className="card w-96 bg-base-100 shadow-xl mx-auto md:my-5">
+    <div className="card w-5/6 bg-base-100 shadow-xl mx-auto md:my-5">
       <figure>
         <img src={agencyImg} alt={agencyName} />
       </figure>

@@ -128,7 +128,7 @@ const AddAgency = () => {
               <span className="label-text">Agency Location:</span>
             </label>
             <input
-              {...agencyInfo("location", {
+              {...agencyInfo("currentDate", {
                 required: {
                   value: true,
                   message: "Agency Location is required",

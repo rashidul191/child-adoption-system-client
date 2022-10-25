@@ -14,8 +14,12 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import MyProfile from "./Pages/Dashboard/MyProfile/MyProfile";
 import MyReview from "./Pages/Dashboard/MyReview/MyReview";
+import BlogManage from "./Pages/Dashboard/PostABlog/BlogManage";
+import PostABlog from "./Pages/Dashboard/PostABlog/PostABlog";
 import AgencyInfo from "./Pages/Home/Agency/AgencyInfo/AgencyInfo";
 import AllAgency from "./Pages/Home/Agency/AllAgency/AllAgency";
+import AllBlogs from "./Pages/Home/Blogs/AllBlogs/AllBlogs";
+import Blogs from "./Pages/Home/Blogs/Blogs";
 import AllChild from "./Pages/Home/ChildTypes/AllChild/AllChild";
 import Child from "./Pages/Home/ChildTypes/Child/Child";
 import Home from "./Pages/Home/Home";
@@ -47,7 +51,12 @@ function App() {
         <Route path="/donation" element={<Donation></Donation>}></Route>
         <Route path="/agency/:id" element={<AgencyInfo></AgencyInfo>}></Route>
         <Route path="/about" element={<About></About>}></Route>
-        <Route path="/terms-of-service" element={<TermsAndCondition></TermsAndCondition>}></Route>
+        <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+        <Route path="/all-blogs" element={<AllBlogs></AllBlogs>}></Route>
+        <Route
+          path="/terms-of-service"
+          element={<TermsAndCondition></TermsAndCondition>}
+        ></Route>
         <Route path="/members" element={<Members></Members>}></Route>
         <Route path="/contact-us" element={<ContactUs></ContactUs>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
@@ -90,6 +99,11 @@ function App() {
             element={<AgencyManage></AgencyManage>}
           ></Route>
           <Route path="user-manage" element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path="post-a-blog" element={<PostABlog></PostABlog>}></Route>
+          <Route
+            path="blogs-manage"
+            element={<BlogManage></BlogManage>}
+          ></Route>
           <Route
             path="all-donation"
             element={<AllDonation></AllDonation>}

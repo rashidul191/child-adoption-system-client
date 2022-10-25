@@ -261,7 +261,7 @@ const AddChild = () => {
               Child Location:
             </label>
             <input
-              {...childInfo("location", {
+              {...childInfo("currentDate", {
                 required: {
                   value: true,
                   message: "Child Location is required",

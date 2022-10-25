@@ -68,6 +68,16 @@ const Dashboard = () => {
                   Agency Manage
                 </CustomLink>
               </li>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/post-a-blog`}>
+                  Post A Blog
+                </CustomLink>
+              </li>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/blogs-manage`}>
+                  Blog Manage
+                </CustomLink>
+              </li>
 
               <li className="bg-white">
                 <CustomLink to={`/dashboard/all-donation`}>
