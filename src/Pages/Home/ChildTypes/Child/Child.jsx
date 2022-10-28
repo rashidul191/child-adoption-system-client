@@ -1,11 +1,13 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "react-router-dom";
+import {  Link, useParams } from "react-router-dom";
 import Loading from "../../../Shared/Loading/Loading";
 import DynamicTitle from "../../../Shared/DynamicTitle/DynamicTitle";
 
 const Child = () => {
   DynamicTitle("Child Details");
+
+  
   const { id } = useParams();
   // react query
   const {
@@ -22,7 +24,6 @@ const Child = () => {
     return <Loading></Loading>;
   }
 
-  console.log(child)
   const {
     img,
     name,
@@ -40,6 +41,8 @@ const Child = () => {
   if (error) {
     console.log(error);
   }
+
+
   return (
     <section className="card w-10/12 bg-base-100 shadow-xl mx-auto my-10 md:mb-16">
       <div className="grid grid-cols-1 md:grid-cols-2 ml-10 mx-auto">
@@ -48,7 +51,9 @@ const Child = () => {
           <h2 className="text-xl">
             Name: <span className="text-2xl font-bold">{name}</span>
           </h2>
-          <p>Age: <span className="font-bold">{age}</span></p>
+          <p>
+            Age: <span className="font-bold">{age}</span>
+          </p>
         </div>
         <div className="md:ml-5">
           <div className="overflow-x-auto">
@@ -87,7 +92,8 @@ const Child = () => {
                 <tr>
                   <td>
                     {" "}
-                    Disabilities: <span className="font-bold">{disabilities}</span>
+                    Disabilities:{" "}
+                    <span className="font-bold">{disabilities}</span>
                   </td>
                 </tr>
                 <tr>
@@ -99,10 +105,13 @@ const Child = () => {
                 <tr>
                   <td>
                     {" "}
-                    <Link to={`/child-adaption-form`}>
-                      <button className="btn btn-info text-white rounded-none btn-block">
-                        Child Adaption
-                      </button>
+                    <Link to={`/child-adaption-form/${id}`}>
+                    <button
+                    
+                      className="btn btn-info text-white rounded-none btn-block"
+                    >
+                      Child Adoption
+                    </button>
                     </Link>
                   </td>
                 </tr>
@@ -111,7 +120,9 @@ const Child = () => {
           </div>
         </div>
       </div>
-      <p className="ml-10 mb-10 mt-4 md:mx-36"><span className="font-bold">Description:</span> {description}</p>
+      <p className="ml-10 mb-10 mt-4 md:mx-36">
+        <span className="font-bold">Description:</span> {description}
+      </p>
     </section>
   );
 };

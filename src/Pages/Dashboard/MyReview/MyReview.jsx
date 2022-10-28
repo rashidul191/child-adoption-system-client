@@ -10,18 +10,18 @@ const MyReview = () => {
 
   const handleReviewSubmit = (event) => {
     event.preventDefault();
-    const displayName = user?.displayName;
-    const email = user?.email;
-    const rating = event.target.rating.value;
-    const comment = event.target.comment.value;
+    // const displayName = user?.displayName;
+    // const email = user?.email;
+    // const rating = event.target.rating.value;
+    // const comment = event.target.comment.value;
     const review = {
-      displayName,
-      email,
-      rating,
-      comment,
+      displayName: user?.displayName,
+      email: user?.email,
+      rating: event.target.rating.value,
+      comment: event.target.comment.value,
     };
 
-    fetch(`http://localhost:5000/reviews/${email}`, {
+    fetch(`http://localhost:5000/reviews/${user?.email}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

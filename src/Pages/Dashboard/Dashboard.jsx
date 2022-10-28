@@ -47,6 +47,11 @@ const Dashboard = () => {
                   Eligibility Score
                 </CustomLink>
               </li>
+              <li className="bg-white">
+                <CustomLink to={`/dashboard/child-apply`}>
+                  Child Apply
+                </CustomLink>
+              </li>
             </>
           )}
 

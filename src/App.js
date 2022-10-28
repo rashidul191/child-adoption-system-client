@@ -9,6 +9,7 @@ import AgencyManage from "./Pages/Dashboard/AgencyManage/AgencyManage";
 import AllDonation from "./Pages/Dashboard/AllDonation/AllDonation";
 import CheckApplyResult from "./Pages/Dashboard/CheckApplyResult/CheckApplyResult";
 import CheckForApply from "./Pages/Dashboard/CheckForApply/CheckForApply";
+import ChildApply from "./Pages/Dashboard/ChildApply/ChildApply";
 import ChildManage from "./Pages/Dashboard/ChildManage/ChildManage";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
@@ -64,7 +65,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route
-          path="/child-adaption-form"
+          path="/child-adaption-form/:id"
           element={
             <RequireAuth>
               <ChildApplyForm></ChildApplyForm>
@@ -89,6 +90,10 @@ function App() {
           <Route
             path="eligibility-score"
             element={<CheckApplyResult></CheckApplyResult>}
+          ></Route>
+          <Route
+            path="child-apply"
+            element={<ChildApply></ChildApply>}
           ></Route>
           <Route path="add-child" element={<AddChild></AddChild>}></Route>
           <Route

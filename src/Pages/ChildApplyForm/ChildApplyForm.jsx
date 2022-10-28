@@ -3,35 +3,98 @@ import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading/Loading";
 import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
+import { Navigate, useParams } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import auth from "../../firebase.init";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const ChildApplyForm = () => {
   DynamicTitle("Child Application");
+  const { id } = useParams();
+  const [user] = useAuthState(auth);
+  const [loading, setLoading] = useState(false);
+
+  // country api
+  const { data: countryAll, isLoading } = useQuery(["countries"], () =>
+    fetch(`https://restcountries.com/v3.1/all`).then((res) => res.json())
+  );
+
+  // react query
+  const { data: child, isLoading2 } = useQuery(["childApplyForm"], () =>
+    fetch(`http://localhost:5000/child/${id}`, {
+      method: "GET",
+    }).then((res) => res.json())
+  );
+
+  // console.log(child);
+
   const {
-    register,
+    register: childApplyForm,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    const childApplyFormData = {
+      email: user?.email,
+      data,
+      child: child,
+    };
+    fetch(`http://localhost:5000/child-apply`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+      body: JSON.stringify(childApplyFormData),
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+          localStorage.removeItem("access-token");
+          Navigate("/login");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data?.insertedId) {
+          toast.success("Your Apply Successfully");
+          setLoading(true);
+        } else {
+          toast.error("Failed to Apply");
+        }
+        setLoading(false);
+      });
   };
 
-  const { data: countryAll, isLoading } = useQuery(["countries"], () =>
-    fetch(`https://restcountries.com/v3.1/all`).then((res) => res.json())
-  );
-
-  // console.log(countryAll);
-  if (isLoading) {
+  if (isLoading || isLoading2 || loading) {
     return <Loading></Loading>;
   }
 
   return (
-    <div className="md:mt-8 mb-16">
-      <div className="card md:w-4/5 bg-base-100 shadow-xl mx-auto">
+    <div className=" mb-16">
+      <div className="bg-info py-10">
+        <h1 className="text-center text-2xl font-bold uppercase text-white">
+          Apply Form
+        </h1>
+        <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
+      </div>
+      <div className="card w-96 md:w-3/4 bg-base-100 shadow-md mx-auto">
         <div className="card-body">
-          {/* <div className="text-center">
-                  <h2 className="text-2xl">Please! Registration</h2>
-                </div> */}
+          <div className="flex items-center space-x-3 justify-center">
+            <div className="avatar">
+              <div className="mask mask-squircle w-16 h-16">
+                <img src={child?.img} alt={child?.name} />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">{child?.name}</div>
+              <div className="text-sm">{child?.location}</div>
+              <div className="text-sm">{child?.agency}</div>
+            </div>
+          </div>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
@@ -40,12 +103,12 @@ const ChildApplyForm = () => {
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full max-w-sm mx-auto ">
                 <label className="label">
                   <span className="label-text">Full Name:</span>
                 </label>
                 <input
-                  {...register("displayName", {
+                  {...childApplyForm("displayName", {
                     required: {
                       value: true,
                       message: "Full Name is required",
@@ -64,13 +127,13 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full max-w-sm mx-auto ">
                 <label className="label">
                   <span className="label-text">Gander:</span>
                 </label>
                 <select
                   className="select-bordered input input-sm md:w-96 max-w-lg"
-                  {...register("gender", {
+                  {...childApplyForm("gender", {
                     required: {
                       value: true,
                       message: "Gender required",
@@ -90,13 +153,14 @@ const ChildApplyForm = () => {
                   )}
                 </label>
               </div>
-              <div className="form-control w-full max-w-lg">
+
+              <div className="form-control w-full max-w-sm mx-auto">
                 <label className="label">
                   <span className="label-text">Citizenship:</span>
                 </label>
                 <select
                   className="select-bordered input input-sm md:w-96 max-w-lg"
-                  {...register("citizenship", {
+                  {...childApplyForm("citizenship", {
                     required: {
                       value: true,
                       message: "Citizenship required",
@@ -119,12 +183,12 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full max-w-sm mx-auto">
                 <label className="label">
                   <span className="label-text">Birth Date:</span>
                 </label>
                 <input
-                  {...register("birthDate", {
+                  {...childApplyForm("birthDate", {
                     required: {
                       value: true,
                       message: "Birth Date is required",
@@ -143,12 +207,12 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full max-w-sm mx-auto">
                 <label className="label">
                   <span className="label-text">NID / Passport Number:</span>
                 </label>
                 <input
-                  {...register("nidPassport", {
+                  {...childApplyForm("nidPassport", {
                     required: {
                       value: true,
                       message: "NID / Passport Number is required",
@@ -182,12 +246,12 @@ const ChildApplyForm = () => {
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full max-w-sm mx-auto">
                 <label className="label">
                   <span className="label-text">Full Name:</span>
                 </label>
                 <input
-                  {...register("displayName2", {
+                  {...childApplyForm("displayName2", {
                     required: {
                       value: true,
                       message: "Full Name is required",
@@ -206,13 +270,13 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-lg">
+              <div className="form-control w-full max-w-sm mx-auto">
                 <label className="label">
                   <span className="label-text">Gander:</span>
                 </label>
                 <select
                   className="select-bordered input input-sm md:w-96 max-w-lg"
-                  {...register("gender2", {
+                  {...childApplyForm("gender2", {
                     required: {
                       value: true,
                       message: "Gender required",
@@ -233,13 +297,13 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-lg">
+              <div className="form-control w-full max-w-sm mx-auto">
                 <label className="label">
                   <span className="label-text">Citizenship:</span>
                 </label>
                 <select
                   className="select-bordered input input-sm md:w-96 max-w-lg"
-                  {...register("citizenship2", {
+                  {...childApplyForm("citizenship2", {
                     required: {
                       value: true,
                       message: "Citizenship required",
@@ -262,12 +326,12 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full max-w-sm mx-auto">
                 <label className="label">
                   <span className="label-text">Birth Date:</span>
                 </label>
                 <input
-                  {...register("birthDate2", {
+                  {...childApplyForm("birthDate2", {
                     required: {
                       value: true,
                       message: "Birth Date is required",
@@ -286,9 +350,12 @@ const ChildApplyForm = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full max-w-xs">
+              <div className="form-control w-full max-w-sm mx-auto">
+                <label className="label">
+                  <span className="label-text">NID / Passport Number:</span>
+                </label>
                 <input
-                  {...register("nidPassport2", {
+                  {...childApplyForm("nidPassport2", {
                     required: {
                       value: true,
                       message: "NID / Passport Number is required",
@@ -300,7 +367,7 @@ const ChildApplyForm = () => {
                   })}
                   type="text"
                   placeholder="NID / Passport Number"
-                  className="input input-bordered input-sm md:w-96 max-w-"
+                  className="input input-bordered input-sm md:w-96 max-w-lg"
                 />
                 <label className="label">
                   {errors.nidPassport2?.type === "required" && (
@@ -319,44 +386,24 @@ const ChildApplyForm = () => {
 
             <div>
               <div>
-                <h2 className="text-xl md:text-3xl font-bold">
+                <h2 className="text-xl md:text-3xl font-bold mb-3">
                   Contact Information
                 </h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-sm mx-auto">
                   <input
-                    {...register("email", {
-                      required: {
-                        value: true,
-                        message: "Email is required",
-                      },
-                      pattern: {
-                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                        message: "Provide a valid Email",
-                      },
-                    })}
+                    {...childApplyForm("email")}
                     type="email"
-                    placeholder="example@gmail.com"
+                    value={user?.email}
+                    disabled
                     className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
-                  <label className="label">
-                    {errors.email?.type === "required" && (
-                      <span className="label-text-alt text-error">
-                        {errors.email?.message}
-                      </span>
-                    )}
-                    {errors.email?.type === "pattern" && (
-                      <span className="label-text-alt text-error">
-                        {errors.email?.message}
-                      </span>
-                    )}
-                  </label>
                 </div>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-sm mx-auto">
                   <input
-                    {...register("phoneNumber", {
+                    {...childApplyForm("phoneNumber", {
                       required: {
                         value: true,
                         message: "Phone Number is required",
@@ -368,7 +415,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="Phone Number"
-                    className="input input-bordered input-sm md:w-96 max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
                   <label className="label">
                     {errors.phoneNumber?.type === "required" && (
@@ -384,9 +431,9 @@ const ChildApplyForm = () => {
                   </label>
                 </div>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-sm mx-auto">
                   <input
-                    {...register("address", {
+                    {...childApplyForm("address", {
                       required: {
                         value: true,
                         message: "Address is required",
@@ -394,7 +441,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="Address line 1"
-                    className="input input-bordered input-sm md:w-96 max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
                   <label className="label">
                     {errors.address?.type === "required" && (
@@ -404,17 +451,17 @@ const ChildApplyForm = () => {
                     )}
                   </label>
                 </div>
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-sm mx-auto">
                   <input
                     type="text"
                     placeholder="Address line 2 optional"
-                    className="input input-bordered input-sm md:w-96 max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
                 </div>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-sm mx-auto">
                   <input
-                    {...register("city", {
+                    {...childApplyForm("city", {
                       required: {
                         value: true,
                         message: "City is required",
@@ -422,7 +469,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="City"
-                    className="input input-bordered input-sm md:w-96 max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
                   <label className="label">
                     {errors.city?.type === "required" && (
@@ -433,9 +480,9 @@ const ChildApplyForm = () => {
                   </label>
                 </div>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-sm mx-auto">
                   <input
-                    {...register("state", {
+                    {...childApplyForm("state", {
                       required: {
                         value: true,
                         message: "State is required",
@@ -443,7 +490,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="State"
-                    className="input input-bordered input-sm md:w-96 max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
                   <label className="label">
                     {errors.state?.type === "required" && (
@@ -454,9 +501,9 @@ const ChildApplyForm = () => {
                   </label>
                 </div>
 
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-sm mx-auto">
                   <input
-                    {...register("zipCode", {
+                    {...childApplyForm("zipCode", {
                       required: {
                         value: true,
                         message: "Zip code is required",
@@ -468,7 +515,7 @@ const ChildApplyForm = () => {
                     })}
                     type="text"
                     placeholder="Zip code"
-                    className="input input-bordered input-sm md:w-96 max-w-"
+                    className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
                   <label className="label">
                     {errors.zipCode?.type === "required" && (
@@ -484,10 +531,10 @@ const ChildApplyForm = () => {
                   </label>
                 </div>
 
-                <div className="form-control w-full max-w-lg">
+                <div className="form-control w-full max-w-sm mx-auto">
                   <select
                     className="select-bordered input input-sm md:w-96 max-w-lg"
-                    {...register("country", {
+                    {...childApplyForm("country", {
                       required: {
                         value: true,
                         message: "country required",
@@ -514,11 +561,13 @@ const ChildApplyForm = () => {
               </div>
             </div>
 
-            <input
-              className="btn btn-secondary rounded-none"
-              type="submit"
-              value="Apply Now"
-            />
+            <div className="">
+              <input
+                className="btn btn-secondary rounded-none sm:w-full mx-auto"
+                type="submit"
+                value="Apply Now"
+              />
+            </div>
           </form>
         </div>
       </div>

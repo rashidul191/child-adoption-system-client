@@ -81,7 +81,6 @@ const Login = () => {
           </svg>
           <span className="text-white">
             {error?.message} {forgotPasswordError?.message}
-            {/* { toast.error(`${error?.message}`)}; */}
           </span>
         </div>
       </div>
@@ -130,7 +129,7 @@ const Login = () => {
         </div>
 
         <div className="grid grid-cols-1">
-        <div className="card w-72 md:w-96 mx-auto bg-base-100 shadow-xl md:ml-32 pt-5 pb-10">
+          <div className="card w-72 md:w-96 mx-auto bg-base-100 shadow-xl md:ml-32 pt-5 pb-10">
             <span>{errorElement}</span>
             <div className="text-center">
               <h1 className="text-3xl">Welcome Back !</h1>
@@ -199,16 +198,20 @@ const Login = () => {
                     />
                     <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-r-md border border-r-0  cursor-pointer">
                       <FontAwesomeIcon
-                       onClick={() => setShowPassword(false)}
-                        className={`text-xl ${showPassword ? "blok": "hidden"}`}
+                        onClick={() => setShowPassword(false)}
+                        className={`text-xl ${
+                          showPassword ? "blok" : "hidden"
+                        }`}
                         icon={faEye}
                       ></FontAwesomeIcon>
                       <FontAwesomeIcon
-                       onClick={() => setShowPassword(true)}
-                       className={`text-xl ${showPassword ? "hidden": "blok"}`}
+                        onClick={() => setShowPassword(true)}
+                        className={`text-xl ${
+                          showPassword ? "hidden" : "blok"
+                        }`}
                         icon={faEyeSlash}
                       ></FontAwesomeIcon>
-                    </span>                  
+                    </span>
                   </div>
                   <label className="label">
                     {errors.password?.type === "required" && (

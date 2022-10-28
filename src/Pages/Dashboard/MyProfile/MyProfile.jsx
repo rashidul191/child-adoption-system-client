@@ -16,7 +16,7 @@ const MyProfile = () => {
   DynamicTitle("My Profile");
   const [profileEdit, setProfileEdit] = useState(true);
   const [user] = useAuthState(auth);
-  const { displayName, photoURL, email, phone, address, zip } = user;
+  const { displayName, email, photoURL } = user;
   const { data, isLoading } = useQuery(["userDB"], () =>
     fetch(`http://localhost:5000/user?email=${email}`, {
       method: "GET",
@@ -42,29 +42,41 @@ const MyProfile = () => {
     <section>
       <div className="flex justify-between">
         <h1 className=" md:text-xl font-bold uppercase">My Profile</h1>
-        <button onClick={()=> setProfileEdit(!profileEdit)} className="text-[#FF428D] underline">
+        <button
+          onClick={() => setProfileEdit(!profileEdit)}
+          className="text-[#FF428D] underline"
+        >
           <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
           Edit
         </button>
       </div>
       <hr />
 
-      <div className={`${profileEdit || "hidden"}  grid grid-cols-1 md:grid-cols-2 card bg-base-100 shadow-md `}>
-        <div className="flex justify-center ">
+      <div
+        className={`${
+          profileEdit || "hidden"
+        }  grid grid-cols-1 md:grid-cols-2 card bg-base-100 shadow-md pb-16`}
+      >
+        <div className="flex justify-center">
           <div>
-            <div className="mt-3">
-              <img
-                width={120}
-                src={
-                  photoURL
-                    ? photoURL
-                    : `https://i.ibb.co/tmprR1w/profile-icon.webp`
-                }
-                alt={displayName}
-              />
+            <div className="avatar">
+              <div className="w-24 rounded-full">
+                <img
+                  width={120}
+                  src={
+                    photoURL
+                      ? photoURL
+                      : `https://i.ibb.co/tmprR1w/profile-icon.webp`
+                  }
+                  alt={displayName}
+                />
+              </div>
             </div>
 
-            <button onClick={()=> setProfileEdit(!profileEdit)}  className="btn bg-[#FF428D] border-none text-white mt-5">
+            <button
+              onClick={() => setProfileEdit(!profileEdit)}
+              className="btn bg-[#FF428D] border-none text-white mt-5"
+            >
               Edit Profile
             </button>
           </div>
@@ -75,11 +87,11 @@ const MyProfile = () => {
           <span>Email:</span>
           <h2 className="text-xl font-bold"> {data?.email}</h2>
           <span>Address:</span>
-          <h2 className="text-xl font-bold"> {address}</h2>
+          <h2 className="text-xl font-bold"> {data.address}</h2>
           <span>Zip Code:</span>
-          <h2 className="text-xl font-bold"> {zip}</h2>
+          <h2 className="text-xl font-bold"> {data.zip}</h2>
           <span>Phone:</span>
-          <h2 className="text-xl font-bold"> {phone}</h2>
+          <h2 className="text-xl font-bold"> {data.phone}</h2>
         </div>
       </div>
 
