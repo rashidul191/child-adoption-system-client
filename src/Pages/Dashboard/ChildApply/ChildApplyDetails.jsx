@@ -1,7 +1,9 @@
 import React from "react";
+import ChildApplyPDF from "./ChildApplyPDF";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 
 const ChildApplyDetails = ({ childApply }) => {
-  console.log(childApply.data);
+  // console.log(childApply.data);
 
   return (
     <>
@@ -31,6 +33,12 @@ const ChildApplyDetails = ({ childApply }) => {
         </td>
         <td>
           {/* The button to open modal */}
+          {/* <label
+            htmlFor="child-apply-modal"
+            className="btn btn-success btn-sm modal-button text-white font-bold"
+          >
+            View Application
+          </label> */}
           <label
             htmlFor="child-apply-modal"
             className="btn btn-success btn-sm modal-button text-white font-bold"
@@ -39,7 +47,21 @@ const ChildApplyDetails = ({ childApply }) => {
           </label>
         </td>
         <th>
-          <button className="btn btn-primary btn-sm">Download</button>
+          <PDFDownloadLink
+            document={<ChildApplyPDF childApply={childApply} />}
+            fileName={`apply-form`}
+          >
+            {({ loading }) =>
+              loading ? (
+                <button>Loading....</button>
+              ) : (
+                <button className="btn btn-primary btn-sm">Download</button>
+              )
+            }
+          </PDFDownloadLink>
+
+      
+
           <p className="text-error">Processing </p>
         </th>
       </tr>
@@ -47,20 +69,17 @@ const ChildApplyDetails = ({ childApply }) => {
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="child-apply-modal" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box w-full">
+        <div className="modal-box">
           <label
             htmlFor="child-apply-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 className="font-bold text-lg">
-            Congratulations random Internet user!
-          </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
+          <PDFViewer>
+            <ChildApplyPDF />
+          </PDFViewer>
+
           <div className="modal-action">
             <label htmlFor="child-apply-modal" className="btn">
               Yay!

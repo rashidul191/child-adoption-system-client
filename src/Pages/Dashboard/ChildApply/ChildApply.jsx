@@ -53,10 +53,13 @@ const ChildApply = () => {
           </thead>
           <tbody>
             {childApplyAll.map((childApply) => (
-              <ChildApplyDetails
-                key={childApply._id}
-                childApply={childApply}
-              ></ChildApplyDetails>
+    
+                <ChildApplyDetails
+                  key={childApply._id}
+                  childApply={childApply}
+                ></ChildApplyDetails>
+
+      
             ))}
           </tbody>
         </table>

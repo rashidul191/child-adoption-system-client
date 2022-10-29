@@ -91,10 +91,7 @@ function App() {
             path="eligibility-score"
             element={<CheckApplyResult></CheckApplyResult>}
           ></Route>
-          <Route
-            path="child-apply"
-            element={<ChildApply></ChildApply>}
-          ></Route>
+          <Route path="child-apply" element={<ChildApply></ChildApply>}></Route>
           <Route path="add-child" element={<AddChild></AddChild>}></Route>
           <Route
             path="child-manage"
