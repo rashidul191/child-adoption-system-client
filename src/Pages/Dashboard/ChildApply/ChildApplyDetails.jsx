@@ -58,10 +58,7 @@ const ChildApplyDetails = ({ childApply }) => {
                 <button className="btn btn-primary btn-sm">Download</button>
               )
             }
-          </PDFDownloadLink>
-
-      
-
+          </PDFDownloadLink> 
           <p className="text-error">Processing </p>
         </th>
       </tr>
@@ -69,22 +66,23 @@ const ChildApplyDetails = ({ childApply }) => {
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="child-apply-modal" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
+        <div className="h-full w-full mx-auto modal-box">
           <label
             htmlFor="child-apply-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
+          
           <PDFViewer>
             <ChildApplyPDF />
           </PDFViewer>
 
-          <div className="modal-action">
+          {/* <div className="modal-action">
             <label htmlFor="child-apply-modal" className="btn">
               Yay!
             </label>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

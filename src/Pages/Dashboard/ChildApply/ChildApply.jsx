@@ -28,7 +28,7 @@ const ChildApply = () => {
     })
   );
 
-  console.log(childApplyAll);
+  // console.log(childApplyAll);
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -52,14 +52,11 @@ const ChildApply = () => {
             </tr>
           </thead>
           <tbody>
-            {childApplyAll.map((childApply) => (
-    
+            {childApplyAll.map((childApply) => (    
                 <ChildApplyDetails
                   key={childApply._id}
                   childApply={childApply}
-                ></ChildApplyDetails>
-
-      
+                ></ChildApplyDetails>      
             ))}
           </tbody>
         </table>
