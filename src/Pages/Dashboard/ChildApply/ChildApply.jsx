@@ -52,7 +52,7 @@ const ChildApply = () => {
             </tr>
           </thead>
           <tbody>
-            {childApplyAll.map((childApply) => (    
+            {childApplyAll?.map((childApply) => (    
                 <ChildApplyDetails
                   key={childApply._id}
                   childApply={childApply}

@@ -6,7 +6,7 @@ import Admin from "./Admin";
 
 const Members = () => {
   const { data: dbUser, isLoading } = useQuery(["memberAllUsers"], () =>
-    fetch(`http://localhost:5000/allUsers`, {
+    fetch(`http://localhost:5000/allMember`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

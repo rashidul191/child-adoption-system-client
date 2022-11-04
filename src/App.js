@@ -7,6 +7,7 @@ import AddAgency from "./Pages/Dashboard/AddAgency/AddAgency";
 import AddChild from "./Pages/Dashboard/AddChild/AddChild";
 import AgencyManage from "./Pages/Dashboard/AgencyManage/AgencyManage";
 import AllDonation from "./Pages/Dashboard/AllDonation/AllDonation";
+import Application from "./Pages/Dashboard/Application/Application";
 import CheckApplyResult from "./Pages/Dashboard/CheckApplyResult/CheckApplyResult";
 import CheckForApply from "./Pages/Dashboard/CheckForApply/CheckForApply";
 import ChildApply from "./Pages/Dashboard/ChildApply/ChildApply";
@@ -93,6 +94,10 @@ function App() {
           ></Route>
           <Route path="child-apply" element={<ChildApply></ChildApply>}></Route>
           <Route path="add-child" element={<AddChild></AddChild>}></Route>
+          <Route
+            path="application"
+            element={<Application></Application>}
+          ></Route>
           <Route
             path="child-manage"
             element={<ChildManage></ChildManage>}

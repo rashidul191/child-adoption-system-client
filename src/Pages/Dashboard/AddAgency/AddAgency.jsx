@@ -60,7 +60,7 @@ const AddAgency = () => {
             .then((data) => {
               if (data?.insertedId) {
                 toast.success("Agency information added successfully");
-                data = "";
+                window.location.reload();
               } else {
                 toast.error("Failed to add Agency Information");
               }

@@ -10,10 +10,6 @@ const MyReview = () => {
 
   const handleReviewSubmit = (event) => {
     event.preventDefault();
-    // const displayName = user?.displayName;
-    // const email = user?.email;
-    // const rating = event.target.rating.value;
-    // const comment = event.target.comment.value;
     const review = {
       displayName: user?.displayName,
       email: user?.email,

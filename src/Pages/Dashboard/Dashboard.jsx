@@ -58,6 +58,9 @@ const Dashboard = () => {
           {(admin || employer) && (
             <>
               <li className="bg-white">
+                <CustomLink to={`/dashboard/application`}>All Application</CustomLink>
+              </li>
+              <li className="bg-white">
                 <CustomLink to={`/dashboard/add-child`}>Add Child</CustomLink>
               </li>
               <li className="bg-white">

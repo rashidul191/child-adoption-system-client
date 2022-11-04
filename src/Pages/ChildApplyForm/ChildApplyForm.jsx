@@ -7,14 +7,12 @@ import { Navigate, useParams } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase.init";
 import { toast } from "react-toastify";
-import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const ChildApplyForm = () => {
   DynamicTitle("Child Application");
   const { id } = useParams();
   const [user] = useAuthState(auth);
-  const [loading, setLoading] = useState(false);
 
   // country api
   const { data: countryAll, isLoading } = useQuery(["countries"], () =>
@@ -61,15 +59,16 @@ const ChildApplyForm = () => {
       .then((data) => {
         if (data?.insertedId) {
           toast.success("Your Apply Successfully");
-          setLoading(true);
+          window.location.reload();
         } else {
           toast.error("Failed to Apply");
         }
-        setLoading(false);
+    
       });
+      
   };
 
-  if (isLoading || isLoading2 || loading) {
+  if (isLoading || isLoading2) {
     return <Loading></Loading>;
   }
 

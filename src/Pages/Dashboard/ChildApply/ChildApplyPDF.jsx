@@ -49,8 +49,7 @@ const ChildApplyPDF = ({ childApply }) => {
             <Text>West Shewrapara, Mirpur-10, Dhaka</Text>
             <Text>Bangladesh</Text>
           </div>
-        </div>{" "}
-        "13px"
+        </div>
         {/* Child Information Here */}
         <div>
           <Text style={styles.highlightText}>Child Information</Text>
@@ -300,13 +299,15 @@ const ChildApplyPDF = ({ childApply }) => {
             <Text
               style={{
                 borderTop: "2px solid black",
-                margin: "1210px 0px 0px 0px",
+                margin: "20px 0px 0px 0px",
               }}
             >
               <Text> Author Signature</Text>
             </Text>
           </div>
         </div>
+
+        
         <Text
           style={{ textAlign: "center", marginTop: "20px" }}
           render={({ pageNumber, totalPages }) =>

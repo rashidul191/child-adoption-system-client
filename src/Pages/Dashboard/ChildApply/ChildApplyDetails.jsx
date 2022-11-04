@@ -1,12 +1,11 @@
 import React from "react";
 import ChildApplyPDF from "./ChildApplyPDF";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const ChildApplyDetails = ({ childApply }) => {
   // console.log(childApply.data);
 
   return (
-    <>
       <tr>
         <td>
           <div className="flex items-center space-x-3">
@@ -32,13 +31,6 @@ const ChildApplyDetails = ({ childApply }) => {
           </span>
         </td>
         <td>
-          {/* The button to open modal */}
-          {/* <label
-            htmlFor="child-apply-modal"
-            className="btn btn-success btn-sm modal-button text-white font-bold"
-          >
-            View Application
-          </label> */}
           <label
             htmlFor="child-apply-modal"
             className="btn btn-success btn-sm modal-button text-white font-bold"
@@ -46,46 +38,23 @@ const ChildApplyDetails = ({ childApply }) => {
             View Application
           </label>
         </td>
-        <th>
+        <td>
           <PDFDownloadLink
             document={<ChildApplyPDF childApply={childApply} />}
             fileName={`apply-form`}
           >
             {({ loading }) =>
               loading ? (
-                <button>Loading....</button>
+                <p>Loading....</p>
               ) : (
                 <button className="btn btn-primary btn-sm">Download</button>
               )
             }
           </PDFDownloadLink> 
           <p className="text-error">Processing </p>
-        </th>
+        </td>
       </tr>
 
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="child-apply-modal" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
-        <div className="h-full w-full mx-auto modal-box">
-          <label
-            htmlFor="child-apply-modal"
-            className="btn btn-sm btn-circle absolute right-2 top-2"
-          >
-            ✕
-          </label>
-          
-          <PDFViewer>
-            <ChildApplyPDF />
-          </PDFViewer>
-
-          {/* <div className="modal-action">
-            <label htmlFor="child-apply-modal" className="btn">
-              Yay!
-            </label>
-          </div> */}
-        </div>
-      </div>
-    </>
   );
 };
 

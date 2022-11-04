@@ -65,6 +65,7 @@ const AddChild = () => {
             .then((data) => {
               if (data?.insertedId) {
                 toast.success("Child Information added successfully");
+                window.location.reload();
               } else {
                 toast.error("Failed to add Information");
               }

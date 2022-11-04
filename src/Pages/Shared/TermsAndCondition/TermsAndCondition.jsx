@@ -22,21 +22,26 @@ const TermsAndCondition = () => {
         <div>
           <h2 className="text-xl font-semibold">Personal Information</h2>
           <p>
-            CASA (Child Adoption System Ador) uses its best efforts to respect
-            the privacy of its online visitors. All user data that is not made
-            public, including email address and IPs associated with user
-            accounts, will not be sold or rented nor will it be shared with any
-            third party unless we are required by law. When a visitor requests
-            or read a page, or sends email to CASA, no more information is
+            <span className="font-bold">
+              {" "}
+              CASA (Child Adoption System Ador)
+            </span>{" "}
+            uses its best efforts to respect the privacy of its online visitors.
+            All user data that is not made public, including email address and
+            IPs associated with user accounts, will not be sold or rented nor
+            will it be shared with any third party unless we are required by
+            law. When a visitor requests or read a page, or sends email to{" "}
+            <span className="font-bold"> CASA </span> , no more information is
             collected than is typically collected by websites.
           </p>
           <br />
           <p>
-            CASA gathers only personally identifiable data such as names,
-            addresses, zip codes, email etc when voluntarily submitted by a
-            visitor. For example, if we ask for personal information on our
-            Online Donation page, we use the information to acknowledge receipt
-            of your donation for tax purposes.
+            <span className="font-bold"> CASA </span> gathers only personally
+            identifiable data such as names, addresses, zip codes, email etc
+            when voluntarily submitted by a visitor. For example, if we ask for
+            personal information on our Online Donation page, we use the
+            information to acknowledge receipt of your donation for tax
+            purposes.
           </p>
           <br />
         </div>
@@ -45,10 +50,11 @@ const TermsAndCondition = () => {
           <p>
             You can access the pages of the website without telling us who you
             are and without revealing any personal information. Our web servers
-            collect anonymous logs during user visits to CASA website. This
-            information is used to create aggregate statistics. These statistics
-            help us understand how our website is used and how we might improve
-            viewer experience in the future.
+            collect anonymous logs during user visits to{" "}
+            <span className="font-bold"> CASA </span> website. This information
+            is used to create aggregate statistics. These statistics help us
+            understand how our website is used and how we might improve viewer
+            experience in the future.
           </p>
           <br />
         </div>
@@ -66,11 +72,11 @@ const TermsAndCondition = () => {
             If we have trouble processing a donation, the information is used by
             us to contact the donor. We will not share the visitor’s name and
             contact information with any third party. Financial and credit card
-            information is CASA disclosed.
+            information is <span className="font-bold"> CASA </span> disclosed.
           </p>
           <br />
           <p>
-            This should be very much clear that CASA is not willing to accept
+            This should be very much clear that <span className="font-bold"> CASA </span>  is not willing to accept
             donations earned through illegal and unlawful means.
           </p>
           <br />
@@ -82,10 +88,11 @@ const TermsAndCondition = () => {
           <p>
             No cancellation for the donated amount by any donor will be
             entertained. The donation will be used for the heads selected by the
-            donor at our Online Donation page. CASA does not compel any person
+            donor at our Online Donation page.{" "}
+            <span className="font-bold"> CASA </span> does not compel any person
             or organization to donate money, rather it depends on one’s own wish
             whether he/she is willing to contribute towards child’s development
-            and educational needs of CASA.
+            and educational needs of <span className="font-bold"> CASA </span> .
           </p>
           <br />
           <p>
@@ -106,19 +113,19 @@ const TermsAndCondition = () => {
             our server. Nevertheless, we acknowledge that, in spite of our
             committed effort, some determined individual may still develop
             data-mining and other methods to uncover such information and
-            disclose it. For this reason, CASA can make no guarantee against
+            disclose it. For this reason, <span className="font-bold"> CASA </span>  can make no guarantee against
             unauthorized access to information provided an in the course of
             using this website.
           </p>
           <br />
           <p>
-            CASA reserves the right to make any change or update in this privacy
+          <span className="font-bold"> CASA </span>  reserves the right to make any change or update in this privacy
             policy, so you are requested to visit this page from time to time.
           </p>
           <br />
           <p>
             If you have any questions about our Privacy Policy, email us:
-            casa@gmail.com
+            <span className="font-bold"> casa@gmail.com</span>
           </p>
           <br />
         </div>
