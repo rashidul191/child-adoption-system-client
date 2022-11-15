@@ -3,14 +3,15 @@ import ChildApplyPDF from "./ChildApplyPDF";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const ChildApplyDetails = ({ childApply }) => {
-  // console.log(childApply.data);
+  // console.log(childApply);
 
   return (
       <tr>
         <td>
           <div className="flex items-center space-x-3">
             <div>
-              <div className="font-bold">{childApply?.data?.displayName}</div>
+              <div className="font-bold">Name: {childApply?.data?.displayName}</div>
+              <div className="font-bold">Name: {childApply?.data?.displayName2}</div>
               <div className="text-sm opacity-50">
                 {childApply?.data?.address}
               </div>
@@ -51,7 +52,7 @@ const ChildApplyDetails = ({ childApply }) => {
               )
             }
           </PDFDownloadLink> 
-          <p className="text-error">Processing </p>
+     {childApply.role === "approved"? <p className="text-success uppercase font-semibold">Already Approved</p> :     <p className="text-error font-semibold">Processing </p>}
         </td>
       </tr>
 

@@ -40,7 +40,6 @@ const ChildApply = () => {
         <h1 className=" md:text-xl font-bold uppercase">Child Apply</h1>
       </div>
       <hr />
-
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>

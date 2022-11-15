@@ -42,7 +42,7 @@ const Application = () => {
             </tr>
           </thead>
           <tbody>
-          {allApplication?.map((application, index) => (
+          {allApplication?.slice(0).reverse()?.map((application, index) => (
               <ApplicationRow
                 key={application._id}
                 application={application}

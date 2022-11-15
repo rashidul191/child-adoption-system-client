@@ -172,7 +172,7 @@ const Login = () => {
                     <span className="label-text">Password:</span>
                   </label>
 
-                  <div class="flex">
+                  <div className="flex">
                     <input
                       {...register("password", {
                         required: {
@@ -196,7 +196,7 @@ const Login = () => {
                       placeholder="password"
                       className="input input-bordered w-full max-w-xs rounded-none rounded-l-lg  "
                     />
-                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-r-md border border-r-0  cursor-pointer">
+                    <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-r-md border border-r-0  cursor-pointer">
                       <FontAwesomeIcon
                         onClick={() => setShowPassword(false)}
                         className={`text-xl ${
