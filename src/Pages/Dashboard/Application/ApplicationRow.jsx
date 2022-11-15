@@ -1,17 +1,49 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import auth from "../../../firebase.init";
 
 const ApplicationRow = ({ index, application, refetch }) => {
+  const navigate = useNavigate();
   const { _id } = application;
   // const {displayName  } = application?.parentData;
   // const { } = application?.child;
 
   console.log(application);
 
-  const handleChildDelete = (_id) => {
+  const handleApplicationApprove = (id) => {
+    console.log("handle Application Approve:", id);
+
+    fetch(`http://localhost:5000/application/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 403 || res.status === 401) {
+          signOut(auth);
+          localStorage.removeItem("access-token");
+          navigate("/login");
+          toast.error("Failed To make Employer");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data?.modifiedCount > 0) {
+          toast.success(`Application Delete Successfully`);
+          refetch();
+        }
+      });
+  };
+
+  // handleApplicationDelete
+  const handleApplicationDelete = (_id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -67,14 +99,18 @@ const ApplicationRow = ({ index, application, refetch }) => {
   };
   return (
     <tr>
-      <th>
-{index + 1}
-      </th>
+      <th>{index + 1}</th>
 
       <td>
-        P1: <span className="font-bold">{application?.parentData?.displayName}</span>
+        P1:{" "}
+        <span className="font-bold">
+          {application?.parentData?.displayName}
+        </span>
         <br />
-        P2: <span className="font-bold ">{application?.parentData?.displayName2}</span>
+        P2:{" "}
+        <span className="font-bold ">
+          {application?.parentData?.displayName2}
+        </span>
       </td>
 
       <td>
@@ -90,28 +126,30 @@ const ApplicationRow = ({ index, application, refetch }) => {
           <div>
             <div className="font-bold">{application?.child?.name}</div>
             <div className="text-sm opacity-50">
-             Agency: {application?.child?.agency}
+              Agency: {application?.child?.agency}
             </div>
           </div>
         </div>
       </td>
 
       <th>
-        <button className="btn btn-success btn-sm text-white">Approve</button>
+
+      {application?.role? <p className="text-success">Already Approved</p>: <button
+          onClick={() => handleApplicationApprove(_id)}
+          className="btn btn-primary btn-sm text-white"
+        >
+          Approve
+        </button>}
+        
       </th>
       <th>
         <button
-          onClick={() => handleChildDelete(_id)}
+          onClick={() => handleApplicationDelete(_id)}
           className="btn btn-error btn-sm text-white"
         >
           <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
         </button>
-        <button
-        
-          className="btn btn-info btn-sm text-white"
-        >
-         cancel
-        </button>
+        <button className="btn btn-info btn-sm text-white">cancel</button>
       </th>
     </tr>
   );

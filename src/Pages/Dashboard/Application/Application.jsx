@@ -25,7 +25,7 @@ const Application = () => {
     return <Loading></Loading>;
   }
 
-  console.log(allApplication)
+  // console.log(allApplication)
   return (
     <section>
       <h1 className="md:text-xl font-bold uppercase">Add Child</h1>
