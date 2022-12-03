@@ -17,7 +17,7 @@ const BlogDetails = () => {
   const shareUrl = `http://localhost:3000/blog/${id}`;
 
   const { data: blog, isLoading } = useQuery(["blogDetails"], () =>
-    fetch(`http://localhost:5000/blog/${id}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/blog/${id}`, {
       method: "GET",
     }).then((res) => res.json())
   );

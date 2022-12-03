@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Agency = () => {
   // react query
   const { data: allAgency, isLoading } = useQuery(["allAgency"], () =>
-    fetch("http://localhost:5000/allAgency", {
+    fetch("https://child-adoption-system-server.onrender.com/allAgency", {
       method: "GET",
       headers: {
         "content-type": "application/json",

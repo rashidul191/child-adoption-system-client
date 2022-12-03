@@ -8,7 +8,7 @@ const useEmployer = (user) => {
 
   const email = user?.email;
   if (email) {
-    fetch(`http://localhost:5000/employer/${email}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/employer/${email}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

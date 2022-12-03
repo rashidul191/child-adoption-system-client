@@ -7,7 +7,7 @@ import DonationRow from "./DonationRow/DonationRow";
 const AllDonation = () => {
   DynamicTitle("All Donation");
   const { data: allDonation, isLoading } = useQuery(["donation"], () =>
-    fetch(`http://localhost:5000/allDonation`, {
+    fetch(`https://child-adoption-system-server.onrender.com/allDonation`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

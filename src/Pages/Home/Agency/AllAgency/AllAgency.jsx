@@ -5,7 +5,7 @@ import AgencyGrid from "../AgencyGrid/AgencyGrid";
 
 const AllAgency = () => {
   const { data: allAgency, isLoading } = useQuery(["agencyInfo"], () =>
-    fetch("http://localhost:5000/allAgency", {
+    fetch("https://child-adoption-system-server.onrender.com/allAgency", {
       method: "GET",
       headers: {
         "content-type": "application/json",

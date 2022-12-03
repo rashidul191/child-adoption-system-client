@@ -27,7 +27,7 @@ const BlogRow = ({ blog, index, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/allBlogs/${_id}`, {
+          fetch(`https://child-adoption-system-server.onrender.com/allBlogs/${_id}`, {
             method: "DELETE",
             headers: {
               authorization: `Bearer ${localStorage.getItem("access-token")}`,

@@ -17,7 +17,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
   // handle Find Application Id
   const handleFindApplicationId = (id) => {
     // console.log("find application id: ", id)
-    fetch(`http://localhost:5000/application/${id}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/application/${id}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
       },
@@ -31,7 +31,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
 
   // handle Application Approve admin and employer
   // const handleApplicationApprove = (id) => {
-  //   fetch(`http://localhost:5000/application/${id}`, {
+  //   fetch(`https://child-adoption-system-server.onrender.com/application/${id}`, {
   //     method: "PUT",
   //     headers: {
   //       "content-type": "application/json",
@@ -77,7 +77,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/application/${_id}`, {
+          fetch(`https://child-adoption-system-server.onrender.com/application/${_id}`, {
             method: "DELETE",
             headers: {
               authorization: `Bearer ${localStorage.getItem("access-token")}`,

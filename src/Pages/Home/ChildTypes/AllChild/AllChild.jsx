@@ -8,7 +8,7 @@ const AllChild = () => {
   const { childType } = useParams();
 
   const { data: allChildren, isLoading } = useQuery(["allChildren"], () =>
-  fetch(`http://localhost:5000/childs/${childType}`).then((res) => res.json())
+  fetch(`https://child-adoption-system-server.onrender.com/childs/${childType}`).then((res) => res.json())
 );
 
 if(isLoading){

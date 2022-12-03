@@ -6,7 +6,7 @@ import AllBlogGrid from "./AllBlogGrid";
 const AllBlogs = () => {
   // react query
   const { data: SeeAllBlogs, isLoading } = useQuery(["SeeAllBlogs"], () =>
-    fetch("http://localhost:5000/allBlogs", {
+    fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
       method: "GET",
       headers: {
         "content-type": "application/json",

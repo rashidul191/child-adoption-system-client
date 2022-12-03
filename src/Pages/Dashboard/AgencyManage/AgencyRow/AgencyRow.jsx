@@ -31,7 +31,7 @@ const AgencyRow = ({ index, agency, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/allAgency/${_id}`, {
+          fetch(`https://child-adoption-system-server.onrender.com/allAgency/${_id}`, {
             method: "DELETE",
             headers: {
               authorization: `Bearer ${localStorage.getItem("access-token")}`,

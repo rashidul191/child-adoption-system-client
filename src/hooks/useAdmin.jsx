@@ -6,7 +6,7 @@ const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
   const email = user?.email;
   if (email) {
-    fetch(`http://localhost:5000/admin/${email}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/admin/${email}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

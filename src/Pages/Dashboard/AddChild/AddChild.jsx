@@ -46,7 +46,7 @@ const AddChild = () => {
             agency: data.agency,
             description: aboutChildRef.current.value,
           };
-          fetch("http://localhost:5000/childInsert", {
+          fetch("https://child-adoption-system-server.onrender.com/childInsert", {
             method: "POST",
             headers: {
               "Content-type": "application/json",

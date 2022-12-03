@@ -21,7 +21,7 @@ const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://child-adoption-system-server.onrender.com/create-payment-intent", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ amount }),
@@ -87,7 +87,7 @@ const CheckoutForm = () => {
       setCardError("");
       console.log(paymentIntent);
 
-      fetch("http://localhost:5000/donation", {
+      fetch("https://child-adoption-system-server.onrender.com/donation", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ donation }),

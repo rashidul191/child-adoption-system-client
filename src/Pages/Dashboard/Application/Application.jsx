@@ -13,7 +13,7 @@ const Application = () => {
     isLoading,
     refetch,
   } = useQuery(["allChildManage"], () =>
-    fetch(`http://localhost:5000/application`, {
+    fetch(`https://child-adoption-system-server.onrender.com/application`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,

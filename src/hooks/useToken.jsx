@@ -5,7 +5,7 @@ const useToken = (user) => {
   const email = user?.user?.email;
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/${email}`, {
+      fetch(`https://child-adoption-system-server.onrender.com/users/${email}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

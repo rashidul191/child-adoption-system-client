@@ -15,7 +15,7 @@ const Child = () => {
     isLoading,
     error,
   } = useQuery(["child"], () =>
-    fetch(`http://localhost:5000/child/${id}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/child/${id}`, {
       method: "GET",
     }).then((res) => res.json())
   );

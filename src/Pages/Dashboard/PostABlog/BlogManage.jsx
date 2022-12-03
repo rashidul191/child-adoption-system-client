@@ -12,7 +12,7 @@ const BlogManage = () => {
     isLoading,
     refetch,
   } = useQuery(["allBlogsManage"], () =>
-    fetch(`http://localhost:5000/allBlogs`, {
+    fetch(`https://child-adoption-system-server.onrender.com/allBlogs`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,

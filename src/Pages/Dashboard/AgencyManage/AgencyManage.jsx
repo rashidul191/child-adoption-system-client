@@ -12,7 +12,7 @@ const AgencyManage = () => {
     isLoading,
     refetch,
   } = useQuery(["allAgency"], () =>
-    fetch(`http://localhost:5000/allAgency`, {
+    fetch(`https://child-adoption-system-server.onrender.com/allAgency`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,

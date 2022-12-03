@@ -21,7 +21,7 @@ const ChildApplyForm = () => {
 
   // react query
   const { data: child, isLoading2 } = useQuery(["childApplyForm"], () =>
-    fetch(`http://localhost:5000/child/${id}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/child/${id}`, {
       method: "GET",
     }).then((res) => res.json())
   );
@@ -40,7 +40,7 @@ const ChildApplyForm = () => {
       data,
       child: child,
     };
-    fetch(`http://localhost:5000/child-apply`, {
+    fetch(`https://child-adoption-system-server.onrender.com/child-apply`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

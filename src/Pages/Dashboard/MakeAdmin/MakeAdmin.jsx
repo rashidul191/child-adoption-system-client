@@ -16,7 +16,7 @@ const MakeAdmin = () => {
     isLoading,
     refetch,
   } = useQuery(["users"], () =>
-    fetch(`http://localhost:5000/allUsers`, {
+    fetch(`https://child-adoption-system-server.onrender.com/allUsers`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
 //   console.log("modal from: ",childApplicationData?.email);
   console.log("modal from: ",childApplicationData?.child?.img);
   const handleApplicationApprove = (id) => {
-    fetch(`http://localhost:5000/application/${id}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/application/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

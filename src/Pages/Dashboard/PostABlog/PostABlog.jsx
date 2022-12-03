@@ -48,7 +48,7 @@ const PostABlog = () => {
 
           //   console.log(blogDetails);
 
-          fetch("http://localhost:5000/blogs", {
+          fetch("https://child-adoption-system-server.onrender.com/blogs", {
             method: "POST",
             headers: {
               "Content-type": "application/json",

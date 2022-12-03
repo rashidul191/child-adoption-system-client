@@ -24,7 +24,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Admin it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/admin/${email}`, {
+        fetch(`https://child-adoption-system-server.onrender.com/users/admin/${email}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -63,7 +63,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Employer it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/employer/${email}`, {
+        fetch(`https://child-adoption-system-server.onrender.com/users/employer/${email}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -113,7 +113,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/user/${email}`, {
+          fetch(`https://child-adoption-system-server.onrender.com/user/${email}`, {
             method: "DELETE",
             headers: {
               authorization: `Bearer ${localStorage.getItem("access-token")}`,

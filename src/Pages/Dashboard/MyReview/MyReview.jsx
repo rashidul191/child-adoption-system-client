@@ -17,7 +17,7 @@ const MyReview = () => {
       comment: event.target.comment.value,
     };
 
-    fetch(`http://localhost:5000/reviews/${user?.email}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/reviews/${user?.email}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const MyProfile = () => {
   const [user] = useAuthState(auth);
   const { displayName, email, photoURL } = user;
   const { data, isLoading } = useQuery(["userDB"], () =>
-    fetch(`http://localhost:5000/user?email=${email}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/user?email=${email}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

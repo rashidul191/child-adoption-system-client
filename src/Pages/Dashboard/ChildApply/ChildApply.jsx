@@ -12,7 +12,7 @@ const ChildApply = () => {
   DynamicTitle("Child Apply");
   const [user] = useAuthState(auth);
   const { data: childApplyAll, isLoading } = useQuery(["childApply"], () =>
-    fetch(`http://localhost:5000/child-apply?email=${user?.email}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/child-apply?email=${user?.email}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
