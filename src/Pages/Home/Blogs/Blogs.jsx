@@ -47,7 +47,7 @@ const Blogs = () => {
 
       <div className="text-center ">
         <Link to={`/all-blogs`}>
-          <button className="btn btn-secondary rounded-none w-60 hover:w-72 text-white hover:text-xl">
+          <button className="btn btn-primary bg-black rounded-none w-60 text-white ">
             See More
             <FontAwesomeIcon
               className="ml-4"

@@ -12,7 +12,7 @@ const BlogsGrid = ({ blog }) => {
   return (
     <div
       onClick={() => handleBlogsDetails(_id)}
-      className="card w-5/6 rounded-none image-full mx-auto"
+      className="card w-5/6 image-full mx-auto"
     >
       <figure>
         <img src={blogImg} alt="img" />

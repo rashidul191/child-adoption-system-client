@@ -15,28 +15,49 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">Help</span>
-          <Link to="/about" className="link link-hover">
+          <Link
+            to="/about"
+            className="link link-hover hover:ml-3 hover:font-bold hover:text-base hover:text-blue-500"
+          >
             About Us
           </Link>
-          <Link to="/contact-us" className="link link-hover">
+          <Link
+            to="/contact-us"
+            className="link link-hover  hover:ml-3 hover:font-bold hover:text-base hover:text-blue-500"
+          >
             Contact Us
           </Link>
-          <Link to="/members" className="link link-hover">
+          <Link
+            to="/members"
+            className="link link-hover  hover:ml-3 hover:font-bold hover:text-base hover:text-blue-500"
+          >
             Members
           </Link>
         </div>
         <div>
           <span className="footer-title">Company</span>
-          <Link to="/our-project" className="link link-hover">
+          <Link
+            to="/our-project"
+            className="link link-hover  hover:ml-3 hover:font-bold hover:text-base hover:text-blue-500"
+          >
             Our Project
           </Link>
-          <Link to="/all-blogs" className="link link-hover">
+          <Link
+            to="/all-blogs"
+            className="link link-hover  hover:ml-3 hover:font-bold hover:text-base hover:text-blue-500"
+          >
             Blog
           </Link>
-          <Link to="/donation" className="link link-hover">
+          <Link
+            to="/donation"
+            className="link link-hover  hover:ml-3 hover:font-bold hover:text-base hover:text-blue-500"
+          >
             Donate
           </Link>
-          <Link to="/terms-of-service" className="link link-hover">
+          <Link
+            to="/terms-of-service"
+            className="link link-hover  hover:ml-3 hover:font-bold hover:text-base hover:text-blue-500"
+          >
             Terms & Conditions
           </Link>
         </div>
