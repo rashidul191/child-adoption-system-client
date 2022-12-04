@@ -92,7 +92,7 @@ const CheckForApply = () => {
     // console.log("yes value:", allowValue);
     // console.log("no value", notAllowValue);
 
-    fetch(`http://localhost:5000/check-eligible/${user?.email}`, {
+    fetch(`https://child-adoption-system-server.onrender.com/check-eligible/${user?.email}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

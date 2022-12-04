@@ -26,7 +26,7 @@ const CheckApplyResult = () => {
   const { data: eligibilityScore, isLoading } = useQuery(
     ["eligibilityScore"],
     () =>
-      fetch(`http://localhost:5000/check-eligibility/?email=${user?.email}`, {
+      fetch(`https://child-adoption-system-server.onrender.com/check-eligibility/?email=${user?.email}`, {
         method: "GET",
         headers: { "content-type": "application/json" },
       }).then((res) => res.json())
