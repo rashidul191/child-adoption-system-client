@@ -17,13 +17,16 @@ const MyReview = () => {
       comment: event.target.comment.value,
     };
 
-    fetch(`https://child-adoption-system-server.onrender.com/reviews/${user?.email}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/reviews/${user?.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(review),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

@@ -8,7 +8,7 @@ const AgencyGrid = ({ agency }) => {
   if (description.length > 50) {
     setDescription = <p>{description.slice(0, 50)}...</p>;
   } else {
-    setDescription = description;
+    setDescription = <p>{description}</p>;
   }
 
   const handleAgencyLearnMore = (id) => {
@@ -21,8 +21,8 @@ const AgencyGrid = ({ agency }) => {
       </figure>
       <div className="card-body">
         <h2 className="text-xl font-bold uppercase">{agencyName}</h2>
-        <p className="my-0">{agencyLocation}</p>
-        <p className="my-0"> {setDescription}</p>
+        <span className="my-0">{agencyLocation}</span>
+        <span className="my-0"> {setDescription}</span>
         <div className="card-actions justify-end">
           <button
             onClick={() => handleAgencyLearnMore(_id)}

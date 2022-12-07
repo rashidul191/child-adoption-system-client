@@ -1,11 +1,16 @@
 import React from "react";
 import { toast } from "react-toastify";
+import Loading from "../../Shared/Loading/Loading";
 
-const ApplicationRowModal = ({ childApplicationData }) => {
-//   console.log("modal from: ",childApplicationData?.email);
-  console.log("modal from: ",childApplicationData?.child?.img);
+const ApplicationRowModal = ({ childApplicationData, isLoading, refetch }) => {
+  //   console.log("modal from: ",childApplicationData?.email);
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+  // console.log("modal from: ", childApplicationData);
   const handleApplicationApprove = (id) => {
-    fetch(`https://child-adoption-system-server.onrender.com/application/${id}`, {
+    // console.log(id);
+    fetch(`http://localhost:5000/application/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -20,7 +25,8 @@ const ApplicationRowModal = ({ childApplicationData }) => {
       })
       .then((data) => {
         if (data?.modifiedCount > 0) {
-          toast.success(`Application Delete Successfully`);
+          toast.success(`Application Approve Successfully`);
+          refetch();
         }
       });
   };
@@ -89,15 +95,13 @@ const ApplicationRowModal = ({ childApplicationData }) => {
           </p>
         </div>
         <p>
-          Citizenship:{" "}
-          <span>{childApplicationData?.data?.citizenship}</span>
+          Citizenship: <span>{childApplicationData?.data?.citizenship}</span>
         </p>
         <p>
           Birth Date: <span>{childApplicationData?.data?.birthDate}</span>
         </p>
         <p>
-          NID / Passport:{" "}
-          <span>{childApplicationData?.data?.nidPassport}</span>
+          NID / Passport: <span>{childApplicationData?.data?.nidPassport}</span>
         </p>
       </div>
 
@@ -113,12 +117,10 @@ const ApplicationRowModal = ({ childApplicationData }) => {
           </p>
         </div>
         <p>
-          Citizenship:{" "}
-          <span>{childApplicationData?.data?.citizenship2}</span>
+          Citizenship: <span>{childApplicationData?.data?.citizenship2}</span>
         </p>
         <p>
-          Birth Date:{" "}
-          <span>{childApplicationData?.data?.birthDate2}</span>
+          Birth Date: <span>{childApplicationData?.data?.birthDate2}</span>
         </p>
         <p>
           NID / Passport:{" "}

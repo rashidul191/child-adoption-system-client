@@ -32,7 +32,7 @@ const Blogs = () => {
   }
 
   return (
-    <section className="my-10 md:mb-28 py-10">
+    <section className="my-10 py-10">
       <div>
         <h1 className="text-center text-2xl font-bold uppercase">
           Read Stores

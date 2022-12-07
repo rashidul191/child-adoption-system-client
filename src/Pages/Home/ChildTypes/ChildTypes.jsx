@@ -48,7 +48,7 @@ const ChildTypes = () => {
               <p className="link link-hover text-blue-500">
                 Foster Care Child
                 <FontAwesomeIcon
-                  className="ml-2"px-9
+                  className="ml-2"
                   icon={faArrowRight}
                 ></FontAwesomeIcon>
               </p>

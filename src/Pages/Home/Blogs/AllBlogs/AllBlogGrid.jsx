@@ -7,7 +7,7 @@ const AllBlogGrid = ({ blog }) => {
   const { _id, blogImg, blogTitle, displayName, postDate, description } = blog;
 
   const handleBlogsDetails = (id) => {
-    console.log(id);
+    // console.log(id);
     navigate(`/blog/${id}`);
   };
 
@@ -23,7 +23,7 @@ const AllBlogGrid = ({ blog }) => {
   if (description.length > 60) {
     setDescription = <p>{description.slice(0, 65)}...</p>;
   } else {
-    setDescription = description;
+    setDescription = <p>{description}</p>;
   }
 
   return (
@@ -39,7 +39,7 @@ const AllBlogGrid = ({ blog }) => {
           {blogTitle}
           {toDay && <div className="badge badge-secondary">NEW</div>}
         </h2>
-        <p className="my-6"> {setDescription}</p>
+        <span className="my-6"> {setDescription}</span>
         <hr />
         <div className="card-actions justify-between">
           <div className=" ">{displayName}</div>

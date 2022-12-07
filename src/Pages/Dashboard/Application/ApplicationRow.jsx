@@ -9,22 +9,26 @@ import Swal from "sweetalert2";
 // import auth from "../../../firebase.init";
 import { useState } from "react";
 
-const ApplicationRow = ({ index, application, refetch }) => {
+const ApplicationRow = ({ index, application, isLoading, refetch }) => {
   // const navigate = useNavigate();
   const { _id } = application;
   const [childApplicationData, setChildApplicationData] = useState({});
 
   // handle Find Application Id
-  const handleFindApplicationId = (id) => {
+  const handleFindApplicationId = (_id) => {
+    // console.log(_id);
     // console.log("find application id: ", id)
-    fetch(`https://child-adoption-system-server.onrender.com/application/${id}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/application/${_id}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log("Child Application data: ", data);
         setChildApplicationData(data);
       });
   };
@@ -77,12 +81,15 @@ const ApplicationRow = ({ index, application, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`https://child-adoption-system-server.onrender.com/application/${_id}`, {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/application/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data?.deletedCount > 0) {
@@ -168,6 +175,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
             onClick={() => handleApplicationDelete(_id)}
             className="btn btn-error btn-sm text-white"
           >
+            {" "}
             <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
           </button>
         </th>
@@ -186,6 +194,8 @@ const ApplicationRow = ({ index, application, refetch }) => {
           </label>
           <ApplicationRowModal
             childApplicationData={childApplicationData}
+            isLoading={isLoading}
+            refetch={refetch}
           ></ApplicationRowModal>
         </div>
       </div>

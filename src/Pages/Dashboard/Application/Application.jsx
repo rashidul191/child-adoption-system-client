@@ -5,8 +5,7 @@ import Loading from "../../Shared/Loading/Loading";
 import ApplicationRow from "./ApplicationRow";
 
 const Application = () => {
-
-    DynamicTitle("Application");
+  DynamicTitle("Application");
   // react query
   const {
     data: allApplication,
@@ -42,14 +41,18 @@ const Application = () => {
             </tr>
           </thead>
           <tbody>
-          {allApplication?.slice(0).reverse()?.map((application, index) => (
-              <ApplicationRow
-                key={application._id}
-                application={application}
-                index={index}
-                refetch={refetch}
-              ></ApplicationRow>
-            ))}
+            {allApplication
+              ?.slice(0)
+              .reverse()
+              ?.map((application, index) => (
+                <ApplicationRow
+                  key={application._id}
+                  application={application}
+                  index={index}
+                  isLoading={isLoading}
+                  refetch={refetch}
+                ></ApplicationRow>
+              ))}
           </tbody>
         </table>
       </div>

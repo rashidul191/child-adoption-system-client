@@ -63,9 +63,7 @@ const ChildApplyForm = () => {
         } else {
           toast.error("Failed to Apply");
         }
-    
       });
-      
   };
 
   if (isLoading || isLoading2) {
