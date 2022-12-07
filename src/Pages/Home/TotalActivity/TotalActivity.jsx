@@ -11,7 +11,7 @@ import Loading from "../../Shared/Loading/Loading";
 
 const TotalActivity = () => {
   const { data: users, isLoading } = useQuery(["users"], () =>
-    fetch(`http://localhost:5000/allUsersLength`, {
+    fetch(`https://child-adoption-system-server.onrender.com/allUsersLength`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -20,7 +20,7 @@ const TotalActivity = () => {
   );
 
   const { data: allChild, isLoading2 } = useQuery(["allChild"], () =>
-    fetch(`http://localhost:5000/allChildLength`, {
+    fetch(`https://child-adoption-system-server.onrender.com/allChildLength`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ const TotalActivity = () => {
   );
 
   const { data: allAgency, isLoading3 } = useQuery(["allAgency"], () =>
-    fetch(`http://localhost:5000/allAgency`, {
+    fetch(`https://child-adoption-system-server.onrender.com/allAgency`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
