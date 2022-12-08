@@ -1,8 +1,32 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
+import auth from "../../../firebase.init";
+import useAdmin from "../../../hooks/useAdmin";
+import useEmployer from "../../../hooks/useEmployer";
+import Loading from "../../Shared/Loading/Loading";
 
-const ApplicationRowModal = ({ childApplicationData, }) => {
-  // console.log("modal from: ", childApplicationData);
+const ApplicationRowModal = ({ childApplicationData }) => {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+  const [employer] = useEmployer(user);
+  // const { data: users, isLoading } = useQuery(["allUserRole"], () =>
+  //   fetch("https://child-adoption-system-server.onrender.com/allUsers", {
+  //     method: "GET",
+  //     headers: {
+  //       "content-type": "application/json",
+  //       authorization: `Bearer ${localStorage.getItem("access-token")}`,
+  //     },
+  //   }).then((res) => res.json())
+  // );
+
+  // if (isLoading) {
+  //   return <Loading></Loading>;
+  // }
+
+  // console.log(users);
+
   const handleApplicationApprove = (id) => {
     // console.log(id);
     fetch(
@@ -147,18 +171,38 @@ const ApplicationRowModal = ({ childApplicationData, }) => {
       </div>
 
       <div className="text-center">
-        {childApplicationData?.role === "approved" ? (
-          <p className="text-white font-bold w-96 uppercase bg-green-500 text-center">
-            Already Approved
-          </p>
+        {!admin && !employer ? (
+          <>
+            {childApplicationData?.role === "approved" ? (
+              <>
+                <p className="text-success font-bold">
+                  " NOTE: Approved !!! Now You can download apply pdf file. "
+                </p>
+              </>
+            ) : (
+              <p className="text-error font-bold">
+                " NOTE: You can download apply pdf file after approved. "
+              </p>
+            )}
+          </>
         ) : (
-          <label
-            htmlFor="my-modal-15"
-            className="btn btn-primary btn-sm text-white w-96"
-            onClick={() => handleApplicationApprove(childApplicationData?._id)}
-          >
-            Approve
-          </label>
+          <>
+            {childApplicationData?.role === "approved" ? (
+              <p className="text-white font-bold w-96 uppercase bg-green-500 text-center">
+                Already Approved
+              </p>
+            ) : (
+              <label
+                htmlFor="my-modal-15"
+                className="btn btn-primary btn-sm text-white w-96"
+                onClick={() =>
+                  handleApplicationApprove(childApplicationData?._id)
+                }
+              >
+                Approve
+              </label>
+            )}
+          </>
         )}
       </div>
     </div>

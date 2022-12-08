@@ -13,15 +13,17 @@ const ApplicationRow = ({ index, application, refetch }) => {
 
   // handle Find Application Id
   const handleFindApplicationId = (id) => {
-    fetch(`https://child-adoption-system-server.onrender.com/application/${id}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/application/${id}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log("Child Application data: ", data);
         setChildApplicationData(data);
       });
   };
@@ -143,7 +145,6 @@ const ApplicationRow = ({ index, application, refetch }) => {
           {/* The button to open modal */}
           <label
             onClick={() => handleFindApplicationId(_id)}
-            //htmlFor="my-modal-15"
             htmlFor={`my-modal-${_id}`}
             className="btn"
           >
@@ -186,7 +187,6 @@ const ApplicationRow = ({ index, application, refetch }) => {
           >
             ✕
           </label>
-
           <ApplicationRowModal
             childApplicationData={childApplicationData}
           ></ApplicationRowModal>
