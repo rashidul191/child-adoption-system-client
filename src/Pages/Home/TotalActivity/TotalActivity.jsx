@@ -44,36 +44,36 @@ const TotalActivity = () => {
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-3 my-16 text-center">
       <div className="card w-3/4 md:w-96 bg-base-100 border rounded-none mx-auto ">
-        <div className="card-body">
-          <h2 className="text-2xl font-bold uppercase">Users</h2>
-          <p className="text-3xl font-bold">
-            <CountUp end={users} />
-          </p>
+        <div className="card-body hover:bg-[#3F434D] hover:text-white">
           <span className="text-5xl ">
             <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
           </span>
+          <p className="text-4xl font-bold">
+            <CountUp end={users} />
+          </p>
+          <h2 className="text-2xl uppercase">Users</h2>
         </div>
       </div>
       <div className="card w-3/4 md:w-96 bg-base-100 border rounded-none mx-auto">
-        <div className="card-body">
-          <h2 className="text-2xl font-bold uppercase">Child</h2>
-          <p className="text-3xl font-bold">
-            <CountUp end={allChild} />
-          </p>
+        <div className="card-body hover:bg-[#3F434D] hover:text-white">
           <span className="text-5xl">
             <FontAwesomeIcon icon={faChildren}></FontAwesomeIcon>
           </span>
+          <p className="text-4xl font-bold">
+            <CountUp end={allChild} />
+          </p>
+          <h2 className="text-2xl uppercase">Child</h2>
         </div>
       </div>
       <div className="card w-3/4 md:w-96 bg-base-100 border rounded-none mx-auto">
-        <div className="card-body">
-          <h2 className="text-2xl font-bold uppercase">Agency</h2>
-          <p className="text-3xl font-bold">
-            <CountUp end={allAgency?.length} />
-          </p>
+        <div className="card-body hover:bg-[#3F434D] hover:text-white">
           <span className="text-5xl">
             <FontAwesomeIcon icon={faHouseFlag}></FontAwesomeIcon>
           </span>
+          <p className="text-4xl font-bold">
+            <CountUp end={allAgency?.length} />
+          </p>
+          <h2 className="text-2xl uppercase">Agency</h2>
         </div>
       </div>
     </section>

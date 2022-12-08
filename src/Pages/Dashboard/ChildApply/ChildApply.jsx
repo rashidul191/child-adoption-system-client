@@ -44,31 +44,25 @@ const ChildApply = () => {
       </div>
       <hr />
       {childApplyAll.length > 0 ? (
-        <div>
-          <div className="flex justify-between">
-            <h1 className=" md:text-xl font-bold uppercase">Child Apply</h1>
-          </div>
-          <hr />
-          <div className="overflow-x-auto w-full">
-            <table className="table w-full">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Child Info</th>
-                  <th>Action</th>
-                  <th>Apply form Download</th>
-                </tr>
-              </thead>
-              <tbody>
-                {childApplyAll?.map((childApply) => (
-                  <ChildApplyDetails
-                    key={childApply._id}
-                    childApply={childApply}
-                  ></ChildApplyDetails>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Child Info</th>
+                <th>Action</th>
+                <th>Apply form Download</th>
+              </tr>
+            </thead>
+            <tbody>
+              {childApplyAll?.map((childApply) => (
+                <ChildApplyDetails
+                  key={childApply._id}
+                  childApply={childApply}
+                ></ChildApplyDetails>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <div className="text-center justify-center border">

@@ -14,7 +14,7 @@ const Dashboard = () => {
     <div className="drawer drawer-mobile md:mb-20">
       <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content mx-5 md:mx-10">
-        <h2 className="text-xl md:text-4xl text-sky-400 uppercase">
+        {/* <h2 className="text-xl md:text-4xl text-sky-400 uppercase">
           Welcome to{" "}
           <span className="text-black">
             {user?.displayName}{" "}
@@ -22,7 +22,7 @@ const Dashboard = () => {
               {admin && "(Admin)"} {employer && "(Employer)"}
             </span>
           </span>
-        </h2>
+        </h2> */}
         <Outlet />
       </div>
       <div className="drawer-side md:ml-10">

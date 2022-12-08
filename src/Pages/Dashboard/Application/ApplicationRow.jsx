@@ -4,28 +4,21 @@ import React from "react";
 import ApplicationRowModal from "./ApplicationRowModal";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-// import { useNavigate } from "react-router-dom";
-// import { signOut } from "firebase/auth";
-// import auth from "../../../firebase.init";
 import { useState } from "react";
 
-const ApplicationRow = ({ index, application, isLoading, refetch }) => {
+const ApplicationRow = ({ index, application, refetch }) => {
   // const navigate = useNavigate();
   const { _id } = application;
   const [childApplicationData, setChildApplicationData] = useState({});
 
   // handle Find Application Id
-  const handleFindApplicationId = (_id) => {
-    // console.log(_id);
-    // console.log("find application id: ", id)
-    fetch(
-      `https://child-adoption-system-server.onrender.com/application/${_id}`,
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("access-token")}`,
-        },
-      }
-    )
+  const handleFindApplicationId = (id) => {
+    fetch(`https://child-adoption-system-server.onrender.com/application/${id}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log("Child Application data: ", data);
@@ -150,7 +143,8 @@ const ApplicationRow = ({ index, application, isLoading, refetch }) => {
           {/* The button to open modal */}
           <label
             onClick={() => handleFindApplicationId(_id)}
-            htmlFor="my-modal-15"
+            //htmlFor="my-modal-15"
+            htmlFor={`my-modal-${_id}`}
             className="btn"
           >
             View Application
@@ -182,20 +176,19 @@ const ApplicationRow = ({ index, application, isLoading, refetch }) => {
       </tr>
 
       {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my-modal-15" className="modal-toggle" />
+      <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />
       {/* application form modal */}
       <div className="modal">
         <div className="modal-box w-3/4 ml-48  max-w-5xl">
           <label
-            htmlFor="my-modal-15"
+            htmlFor={`my-modal-${_id}`}
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
+
           <ApplicationRowModal
             childApplicationData={childApplicationData}
-            isLoading={isLoading}
-            refetch={refetch}
           ></ApplicationRowModal>
         </div>
       </div>

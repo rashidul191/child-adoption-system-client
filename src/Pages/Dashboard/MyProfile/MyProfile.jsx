@@ -11,20 +11,28 @@ import Loading from "../../Shared/Loading/Loading";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 import EditMyProfile from "./EditMyProfile";
 import { useState } from "react";
+import useAdmin from "../../../hooks/useAdmin";
+import useEmployer from "../../../hooks/useEmployer";
 
 const MyProfile = () => {
   DynamicTitle("My Profile");
+
   const [profileEdit, setProfileEdit] = useState(true);
   const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+  const [employer] = useEmployer(user);
   const { displayName, email, photoURL } = user;
   const { data, isLoading } = useQuery(["userDB"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/user?email=${email}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://child-adoption-system-server.onrender.com/user?email=${email}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("access-token");
@@ -40,6 +48,15 @@ const MyProfile = () => {
 
   return (
     <section>
+      <h2 className="text-xl md:text-4xl text-sky-400 uppercase">
+        Welcome to{" "}
+        <span className="text-black">
+          {user?.displayName}{" "}
+          <span className="text-green-500">
+            {admin && "(Admin)"} {employer && "(Employer)"}
+          </span>
+        </span>
+      </h2>
       <div className="flex justify-between">
         <h1 className=" md:text-xl font-bold uppercase">My Profile</h1>
         <button

@@ -22,6 +22,15 @@ const UserReviews = () => {
   const settings = {
     dots: true,
     infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+  };
+  const settings2 = {
+    dots: true,
+    infinite: true,
     slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
@@ -37,14 +46,26 @@ const UserReviews = () => {
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
-      <Slider {...settings}>
-        {reviews
-          ?.slice(0, 12)
-          ?.reverse()
-          ?.map((review) => (
-            <UserReview key={review._id} review={review}></UserReview>
-          ))}
-      </Slider>
+      <div className="md:hidden">
+        <Slider {...settings}>
+          {reviews
+            ?.slice(0, 12)
+            ?.reverse()
+            ?.map((review) => (
+              <UserReview key={review._id} review={review}></UserReview>
+            ))}
+        </Slider>
+      </div>
+      <div className="hidden md:block">
+        <Slider {...settings2}>
+          {reviews
+            ?.slice(0, 12)
+            ?.reverse()
+            ?.map((review) => (
+              <UserReview key={review._id} review={review}></UserReview>
+            ))}
+        </Slider>
+      </div>
     </section>
   );
 };

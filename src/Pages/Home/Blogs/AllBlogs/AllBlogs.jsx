@@ -5,7 +5,7 @@ import AllBlogGrid from "./AllBlogGrid";
 
 const AllBlogs = () => {
   // react query
-  const { data: SeeAllBlogs, isLoading } = useQuery(["SeeAllBlogs"], () =>
+  const { data: seeAllBlogs, isLoading } = useQuery(["SeeAllBlogs"], () =>
     fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
       method: "GET",
       headers: {
@@ -32,7 +32,7 @@ const AllBlogs = () => {
         }}
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10 items-start"
       >
-        {SeeAllBlogs?.map((blog) => (
+        {seeAllBlogs?.map((blog) => (
           <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
         ))}
       </div>

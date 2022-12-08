@@ -67,7 +67,7 @@ const PostABlog = () => {
             .then((data) => {
               if (data?.insertedId) {
                 toast.success("Post A Blog successfully");
-                data = "";
+                window.location.reload();
               } else {
                 toast.error("Failed to Your Post A Blog");
               }

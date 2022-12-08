@@ -8,7 +8,7 @@ import BlogsGrid from "./BlogsGrid/BlogsGrid";
 
 const Blogs = () => {
   // react query
-  const { data: allBlogs, isLoading } = useQuery(["allBlogs"], () =>
+  const { data: allBlogs, isLoading } = useQuery(["seeAllBlogs"], () =>
     fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
       method: "GET",
       headers: {
@@ -19,17 +19,16 @@ const Blogs = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
+  // if (allBlogs === undefined) {
+  //   return <Loading></Loading>;
+  // }
 
-  if (allBlogs === undefined) {
-    return <Loading></Loading>;
-  }
-
-  let allBlogsInfo;
-  if (allBlogs.length > 3) {
-    allBlogsInfo = allBlogs.slice(0, 4);
-  } else {
-    allBlogsInfo = allBlogs;
-  }
+  // let allBlogsInfo;
+  // if (allBlogs.length > 3) {
+  //   allBlogsInfo = allBlogs.slice(0, 4);
+  // } else {
+  //   allBlogsInfo = allBlogs;
+  // }
 
   return (
     <section className="my-10 py-10">
@@ -39,12 +38,14 @@ const Blogs = () => {
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-2 my-10">
-        {allBlogsInfo?.map((blog) => (
-          <BlogsGrid key={blog._id} blog={blog}></BlogsGrid>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-2 my-10 md:mx-24">
+        {allBlogs
+          ?.slice(0, 4)
+          .reverse()
+          ?.map((blog) => (
+            <BlogsGrid key={blog._id} blog={blog}></BlogsGrid>
+          ))}
       </div>
-
       <div className="text-center ">
         <Link to={`/all-blogs`}>
           <button className="btn btn-primary bg-black rounded-none w-60 text-white ">

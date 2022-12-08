@@ -1,22 +1,20 @@
 import React from "react";
 import { toast } from "react-toastify";
-import Loading from "../../Shared/Loading/Loading";
 
-const ApplicationRowModal = ({ childApplicationData, isLoading, refetch }) => {
-  //   console.log("modal from: ",childApplicationData?.email);
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
+const ApplicationRowModal = ({ childApplicationData, }) => {
   // console.log("modal from: ", childApplicationData);
   const handleApplicationApprove = (id) => {
     // console.log(id);
-    fetch(`https://child-adoption-system-server.onrender.com/application/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/application/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 403 || res.status === 401) {
           toast.error("Failed To approve");
@@ -25,8 +23,8 @@ const ApplicationRowModal = ({ childApplicationData, isLoading, refetch }) => {
       })
       .then((data) => {
         if (data?.modifiedCount > 0) {
-          toast.success(`Application Approve Successfully`);
-          refetch();
+          toast.success(`Application Approved Successful`);
+          window.location.reload();
         }
       });
   };

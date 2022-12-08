@@ -125,25 +125,28 @@ const BlogDetails = () => {
           </h2>
         </div>
 
-        <div className="md:hidden">
-          <Slider {...settings}>
-            {seeAllBlogs
-              ?.slice(0, 6)
-              ?.reverse()
-              ?.map((blog) => (
-                <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
-              ))}
-          </Slider>
-        </div>
-        <div className="hidden md:block">
-          <Slider {...settings2}>
-            {seeAllBlogs
-              ?.slice(0, 15)
-              ?.reverse()
-              ?.map((blog) => (
-                <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
-              ))}
-          </Slider>
+        {/* Related article here */}
+        <div>
+          <div className="md:hidden">
+            <Slider {...settings}>
+              {seeAllBlogs
+                ?.slice(0, 6)
+                ?.reverse()
+                ?.map((blog) => (
+                  <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
+                ))}
+            </Slider>
+          </div>
+          <div className="hidden md:block">
+            <Slider {...settings2}>
+              {seeAllBlogs
+                ?.slice(0, 15)
+                ?.reverse()
+                ?.map((blog) => (
+                  <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
+                ))}
+            </Slider>
+          </div>
         </div>
       </div>
     </section>
