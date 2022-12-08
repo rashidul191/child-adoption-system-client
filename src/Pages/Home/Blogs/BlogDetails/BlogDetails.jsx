@@ -27,7 +27,7 @@ const BlogDetails = () => {
 
   // all blogs
   const { data: seeAllBlogs, isLoading2 } = useQuery(["allBlogs"], () =>
-    fetch("http://localhost:5000/allBlogs", {
+    fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
       method: "GET",
       headers: {
         "content-type": "application/json",
