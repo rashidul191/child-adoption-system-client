@@ -25,16 +25,13 @@ const AllBlogs = () => {
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: " row-reverse",
-        }}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10 items-start"
-      >
-        {seeAllBlogs?.map((blog) => (
-          <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
-        ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10 items-start">
+        {seeAllBlogs
+          ?.slice(0)
+          ?.reverse()
+          ?.map((blog) => (
+            <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
+          ))}
       </div>
     </section>
   );
