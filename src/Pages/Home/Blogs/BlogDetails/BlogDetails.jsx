@@ -10,21 +10,50 @@ import {
 import { FacebookShareButton, LinkedinShareButton } from "react-share";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import AllBlogGrid from "../AllBlogs/AllBlogGrid";
 
 const BlogDetails = () => {
-  const { id } = useParams();
-
-  const shareUrl = `http://localhost:3000/blog/${id}`;
-
+  const { blogTitle, id } = useParams();
+  //const shareUrl = `https://child-adoption-system.web.app/blog/${id}`;
+  const shareUrl = `https://child-adoption-system.web.app/blog/${blogTitle}/${id}`;
   const { data: blog, isLoading } = useQuery(["blogDetails"], () =>
     fetch(`https://child-adoption-system-server.onrender.com/blog/${id}`, {
       method: "GET",
     }).then((res) => res.json())
   );
 
-  if (isLoading) {
+  // all blogs
+  const { data: seeAllBlogs, isLoading2 } = useQuery(["allBlogs"], () =>
+    fetch("http://localhost:5000/allBlogs", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then((res) => res.json())
+  );
+  if (isLoading || isLoading2) {
     return <Loading></Loading>;
   }
+
+  // console.log(seeAllBlogs);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  const settings2 = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  };
 
   return (
     <section>
@@ -87,6 +116,34 @@ const BlogDetails = () => {
           </div>
           <hr />
           <p className="text-justify">{blog?.description}</p>
+        </div>
+      </div>
+      <div className="py-12 bg-[#F6F9FC]">
+        <div>
+          <h2 className="text-center text-3xl md:text-4xl font-bold text-[#2E4781] mb-10">
+            Related Articles
+          </h2>
+        </div>
+
+        <div className="md:hidden">
+          <Slider {...settings}>
+            {seeAllBlogs
+              ?.slice(0, 6)
+              ?.reverse()
+              ?.map((blog) => (
+                <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
+              ))}
+          </Slider>
+        </div>
+        <div className="hidden md:block">
+          <Slider {...settings2}>
+            {seeAllBlogs
+              ?.slice(0, 15)
+              ?.reverse()
+              ?.map((blog) => (
+                <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
+              ))}
+          </Slider>
         </div>
       </div>
     </section>

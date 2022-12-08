@@ -56,7 +56,11 @@ function App() {
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/all-blogs" element={<AllBlogs></AllBlogs>}></Route>
-        <Route path="/blog/:id" element={<BlogDetails></BlogDetails>}></Route>
+        {/* <Route path="/blog/:id" element={<BlogDetails></BlogDetails>}></Route> */}
+        <Route
+          path="/blog/:blogTitle/:id"
+          element={<BlogDetails></BlogDetails>}
+        ></Route>
         <Route
           path="/terms-of-service"
           element={<TermsAndCondition></TermsAndCondition>}

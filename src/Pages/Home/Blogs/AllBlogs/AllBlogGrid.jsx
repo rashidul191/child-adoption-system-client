@@ -8,7 +8,9 @@ const AllBlogGrid = ({ blog }) => {
 
   const handleBlogsDetails = (id) => {
     // console.log(id);
-    navigate(`/blog/${id}`);
+    //navigate(`/blog/${id}`);
+    navigate(`/blog/${blogTitle}/${id}`);
+    window.location.reload();
   };
 
   const currentDate = format(new Date(), "PP");
@@ -36,7 +38,7 @@ const AllBlogGrid = ({ blog }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title my-0">
-          {blogTitle}
+          <span className="hover:underline"> {blogTitle}</span>
           {toDay && <div className="badge badge-secondary">NEW</div>}
         </h2>
         <span className="my-6"> {setDescription}</span>
