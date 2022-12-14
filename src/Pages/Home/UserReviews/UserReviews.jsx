@@ -49,7 +49,7 @@ const UserReviews = () => {
       <div className="md:hidden">
         <Slider {...settings}>
           {reviews
-            ?.slice(0, 12)
+            ?.slice(0, 6)
             ?.reverse()
             ?.map((review) => (
               <UserReview key={review._id} review={review}></UserReview>

@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <section>
       <div
-        className="hero min-h-screen"
+        className="hero h-[500px] sm:h-[650px] 2xl:min-h-screen w-full"
         style={{
           backgroundImage: `url("https://fis-pune.com/wp-content/uploads/2022/05/istockphoto-1160932512-612x612-1.jpeg")`,
         }}
@@ -17,8 +17,12 @@ const Banner = () => {
             <h1 className="mb-5 text-3xl font-bold">
               A Quality Place and Education
             </h1>
-            <p className="mb-5">You can change a life with your support.</p>
-            <Link to={"/donation"}><button className="btn btn-secondary rounded-none">Donate Now</button></Link>
+            <p className="mb-5">You can change a life of your support.</p>
+            <Link to={"/donation"}>
+              <button className="btn btn-secondary rounded-none">
+                Donate Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

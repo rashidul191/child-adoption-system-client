@@ -29,15 +29,15 @@ const AllBlogGrid = ({ blog }) => {
   }
 
   return (
-    <div
-      onClick={() => handleBlogsDetails(_id)}
-      className="card  w-5/6 md:w-96 bg-base-100 shadow-xl md:shadow-none  md:hover:shadow-xl border rounded-none mx-auto cursor-pointer"
-    >
+    <div className="card  w-5/6 md:w-96 bg-base-100 shadow-xl md:shadow-none md:hover:shadow-xl border rounded-none mx-auto">
       <figure>
         <img src={blogImg} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title my-0">
+        <h2
+          onClick={() => handleBlogsDetails(_id)}
+          className="card-title my-0 cursor-pointer"
+        >
           <span className="hover:underline"> {blogTitle}</span>
           {toDay && <div className="badge badge-secondary">NEW</div>}
         </h2>

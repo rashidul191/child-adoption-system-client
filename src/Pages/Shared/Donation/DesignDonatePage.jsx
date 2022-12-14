@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const DesignDonatePage = () => {
   return (
-    <section className="mx-10 md:mx-20 mb-10 ">
+    <section className="mx-10 mb-10">
       <Link to={"/donation"}>
         <div className="hero bg-[#EBF1F6] md:p-10">
           <div className="hero-content flex-col lg:flex-row">

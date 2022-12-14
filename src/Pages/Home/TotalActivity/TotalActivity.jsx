@@ -44,7 +44,7 @@ const TotalActivity = () => {
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-3 my-16 text-center">
       <div className="card w-3/4 md:w-96 bg-base-100 border rounded-none mx-auto ">
-        <div className="card-body hover:bg-[#3F434D] hover:text-white">
+        <div className="card-body transition ease-in delay-150 hover:bg-[#3F434D] hover:text-white duration-100">
           <span className="text-5xl ">
             <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
           </span>
@@ -55,7 +55,7 @@ const TotalActivity = () => {
         </div>
       </div>
       <div className="card w-3/4 md:w-96 bg-base-100 border rounded-none mx-auto">
-        <div className="card-body hover:bg-[#3F434D] hover:text-white">
+        <div className="card-body  transition ease-in delay-150 hover:bg-[#3F434D] hover:text-white duration-100">
           <span className="text-5xl">
             <FontAwesomeIcon icon={faChildren}></FontAwesomeIcon>
           </span>
@@ -66,7 +66,7 @@ const TotalActivity = () => {
         </div>
       </div>
       <div className="card w-3/4 md:w-96 bg-base-100 border rounded-none mx-auto">
-        <div className="card-body hover:bg-[#3F434D] hover:text-white">
+        <div className="card-body  transition ease-in delay-150 hover:bg-[#3F434D] hover:text-white duration-100">
           <span className="text-5xl">
             <FontAwesomeIcon icon={faHouseFlag}></FontAwesomeIcon>
           </span>

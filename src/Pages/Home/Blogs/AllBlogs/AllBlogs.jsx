@@ -2,8 +2,10 @@ import React from "react";
 import Loading from "../../../Shared/Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
 import AllBlogGrid from "./AllBlogGrid";
+import DynamicTitle from "../../../Shared/DynamicTitle/DynamicTitle";
 
 const AllBlogs = () => {
+  DynamicTitle("Blogs");
   // react query
   const { data: seeAllBlogs, isLoading } = useQuery(["SeeAllBlogs"], () =>
     fetch("https://child-adoption-system-server.onrender.com/allBlogs", {

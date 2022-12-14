@@ -1,5 +1,8 @@
 import React from "react";
+
 const UserReview = ({ review }) => {
+  console.log(review);
+
   const { displayName, comment, rating } = review;
   let commentText;
   if (comment.length > 150) {
