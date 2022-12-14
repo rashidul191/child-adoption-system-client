@@ -9,16 +9,17 @@ import { useForm } from "react-hook-form";
 import DynamicTitle from "../DynamicTitle/DynamicTitle";
 
 const ContactUs = () => {
-  DynamicTitle("Contact");
+  DynamicTitle("Contact-Us");
 
   const {
-    register,
+    register: contactUs,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
   const onSubmit = async (data) => {
     console.log(data);
+    alert("Your message send successfully");
   };
 
   return (
@@ -91,7 +92,7 @@ const ContactUs = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                 <div className="form-control w-full md:w-56 max-w-xs">
                   <input
-                    {...register("displayName", {
+                    {...contactUs("displayName", {
                       required: {
                         value: true,
                         message: "Name is required",
@@ -113,7 +114,7 @@ const ContactUs = () => {
 
                 <div className="form-control w-full md:w-56 max-w-xs">
                   <input
-                    {...register("email", {
+                    {...contactUs("email", {
                       required: { value: true, message: "Email is required" },
                       pattern: {
                         value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -140,15 +141,15 @@ const ContactUs = () => {
                 </div>
                 <div className="form-control w-full md:w-56 max-w-xs">
                   <input
-                    {...register("phone", {
+                    {...contactUs("phone", {
                       pattern: {
-                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        value: /^[0-9]{1,13}$/,
                         message: "Provide a valid Phone Number",
                       },
                     })}
                     type="text"
                     id="phone"
-                    placeholder="Phone"
+                    placeholder="Phone Number"
                     className="input input-bordered input-sm w-full md:w-56 max-w-xs"
                   />
                   <label className="label">
@@ -168,7 +169,7 @@ const ContactUs = () => {
 
               <div className="form-control w-full pr-6 sm:pr-12">
                 <input
-                  {...register("subject", {
+                  {...contactUs("subject", {
                     required: {
                       value: true,
                       message: "Subject is required",
