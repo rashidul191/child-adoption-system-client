@@ -27,40 +27,42 @@ const Donation = () => {
   };
 
   return (
-    <section className="my-5 md:mt-10 md:mb-20">
-      <div className="w-full md:w-2/5 bg-base-100 border border-3 mx-auto">
-        <div className="card-body">
-          <div className="bg-blue-300 text-center py-3 uppercase text-white">
-            {" "}
-            <p>
-              <span
-                className={`mr-4 p-3  cursor-pointer   ${
-                  card && "bg-blue-600"
-                }  `}
-                onClick={handleCard}
-              >
-                Cards
-              </span>{" "}
-              <span
-                className={`mr-4 p-3  cursor-pointer   ${
-                  mobileBanking && "bg-blue-600"
-                }  `}
-                onClick={handleMobileBanking}
-              >
-                Mobile Banking
-              </span>
-            </p>{" "}
-          </div>
-
-          <div className="">
-            <div className={`${card ? "block" : "hidden"}`}>
-              <Elements stripe={stripePromise}>
-                <CheckoutForm />
-              </Elements>
+    <section className="pt-16">
+      <div className=" mx-20 md:mx-0 my-5 md:my-20">
+        <div className="w-full md:w-2/5 bg-base-100 border border-3 mx-auto">
+          <div className="card-body">
+            <div className="bg-blue-300 text-center py-3 uppercase text-white font-bold">
+              {" "}
+              <p>
+                <span
+                  className={`mr-4 p-3  cursor-pointer   ${
+                    card && "bg-blue-600"
+                  }  `}
+                  onClick={handleCard}
+                >
+                  Cards
+                </span>{" "}
+                <span
+                  className={`mr-4 p-3  cursor-pointer   ${
+                    mobileBanking && "bg-blue-600"
+                  }  `}
+                  onClick={handleMobileBanking}
+                >
+                  Mobile Banking
+                </span>
+              </p>{" "}
             </div>
 
-            <div className={`${mobileBanking ? "block" : "hidden"}`}>
-              <MobileBanking/>
+            <div className="">
+              <div className={`${card ? "block" : "hidden"}`}>
+                <Elements stripe={stripePromise}>
+                  <CheckoutForm />
+                </Elements>
+              </div>
+
+              <div className={`${mobileBanking ? "block" : "hidden"}`}>
+                <MobileBanking />
+              </div>
             </div>
           </div>
         </div>

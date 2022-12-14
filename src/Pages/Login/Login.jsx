@@ -104,7 +104,8 @@ const Login = () => {
   };
 
   return (
-    <section
+    <section className="pt-16">
+    <div
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundRepeat: "no-repeat",
@@ -282,7 +283,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </section>
+      </div>
+      </section>
   );
 };
 

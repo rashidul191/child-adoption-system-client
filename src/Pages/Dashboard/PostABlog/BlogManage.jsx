@@ -34,8 +34,9 @@ const BlogManage = () => {
             <tr>
               <th>S/N</th>
               <th>Blog Title</th>
+              <th>Blog By</th>
               <th>Post Date</th>
-              <th>Delete Agency</th>
+              <th>Delete</th>
             </tr>
           </thead>
 

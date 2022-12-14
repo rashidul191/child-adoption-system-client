@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const BlogRow = ({ blog, index, refetch }) => {
-  const { _id, blogTitle, postDate } = blog;
+  const { _id, blogTitle, displayName, postDate } = blog;
   const handleChildDelete = (_id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -27,12 +27,15 @@ const BlogRow = ({ blog, index, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`https://child-adoption-system-server.onrender.com/allBlogs/${_id}`, {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/allBlogs/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data?.deletedCount > 0) {
@@ -64,10 +67,15 @@ const BlogRow = ({ blog, index, refetch }) => {
       <td>
         <div className="flex items-center space-x-3">
           <div>
-            <div className="font-bold">{blogTitle}</div>
+            <p className="font-bold">
+              {blogTitle.length >= 30 ? blogTitle?.slice(0, 30) : blogTitle}{" "}
+              {blogTitle.length >= 30 && `....`}
+            </p>
           </div>
         </div>
       </td>
+
+      <td>{displayName}</td>
       <th>{postDate}</th>
       <th>
         <button

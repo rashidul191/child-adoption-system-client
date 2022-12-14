@@ -26,8 +26,8 @@ const Application = () => {
 
   // console.log(allApplication)
   return (
-    <section>
-      <h1 className="md:text-xl font-bold uppercase">Add Child</h1>
+    <section >
+      <h1 className="md:text-xl font-bold uppercase">All Application</h1>
       <hr />
       <div className="overflow-x-auto w-full">
         <table className="table w-full">

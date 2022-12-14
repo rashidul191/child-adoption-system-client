@@ -72,14 +72,14 @@ const MyProfile = () => {
       <div
         className={`${
           profileEdit || "hidden"
-        }  grid grid-cols-1 md:grid-cols-2 card bg-base-100 shadow-md pb-16`}
+        }  grid grid-cols-1 md:grid-cols-3 card bg-base-100 shadow-md pb-16`}
       >
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center col-span-1">
           <div>
             <div className="avatar">
               <div className="w-24 rounded-full">
                 <img
-                  width={120}
+                  width={150}
                   src={
                     photoURL
                       ? photoURL
@@ -89,16 +89,16 @@ const MyProfile = () => {
                 />
               </div>
             </div>
-
+            <br />
             <button
               onClick={() => setProfileEdit(!profileEdit)}
-              className="btn bg-[#FF428D] border-none text-white mt-5"
+              className="btn bg-[#FF428D] border-none text-white"
             >
               Edit Profile
             </button>
           </div>
         </div>
-        <div className="card-body">
+        <div className="card-body col-span-2">
           <span>Name:</span>
           <h2 className="text-xl font-bold">{displayName}</h2>
           <span>Email:</span>

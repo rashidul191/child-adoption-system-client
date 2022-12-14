@@ -56,7 +56,7 @@ const BlogDetails = () => {
   };
 
   return (
-    <section>
+    <section className="pt-16">
       <div className="card md:w-3/5 mx-auto bg-base-100">
         <div className="card-body">
           <img

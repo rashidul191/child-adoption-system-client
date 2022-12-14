@@ -16,7 +16,7 @@ if(isLoading){
 }
 
   return (
-    <div>
+    <section className="pt-16">
       <div className="bg-info py-5 text-white">
         <h1 className="text-center text-2xl font-bold uppercase">
           {childType}
@@ -29,7 +29,7 @@ if(isLoading){
           <Children key={children._id} children={children}></Children>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

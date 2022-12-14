@@ -16,12 +16,12 @@ const EditMyProfile = ({ user, data }) => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 card bg-base-100 shadow-md pb-16">
-      <div className="flex justify-center ">
+      <div className="flex justify-center items-center">
         <div>
           <div className="avatar">
             <div className="w-24 rounded-full">
               <img
-                width={120}
+                width={150}
                 src={
                   photoURL
                     ? photoURL
@@ -31,10 +31,10 @@ const EditMyProfile = ({ user, data }) => {
               />
             </div>
           </div>
-
+          <br />
           <div className="form-control w-full max-w-xs mt-0">
             <div className="flex items-center">
-              <div className="flex items-center space-x-6">
+              <div className="flex items-center">
                 <label className="block">
                   <span className="sr-only">Upload Photo</span>
                   <input
@@ -42,7 +42,7 @@ const EditMyProfile = ({ user, data }) => {
                     type="file"
                     name="img"
                     id="childImage"
-                    className="btn border-none bg-[#FF428D] w-32 mt-5 block text-sm text-slate-500 btn-sm
+                    className="btn border-none w-32 mt-5 block text-sm text-slate-500 btn-sm
       file:mr-4 file:py-2 file:px-4
       file:rounded-full file:border-0
       file:text-sm file:font-semibold   

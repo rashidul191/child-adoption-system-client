@@ -2,7 +2,7 @@ import React from "react";
 
 const TermsAndCondition = () => {
   return (
-    <section>
+    <section className="pt-16">
       <div className="bg-info py-10">
         <h1 className="text-center text-2xl font-bold uppercase text-white">
           Terms and Condition
@@ -76,7 +76,8 @@ const TermsAndCondition = () => {
           </p>
           <br />
           <p>
-            This should be very much clear that <span className="font-bold"> CASA </span>  is not willing to accept
+            This should be very much clear that{" "}
+            <span className="font-bold"> CASA </span> is not willing to accept
             donations earned through illegal and unlawful means.
           </p>
           <br />
@@ -113,14 +114,16 @@ const TermsAndCondition = () => {
             our server. Nevertheless, we acknowledge that, in spite of our
             committed effort, some determined individual may still develop
             data-mining and other methods to uncover such information and
-            disclose it. For this reason, <span className="font-bold"> CASA </span>  can make no guarantee against
-            unauthorized access to information provided an in the course of
-            using this website.
+            disclose it. For this reason,{" "}
+            <span className="font-bold"> CASA </span> can make no guarantee
+            against unauthorized access to information provided an in the course
+            of using this website.
           </p>
           <br />
           <p>
-          <span className="font-bold"> CASA </span>  reserves the right to make any change or update in this privacy
-            policy, so you are requested to visit this page from time to time.
+            <span className="font-bold"> CASA </span> reserves the right to make
+            any change or update in this privacy policy, so you are requested to
+            visit this page from time to time.
           </p>
           <br />
           <p>

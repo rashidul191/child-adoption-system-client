@@ -12,27 +12,22 @@ const BlogsGrid = ({ blog }) => {
 
   return (
     <div onClick={() => handleBlogsDetails(_id)} className="card w-5/6 mx-auto">
-      {/* <figure>
-        <img
-          className=" hover:scale-110 transition duration-300 ease-in-out"
-          src={blogImg}
-          alt="img"
-        />
+      <div className="card w-full bg-base-100 shadow-xl image-full hover:scale-110 transition duration-300 ease-in-out">
+        <figure>
+          <img src={blogImg} alt="blog-img" />
+        </figure>
+        <div className="card-body flex justify-center items-center">
+          <h2 className="text-2xl font-semibold hover:underline cursor-pointer ">            
+            {blogTitle.length >= 30 ? blogTitle?.slice(0, 30) : blogTitle}{" "}
+              {blogTitle.length >= 30 && `....`}
+          </h2>
+        </div>
+      </div>
 
-        <div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
-  <img src="https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp" class="" alt="Louvre" />
-</div>
-      </figure>
-      <div className="card-body text-center">
-        <h2 className="text-2xl text-white font-semibold mt-8 md:mt-32 cursor-pointer hover:underline">
-          {blogTitle}
-        </h2>
-        <p>{currentDate}</p>
-      </div> */}
-
-      <div className="card w-full rounded-none mx-auto ">
+      {/* <div className="card w-full rounded-none mx-auto ">
         <div
           style={{
+            width:`auto`,
             backgroundImage: `url(${blogImg})`,
             backgroundRepeat: "no-repeat",
           }}
@@ -43,11 +38,11 @@ const BlogsGrid = ({ blog }) => {
               <h2 className="text-2xl  font-semibold  cursor-pointer ">
                 {blogTitle}
               </h2>
-              {/* <p>{postDate}</p> */}
+             
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,8 +1,7 @@
 import React from "react";
 
 const UserReview = ({ review }) => {
-  console.log(review);
-
+  // console.log(review);
   const { displayName, comment, rating } = review;
   let commentText;
   if (comment.length > 150) {
@@ -11,7 +10,7 @@ const UserReview = ({ review }) => {
     commentText = <p>{comment}</p>;
   }
   return (
-    <div className="card w-4/5 bg-base-100 rounded-none mx-auto mt-5">
+    <div className="card h-[300px] w-4/5 bg-base-100 rounded-none mx-auto my-5">
       {/* <figure className="px-10 pt-10">
         <img
           src="https://placeimg.com/400/225/arch"

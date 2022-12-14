@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <section>
+    <section className="lg:pt-16">
       <div
         className="hero h-[500px] sm:h-[650px] 2xl:min-h-screen w-full"
         style={{
