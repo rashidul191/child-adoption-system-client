@@ -28,12 +28,15 @@ const ChildRow = ({ index, child, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`https://child-adoption-system-server.onrender.com/allChilds/${_id}`, {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/allChilds/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data?.deletedCount > 0) {
@@ -61,7 +64,8 @@ const ChildRow = ({ index, child, refetch }) => {
   };
   return (
     <tr>
-      <th>{index + 1}</th>
+      {/* <th>{index + 1}</th> */}
+      <th>#</th>
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">

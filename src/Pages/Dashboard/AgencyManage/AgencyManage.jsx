@@ -3,9 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Shared/Loading/Loading";
 import AgencyRow from "./AgencyRow/AgencyRow";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
+import { useState } from "react";
+import Pagination from "../../Shared/Pagination/Pagination";
 
 const AgencyManage = () => {
   DynamicTitle("Agency Manage");
+  const [count, setCount] = useState(1);
+  let limit = 8;
+  const skip = (count - 1) * limit;
   // react query
   const {
     data: allAgency,
@@ -27,7 +32,6 @@ const AgencyManage = () => {
     <section>
       <h1 className="md:text-xl font-bold uppercase">Agency Manage</h1>
       <hr />
-
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
@@ -39,7 +43,6 @@ const AgencyManage = () => {
               <th>Delete Agency</th>
             </tr>
           </thead>
-
           {allAgency.length <= 0 ? (
             <div className="text-center text-error">
               <p>sorry have a no agency </p>
@@ -47,7 +50,7 @@ const AgencyManage = () => {
             </div>
           ) : (
             <tbody>
-              {allAgency?.map((agency, index) => (
+              {allAgency?.slice(skip, skip + limit)?.map((agency, index) => (
                 <AgencyRow
                   key={agency._id}
                   agency={agency}
@@ -59,6 +62,16 @@ const AgencyManage = () => {
           )}
         </table>
       </div>
+
+      {/* pagination */}
+      {allAgency.length >= limit && (
+        <Pagination
+          data={allAgency}
+          count={count}
+          setCount={setCount}
+          limit={limit}
+        ></Pagination>
+      )}
     </section>
   );
 };

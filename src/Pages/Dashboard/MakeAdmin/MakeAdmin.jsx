@@ -3,19 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Shared/Loading/Loading";
 import MakeAdminRow from "./MakeAdminRow/MakeAdminRow";
-
 import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
+import { useState } from "react";
+import Pagination from "../../Shared/Pagination/Pagination";
 
 const MakeAdmin = () => {
   DynamicTitle("User Manage");
   const navigate = useNavigate();
+  const [count, setCount] = useState(1);
+  let limit = 8;
+  const skip = (count - 1) * limit;
+  // query
   const {
     data: users,
     isLoading,
     refetch,
   } = useQuery(["users"], () =>
+    // fetch(`https://child-adoption-system-server.onrender.com/allUsers`, {
     fetch(`https://child-adoption-system-server.onrender.com/allUsers`, {
       method: "GET",
       headers: {
@@ -36,8 +42,9 @@ const MakeAdmin = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
+
   return (
-    <div>
+    <section>
       <h1 className="md:text-xl font-bold uppercase">User Manage</h1>
       <hr />
       <div>
@@ -53,7 +60,7 @@ const MakeAdmin = () => {
               </tr>
             </thead>
             <tbody>
-              {users?.map((user, index) => (
+              {users.slice(skip, skip + limit)?.map((user, index) => (
                 <MakeAdminRow
                   key={user._id}
                   user={user}
@@ -65,7 +72,16 @@ const MakeAdmin = () => {
           </table>
         </div>
       </div>
-    </div>
+      {/* pagination */}
+      {users.length >= limit && (
+        <Pagination
+          data={users}
+          count={count}
+          setCount={setCount}
+          limit={limit}
+        ></Pagination>
+      )}
+    </section>
   );
 };
 

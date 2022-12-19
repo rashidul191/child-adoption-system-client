@@ -3,9 +3,14 @@ import Loading from "../../../Shared/Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
 import AllBlogGrid from "./AllBlogGrid";
 import DynamicTitle from "../../../Shared/DynamicTitle/DynamicTitle";
+import { useState } from "react";
+import Pagination from "../../../Shared/Pagination/Pagination";
 
 const AllBlogs = () => {
   DynamicTitle("Blogs");
+  const [count, setCount] = useState(1);
+  let limit = 9;
+  const skip = (count - 1) * limit;
   // react query
   const { data: seeAllBlogs, isLoading } = useQuery(["SeeAllBlogs"], () =>
     fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
@@ -29,12 +34,22 @@ const AllBlogs = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10 items-start">
         {seeAllBlogs
-          ?.slice(0)
+          ?.slice(skip, skip + limit)
           ?.reverse()
           ?.map((blog) => (
             <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
           ))}
       </div>
+
+      {/* pagination */}
+      {seeAllBlogs.length >= limit && (
+        <Pagination
+          data={seeAllBlogs}
+          count={count}
+          setCount={setCount}
+          limit={limit}
+        ></Pagination>
+      )}
     </section>
   );
 };

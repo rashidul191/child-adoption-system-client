@@ -11,7 +11,8 @@ const DonationRow = ({ donation, index }) => {
   }
   return (
     <tr className="font-bold">
-      <td>{index + 1}</td>
+      {/* <td>{index + 1}</td> */}
+      <td>#</td>
       <td>৳ {amount}</td>
       <td>{paymentMethod}</td>
       <td>{cardNumber || phoneNumber}</td>

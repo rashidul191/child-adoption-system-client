@@ -3,9 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Shared/Loading/Loading";
 import ChildRow from "./ChildRow/ChildRow";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
+import { useState } from "react";
+import Pagination from "../../Shared/Pagination/Pagination";
 
 const ChildManage = () => {
   DynamicTitle("Child Manage");
+  const [count, setCount] = useState(1);
+  let limit = 8;
+  const skip = (count - 1) * limit;
   // react query
   const {
     data: allChild,
@@ -27,7 +32,6 @@ const ChildManage = () => {
     <section>
       <h1 className="md:text-xl font-bold uppercase">Child Manage</h1>
       <hr />
-
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
@@ -40,7 +44,7 @@ const ChildManage = () => {
             </tr>
           </thead>
           <tbody>
-            {allChild?.map((child, index) => (
+            {allChild?.slice(skip, skip + limit)?.map((child, index) => (
               <ChildRow
                 key={child._id}
                 child={child}
@@ -51,6 +55,16 @@ const ChildManage = () => {
           </tbody>
         </table>
       </div>
+
+      {/* pagination */}
+      {allChild.length >= limit && (
+        <Pagination
+          data={allChild}
+          count={count}
+          setCount={setCount}
+          limit={limit}
+        ></Pagination>
+      )}
     </section>
   );
 };

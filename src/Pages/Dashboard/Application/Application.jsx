@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 import Loading from "../../Shared/Loading/Loading";
 import ApplicationRow from "./ApplicationRow";
+import Pagination from "../../Shared/Pagination/Pagination";
 
 const Application = () => {
   DynamicTitle("Application");
+  const [count, setCount] = useState(1);
+  let limit = 8;
+  const skip = (count - 1) * limit;
   // react query
   const {
     data: allApplication,
@@ -24,9 +28,8 @@ const Application = () => {
     return <Loading></Loading>;
   }
 
-  // console.log(allApplication)
   return (
-    <section >
+    <section>
       <h1 className="md:text-xl font-bold uppercase">All Application</h1>
       <hr />
       <div className="overflow-x-auto w-full">
@@ -42,8 +45,8 @@ const Application = () => {
           </thead>
           <tbody>
             {allApplication
-              ?.slice(0)
-              .reverse()
+              ?.slice(skip, skip + limit)
+              ?.reverse()
               ?.map((application, index) => (
                 <ApplicationRow
                   key={application._id}
@@ -56,6 +59,15 @@ const Application = () => {
           </tbody>
         </table>
       </div>
+      {/* pagination */}
+      {allApplication.length >= limit && (
+        <Pagination
+          data={allApplication}
+          count={count}
+          setCount={setCount}
+          limit={limit}
+        ></Pagination>
+      )}
     </section>
   );
 };

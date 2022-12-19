@@ -114,7 +114,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
   return (
     <>
       <tr>
-        <th>{index + 1}</th>
+        {/* <th>{index + 1}</th> */}
         <td>
           P1:{" "}
           <span className="font-bold">{application?.data?.displayName}</span>
@@ -179,7 +179,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
       {/* Put this part before </body> tag */}
       <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />
       {/* application form modal */}
-      <div className="modal">
+      <div className="modal mt-16">
         <div className="modal-box w-3/4 ml-48  max-w-5xl">
           <label
             htmlFor={`my-modal-${_id}`}

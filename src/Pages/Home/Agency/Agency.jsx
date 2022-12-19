@@ -30,6 +30,7 @@ const Agency = () => {
   } else {
     allAgencyInfo = allAgency;
   }
+
   return (
     <section className="bg-[#EBF1F6] my-10 py-10">
       <div>

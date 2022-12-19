@@ -20,6 +20,7 @@ const ContactUs = () => {
   const onSubmit = async (data) => {
     console.log(data);
     alert("Your message send successfully");
+    window.location.reload();
   };
 
   return (

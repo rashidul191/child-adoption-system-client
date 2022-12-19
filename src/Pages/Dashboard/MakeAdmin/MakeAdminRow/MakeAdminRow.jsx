@@ -24,13 +24,16 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Admin it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://child-adoption-system-server.onrender.com/users/admin/${email}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("access-token")}`,
-          },
-        })
+        fetch(
+          `https://child-adoption-system-server.onrender.com/users/admin/${email}`,
+          {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("access-token")}`,
+            },
+          }
+        )
           .then((res) => {
             if (res.status === 403 || res.status === 401) {
               signOut(auth);
@@ -63,13 +66,16 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Employer it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://child-adoption-system-server.onrender.com/users/employer/${email}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("access-token")}`,
-          },
-        })
+        fetch(
+          `https://child-adoption-system-server.onrender.com/users/employer/${email}`,
+          {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("access-token")}`,
+            },
+          }
+        )
           .then((res) => {
             if (res.status === 403 || res.status === 401) {
               signOut(auth);
@@ -113,12 +119,15 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`https://child-adoption-system-server.onrender.com/user/${email}`, {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/user/${email}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data?.deletedCount > 0) {
@@ -146,7 +155,8 @@ const MakeAdminRow = ({ user, index, refetch }) => {
   };
   return (
     <tr>
-      <td className="font-bold">{index + 1}</td>
+      {/* <td className="font-bold">{index + 1}</td> */}
+      <td className="font-bold">#</td>
       <td className="font-bold">{email}</td>
       <td>
         {role === "admin" ? (

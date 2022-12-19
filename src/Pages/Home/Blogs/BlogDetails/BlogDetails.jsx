@@ -17,7 +17,6 @@ import AllBlogGrid from "../AllBlogs/AllBlogGrid";
 
 const BlogDetails = () => {
   const { blogTitle, id } = useParams();
-  //const shareUrl = `https://child-adoption-system.web.app/blog/${id}`;
   const shareUrl = `https://child-adoption-system.web.app/blog/${blogTitle}/${id}`;
   const { data: blog, isLoading } = useQuery(["blogDetails"], () =>
     fetch(`https://child-adoption-system-server.onrender.com/blog/${id}`, {

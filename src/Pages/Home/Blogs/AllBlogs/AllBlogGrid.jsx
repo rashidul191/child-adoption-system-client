@@ -8,7 +8,6 @@ const AllBlogGrid = ({ blog }) => {
 
   const handleBlogsDetails = (id) => {
     // console.log(id);
-    //navigate(`/blog/${id}`);
     navigate(`/blog/${blogTitle}/${id}`);
     window.location.reload();
   };
@@ -31,7 +30,7 @@ const AllBlogGrid = ({ blog }) => {
   return (
     <div className="card  w-5/6 md:w-96 bg-base-100 shadow-xl md:shadow-none md:hover:shadow-xl border rounded-none mx-auto">
       <figure>
-        <img src={blogImg} alt="Shoes" />
+        <img src={blogImg} alt="blog-img" />
       </figure>
       <div className="card-body">
         <h2

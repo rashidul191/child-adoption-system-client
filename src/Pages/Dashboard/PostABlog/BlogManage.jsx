@@ -3,9 +3,14 @@ import Loading from "../../Shared/Loading/Loading";
 import BlogRow from "./BlogRow";
 import { useQuery } from "@tanstack/react-query";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
+import { useState } from "react";
+import Pagination from "../../Shared/Pagination/Pagination";
 
 const BlogManage = () => {
   DynamicTitle("Blogs Manage");
+  const [count, setCount] = useState(1);
+  let limit = 8;
+  const skip = (count - 1) * limit;
   // react query
   const {
     data: allBlogs,
@@ -47,7 +52,7 @@ const BlogManage = () => {
             </div>
           ) : (
             <tbody>
-              {allBlogs?.map((blog, index) => (
+              {allBlogs?.slice(skip, skip + limit)?.map((blog, index) => (
                 <BlogRow
                   key={blog._id}
                   blog={blog}
@@ -59,6 +64,16 @@ const BlogManage = () => {
           )}
         </table>
       </div>
+
+      {/* pagination */}
+      {allBlogs.length >= limit && (
+        <Pagination
+          data={allBlogs}
+          count={count}
+          setCount={setCount}
+          limit={limit}
+        ></Pagination>
+      )}
     </section>
   );
 };

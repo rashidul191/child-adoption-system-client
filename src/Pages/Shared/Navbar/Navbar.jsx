@@ -28,7 +28,7 @@ const Navbar = () => {
 
       <CustomLink to="/all-blogs">
         <li>
-          <span>Blog</span>
+          <span>Blogs</span>
         </li>
       </CustomLink>
 
