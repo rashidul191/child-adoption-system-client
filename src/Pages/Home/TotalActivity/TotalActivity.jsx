@@ -11,7 +11,8 @@ import Loading from "../../Shared/Loading/Loading";
 
 const TotalActivity = () => {
   const { data: users, isLoading } = useQuery(["users"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/allUsersLength`, {
+    //fetch(`https://child-adoption-system-server.onrender.com/allUsersLength`, {
+    fetch(`http://localhost:5000/api/v1/user/allUsersLength`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -20,7 +21,8 @@ const TotalActivity = () => {
   );
 
   const { data: allChild, isLoading2 } = useQuery(["allChild"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/allChildLength`, {
+    // fetch(`https://child-adoption-system-server.onrender.com/allChildLength`, {
+    fetch(`http://localhost:5000/api/v1/child/childLength`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -29,7 +31,8 @@ const TotalActivity = () => {
   );
 
   const { data: allAgency, isLoading3 } = useQuery(["allAgency"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/allAgency`, {
+    // fetch(`https://child-adoption-system-server.onrender.com/allAgency`, {
+    fetch(`http://localhost:5000/api/v1/agency`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -49,7 +52,7 @@ const TotalActivity = () => {
             <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
           </span>
           <p className="text-4xl font-bold">
-            <CountUp end={users} />
+            <CountUp end={users?.data} />
           </p>
           <h2 className="text-2xl uppercase">Users</h2>
         </div>
@@ -60,7 +63,7 @@ const TotalActivity = () => {
             <FontAwesomeIcon icon={faChildren}></FontAwesomeIcon>
           </span>
           <p className="text-4xl font-bold">
-            <CountUp end={allChild} />
+            <CountUp end={allChild?.data} />
           </p>
           <h2 className="text-2xl uppercase">Child</h2>
         </div>
@@ -71,7 +74,7 @@ const TotalActivity = () => {
             <FontAwesomeIcon icon={faHouseFlag}></FontAwesomeIcon>
           </span>
           <p className="text-4xl font-bold">
-            <CountUp end={allAgency?.length} />
+            <CountUp end={allAgency?.data?.length} />
           </p>
           <h2 className="text-2xl uppercase">Agency</h2>
         </div>

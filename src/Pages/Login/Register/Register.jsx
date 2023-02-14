@@ -26,6 +26,8 @@ const Register = () => {
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
   const [token] = useToken(user);
+  // console.log("Token: ",token);
+
   let errorElement;
   const {
     register,
@@ -38,9 +40,10 @@ const Register = () => {
       const displayName = data?.displayName;
       const email = data?.email;
       const password = data?.password;
+      // console.log(data);
       await createUserWithEmailAndPassword(email, password);
       await updateProfile({ displayName });
-      //   console.log(data);
+      //  console.log(data);
     } else {
       errorElement = (
         <span className="text-error">sorry password is not same</span>
@@ -59,6 +62,8 @@ const Register = () => {
   if (loading || updating) {
     return <Loading></Loading>;
   }
+
+  console.log("user: ",user);
 
   if (error || updateError) {
     errorElement = (

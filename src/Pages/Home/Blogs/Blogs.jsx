@@ -9,7 +9,8 @@ import BlogsGrid from "./BlogsGrid/BlogsGrid";
 const Blogs = () => {
   // react query
   const { data: allBlogs, isLoading } = useQuery(["seeAllBlogs"], () =>
-    fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
+  //  fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
+    fetch(`http://localhost:5000/api/v1/blog`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -30,6 +31,9 @@ const Blogs = () => {
   //   allBlogsInfo = allBlogs;
   // }
 
+
+  
+
   return (
     <section className="my-10 py-10">
       <div>
@@ -39,7 +43,7 @@ const Blogs = () => {
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-2 my-10 md:mx-24">
-        {allBlogs
+        {allBlogs?.data
           ?.slice(0, 4)
           .reverse()
           ?.map((blog) => (

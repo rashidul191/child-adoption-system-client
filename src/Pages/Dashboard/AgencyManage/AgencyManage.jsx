@@ -17,7 +17,8 @@ const AgencyManage = () => {
     isLoading,
     refetch,
   } = useQuery(["allAgency"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/allAgency`, {
+    // fetch(`https://child-adoption-system-server.onrender.com/allAgency`, {
+    fetch(`http://localhost:5000/api/v1/agency`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
@@ -43,14 +44,14 @@ const AgencyManage = () => {
               <th>Delete Agency</th>
             </tr>
           </thead>
-          {allAgency.length <= 0 ? (
+          {allAgency?.data?.length <= 0 ? (
             <div className="text-center text-error">
               <p>sorry have a no agency </p>
               <p>Add New Agency</p>
             </div>
           ) : (
             <tbody>
-              {allAgency?.slice(skip, skip + limit)?.map((agency, index) => (
+              {allAgency?.data?.slice(skip, skip + limit)?.map((agency, index) => (
                 <AgencyRow
                   key={agency._id}
                   agency={agency}
@@ -64,9 +65,9 @@ const AgencyManage = () => {
       </div>
 
       {/* pagination */}
-      {allAgency.length >= limit && (
+      {allAgency?.data?.length >= limit && (
         <Pagination
-          data={allAgency}
+          data={allAgency?.data}
           count={count}
           setCount={setCount}
           limit={limit}

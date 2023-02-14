@@ -17,7 +17,8 @@ const BlogManage = () => {
     isLoading,
     refetch,
   } = useQuery(["allBlogsManage"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/allBlogs`, {
+  //  fetch(`https://child-adoption-system-server.onrender.com/allBlogs`, {
+    fetch(`http://localhost:5000/api/v1/blog`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
@@ -45,14 +46,14 @@ const BlogManage = () => {
             </tr>
           </thead>
 
-          {allBlogs.length <= 0 ? (
+          {allBlogs?.data?.length <= 0 ? (
             <div className="text-center text-error">
               <p>sorry have a no agency </p>
               <p>Add New Agency</p>
             </div>
           ) : (
             <tbody>
-              {allBlogs?.slice(skip, skip + limit)?.map((blog, index) => (
+              {allBlogs?.data?.slice(skip, skip + limit)?.map((blog, index) => (
                 <BlogRow
                   key={blog._id}
                   blog={blog}
@@ -66,9 +67,9 @@ const BlogManage = () => {
       </div>
 
       {/* pagination */}
-      {allBlogs.length >= limit && (
+      {allBlogs?.data?.length >= limit && (
         <Pagination
-          data={allBlogs}
+          data={allBlogs?.data}
           count={count}
           setCount={setCount}
           limit={limit}

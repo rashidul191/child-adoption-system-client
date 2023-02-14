@@ -13,7 +13,8 @@ const AllBlogs = () => {
   const skip = (count - 1) * limit;
   // react query
   const { data: seeAllBlogs, isLoading } = useQuery(["SeeAllBlogs"], () =>
-    fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
+    // fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
+    fetch("http://localhost:5000/api/v1/blog", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -32,19 +33,25 @@ const AllBlogs = () => {
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10 items-start"> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10 items-start">
-        {seeAllBlogs
-          ?.slice(skip, skip + limit)
-          ?.reverse()
-          ?.map((blog) => (
-            <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
-          ))}
+        <div className="col-span-2">
+          {seeAllBlogs?.data
+            ?.slice(skip, skip + limit)
+            ?.reverse()
+            ?.map((blog) => (
+              <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
+            ))}
+        </div>
+        <div>
+          <h2>Test</h2>
+        </div>
       </div>
 
       {/* pagination */}
-      {seeAllBlogs.length >= limit && (
+      {seeAllBlogs?.data?.length >= limit && (
         <Pagination
-          data={seeAllBlogs}
+          data={seeAllBlogs?.data}
           count={count}
           setCount={setCount}
           limit={limit}

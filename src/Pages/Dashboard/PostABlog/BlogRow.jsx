@@ -27,19 +27,17 @@ const BlogRow = ({ blog, index, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(
-            `https://child-adoption-system-server.onrender.com/allBlogs/${_id}`,
-            {
-              method: "DELETE",
-              headers: {
-                authorization: `Bearer ${localStorage.getItem("access-token")}`,
-              },
-            }
-          )
+          //fetch(`https://child-adoption-system-server.onrender.com/allBlogs/${_id}`,
+          fetch(`http://localhost:5000/api/v1/blog/${_id}`, {
+            method: "DELETE",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("access-token")}`,
+            },
+          })
             .then((res) => res.json())
             .then((data) => {
-              if (data?.deletedCount > 0) {
-                toast.success(`${blogTitle} is delete successfully`);
+              if (data?.data?.deletedCount > 0) {
+                toast.success(`"${blogTitle}" is delete successfully`);
                 refetch();
               }
             });
@@ -75,7 +73,6 @@ const BlogRow = ({ blog, index, refetch }) => {
           </div>
         </div>
       </td>
-
       <td>{displayName}</td>
       <th>{postDate}</th>
       <th>

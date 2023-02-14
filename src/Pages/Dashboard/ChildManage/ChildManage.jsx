@@ -17,13 +17,16 @@ const ChildManage = () => {
     isLoading,
     refetch,
   } = useQuery(["allChildManage"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/allChilds`, {
+    //fetch(`https://child-adoption-system-server.onrender.com/allChilds`, {
+    fetch(`http://localhost:5000/api/v1/child`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
       },
     }).then((res) => res.json())
-  );
+    );
+  
+
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -44,22 +47,25 @@ const ChildManage = () => {
             </tr>
           </thead>
           <tbody>
-            {allChild?.slice(skip, skip + limit)?.map((child, index) => (
-              <ChildRow
-                key={child._id}
-                child={child}
-                index={index}
-                refetch={refetch}
-              ></ChildRow>
-            ))}
+            {allChild?.data
+              ?.slice(skip, skip + limit)
+              ?.reverse()
+              ?.map((child, index) => (
+                <ChildRow
+                  key={child._id}
+                  child={child}
+                  index={index}
+                  refetch={refetch}
+                ></ChildRow>
+              ))}
           </tbody>
         </table>
       </div>
 
       {/* pagination */}
-      {allChild.length >= limit && (
+      {allChild?.data.length >= limit && (
         <Pagination
-          data={allChild}
+          data={allChild.data}
           count={count}
           setCount={setCount}
           limit={limit}

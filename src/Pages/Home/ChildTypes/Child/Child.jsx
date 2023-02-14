@@ -13,7 +13,8 @@ const Child = () => {
     isLoading,
     error,
   } = useQuery(["child"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/child/${id}`, {
+    // fetch(`https://child-adoption-system-server.onrender.com/child/${id}`, {
+    fetch(`http://localhost:5000/api/v1/child/${id}`, {
       method: "GET",
     }).then((res) => res.json())
   );
@@ -34,7 +35,7 @@ const Child = () => {
     religion,
     agency,
     description,
-  } = child;
+  } = child?.data;
 
   if (error) {
     console.log(error);

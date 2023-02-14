@@ -12,8 +12,9 @@ const ChildApply = () => {
   DynamicTitle("Child Apply");
   const [user] = useAuthState(auth);
   const { data: childApplyAll, isLoading } = useQuery(["childApply"], () =>
+    //fetch(`https://child-adoption-system-server.onrender.com/child-apply?email=${user?.email}`,
     fetch(
-      `https://child-adoption-system-server.onrender.com/child-apply?email=${user?.email}`,
+      `http://localhost:5000/api/v1/childApply/child-apply?email=${user?.email}`,
       {
         method: "GET",
         headers: {
@@ -31,8 +32,6 @@ const ChildApply = () => {
     })
   );
 
-  // console.log(childApplyAll);
-
   if (isLoading) {
     return <Loading></Loading>;
   }
@@ -43,7 +42,7 @@ const ChildApply = () => {
         <h1 className=" md:text-xl font-bold uppercase">Child Apply</h1>
       </div>
       <hr />
-      {childApplyAll.length > 0 ? (
+      {childApplyAll?.data?.length > 0 ? (
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             <thead>
@@ -56,7 +55,7 @@ const ChildApply = () => {
             </thead>
             <tbody>
               <tr>
-                {childApplyAll?.map((childApply) => (
+                {childApplyAll?.data?.map((childApply) => (
                   <ChildApplyDetails
                     key={childApply._id}
                     childApply={childApply}

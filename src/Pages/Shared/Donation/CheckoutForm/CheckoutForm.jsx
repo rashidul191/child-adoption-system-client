@@ -21,15 +21,17 @@ const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("https://child-adoption-system-server.onrender.com/create-payment-intent", {
+    // fetch("https://child-adoption-system-server.onrender.com/create-payment-intent", {
+    fetch("http://localhost:5000/api/v1/payment/create-payment-intent", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ amount }),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data?.clientSecret) {
-          setClientSecret(data?.clientSecret);
+        console.log(data);
+        if (data?.data?.clientSecret) {
+          setClientSecret(data?.data?.clientSecret);
         }
       });
   }, [amount]);
@@ -79,7 +81,7 @@ const CheckoutForm = () => {
       email: user?.email || "",
     };
 
-    console.log(donation);
+    // console.log(donation);
 
     if (intentError) {
       setCardError(intentError?.message);
@@ -87,14 +89,16 @@ const CheckoutForm = () => {
       setCardError("");
       console.log(paymentIntent);
 
-      fetch("https://child-adoption-system-server.onrender.com/donation", {
+      //   fetch("https://child-adoption-system-server.onrender.com/donation", {
+      fetch("http://localhost:5000/api/v1/payment", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ donation }),
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data?.insertedId) {
+          console.log(data);
+          if (data?.data?.insertedId) {
             toast.success("Completed your Donation");
           }
         });
@@ -113,7 +117,7 @@ const CheckoutForm = () => {
       <div className="card-body">
         <form onSubmit={handleSubmit}>
           <CardElement
-          className="mb-5"
+            className="mb-5"
             options={{
               style: {
                 base: {

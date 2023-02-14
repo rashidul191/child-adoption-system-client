@@ -13,7 +13,8 @@ const AllDonation = () => {
   const skip = (count - 1) * limit;
   // query
   const { data: allDonation, isLoading } = useQuery(["donation"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/allDonation`, {
+    //fetch(`https://child-adoption-system-server.onrender.com/allDonation`, {
+    fetch(`http://localhost:5000/api/v1/payment`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -43,7 +44,7 @@ const AllDonation = () => {
               </tr>
             </thead>
             <tbody>
-              {allDonation
+              {allDonation?.data
                 ?.slice(skip, skip + limit)
                 ?.reverse()
                 ?.map((donation, index) => (
@@ -59,9 +60,9 @@ const AllDonation = () => {
       </div>
 
       {/* pagination */}
-      {allDonation.length >= limit && (
+      {allDonation?.data?.length >= limit && (
         <Pagination
-          data={allDonation}
+          data={allDonation?.data}
           count={count}
           setCount={setCount}
           limit={limit}

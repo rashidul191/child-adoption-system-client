@@ -1,11 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import useAdmin from "../../../hooks/useAdmin";
 import useEmployer from "../../../hooks/useEmployer";
-import Loading from "../../Shared/Loading/Loading";
+// import Loading from "../../Shared/Loading/Loading";
 
 const ApplicationRowModal = ({ childApplicationData }) => {
   const [user] = useAuthState(auth);
@@ -29,16 +28,14 @@ const ApplicationRowModal = ({ childApplicationData }) => {
 
   const handleApplicationApprove = (id) => {
     // console.log(id);
-    fetch(
-      `https://child-adoption-system-server.onrender.com/application/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("access-token")}`,
-        },
-      }
-    )
+    //fetch(`https://child-adoption-system-server.onrender.com/application/${id}`,
+    fetch(`http://localhost:5000/api/v1/childApply/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    })
       .then((res) => {
         if (res.status === 403 || res.status === 401) {
           toast.error("Failed To approve");
@@ -46,7 +43,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
         return res.json();
       })
       .then((data) => {
-        if (data?.modifiedCount > 0) {
+        if (data?.data?.modifiedCount > 0) {
           toast.success(`Application Approved Successful`);
           window.location.reload();
         }
@@ -181,14 +178,14 @@ const ApplicationRowModal = ({ childApplicationData }) => {
               </>
             ) : (
               <p className="text-error font-bold">
-                " NOTE: You can download apply pdf file after approved. "
+                " NOTE: You can't download apply pdf file before approved. "
               </p>
             )}
           </>
         ) : (
           <>
             {childApplicationData?.role === "approved" ? (
-              <p className="text-white font-bold w-96 uppercase bg-green-500 text-center">
+              <p className="btn btn-primary btn-sm text-white font-bold w-96 uppercase bg-green-500 text-center">
                 Already Approved
               </p>
             ) : (
@@ -199,7 +196,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
                   handleApplicationApprove(childApplicationData?._id)
                 }
               >
-                Approve
+                Please Approve
               </label>
             )}
           </>

@@ -15,7 +15,7 @@ const Pagination = ({ data, count, setCount, limit }) => {
         <button
           onClick={() => setCount(count + 1)}
           className="btn btn-outline"
-          disabled={count * limit > data.length}
+          disabled={count * limit > data.length -1}
         >
           Next
         </button>

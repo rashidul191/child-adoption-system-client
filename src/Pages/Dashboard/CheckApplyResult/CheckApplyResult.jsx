@@ -26,17 +26,20 @@ const CheckApplyResult = () => {
   const { data: eligibilityScore, isLoading } = useQuery(
     ["eligibilityScore"],
     () =>
-      fetch(`https://child-adoption-system-server.onrender.com/check-eligibility/?email=${user?.email}`, {
-        method: "GET",
-        headers: { "content-type": "application/json" },
-      }).then((res) => res.json())
+      //fetch(`https://child-adoption-system-server.onrender.com/check-eligibility/?email=${user?.email}`, {
+      fetch(
+        `http://localhost:5000/api/v1/checkEligibility/?email=${user?.email}`,
+        {
+          method: "GET",
+          headers: { "content-type": "application/json" },
+        }
+      ).then((res) => res.json())
   );
-
-  // console.log(eligibilityScore);
 
   if (isLoading) {
     return <Loading></Loading>;
   }
+  console.log(eligibilityScore?.data[0]);
 
   // const yesScore = eligibilityScore[0].email;
   // const noScore = eligibilityScore[0].notAllowValue;
@@ -47,8 +50,8 @@ const CheckApplyResult = () => {
   const data = [
     {
       name: "Eligibility",
-      yes: eligibilityScore?.allowValue.length * 10,
-      no: eligibilityScore?.notAllowValue.length * 10,
+      yes: eligibilityScore?.data[0]?.allowValue?.length * 10,
+      no: eligibilityScore?.data[0]?.notAllowValue?.length * 10,
     },
     // {
     //   name: "Page B",
@@ -83,8 +86,11 @@ const CheckApplyResult = () => {
   ];
   // pieChart data
   const pieChartData = [
-    { name: "Yes", value: eligibilityScore?.allowValue.length * 10 },
-    { name: "No", value: eligibilityScore?.notAllowValue.length * 10 },
+    { name: "Yes", value: eligibilityScore?.data[0]?.allowValue?.length * 10 },
+    {
+      name: "No",
+      value: eligibilityScore?.data[0]?.notAllowValue?.length * 10,
+    },
     // { name: "Group C", value: 300 },
     // { name: "Group D", value: 200 },
   ];
@@ -125,26 +131,30 @@ const CheckApplyResult = () => {
       </div>
       <hr />
 
-      {eligibilityScore ? (
+      {eligibilityScore?.data[0] ? (
         <div className="mx-4 md:mx-8">
           <div>
             <div className="flex text-center text-white text-xl md:text-3xl font-bold mt-12">
               <div
                 style={{
-                  width: `${eligibilityScore?.allowValue.length * 10}%`,
+                  width: `${
+                    eligibilityScore?.data[0]?.allowValue?.length * 10
+                  }%`,
                 }}
                 className=" h-20 bg-green-600 pt-5"
               >
                 {" "}
-                Yes = {eligibilityScore?.allowValue.length * 10}%{" "}
+                Yes = {eligibilityScore?.data[0]?.allowValue?.length * 10}%{" "}
               </div>
               <div
                 style={{
-                  width: `${eligibilityScore?.notAllowValue.length * 10}%`,
+                  width: `${
+                    eligibilityScore?.data[0]?.notAllowValue?.length * 10
+                  }%`,
                 }}
                 className=" h-20 bg-red-600 pt-5"
               >
-                No = {eligibilityScore?.notAllowValue.length * 10}%{" "}
+                No = {eligibilityScore?.data[0]?.notAllowValue?.length * 10}%{" "}
               </div>
             </div>
           </div>
@@ -174,8 +184,12 @@ const CheckApplyResult = () => {
 
           <div className="md:flex ">
             <div className="mt-20">
-              <h2>Yes: {eligibilityScore?.allowValue.length * 10} %</h2>
-              <h2>No: {eligibilityScore?.notAllowValue.length * 10}%</h2>
+              <h2>
+                Yes: {eligibilityScore?.data[0]?.allowValue?.length * 10} %
+              </h2>
+              <h2>
+                No: {eligibilityScore?.data[0]?.notAllowValue?.length * 10}%
+              </h2>
             </div>
             <PieChart width={300} height={250}>
               <Pie

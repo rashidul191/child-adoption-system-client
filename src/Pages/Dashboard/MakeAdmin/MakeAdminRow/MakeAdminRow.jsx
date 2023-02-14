@@ -24,16 +24,14 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Admin it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://child-adoption-system-server.onrender.com/users/admin/${email}`,
-          {
-            method: "PUT",
-            headers: {
-              "content-type": "application/json",
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          }
-        )
+        // fetch(`https://child-adoption-system-server.onrender.com/users/admin/${email}`,
+        fetch(`http://localhost:5000/api/v1/user/admin/${email}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("access-token")}`,
+          },
+        })
           .then((res) => {
             if (res.status === 403 || res.status === 401) {
               signOut(auth);
@@ -44,7 +42,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
             return res.json();
           })
           .then((data) => {
-            if (data?.modifiedCount > 0) {
+            if (data?.data?.modifiedCount > 0) {
               toast.success(`Now ${email} Admin successfully`);
               refetch();
             }
@@ -66,16 +64,14 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Employer it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://child-adoption-system-server.onrender.com/users/employer/${email}`,
-          {
-            method: "PUT",
-            headers: {
-              "content-type": "application/json",
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          }
-        )
+        // fetch(`https://child-adoption-system-server.onrender.com/users/employer/${email}`,
+        fetch(`http://localhost:5000/api/v1/user/employer/${email}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("access-token")}`,
+          },
+        })
           .then((res) => {
             if (res.status === 403 || res.status === 401) {
               signOut(auth);
@@ -86,7 +82,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
             return res.json();
           })
           .then((data) => {
-            if (data?.modifiedCount > 0) {
+            if (data?.data?.modifiedCount > 0) {
               toast.success(`Now ${email} Employer successfully`);
               refetch();
             }
@@ -119,18 +115,16 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(
-            `https://child-adoption-system-server.onrender.com/user/${email}`,
-            {
-              method: "DELETE",
-              headers: {
-                authorization: `Bearer ${localStorage.getItem("access-token")}`,
-              },
-            }
-          )
+          // fetch(`https://child-adoption-system-server.onrender.com/user/${email}`,
+          fetch(`http://localhost:5000/api/v1/user/${email}`, {
+            method: "DELETE",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("access-token")}`,
+            },
+          })
             .then((res) => res.json())
             .then((data) => {
-              if (data?.deletedCount > 0) {
+              if (data?.data?.deletedCount > 0) {
                 toast.success(`${email} delete successfully`);
                 refetch();
               }
@@ -138,7 +132,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
 
           swalWithBootstrapButtons.fire(
             "Deleted!",
-            "Your file has been deleted.",
+            "Your data has been deleted.",
             "success"
           );
         } else if (
@@ -147,7 +141,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
         ) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "Your imaginary file is safe :)",
+            "Your imaginary data is safe :)",
             "error"
           );
         }

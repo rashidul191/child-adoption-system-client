@@ -16,7 +16,8 @@ const Application = () => {
     isLoading,
     refetch,
   } = useQuery(["allChildManage"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/application`, {
+    // fetch(`https://child-adoption-system-server.onrender.com/application`, {
+    fetch(`http://localhost:5000/api/v1/childApply`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
@@ -44,7 +45,7 @@ const Application = () => {
             </tr>
           </thead>
           <tbody>
-            {allApplication
+            {allApplication?.data
               ?.slice(skip, skip + limit)
               ?.reverse()
               ?.map((application, index) => (
@@ -60,9 +61,9 @@ const Application = () => {
         </table>
       </div>
       {/* pagination */}
-      {allApplication.length >= limit && (
+      {allApplication?.data?.length >= limit && (
         <Pagination
-          data={allApplication}
+          data={allApplication?.data}
           count={count}
           setCount={setCount}
           limit={limit}

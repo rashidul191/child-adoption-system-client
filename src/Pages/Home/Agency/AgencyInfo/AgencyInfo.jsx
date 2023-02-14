@@ -6,7 +6,8 @@ import Loading from "../../../Shared/Loading/Loading";
 const AgencyInfo = () => {
   const { id } = useParams();
   const { data: agency, isLoading } = useQuery(["agency"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/agency/${id}`, {
+    // fetch(`https://child-adoption-system-server.onrender.com/agency/${id}`, {
+    fetch(`http://localhost:5000/api/v1/agency/${id}`, {
       method: "GET",
     }).then((res) => res.json())
   );
@@ -14,19 +15,18 @@ const AgencyInfo = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-
   return (
     <section className="pt-16">
       <div className="bg-info py-10">
         <h1 className="text-center text-2xl font-bold uppercase text-white">
-          {agency?.agencyName}
+          {agency?.data?.agencyName}
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
 
       <div
         style={{
-          backgroundImage: `url(${agency?.agencyImg})`,
+          backgroundImage: `url(${agency?.data?.agencyImg})`,
           backgroundPosition: "center",
         }}
       >
@@ -39,29 +39,33 @@ const AgencyInfo = () => {
               <img
                 className="mx-auto"
                 width={300}
-                src={agency?.agencyImg}
-                alt={agency?.agencyName}
+                src={agency?.data?.agencyImg}
+                alt={agency?.data?.agencyName}
               />
               <hr />
               <h2 className="text-2xl">
                 Agency Name:{" "}
-                <span className="font-bold">{agency?.agencyName}</span>
+                <span className="font-bold">{agency?.data?.agencyName}</span>
               </h2>
               <hr />
               <p>
                 Agency Director Name:{" "}
-                <span className="font-bold">{agency?.agencyDirectorName}</span>
+                <span className="font-bold">
+                  {agency?.data?.agencyDirectorName}
+                </span>
               </p>
               <hr />
               <p>
                 Agency Location:{" "}
-                <span className="font-bold">{agency?.agencyLocation}</span>{" "}
+                <span className="font-bold">
+                  {agency?.data?.agencyLocation}
+                </span>{" "}
               </p>
 
               <hr />
               <p>
                 <span className="font-bold">About Agency:</span>{" "}
-                {agency?.description}
+                {agency?.data?.description}
               </p>
             </div>
           </div>

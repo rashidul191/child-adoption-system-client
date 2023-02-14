@@ -1,36 +1,51 @@
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
+import Loading from "../../Shared/Loading/Loading";
 
 const MyReview = () => {
   DynamicTitle("Add Review");
   const [user] = useAuthState(auth);
+  // console.log(user);
+
+  const { data: userInfo, isLoading } = useQuery(["userDB"], () =>
+    //fetch(`https://child-adoption-system-server.onrender.com/user?email=${email}`,
+    fetch(`http://localhost:5000/api/v1/user/email/?email=${user?.email}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    }).then((res) => res.json())
+  );
 
   const handleReviewSubmit = (event) => {
     event.preventDefault();
     const review = {
       displayName: user?.displayName,
       email: user?.email,
+      photoURL: user?.photoURL,
+      img: userInfo?.data?.img,
       rating: event.target.rating.value,
       comment: event.target.comment.value,
     };
 
-    fetch(
-      `https://child-adoption-system-server.onrender.com/reviews/${user?.email}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(review),
-      }
-    )
+    //fetch(`https://child-adoption-system-server.onrender.com/reviews/${user?.email}`,
+    fetch(`http://localhost:5000/api/v1/review/${user?.email}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+      body: JSON.stringify(review),
+    })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
-        if (data?.acknowledged) {
+        console.log(data.data);
+        if (data?.data?.acknowledged) {
           toast.success("Thanks your comment / feedback");
           event.target.reset();
         } else {
@@ -40,6 +55,9 @@ const MyReview = () => {
       });
   };
 
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <section>
       <h1 className="md:text-xl font-bold uppercase">My Review</h1>

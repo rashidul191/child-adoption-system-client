@@ -37,7 +37,6 @@ const PostABlog = () => {
       .then((imgStoreOutput) => {
         if (imgStoreOutput.success) {
           const img = imgStoreOutput.data.url;
-
           const blogDetails = {
             blogImg: img,
             blogTitle: data.blogTitle,
@@ -45,10 +44,8 @@ const PostABlog = () => {
             displayName: data.displayName,
             description: blogDescription.current.value,
           };
-
-          //   console.log(blogDetails);
-
-          fetch("https://child-adoption-system-server.onrender.com/blogs", {
+          // fetch("https://child-adoption-system-server.onrender.com/blogs", {
+          fetch("http://localhost:5000/api/v1/blog", {
             method: "POST",
             headers: {
               "Content-type": "application/json",
@@ -65,7 +62,8 @@ const PostABlog = () => {
               return res.json();
             })
             .then((data) => {
-              if (data?.insertedId) {
+              console.log(data);
+              if (data?.data?.insertedId) {
                 toast.success("Post A Blog successfully");
                 window.location.reload();
               } else {

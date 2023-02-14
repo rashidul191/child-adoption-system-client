@@ -21,7 +21,8 @@ const ChildApplyForm = () => {
 
   // react query
   const { data: child, isLoading2 } = useQuery(["childApplyForm"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/child/${id}`, {
+    // fetch(`https://child-adoption-system-server.onrender.com/child/${id}`, {
+    fetch(`http://localhost:5000/api/v1/child/${id}`, {
       method: "GET",
     }).then((res) => res.json())
   );
@@ -38,9 +39,10 @@ const ChildApplyForm = () => {
     const childApplyFormData = {
       email: user?.email,
       data,
-      child: child,
+      child: child?.data,
     };
-    fetch(`https://child-adoption-system-server.onrender.com/child-apply`, {
+    //fetch(`https://child-adoption-system-server.onrender.com/child-apply`, {
+    fetch(`http://localhost:5000/api/v1/childApply`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -57,7 +59,7 @@ const ChildApplyForm = () => {
         return res.json();
       })
       .then((data) => {
-        if (data?.insertedId) {
+        if (data?.data?.insertedId) {
           toast.success("Your Apply Successfully");
           window.location.reload();
         } else {
@@ -84,13 +86,13 @@ const ChildApplyForm = () => {
             <div className="flex items-center space-x-3 justify-center">
               <div className="avatar">
                 <div className="mask mask-squircle w-16 h-16">
-                  <img src={child?.img} alt={child?.name} />
+                  <img src={child?.data?.img} alt={child?.data?.name} />
                 </div>
               </div>
               <div>
-                <div className="font-bold">{child?.name}</div>
-                <div className="text-sm">{child?.location}</div>
-                <div className="text-sm">{child?.agency}</div>
+                <div className="font-bold">{child?.data?.name}</div>
+                <div className="text-sm">{child?.data?.location}</div>
+                <div className="text-sm">{child?.data?.agency}</div>
               </div>
             </div>
 

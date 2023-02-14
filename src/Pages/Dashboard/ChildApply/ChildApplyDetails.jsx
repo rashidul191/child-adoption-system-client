@@ -3,7 +3,6 @@ import ChildApplyPDF from "./ChildApplyPDF";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import ApplicationRowModal from "../Application/ApplicationRowModal";
 import { useState } from "react";
-import { toast } from "react-toastify";
 
 const ChildApplyDetails = ({ childApply }) => {
   const { _id } = childApply;
@@ -13,8 +12,8 @@ const ChildApplyDetails = ({ childApply }) => {
   const [childApplicationData, setChildApplicationData] = useState({});
 
   const handleFindApplicationId = (id) => {
-    fetch(
-      `https://child-adoption-system-server.onrender.com/application/${id}`,
+    //fetch(`https://child-adoption-system-server.onrender.com/application/${id}`,
+    fetch(`http://localhost:5000/api/v1/childApply/${id}`,
       {
         method: "GET",
         headers: {
@@ -24,7 +23,7 @@ const ChildApplyDetails = ({ childApply }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setChildApplicationData(data);
+        setChildApplicationData(data?.data);
       });
   };
 
@@ -94,7 +93,7 @@ const ChildApplyDetails = ({ childApply }) => {
       {/* Put this part before </body> tag */}
       <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />
       {/* application form modal */}
-      <div className="modal">
+      <div className="modal md:pt-16">
         <div className="modal-box w-3/4 ml-48  max-w-5xl">
           <label
             htmlFor={`my-modal-${_id}`}

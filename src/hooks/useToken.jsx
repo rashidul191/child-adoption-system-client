@@ -5,7 +5,8 @@ const useToken = (user) => {
   const email = user?.user?.email;
   useEffect(() => {
     if (email) {
-      fetch(`https://child-adoption-system-server.onrender.com/users/${email}`, {
+      //fetch(`https://child-adoption-system-server.onrender.com/users/${email}`, {
+      fetch(`http://localhost:5000/api/v1/user/${email}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -14,7 +15,7 @@ const useToken = (user) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          const accessToken = data?.token;
+          const accessToken = data?.data?.token;
           localStorage.setItem("access-token", accessToken);
           setToken(accessToken);
         });

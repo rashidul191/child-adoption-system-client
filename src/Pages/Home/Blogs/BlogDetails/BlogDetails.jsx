@@ -14,19 +14,22 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AllBlogGrid from "../AllBlogs/AllBlogGrid";
+import RelatedBlogs from "../RelatedBlogs";
 
 const BlogDetails = () => {
   const { blogTitle, id } = useParams();
   const shareUrl = `https://child-adoption-system.web.app/blog/${blogTitle}/${id}`;
   const { data: blog, isLoading } = useQuery(["blogDetails"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/blog/${id}`, {
+    //fetch(`https://child-adoption-system-server.onrender.com/blog/${id}`, {
+    fetch(`http://localhost:5000/api/v1/blog/${id}`, {
       method: "GET",
     }).then((res) => res.json())
   );
 
   // all blogs
   const { data: seeAllBlogs, isLoading2 } = useQuery(["allBlogs"], () =>
-    fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
+    // fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
+    fetch("http://localhost:5000/api/v1/blog", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -37,7 +40,8 @@ const BlogDetails = () => {
     return <Loading></Loading>;
   }
 
-  // console.log(seeAllBlogs);
+  // console.log(blog.data);
+  // console.log(seeAllBlogs.data);
 
   const settings = {
     dots: true,
@@ -61,17 +65,17 @@ const BlogDetails = () => {
           <img
             className="mx-auto"
             width={300}
-            src={blog?.blogImg}
-            alt={blog?.blogTitle}
+            src={blog?.data?.blogImg}
+            alt={blog?.data?.blogTitle}
           />
 
-          <h2 className="text-2xl md:text-5xl font-semibold">
-            {blog?.blogTitle}
+          <h2 className="text-2xl md:text-5xl font-semibold text-center capitalize">
+            {blog?.data?.blogTitle}
           </h2>
           <div className="my-10 flex justify-between">
             <div>
-              <p>{blog?.displayName}</p>
-              <p className="text-[#95959F] text-sm">{blog?.postDate}</p>
+              <p>{blog?.data?.displayName}</p>
+              <p className="text-[#95959F] text-sm">{blog?.data?.postDate}</p>
             </div>
             <div className="cursor-pointer text-xl flex items-center">
               <span>
@@ -114,7 +118,7 @@ const BlogDetails = () => {
             </div>
           </div>
           <hr />
-          <p className="text-justify">{blog?.description}</p>
+          <p className="text-justify">{blog?.data?.description}</p>
         </div>
       </div>
       <div className="py-12 bg-[#F6F9FC]">
@@ -123,12 +127,11 @@ const BlogDetails = () => {
             Related Articles
           </h2>
         </div>
-
         {/* Related article here */}
         <div>
           <div className="md:hidden">
             <Slider {...settings}>
-              {seeAllBlogs
+              {seeAllBlogs?.data
                 ?.slice(0, 6)
                 ?.reverse()
                 ?.map((blog) => (
@@ -138,11 +141,12 @@ const BlogDetails = () => {
           </div>
           <div className="hidden md:block">
             <Slider {...settings2}>
-              {seeAllBlogs
+              {seeAllBlogs?.data
                 ?.slice(0, 15)
                 ?.reverse()
                 ?.map((blog) => (
-                  <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
+                 
+                  <RelatedBlogs key={blog._id} blog={blog}></RelatedBlogs>
                 ))}
             </Slider>
           </div>

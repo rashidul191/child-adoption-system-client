@@ -8,7 +8,8 @@ const useEmployer = (user) => {
 
   const email = user?.email;
   if (email) {
-    fetch(`https://child-adoption-system-server.onrender.com/employer/${email}`, {
+    //fetch(`https://child-adoption-system-server.onrender.com/employer/${email}`, {
+    fetch(`http://localhost:5000/api/v1/user/employer/${email}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -24,7 +25,7 @@ const useEmployer = (user) => {
         return res.json();
       })
       .then((data) => {
-        setEmployer(data?.employer);
+        setEmployer(data?.data?.employer);
       });
   }
   return [employer];

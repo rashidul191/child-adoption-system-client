@@ -92,7 +92,8 @@ const CheckForApply = () => {
     // console.log("yes value:", allowValue);
     // console.log("no value", notAllowValue);
 
-    fetch(`https://child-adoption-system-server.onrender.com/check-eligible/${user?.email}`, {
+    //fetch(`https://child-adoption-system-server.onrender.com/check-eligible/${user?.email}`, {
+    fetch(`http://localhost:5000/api/v1/checkEligibility/${user?.email}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -102,12 +103,11 @@ const CheckForApply = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data?.acknowledged && data?.upsertedCount) {
-          toast.success("Submit eligibility score");
-        } else if (data.acknowledged && data?.modifiedCount) {
-          toast.success("Update eligibility score");
-        } else {
+        console.log(data);
+        if (!data?.data?.acknowledged) {
           toast.error("Failed submit eligibility score!!! please try again");
+        } else {
+          toast.success("Submit eligibility score");
         }
         window.location.reload();
       });

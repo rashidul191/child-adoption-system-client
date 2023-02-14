@@ -13,9 +13,10 @@ const AllChild = () => {
   const skip = (count - 1) * limit;
 
   const { data: allChildren, isLoading } = useQuery(["allChildren"], () =>
-    fetch(
-      `https://child-adoption-system-server.onrender.com/childs/${childType}`
-    ).then((res) => res.json())
+    //fetch(`https://child-adoption-system-server.onrender.com/childs/${childType}`).then((res) => res.json())
+    fetch(`http://localhost:5000/api/v1/child/childType/${childType}`).then(
+      (res) => res.json()
+    )
   );
 
   if (isLoading) {
@@ -32,15 +33,15 @@ const AllChild = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
-        {allChildren?.slice(skip, skip + limit)?.map((children) => (
+        {allChildren?.data?.slice(skip, skip + limit)?.map((children) => (
           <Children key={children._id} children={children}></Children>
         ))}
       </div>
 
       {/* pagination */}
-      {allChildren.length >= limit && (
+      {allChildren?.data?.length >= limit && (
         <Pagination
-          data={allChildren}
+          data={allChildren?.data}
           count={count}
           setCount={setCount}
           limit={limit}

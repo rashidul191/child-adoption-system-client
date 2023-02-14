@@ -8,7 +8,8 @@ import UserReview from "./UserReview";
 
 const UserReviews = () => {
   const { data: reviews, isLoading } = useQuery(["review"], () =>
-    fetch("https://child-adoption-system-server.onrender.com/reviews", {
+    //fetch("https://child-adoption-system-server.onrender.com/reviews", {
+    fetch("http://localhost:5000/api/v1/review", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -31,7 +32,7 @@ const UserReviews = () => {
   const settings2 = {
     dots: true,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -49,7 +50,7 @@ const UserReviews = () => {
       <div className="my-10">
         <div className="md:hidden">
           <Slider {...settings}>
-            {reviews
+            {reviews?.data
               ?.slice(0, 6)
               ?.reverse()
               ?.map((review) => (
@@ -59,7 +60,7 @@ const UserReviews = () => {
         </div>
         <div className="hidden md:block">
           <Slider {...settings2}>
-            {reviews
+            {reviews?.data
               ?.slice(0, 12)
               ?.reverse()
               ?.map((review) => (

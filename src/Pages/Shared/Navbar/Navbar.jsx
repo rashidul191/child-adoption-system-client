@@ -12,6 +12,7 @@ const Navbar = () => {
     signOut(auth);
     localStorage.removeItem("access-token");
   };
+
   const menubar = (
     <>
       <CustomLink to="/">

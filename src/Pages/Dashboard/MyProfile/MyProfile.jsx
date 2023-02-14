@@ -22,17 +22,15 @@ const MyProfile = () => {
   const [admin] = useAdmin(user);
   const [employer] = useEmployer(user);
   const { displayName, email, photoURL } = user;
-  const { data, isLoading } = useQuery(["userDB"], () =>
-    fetch(
-      `https://child-adoption-system-server.onrender.com/user?email=${email}`,
-      {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("access-token")}`,
-        },
-      }
-    ).then((res) => {
+  const { data: userInfo, isLoading } = useQuery(["userDB"], () =>
+    //fetch(`https://child-adoption-system-server.onrender.com/user?email=${email}`,
+    fetch(`http://localhost:5000/api/v1/user/email/?email=${email}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    }).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("access-token");
@@ -77,12 +75,12 @@ const MyProfile = () => {
         <div className="flex justify-center items-center col-span-1">
           <div>
             <div className="avatar">
-              <div className="w-24 rounded-full">
+              <div className="w-40 rounded-full">
                 <img
                   width={150}
                   src={
                     photoURL
-                      ? photoURL
+                      ? userInfo.data.img || photoURL
                       : `https://i.ibb.co/tmprR1w/profile-icon.webp`
                   }
                   alt={displayName}
@@ -92,28 +90,52 @@ const MyProfile = () => {
             <br />
             <button
               onClick={() => setProfileEdit(!profileEdit)}
-              className="btn bg-[#FF428D] border-none text-white"
+              className="btn bg-[#FF428D] border-none text-white ml-6"
             >
               Edit Profile
             </button>
           </div>
         </div>
         <div className="card-body col-span-2">
-          <span>Name:</span>
-          <h2 className="text-xl font-bold">{displayName}</h2>
-          <span>Email:</span>
-          <h2 className="text-xl font-bold"> {data?.email}</h2>
-          <span>Address:</span>
-          <h2 className="text-xl font-bold"> {data.address}</h2>
-          <span>Zip Code:</span>
-          <h2 className="text-xl font-bold"> {data.zip}</h2>
-          <span>Phone:</span>
-          <h2 className="text-xl font-bold"> {data.phone}</h2>
+          <h2>
+            Name:{" "}
+            <span className="text-xl font-bold">
+              {" "}
+              {displayName || userInfo.data.displayName}{" "}
+            </span>
+          </h2>
+
+          <h2>
+            {" "}
+            Email:{" "}
+            <span className="text-xl font-bold">{userInfo?.data?.email}</span>
+          </h2>
+
+          <h2>
+            {" "}
+            Address:{" "}
+            <span className="text-xl font-bold">
+              {" "}
+              {userInfo?.data?.address}
+            </span>
+          </h2>
+
+          <h2>
+            {" "}
+            Zip Code:{" "}
+            <span className="text-xl font-bold">{userInfo?.data?.zipCode}</span>
+          </h2>
+
+          <h2>
+            {" "}
+            Phone:{" "}
+            <span className="text-xl font-bold">{userInfo?.data?.phone}</span>
+          </h2>
         </div>
       </div>
 
       <div className={`${profileEdit && "hidden"}`}>
-        <EditMyProfile user={user} data={data}></EditMyProfile>
+        <EditMyProfile user={user} userData={userInfo?.data}></EditMyProfile>
       </div>
     </section>
   );

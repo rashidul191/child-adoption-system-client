@@ -21,8 +21,8 @@ const MakeAdmin = () => {
     isLoading,
     refetch,
   } = useQuery(["users"], () =>
-    // fetch(`https://child-adoption-system-server.onrender.com/allUsers`, {
-    fetch(`https://child-adoption-system-server.onrender.com/allUsers`, {
+    //fetch(`https://child-adoption-system-server.onrender.com/allUsers`, {
+    fetch(`http://localhost:5000/api/v1/user`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -60,7 +60,7 @@ const MakeAdmin = () => {
               </tr>
             </thead>
             <tbody>
-              {users.slice(skip, skip + limit)?.map((user, index) => (
+              {users?.data?.slice(skip, skip + limit)?.map((user, index) => (
                 <MakeAdminRow
                   key={user._id}
                   user={user}
@@ -73,9 +73,9 @@ const MakeAdmin = () => {
         </div>
       </div>
       {/* pagination */}
-      {users.length >= limit && (
+      {users?.data?.length >= limit && (
         <Pagination
-          data={users}
+          data={users?.data}
           count={count}
           setCount={setCount}
           limit={limit}

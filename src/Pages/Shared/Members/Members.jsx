@@ -5,8 +5,9 @@ import Employer from "./Employer";
 import Admin from "./Admin";
 
 const Members = () => {
-  const { data: dbUser, isLoading } = useQuery(["memberAllUsers"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/allMember`, {
+  const { data: user, isLoading } = useQuery(["memberAllUsers"], () =>
+    //fetch(`https://child-adoption-system-server.onrender.com/allMember`, {
+    fetch(`http://localhost:5000/api/v1/user`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -18,7 +19,7 @@ const Members = () => {
     return <Loading></Loading>;
   }
 
-  // console.log(dbUser);
+  // console.log(user);
 
   return (
     <section className="pt-16">
@@ -34,8 +35,8 @@ const Members = () => {
           Admins
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 ">
-          {dbUser.map((user) => (
-            <Admin key={user.id} user={user}></Admin>
+          {user?.data?.map((user) => (
+            <Admin key={user?.id} user={user}></Admin>
           ))}
         </div>
       </div>
@@ -45,8 +46,8 @@ const Members = () => {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-auto ">
-          {dbUser.map((user) => (
-            <Employer key={user.id} user={user}></Employer>
+          {user?.data?.map((user) => (
+            <Employer key={user?.id} user={user}></Employer>
           ))}
         </div>
       </div>
