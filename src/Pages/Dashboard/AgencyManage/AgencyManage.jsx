@@ -17,8 +17,7 @@ const AgencyManage = () => {
     isLoading,
     refetch,
   } = useQuery(["allAgency"], () =>
-    // fetch(`https://child-adoption-system-server.onrender.com/allAgency`, {
-    fetch(`http://localhost:5000/api/v1/agency`, {
+    fetch(`https://child-adoption-system-server.onrender.com/api/v1/agency`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
@@ -51,14 +50,16 @@ const AgencyManage = () => {
             </div>
           ) : (
             <tbody>
-              {allAgency?.data?.slice(skip, skip + limit)?.map((agency, index) => (
-                <AgencyRow
-                  key={agency._id}
-                  agency={agency}
-                  index={index}
-                  refetch={refetch}
-                ></AgencyRow>
-              ))}
+              {allAgency?.data
+                ?.slice(skip, skip + limit)
+                ?.map((agency, index) => (
+                  <AgencyRow
+                    key={agency._id}
+                    agency={agency}
+                    index={index}
+                    refetch={refetch}
+                  ></AgencyRow>
+                ))}
             </tbody>
           )}
         </table>

@@ -24,14 +24,16 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Admin it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`https://child-adoption-system-server.onrender.com/users/admin/${email}`,
-        fetch(`http://localhost:5000/api/v1/user/admin/${email}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("access-token")}`,
-          },
-        })
+        fetch(
+          `https://child-adoption-system-server.onrender.com/api/v1/user/admin/${email}`,
+          {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("access-token")}`,
+            },
+          }
+        )
           .then((res) => {
             if (res.status === 403 || res.status === 401) {
               signOut(auth);
@@ -64,14 +66,16 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Employer it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        // fetch(`https://child-adoption-system-server.onrender.com/users/employer/${email}`,
-        fetch(`http://localhost:5000/api/v1/user/employer/${email}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("access-token")}`,
-          },
-        })
+        fetch(
+          `https://child-adoption-system-server.onrender.com/api/v1/user/employer/${email}`,
+          {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("access-token")}`,
+            },
+          }
+        )
           .then((res) => {
             if (res.status === 403 || res.status === 401) {
               signOut(auth);
@@ -115,13 +119,15 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          // fetch(`https://child-adoption-system-server.onrender.com/user/${email}`,
-          fetch(`http://localhost:5000/api/v1/user/${email}`, {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/api/v1/user/${email}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data?.data?.deletedCount > 0) {

@@ -6,14 +6,16 @@ const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
   const email = user?.email;
   if (email) {
-    //fetch(`https://child-adoption-system-server.onrender.com/admin/${email}`, {
-    fetch(`http://localhost:5000/api/v1/user/admin/${email}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/user/admin/${email}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           signOut(auth);

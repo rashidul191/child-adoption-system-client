@@ -8,14 +8,16 @@ const useEmployer = (user) => {
 
   const email = user?.email;
   if (email) {
-    //fetch(`https://child-adoption-system-server.onrender.com/employer/${email}`, {
-    fetch(`http://localhost:5000/api/v1/user/employer/${email}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        // authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/user/employer/${email}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          // authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           signOut(auth);

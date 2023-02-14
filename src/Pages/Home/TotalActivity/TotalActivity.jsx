@@ -11,28 +11,31 @@ import Loading from "../../Shared/Loading/Loading";
 
 const TotalActivity = () => {
   const { data: users, isLoading } = useQuery(["users"], () =>
-    //fetch(`https://child-adoption-system-server.onrender.com/allUsersLength`, {
-    fetch(`http://localhost:5000/api/v1/user/allUsersLength`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/user/allUsersLength`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    ).then((res) => res.json())
   );
 
   const { data: allChild, isLoading2 } = useQuery(["allChild"], () =>
-    // fetch(`https://child-adoption-system-server.onrender.com/allChildLength`, {
-    fetch(`http://localhost:5000/api/v1/child/childLength`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/child/childLength`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    ).then((res) => res.json())
   );
 
   const { data: allAgency, isLoading3 } = useQuery(["allAgency"], () =>
-    // fetch(`https://child-adoption-system-server.onrender.com/allAgency`, {
-    fetch(`http://localhost:5000/api/v1/agency`, {
+    fetch(`https://child-adoption-system-server.onrender.com/api/v1/agency`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

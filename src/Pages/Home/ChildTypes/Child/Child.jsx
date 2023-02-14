@@ -13,10 +13,12 @@ const Child = () => {
     isLoading,
     error,
   } = useQuery(["child"], () =>
-    // fetch(`https://child-adoption-system-server.onrender.com/child/${id}`, {
-    fetch(`http://localhost:5000/api/v1/child/${id}`, {
-      method: "GET",
-    }).then((res) => res.json())
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/child/${id}`,
+      {
+        method: "GET",
+      }
+    ).then((res) => res.json())
   );
 
   if (isLoading) {

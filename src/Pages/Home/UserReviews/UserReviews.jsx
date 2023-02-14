@@ -8,8 +8,7 @@ import UserReview from "./UserReview";
 
 const UserReviews = () => {
   const { data: reviews, isLoading } = useQuery(["review"], () =>
-    //fetch("https://child-adoption-system-server.onrender.com/reviews", {
-    fetch("http://localhost:5000/api/v1/review", {
+    fetch("https://child-adoption-system-server.onrender.com/api/v1/review", {
       method: "GET",
       headers: {
         "content-type": "application/json",

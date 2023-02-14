@@ -9,8 +9,7 @@ import { Link } from "react-router-dom";
 const Agency = () => {
   // react query
   const { data: allAgency, isLoading } = useQuery(["allAgency"], () =>
-    //fetch("https://child-adoption-system-server.onrender.com/allAgency", {
-    fetch("http://localhost:5000/api/v1/agency", {
+    fetch("https://child-adoption-system-server.onrender.com/api/v1/agency", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -20,7 +19,7 @@ const Agency = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-  
+
   let allAgencyInfo;
   if (allAgency?.data?.length > 3) {
     allAgencyInfo = allAgency.data.slice(0, 3);

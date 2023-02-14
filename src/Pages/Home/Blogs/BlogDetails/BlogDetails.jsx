@@ -20,16 +20,17 @@ const BlogDetails = () => {
   const { blogTitle, id } = useParams();
   const shareUrl = `https://child-adoption-system.web.app/blog/${blogTitle}/${id}`;
   const { data: blog, isLoading } = useQuery(["blogDetails"], () =>
-    //fetch(`https://child-adoption-system-server.onrender.com/blog/${id}`, {
-    fetch(`http://localhost:5000/api/v1/blog/${id}`, {
-      method: "GET",
-    }).then((res) => res.json())
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/blog/${id}`,
+      {
+        method: "GET",
+      }
+    ).then((res) => res.json())
   );
 
   // all blogs
   const { data: seeAllBlogs, isLoading2 } = useQuery(["allBlogs"], () =>
-    // fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
-    fetch("http://localhost:5000/api/v1/blog", {
+    fetch("https://child-adoption-system-server.onrender.com/api/v1/blog", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -145,7 +146,6 @@ const BlogDetails = () => {
                 ?.slice(0, 15)
                 ?.reverse()
                 ?.map((blog) => (
-                 
                   <RelatedBlogs key={blog._id} blog={blog}></RelatedBlogs>
                 ))}
             </Slider>

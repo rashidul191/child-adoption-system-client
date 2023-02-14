@@ -13,8 +13,7 @@ const AllDonation = () => {
   const skip = (count - 1) * limit;
   // query
   const { data: allDonation, isLoading } = useQuery(["donation"], () =>
-    //fetch(`https://child-adoption-system-server.onrender.com/allDonation`, {
-    fetch(`http://localhost:5000/api/v1/payment`, {
+    fetch(`https://child-adoption-system-server.onrender.com/api/v1/payment`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

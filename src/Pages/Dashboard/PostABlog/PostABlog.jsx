@@ -44,15 +44,18 @@ const PostABlog = () => {
             displayName: data.displayName,
             description: blogDescription.current.value,
           };
-          // fetch("https://child-adoption-system-server.onrender.com/blogs", {
-          fetch("http://localhost:5000/api/v1/blog", {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-            body: JSON.stringify(blogDetails),
-          })
+
+          fetch(
+            "https://child-adoption-system-server.onrender.com/api/v1/blog",
+            {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+              body: JSON.stringify(blogDetails),
+            }
+          )
             .then((res) => {
               if (res.status === 401 || res.status === 403) {
                 signOut(auth);

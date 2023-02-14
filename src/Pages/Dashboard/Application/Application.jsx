@@ -16,13 +16,15 @@ const Application = () => {
     isLoading,
     refetch,
   } = useQuery(["allChildManage"], () =>
-    // fetch(`https://child-adoption-system-server.onrender.com/application`, {
-    fetch(`http://localhost:5000/api/v1/childApply`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/childApply`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    ).then((res) => res.json())
   );
 
   if (isLoading) {

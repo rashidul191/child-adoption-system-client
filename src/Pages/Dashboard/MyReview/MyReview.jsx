@@ -9,17 +9,17 @@ import Loading from "../../Shared/Loading/Loading";
 const MyReview = () => {
   DynamicTitle("Add Review");
   const [user] = useAuthState(auth);
-  // console.log(user);
-
   const { data: userInfo, isLoading } = useQuery(["userDB"], () =>
-    //fetch(`https://child-adoption-system-server.onrender.com/user?email=${email}`,
-    fetch(`http://localhost:5000/api/v1/user/email/?email=${user?.email}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/user/email/?email=${user?.email}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    ).then((res) => res.json())
   );
 
   const handleReviewSubmit = (event) => {
@@ -33,15 +33,17 @@ const MyReview = () => {
       comment: event.target.comment.value,
     };
 
-    //fetch(`https://child-adoption-system-server.onrender.com/reviews/${user?.email}`,
-    fetch(`http://localhost:5000/api/v1/review/${user?.email}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-      body: JSON.stringify(review),
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/review/${user?.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+        body: JSON.stringify(review),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data.data);

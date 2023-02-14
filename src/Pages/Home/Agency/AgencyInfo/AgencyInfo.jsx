@@ -6,10 +6,12 @@ import Loading from "../../../Shared/Loading/Loading";
 const AgencyInfo = () => {
   const { id } = useParams();
   const { data: agency, isLoading } = useQuery(["agency"], () =>
-    // fetch(`https://child-adoption-system-server.onrender.com/agency/${id}`, {
-    fetch(`http://localhost:5000/api/v1/agency/${id}`, {
-      method: "GET",
-    }).then((res) => res.json())
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/agency/${id}`,
+      {
+        method: "GET",
+      }
+    ).then((res) => res.json())
   );
 
   if (isLoading) {

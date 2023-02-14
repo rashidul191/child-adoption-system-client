@@ -27,13 +27,15 @@ const BlogRow = ({ blog, index, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          //fetch(`https://child-adoption-system-server.onrender.com/allBlogs/${_id}`,
-          fetch(`http://localhost:5000/api/v1/blog/${_id}`, {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/api/v1/blog/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data?.data?.deletedCount > 0) {

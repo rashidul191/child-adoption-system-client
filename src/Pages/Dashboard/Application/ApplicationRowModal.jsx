@@ -4,38 +4,22 @@ import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import useAdmin from "../../../hooks/useAdmin";
 import useEmployer from "../../../hooks/useEmployer";
-// import Loading from "../../Shared/Loading/Loading";
 
 const ApplicationRowModal = ({ childApplicationData }) => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   const [employer] = useEmployer(user);
-  // const { data: users, isLoading } = useQuery(["allUserRole"], () =>
-  //   fetch("https://child-adoption-system-server.onrender.com/allUsers", {
-  //     method: "GET",
-  //     headers: {
-  //       "content-type": "application/json",
-  //       authorization: `Bearer ${localStorage.getItem("access-token")}`,
-  //     },
-  //   }).then((res) => res.json())
-  // );
-
-  // if (isLoading) {
-  //   return <Loading></Loading>;
-  // }
-
-  // console.log(users);
-
   const handleApplicationApprove = (id) => {
-    // console.log(id);
-    //fetch(`https://child-adoption-system-server.onrender.com/application/${id}`,
-    fetch(`http://localhost:5000/api/v1/childApply/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/childApply/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 403 || res.status === 401) {
           toast.error("Failed To approve");

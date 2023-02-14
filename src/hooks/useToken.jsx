@@ -5,14 +5,16 @@ const useToken = (user) => {
   const email = user?.user?.email;
   useEffect(() => {
     if (email) {
-      //fetch(`https://child-adoption-system-server.onrender.com/users/${email}`, {
-      fetch(`http://localhost:5000/api/v1/user/${email}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      })
+      fetch(
+        `https://child-adoption-system-server.onrender.com/api/v1/user/${email}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           const accessToken = data?.data?.token;

@@ -46,15 +46,18 @@ const AddChild = () => {
             agency: data.agency,
             description: aboutChildRef.current.value,
           };
-          //fetch("https://child-adoption-system-server.onrender.com/childInsert", {
-          fetch("http://localhost:5000/api/v1/child", {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-            body: JSON.stringify(childInfo),
-          })
+
+          fetch(
+            "https://child-adoption-system-server.onrender.com/api/v1/child",
+            {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+              body: JSON.stringify(childInfo),
+            }
+          )
             .then((res) => {
               if (res.status === 401 || res.status === 403) {
                 signOut(auth);

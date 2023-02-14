@@ -28,13 +28,15 @@ const ChildRow = ({ index, child, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          // fetch(`https://child-adoption-system-server.onrender.com/allChilds/${_id}`,
-          fetch(`http://localhost:5000/api/v1/child/${_id}`, {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/api/v1/child/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data?.data?.deletedCount > 0) {

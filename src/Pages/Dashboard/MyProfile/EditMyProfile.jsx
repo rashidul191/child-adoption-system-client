@@ -48,7 +48,7 @@ const EditMyProfile = ({ user, userData }) => {
             phone: data.phone,
           };
 
-          fetch(`http://localhost:5000/api/v1/user/${userData?.email}`, {
+          fetch(`https://child-adoption-system-server.onrender.com/api/v1/user/${userData?.email}`, {
             method: "PUT",
             headers: {
               "Content-type": "application/json",

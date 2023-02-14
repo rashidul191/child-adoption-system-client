@@ -10,7 +10,7 @@ const Blogs = () => {
   // react query
   const { data: allBlogs, isLoading } = useQuery(["seeAllBlogs"], () =>
   //  fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
-    fetch(`http://localhost:5000/api/v1/blog`, {
+    fetch(`https://child-adoption-system-server.onrender.com/api/v1/blog`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

@@ -21,10 +21,12 @@ const ChildApplyForm = () => {
 
   // react query
   const { data: child, isLoading2 } = useQuery(["childApplyForm"], () =>
-    // fetch(`https://child-adoption-system-server.onrender.com/child/${id}`, {
-    fetch(`http://localhost:5000/api/v1/child/${id}`, {
-      method: "GET",
-    }).then((res) => res.json())
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/child/${id}`,
+      {
+        method: "GET",
+      }
+    ).then((res) => res.json())
   );
 
   // console.log(child);
@@ -41,15 +43,17 @@ const ChildApplyForm = () => {
       data,
       child: child?.data,
     };
-    //fetch(`https://child-adoption-system-server.onrender.com/child-apply`, {
-    fetch(`http://localhost:5000/api/v1/childApply`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-      body: JSON.stringify(childApplyFormData),
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/childApply`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+        body: JSON.stringify(childApplyFormData),
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           signOut(auth);

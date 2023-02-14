@@ -11,8 +11,6 @@ const CheckForApply = () => {
 
   const { register: checkForApply, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    // const dataLength = Object.keys(data).length;
-    // console.log(data)
     let allowValue = [];
     let notAllowValue = [];
 
@@ -23,84 +21,23 @@ const CheckForApply = () => {
         notAllowValue.push(data.q[i]);
       }
     }
-
     const finalAllowResult = {
       email: user?.email,
       allowValue,
       notAllowValue,
     };
 
-    console.log(finalAllowResult);
-
-    console.log("yes value:", allowValue);
-    console.log("no value", notAllowValue);
-
-    // let allowValue = 0;
-    // let notAllowValue = 0;
-    // if (data.q[1] == "yes") {
-    //   allowValue += 10;
-    // } else {
-    //   notAllowValue += 10;
-    // }
-    // if (data.q[2] == "yes") {
-    //   allowValue += 10;
-    // } else {
-    //   notAllowValue += 10;
-    // }
-
-    // if (data.q3 == "yes") {
-    //   yesValue.push(data.q3);
-    // } else {
-    //   noValue.push(data.q3);
-    // }
-    // if (data.q4 == "yes") {
-    //   yesValue.push(data.q4);
-    // } else {
-    //   noValue.push(data.q4);
-    // }
-    // if (data.q5 == "yes") {
-    //   yesValue.push(data.q5);
-    // } else {
-    //   noValue.push(data.q5);
-    // }
-    // if (data.q6 == "yes") {
-    //   yesValue.push(data.q6);
-    // } else {
-    //   noValue.push(data.q6);
-    // }
-    // if (data.q7 == "yes") {
-    //   yesValue.push(data.q7);
-    // } else {
-    //   noValue.push(data.q7);
-    // }
-    // if (data.q8 == "yes") {
-    //   yesValue.push(data.q8);
-    // } else {
-    //   noValue.push(data.q8);
-    // }
-    // if (data.q9 == "yes") {
-    //   yesValue.push(data.q9);
-    // } else {
-    //   noValue.push(data.q9);
-    // }
-    // if (data.q10 == "yes") {
-    //   yesValue.push(data.q10);
-    // } else {
-    //   noValue.push(data.q10);
-    // }
-
-    // console.log("yes value:", allowValue);
-    // console.log("no value", notAllowValue);
-
-    //fetch(`https://child-adoption-system-server.onrender.com/check-eligible/${user?.email}`, {
-    fetch(`http://localhost:5000/api/v1/checkEligibility/${user?.email}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-      body: JSON.stringify(finalAllowResult),
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/checkEligibility/${user?.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+        body: JSON.stringify(finalAllowResult),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

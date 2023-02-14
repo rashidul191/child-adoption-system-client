@@ -13,13 +13,15 @@ const ApplicationRow = ({ index, application, refetch }) => {
 
   // handle Find Application Id
   const handleFindApplicationId = (id) => {
-    //fetch(`https://child-adoption-system-server.onrender.com/application/${id}`,
-    fetch(`http://localhost:5000/api/v1/childApply/${id}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/childApply/${id}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setChildApplicationData(data?.data);
@@ -74,13 +76,15 @@ const ApplicationRow = ({ index, application, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          //fetch(`https://child-adoption-system-server.onrender.com/application/${_id}`,
-          fetch(`http://localhost:5000/api/v1/childApply/${_id}`, {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/api/v1/childApply/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data?.data?.deletedCount > 0) {

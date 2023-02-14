@@ -15,8 +15,6 @@ const Donation = () => {
   const [card, setCard] = useState(true);
   const [mobileBanking, setMobileBanking] = useState(false);
 
-  console.log(card);
-
   const handleCard = () => {
     setCard(true);
     setMobileBanking(false);

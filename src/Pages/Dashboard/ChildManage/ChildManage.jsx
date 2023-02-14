@@ -17,8 +17,7 @@ const ChildManage = () => {
     isLoading,
     refetch,
   } = useQuery(["allChildManage"], () =>
-    //fetch(`https://child-adoption-system-server.onrender.com/allChilds`, {
-    fetch(`http://localhost:5000/api/v1/child`, {
+    fetch(`https://child-adoption-system-server.onrender.com/api/v1/child`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,

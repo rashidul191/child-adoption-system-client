@@ -23,14 +23,16 @@ const MyProfile = () => {
   const [employer] = useEmployer(user);
   const { displayName, email, photoURL } = user;
   const { data: userInfo, isLoading } = useQuery(["userDB"], () =>
-    //fetch(`https://child-adoption-system-server.onrender.com/user?email=${email}`,
-    fetch(`http://localhost:5000/api/v1/user/email/?email=${email}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access-token")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/user/email/?email=${email}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("access-token");
@@ -133,7 +135,6 @@ const MyProfile = () => {
           </h2>
         </div>
       </div>
-
       <div className={`${profileEdit && "hidden"}`}>
         <EditMyProfile user={user} userData={userInfo?.data}></EditMyProfile>
       </div>

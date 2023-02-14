@@ -6,8 +6,7 @@ import Admin from "./Admin";
 
 const Members = () => {
   const { data: user, isLoading } = useQuery(["memberAllUsers"], () =>
-    //fetch(`https://child-adoption-system-server.onrender.com/allMember`, {
-    fetch(`http://localhost:5000/api/v1/user`, {
+    fetch(`https://child-adoption-system-server.onrender.com/api/v1/user`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

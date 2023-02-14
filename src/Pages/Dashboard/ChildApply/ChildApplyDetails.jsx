@@ -6,14 +6,10 @@ import { useState } from "react";
 
 const ChildApplyDetails = ({ childApply }) => {
   const { _id } = childApply;
-  // if (childApply.role != "approved") {
-  //   toast("NB: You can download apply pdf file after approved");
-  // }
   const [childApplicationData, setChildApplicationData] = useState({});
-
   const handleFindApplicationId = (id) => {
-    //fetch(`https://child-adoption-system-server.onrender.com/application/${id}`,
-    fetch(`http://localhost:5000/api/v1/childApply/${id}`,
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/childApply/${id}`,
       {
         method: "GET",
         headers: {
