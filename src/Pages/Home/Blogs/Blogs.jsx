@@ -9,7 +9,6 @@ import BlogsGrid from "./BlogsGrid/BlogsGrid";
 const Blogs = () => {
   // react query
   const { data: allBlogs, isLoading } = useQuery(["seeAllBlogs"], () =>
-    //  fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
     fetch(`https://child-adoption-system-server.onrender.com/api/v1/blog`, {
       method: "GET",
       headers: {
@@ -20,17 +19,6 @@ const Blogs = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-  // if (allBlogs === undefined) {
-  //   return <Loading></Loading>;
-  // }
-
-  // let allBlogsInfo;
-  // if (allBlogs.length > 3) {
-  //   allBlogsInfo = allBlogs.slice(0, 4);
-  // } else {
-  //   allBlogsInfo = allBlogs;
-  // }
-
   return (
     <section className="my-10 py-10">
       <div>
@@ -49,7 +37,7 @@ const Blogs = () => {
       </div>
       <div className="text-center ">
         <Link to={`/all-blogs`}>
-          <button className="btn btn-primary bg-black rounded-none w-60 text-white ">
+          <button className="btn btn-primary rounded-none w-60 text-white font-bold ">
             See More
             <FontAwesomeIcon
               className="ml-4"

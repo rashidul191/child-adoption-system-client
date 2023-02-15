@@ -115,6 +115,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
     <>
       <tr>
         {/* <th>{index + 1}</th> */}
+        <th>#</th>
         <td>
           P1:{" "}
           <span className="font-bold">{application?.data?.displayName}</span>
@@ -146,7 +147,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
           <label
             onClick={() => handleFindApplicationId(_id)}
             htmlFor={`my-modal-${_id}`}
-            className="btn"
+            className="btn btn-primary btn-sm text-white text-sm"
           >
             View Application
           </label>

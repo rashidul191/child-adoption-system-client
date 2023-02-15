@@ -143,7 +143,7 @@ const CheckoutForm = () => {
           />
 
           <button
-            className="btn btn-secondary rounded-none my-10"
+            className="btn btn-secondary rounded-none my-10 font-bold"
             type="submit"
             disabled={!stripe && !clientSecret}
           >

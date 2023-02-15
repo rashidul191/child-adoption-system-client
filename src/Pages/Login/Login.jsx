@@ -26,7 +26,7 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, forgotPasswordError] =
     useSendPasswordResetEmail(auth);
- 
+
   const [token] = useToken(user);
 
   const {
@@ -220,9 +220,9 @@ const Login = () => {
                           {errors.password?.message}
                         </span>
                       )}
-                      {errors.password?.type === "minLength" && (
+                      {errors.password?.type === "pattern" && (
                         <span className="label-text-alt text-error">
-                          {errors.pattern?.message}
+                          {errors?.password?.message}
                         </span>
                       )}
                     </label>

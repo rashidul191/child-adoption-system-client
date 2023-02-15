@@ -89,7 +89,7 @@ const AgencyRow = ({ index, agency, refetch }) => {
       </td>
       <td>By : {agencyDirectorName}</td>
       <th>
-        <button className="btn btn-info btn-sm text-white">Edit</button>
+        <button className="rounded-lg bg-[#FF428D] btn-sm text-white">Edit</button>
       </th>
       <th>
         <button

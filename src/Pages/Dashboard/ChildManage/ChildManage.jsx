@@ -23,9 +23,7 @@ const ChildManage = () => {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
       },
     }).then((res) => res.json())
-    );
-  
-
+  );
 
   if (isLoading) {
     return <Loading></Loading>;

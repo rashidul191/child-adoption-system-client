@@ -22,7 +22,7 @@ const DesignDonatePage = () => {
                 medical care, safety, and more they need when they need it the
                 most.
               </p>
-              <button className="btn btn-secondary">Donate</button>
+              <button className="btn btn-secondary font-bold">Donate</button>
             </div>
           </div>
         </div>

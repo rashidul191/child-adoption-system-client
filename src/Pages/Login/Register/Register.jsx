@@ -63,7 +63,7 @@ const Register = () => {
     return <Loading></Loading>;
   }
 
-  console.log("user: ",user);
+  console.log("user: ", user);
 
   if (error || updateError) {
     errorElement = (
@@ -213,8 +213,7 @@ const Register = () => {
                             message: "Password is required",
                           },
                           pattern: {
-                            value:
-                              /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
+                            value: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
                             message: (
                               <>
                                 <li>Must be 6 characters or longer</li>

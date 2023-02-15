@@ -19,7 +19,7 @@ const Banner = () => {
             </h1>
             <p className="mb-5">You can change a life of your support.</p>
             <Link to={"/donation"}>
-              <button className="btn btn-secondary rounded-none">
+              <button className="btn btn-secondary rounded-none font-bold">
                 Donate Now
               </button>
             </Link>

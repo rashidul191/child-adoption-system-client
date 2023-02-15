@@ -41,7 +41,7 @@ const Agency = () => {
 
       <div className="text-center ">
         <Link to={`/all-agency`}>
-          <button className="btn btn-primary rounded-none w-60 bg-black text-white">
+          <button className="btn btn-primary rounded-none w-60 text-white font-bold">
             See More
             <FontAwesomeIcon
               className="ml-4"

@@ -131,10 +131,9 @@ const MobileBanking = () => {
             </label>
           </div>
         </div>
-
         <div>
           <input
-            className="btn btn-secondary rounded-none mb-10"
+            className="btn btn-secondary rounded-none mb-10 font-bold"
             type="submit"
             value="Donated"
           />
