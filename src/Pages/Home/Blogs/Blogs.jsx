@@ -9,7 +9,7 @@ import BlogsGrid from "./BlogsGrid/BlogsGrid";
 const Blogs = () => {
   // react query
   const { data: allBlogs, isLoading } = useQuery(["seeAllBlogs"], () =>
-  //  fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
+    //  fetch("https://child-adoption-system-server.onrender.com/allBlogs", {
     fetch(`https://child-adoption-system-server.onrender.com/api/v1/blog`, {
       method: "GET",
       headers: {
@@ -31,14 +31,11 @@ const Blogs = () => {
   //   allBlogsInfo = allBlogs;
   // }
 
-
-  
-
   return (
     <section className="my-10 py-10">
       <div>
-        <h1 className="text-center text-2xl font-bold uppercase">
-          Read Stores
+        <h1 className="text-center text-3xl font-bold uppercase">
+          Read Articles
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>

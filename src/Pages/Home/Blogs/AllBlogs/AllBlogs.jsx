@@ -28,13 +28,13 @@ const AllBlogs = () => {
     <section className="pt-16">
       <div className="bg-info py-10">
         <h1 className="text-center text-2xl font-bold uppercase text-white">
-          All Blog
+          All Blogs
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
       {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10 items-start"> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10 items-start">
-        <div className="col-span-2">
+        <div className="col-span-2 mx-6">
           {seeAllBlogs?.data
             ?.slice(skip, skip + limit)
             ?.reverse()

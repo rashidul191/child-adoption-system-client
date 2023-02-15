@@ -5,6 +5,7 @@ import Agency from "./Agency/Agency";
 import Banner from "./Banner/Banner";
 import Blogs from "./Blogs/Blogs";
 import ChildTypes from "./ChildTypes/ChildTypes";
+import ConsideringFosterCare from "./ConsideringFosterCare/ConsideringFosterCare";
 import TotalActivity from "./TotalActivity/TotalActivity";
 import UserReviews from "./UserReviews/UserReviews";
 
@@ -15,6 +16,7 @@ const Home = () => {
     <>
       <Banner></Banner>
       <ChildTypes></ChildTypes>
+      <ConsideringFosterCare></ConsideringFosterCare>
       <Agency></Agency>
       <TotalActivity></TotalActivity>
       <DesignDonatePage></DesignDonatePage>

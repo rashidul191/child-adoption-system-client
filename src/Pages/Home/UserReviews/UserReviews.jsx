@@ -41,7 +41,7 @@ const UserReviews = () => {
   return (
     <section className="my-10 py-10 bg-[#EBF1F6]">
       <div>
-        <h1 className="text-center text-2xl font-bold uppercase">
+        <h1 className="text-center text-3xl font-bold uppercase">
           User Reviews
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>

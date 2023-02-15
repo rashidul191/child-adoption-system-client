@@ -7,7 +7,7 @@ const ChildTypes = () => {
   return (
     <div className="my-10 md:my-16">
       <div>
-        <h1 className="text-center text-2xl font-bold uppercase">
+        <h1 className="text-center text-3xl font-bold uppercase">
           Child Types
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>

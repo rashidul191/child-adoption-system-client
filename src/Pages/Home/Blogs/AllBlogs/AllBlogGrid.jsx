@@ -21,8 +21,8 @@ const AllBlogGrid = ({ blog }) => {
   }
 
   let setDescription;
-  if (description?.length > 180) {
-    setDescription = <p>{description.slice(0, 180)}...</p>;
+  if (description?.length > 80) {
+    setDescription = <p>{description.slice(0, 80)}...</p>;
   } else {
     setDescription = <p>{description}</p>;
   }
@@ -31,7 +31,7 @@ const AllBlogGrid = ({ blog }) => {
     <>
       <div
         onClick={() => handleBlogsDetails(_id)}
-        className="card card-side bg-base-100 hover:shadow-xl my-5 rounded-none border-1"
+        className="card card-side bg-base-100 hover:shadow-xl my-5 rounded-none border-2"
       >
         <figure className="w-3/4">
           <img src={blogImg} alt="blog-img" />
