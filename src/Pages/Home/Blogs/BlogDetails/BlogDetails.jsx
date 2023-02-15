@@ -13,7 +13,6 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import AllBlogGrid from "../AllBlogs/AllBlogGrid";
 import RelatedBlogs from "../RelatedBlogs";
 
 const BlogDetails = () => {
@@ -136,7 +135,7 @@ const BlogDetails = () => {
                 ?.slice(0, 6)
                 ?.reverse()
                 ?.map((blog) => (
-                  <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>
+                  <RelatedBlogs key={blog._id} blog={blog}></RelatedBlogs>
                 ))}
             </Slider>
           </div>

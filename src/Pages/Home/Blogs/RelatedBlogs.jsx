@@ -42,7 +42,7 @@ const RelatedBlogs = ({ blog }) => {
         <span className="my-6"> {setDescription}</span>
         <hr />
         <div className="card-actions justify-between">
-          <div className=" ">{displayName}</div>
+          <div className=" ">By <span className="text-[#9F9F9F] font-semibold">{displayName}</span></div>
           <div className="text-[#9F9F9F] font-semibold">{postDate}</div>
         </div>
       </div>

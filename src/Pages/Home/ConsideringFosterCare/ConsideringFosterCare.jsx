@@ -29,7 +29,7 @@ const ConsideringFosterCare = () => {
         <div className="card-body grid grid-cols-1 md:grid-cols-2 gap-10 text-center">
           <div className="box">
             <FontAwesomeIcon
-              className="text-8xl mr-4 text-[#F2C821]"
+              className="text-8xl mr-4 text-[#f2c821]"
               icon={faFileLines}
             ></FontAwesomeIcon>
             <h2 className="text-2xl font-bold">Apply Online</h2>
@@ -39,7 +39,7 @@ const ConsideringFosterCare = () => {
           </div>
           <div className="box">
             <FontAwesomeIcon
-              className="text-8xl mr-4  text-[#F2C821]"
+              className="text-8xl mr-4  text-[#f2c821]"
               icon={faBookOpenReader}
             ></FontAwesomeIcon>
             <h2 className="text-2xl font-bold">Adoption Funding Options</h2>
@@ -49,7 +49,7 @@ const ConsideringFosterCare = () => {
           </div>
           <div className="box">
             <FontAwesomeIcon
-              className="text-8xl mr-4  text-[#F2C821]"
+              className="text-8xl mr-4  text-[#f2c821]"
               icon={faUsers}
             ></FontAwesomeIcon>
             <h2 className="text-2xl font-bold">Contact Us</h2>
@@ -60,7 +60,7 @@ const ConsideringFosterCare = () => {
           </div>
           <div className="box">
             <FontAwesomeIcon
-              className="text-8xl mr-4  text-[#F2C821]"
+              className="text-8xl mr-4  text-[#f2c821]"
               icon={faChalkboardUser}
             ></FontAwesomeIcon>
             <h2 className="text-2xl font-bold">Informational Meeting</h2>

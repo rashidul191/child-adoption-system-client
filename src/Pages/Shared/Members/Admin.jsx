@@ -1,7 +1,6 @@
 import React from "react";
 
 const Admin = ({ user }) => {
-  // console.log(user);
   return (
     <>
       {user.role === "admin" && (

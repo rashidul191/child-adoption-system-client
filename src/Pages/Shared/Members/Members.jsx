@@ -6,20 +6,20 @@ import Admin from "./Admin";
 
 const Members = () => {
   const { data: user, isLoading } = useQuery(["memberAllUsers"], () =>
-    fetch(`https://child-adoption-system-server.onrender.com/api/v1/user`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-      },
-    }).then((res) => res.json())
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/user/allUser`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    ).then((res) => res.json())
   );
 
   if (isLoading) {
     return <Loading></Loading>;
   }
-
-  // console.log(user);
-
   return (
     <section className="pt-16">
       <div className="bg-info py-10">

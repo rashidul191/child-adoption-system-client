@@ -6,6 +6,7 @@ import Banner from "./Banner/Banner";
 import Blogs from "./Blogs/Blogs";
 import ChildTypes from "./ChildTypes/ChildTypes";
 import ConsideringFosterCare from "./ConsideringFosterCare/ConsideringFosterCare";
+import Subscription from "./Subscription/Subscription";
 import TotalActivity from "./TotalActivity/TotalActivity";
 import UserReviews from "./UserReviews/UserReviews";
 
@@ -22,6 +23,7 @@ const Home = () => {
       <DesignDonatePage></DesignDonatePage>
       <Blogs></Blogs>
       <UserReviews></UserReviews>
+      <Subscription></Subscription>
     </>
   );
 };

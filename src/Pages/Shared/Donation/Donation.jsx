@@ -26,8 +26,8 @@ const Donation = () => {
 
   return (
     <section className="pt-16">
-      <div className=" mx-20 md:mx-0 my-5 md:my-20">
-        <div className="w-full md:w-2/5 bg-base-100 border border-3 mx-auto">
+      <div className="my-5 md:my-20">
+        <div className="w-96 md:w-2/5 bg-base-100 border border-3 mx-auto">
           <div className="card-body">
             <div className="bg-blue-300 text-center py-3 uppercase text-white font-bold">
               {" "}
