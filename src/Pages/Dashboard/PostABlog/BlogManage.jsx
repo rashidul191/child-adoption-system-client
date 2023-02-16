@@ -17,7 +17,6 @@ const BlogManage = () => {
     isLoading,
     refetch,
   } = useQuery(["allBlogsManage"], () =>
-  //  fetch(`https://child-adoption-system-server.onrender.com/allBlogs`, {
     fetch(`https://child-adoption-system-server.onrender.com/api/v1/blog`, {
       method: "GET",
       headers: {

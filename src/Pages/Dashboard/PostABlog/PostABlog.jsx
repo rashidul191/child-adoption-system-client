@@ -22,7 +22,7 @@ const PostABlog = () => {
   const [user] = useAuthState(auth);
 
   const imageStorageKey = `830f12aefec823fea323e5fd7f93c732`;
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     const image =
       data.img[0] ||
       "https://davidhallsocialmedia.files.wordpress.com/2011/04/blogwordcloud.jpg";
@@ -80,6 +80,7 @@ const PostABlog = () => {
     <section>
       <h1 className="md:text-xl font-bold uppercase">Post A Blog</h1>
       <hr />
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2 ">
           <div className="form-control w-full max-w-xs">

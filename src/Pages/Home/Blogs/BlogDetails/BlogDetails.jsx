@@ -40,9 +40,6 @@ const BlogDetails = () => {
     return <Loading></Loading>;
   }
 
-  // console.log(blog.data);
-  // console.log(seeAllBlogs.data);
-
   const settings = {
     dots: true,
     infinite: true,

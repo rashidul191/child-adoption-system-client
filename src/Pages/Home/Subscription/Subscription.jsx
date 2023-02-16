@@ -11,9 +11,7 @@ const Subscription = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    fetch(
-      `https://child-adoption-system-server.onrender.com/api/v1/subscription`,
+    fetch(`https://child-adoption-system-server.onrender.com/api/v1/subscription`,
       {
         method: "PUT",
         headers: {
@@ -24,11 +22,12 @@ const Subscription = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if (data?.data?.acknowledged) {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Subscription Done",
+            title: "Subscribe our new letter to stay updated every moment, Please Check Mail",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -40,7 +39,7 @@ const Subscription = () => {
   };
 
   return (
-    <section className="my-10">
+    <section className="my-10">      
       <div>
         <h1 className="text-center text-3xl font-bold uppercase">Subscribe</h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>

@@ -96,7 +96,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
             });
           swalWithBootstrapButtons.fire(
             "Deleted!",
-            "Your file has been deleted.",
+            "Your data has been deleted.",
             "success"
           );
         } else if (
@@ -105,7 +105,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
         ) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "Your imaginary file is safe :)",
+            "Your imaginary data is safe :)",
             "error"
           );
         }

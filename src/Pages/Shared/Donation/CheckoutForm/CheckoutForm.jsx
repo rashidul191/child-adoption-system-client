@@ -19,11 +19,14 @@ const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("https://child-adoption-system-server.onrender.com/api/v1/payment/create-payment-intent", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ amount }),
-    })
+    fetch(
+      "https://child-adoption-system-server.onrender.com/api/v1/payment/create-payment-intent",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ amount }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.data?.clientSecret) {
@@ -77,20 +80,20 @@ const CheckoutForm = () => {
       email: user?.email || "",
     };
 
-    // console.log(donation);
-
     if (intentError) {
       setCardError(intentError?.message);
     } else {
       setCardError("");
-      console.log(paymentIntent);
+      // console.log(paymentIntent);
 
-      //   fetch("https://child-adoption-system-server.onrender.com/donation", {
-      fetch("https://child-adoption-system-server.onrender.com/api/v1/payment", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ donation }),
-      })
+      fetch(
+        "https://child-adoption-system-server.onrender.com/api/v1/payment",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ donation }),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
