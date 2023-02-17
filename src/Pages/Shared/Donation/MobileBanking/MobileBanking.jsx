@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const MobileBanking = () => {
+const MobileBanking = ({amount}) => {
+  console.log(amount)
   // personal number donate event handle
   const {
     register,
@@ -74,7 +75,7 @@ const MobileBanking = () => {
           </div>
           <div className="form-control w-full max-w-xs">
             <label className="label" htmlFor="amount">
-              Amount * :
+              Amount (tk)* :
             </label>
             <input
               {...register("amount", {
@@ -86,6 +87,7 @@ const MobileBanking = () => {
               type="text"
               id="amount"
               placeholder="Amount"
+              value={amount}
               className="input input-bordered input-sm w-72 md:w-52 max-w-xs"
             />
             <label className="label">

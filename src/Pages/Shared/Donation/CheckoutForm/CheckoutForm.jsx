@@ -5,12 +5,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../../../firebase.init";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ amountCard }) => {
   const date = new Date();
   const currentDate = format(date, "PP");
   const [user] = useAuthState(auth);
   const amountRef = useRef("");
-  let amount = amountRef.current.value || 10;
+  // let amount = amountRef.current.value || 10;
+  let amount = amountCard;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -74,7 +75,8 @@ const CheckoutForm = () => {
     const donation = {
       date: currentDate,
       paymentSystem: "card",
-      amount: amount * 100,
+      // amount: amount * 100,
+      amount: amount,
       cardNumber: paymentMethod?.card?.last4,
       name: user?.displayName || "",
       email: user?.email || "",
@@ -133,13 +135,13 @@ const CheckoutForm = () => {
             }}
           />
 
-          <label htmlFor="cardAmount">Amount: </label>
+          <label htmlFor="cardAmount">Amount (tk):* </label>
           <input
             type="number"
             id="cardAmount"
             placeholder="$ amount"
             name="cardAmount"
-            defaultValue={amount}
+            value={amountCard}
             required
             ref={amountRef}
             className="input input-bordered input-sm w-full max-w-xs"

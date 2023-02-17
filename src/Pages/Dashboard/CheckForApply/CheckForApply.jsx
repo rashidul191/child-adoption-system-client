@@ -11,6 +11,7 @@ const CheckForApply = () => {
 
   const { register: checkForApply, handleSubmit } = useForm();
   const onSubmit = (data) => {
+    console.log(data);
     let allowValue = [];
     let notAllowValue = [];
 
@@ -53,7 +54,7 @@ const CheckForApply = () => {
   return (
     <section>
       <div className="">
-        <h1 className=" md:text-xl font-bold uppercase">Check Eligibility</h1>
+        <h1 className="md:text-xl font-bold uppercase">Check Eligibility</h1>
       </div>
       <hr />
 
