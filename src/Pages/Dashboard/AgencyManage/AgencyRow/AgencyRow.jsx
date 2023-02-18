@@ -31,12 +31,15 @@ const AgencyRow = ({ index, agency, refetch }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`https://child-adoption-system-server.onrender.com/allAgency/${_id}`, {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/api/v1/agency/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+            }
+          )
             .then((res) => {
               if (res.status === 401 || res.status === 403) {
                 signOut(auth);
@@ -89,7 +92,9 @@ const AgencyRow = ({ index, agency, refetch }) => {
       </td>
       <td>By : {agencyDirectorName}</td>
       <th>
-        <button className="rounded-lg bg-[#FF428D] btn-sm text-white">Edit</button>
+        <button className="rounded-lg bg-[#FF428D] btn-sm text-white">
+          Edit
+        </button>
       </th>
       <th>
         <button
