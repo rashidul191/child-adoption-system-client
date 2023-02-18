@@ -177,13 +177,13 @@ const AddAgency = () => {
           </label>
           <textarea
             ref={aboutAgencyRef}
-            className="textarea textarea-bordered h-24"
+            className="textarea textarea-bordered h-24 w-80 md:w-5/6"
             placeholder="About Agency Here"
           ></textarea>
         </div>
 
         <input
-          className="btn btn-primary text-white w-full md:w-96 rounded-none mt-3"
+          className="btn btn-primary text-white w-80 md:w-96 rounded-none mt-3"
           type="submit"
           value="Add Agency"
         />

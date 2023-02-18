@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const MobileBanking = ({amount}) => {
-  console.log(amount)
   // personal number donate event handle
   const {
     register,

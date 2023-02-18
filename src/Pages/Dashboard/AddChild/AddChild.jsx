@@ -371,14 +371,14 @@ const AddChild = () => {
           </label>
           <textarea
             ref={aboutChildRef}
-            className="textarea textarea-bordered h-24"
+            className="textarea textarea-bordered h-24 w-80 md:w-10/12"
             placeholder="About Description"
             id="aboutChild"
           ></textarea>
         </div>
 
         <input
-          className="btn btn-primary text-white w-full md:md:w-96 rounded-none mt-3"
+          className="btn btn-primary text-white w-80 md:md:w-96 rounded-none mt-3 mb-10"
           type="submit"
           value="Add Child"
         />

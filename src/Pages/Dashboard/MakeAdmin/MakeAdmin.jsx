@@ -20,7 +20,7 @@ const MakeAdmin = () => {
     data: users,
     isLoading,
     refetch,
-  } = useQuery(["users"], () =>
+  } = useQuery(["usersAllMakeAdmin"], () =>
     fetch(`https://child-adoption-system-server.onrender.com/api/v1/user`, {
       method: "GET",
       headers: {

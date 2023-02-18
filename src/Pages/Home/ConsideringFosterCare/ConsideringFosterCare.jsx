@@ -9,7 +9,7 @@ import React from "react";
 
 const ConsideringFosterCare = () => {
   return (
-    <section className="pb-10">
+    <section className="pt-10 md:pt-5">
       <div>
         <h1 className="text-center text-3xl font-bold uppercase">
           Considering Foster Care or Adoption?

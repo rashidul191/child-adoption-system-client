@@ -20,13 +20,6 @@ const Agency = () => {
     return <Loading></Loading>;
   }
 
-  let allAgencyInfo;
-  if (allAgency?.data?.length > 3) {
-    allAgencyInfo = allAgency.data.slice(0, 3);
-  } else {
-    allAgencyInfo = allAgency.data;
-  }
-
   return (
     <section className="bg-[#EBF1F6] my-10 py-10">
       <div>
@@ -34,12 +27,14 @@ const Agency = () => {
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10">
-        {allAgencyInfo?.map((agency) => (
-          <AgencyGrid key={agency._id} agency={agency}></AgencyGrid>
-        ))}
+        {allAgency?.data
+          ?.slice(0, 3)
+          ?.reverse()
+          ?.map((agency) => (
+            <AgencyGrid key={agency._id} agency={agency}></AgencyGrid>
+          ))}
       </div>
-
-      <div className="text-center ">
+      <div className="text-center">
         <Link to={`/all-agency`}>
           <button className="btn btn-primary rounded-none w-60 text-white font-bold">
             See More

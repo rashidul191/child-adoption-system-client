@@ -14,12 +14,9 @@ const stripePromise = loadStripe(
 
 const Donation = () => {
   DynamicTitle("Donate");
-
   const [donation, setDonation] = useState(false);
-  console.log(donation);
   const [card, setCard] = useState(true);
   const [mobileBanking, setMobileBanking] = useState(false);
-
   const [amount, setAmount] = useState(0);
   const [otherAmount, setOtherAmount] = useState(0);
 
@@ -126,7 +123,7 @@ const Donation = () => {
                     <span className="font-bold">4000 Taka</span>
                   </label>
                   <br />
-                  <label htmlFor="q5" className="label cursor-pointer">
+                  <label htmlFor="q5" className="label cursor-pointer mb-2">
                     <input
                       id="q5"
                       type="radio"
@@ -139,7 +136,7 @@ const Donation = () => {
                   </label>
                 </div>
               </div>
-              <label htmlFor="q6" className="">
+              <label htmlFor="q6" className="ml-1">
                 <input
                   id="q6"
                   type="radio"
@@ -162,14 +159,14 @@ const Donation = () => {
               </label>
               <br />
               <input
-                className="btn btn-secondary w-full md:w-96 mt-5 rounded-none"
+                className="btn btn-secondary font-bold w-full md:w-96 mt-5 rounded-none"
                 type="submit"
                 value="Give Now"
               />
             </form>
           </div>
         </div>
-<hr  className="mt-5"/>
+        <hr className="mt-5" />
         <div className="mt-5">
           <h2 className="text-center text-2xl font-bold  ">
             OTHER WAYS TO DONATE

@@ -14,7 +14,7 @@ const ChildTypes = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-10">
-        <div className="card w-80 md:w-96 bg-base-100 shadow-xl md:shadow-none md:border mx-auto">
+        <div className="card w-80 md:w-96 bg-base-100 shadow-md md:shadow-none md:border mx-auto">
           <Link to={`/childType/Infant-Child`}>
             <figure className="px-10 hover:px-6 pt-10 ">
               <img
@@ -35,7 +35,7 @@ const ChildTypes = () => {
           </Link>
         </div>
 
-        <div className="card w-80 md:w-96 bg-base-100 shadow-xl md:shadow-none md:border mx-auto">
+        <div className="card w-80 md:w-96 bg-base-100 shadow-md md:shadow-none md:border mx-auto">
           <Link to={`/childType/Foster-Care-Child`}>
             <figure className="px-10 hover:px-6 pt-10">
               <img
@@ -55,7 +55,7 @@ const ChildTypes = () => {
             </div>
           </Link>
         </div>
-        <div className="card w-80 md:w-96 bg-base-100 shadow-xl md:shadow-none md:border mx-auto">
+        <div className="card w-80 md:w-96 bg-base-100 shadow-md md:shadow-none md:border mx-auto">
           <Link to={`/childType/Street-Child`}>
             <figure className="px-10 hover:px-6 pt-10">
               <img

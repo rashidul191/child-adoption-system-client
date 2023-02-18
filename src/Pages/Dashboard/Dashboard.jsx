@@ -12,7 +12,7 @@ const Dashboard = () => {
   const [employer] = useEmployer(user);
 
   return (
-    <section className="pt-10 lg:pt-20">
+    <section className="md:pt-10 lg:pt-20">
       <div className="drawer drawer-mobile md:mb-20">
         <input
           id="dashboard-drawer"

@@ -117,14 +117,15 @@ const CheckoutForm = ({ amountCard }) => {
       )}
       <div className="card-body">
         <form onSubmit={handleSubmit}>
+          <p>Card Number , MM/YY & CVC *:</p>
           <CardElement
-            className="mb-5"
+            className="mb-5 border p-2"
             options={{
               style: {
-                base: {
+                base: {               
                   fontSize: "16px",
                   color: "#424770",
-                  "::placeholder": {
+                  "::placeholder:": {
                     color: "#aab7c4",
                   },
                 },
@@ -137,14 +138,14 @@ const CheckoutForm = ({ amountCard }) => {
 
           <label htmlFor="cardAmount">Amount (tk):* </label>
           <input
-            type="number"
+            type="text"
             id="cardAmount"
             placeholder="$ amount"
             name="cardAmount"
             value={amountCard}
             required
             ref={amountRef}
-            className="input input-bordered input-sm w-full max-w-xs"
+            className="input input-bordered input-sm w-full rounded-none"
           />
 
           <button

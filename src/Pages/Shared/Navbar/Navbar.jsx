@@ -57,7 +57,7 @@ const Navbar = () => {
   );
   return (
     <section>
-      <div className="navbar bg-white border-b-2 border-black fixed z-50">
+      <div className="navbar bg-white border-b-2 border-black md:fixed md:z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
