@@ -92,7 +92,7 @@ const EditMyProfile = ({ user, userData }) => {
                     width={150}
                     src={
                       photoURL
-                        ? userData.img || photoURL
+                        ? userData?.img || photoURL
                         : `https://i.ibb.co/tmprR1w/profile-icon.webp`
                     }
                     alt={displayName}

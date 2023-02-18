@@ -1,19 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Cell,
-  Legend,
-  Pie,
-  PieChart,
-  ReferenceLine,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Cell, Pie, PieChart } from "recharts";
 import auth from "../../../firebase.init";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 import Loading from "../../Shared/Loading/Loading";
@@ -38,51 +26,8 @@ const CheckApplyResult = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-  console.log(eligibilityScore?.data[0]);
+  // console.log(eligibilityScore?.data[0]);
 
-  // const yesScore = eligibilityScore[0].email;
-  // const noScore = eligibilityScore[0].notAllowValue;
-
-  // console.log(yesScore);
-  // console.log(noScore);
-
-  const data = [
-    {
-      name: "Eligibility",
-      yes: eligibilityScore?.data[0]?.allowValue?.length * 10,
-      no: eligibilityScore?.data[0]?.notAllowValue?.length * 10,
-    },
-    // {
-    //   name: "Page B",
-    //   yes: 30,
-    //   no: -10,
-    // },
-    // {
-    //   name: "Page C",
-    //   yes: 20,
-    //   no: -90,
-    // },
-    // {
-    //   name: "Page D",
-    //   yes: 27,
-    //   no: -39,
-    // },
-    // {
-    //   name: "Page E",
-    //   yes: 48,
-    //   no: -28,
-    // },
-    // {
-    //   name: "Page F",
-    //   yes: 23,
-    //   no: -38,
-    // },
-    // {
-    //   name: "Page G",
-    //   yes: 34,
-    //   no: -43,
-    // },
-  ];
   // pieChart data
   const pieChartData = [
     { name: "Yes", value: eligibilityScore?.data[0]?.allowValue?.length * 10 },
@@ -90,13 +35,9 @@ const CheckApplyResult = () => {
       name: "No",
       value: eligibilityScore?.data[0]?.notAllowValue?.length * 10,
     },
-    // { name: "Group C", value: 300 },
-    // { name: "Group D", value: 200 },
   ];
 
-  //   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
   const COLORS = ["#00C49F", "#FF8042"];
-
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
     cx,
@@ -129,11 +70,44 @@ const CheckApplyResult = () => {
         <h1 className=" md:text-xl font-bold uppercase">Eligibility Score</h1>
       </div>
       <hr />
+      <div className="mt-5">
+        {eligibilityScore?.data[0]?.allowValue?.length * 10 >= 50 ? (
+          <div>
+            <div className="text-center text-green-600 font-bold">
+              <h2 className="text-3xl "> Congratulation </h2>
+              <p className="text-xl ">You are Eligibility for Child Adoption</p>
+            </div>
+            <h1 className="text-center font-bold text-xl my-5">
+              Because your score is:{" "}
+              <span className="text-red-600">
+                {" "}
+                Yes = {eligibilityScore?.data[0]?.allowValue?.length * 10}%
+              </span>
+            </h1>
+          </div>
+        ) : (
+          <div>
+            <div className="text-red-600 text-center  font-bold">
+              <h1 className="text-3xl">Sorry</h1>
+              <p className="text-xl">
+                You are Not Eligibility for Child Adoption
+              </p>
+            </div>
+            <h1 className="text-center font-bold text-xl my-5">
+              Because your score is:{" "}
+              <span className="text-red-600">
+                {" "}
+                No = {eligibilityScore?.data[0]?.notAllowValue?.length * 10}%
+              </span>
+            </h1>
+          </div>
+        )}
+      </div>
 
       {eligibilityScore?.data[0] ? (
         <div className="mx-4 md:mx-8">
           <div>
-            <div className="flex text-center text-white text-xl md:text-3xl font-bold mt-12">
+            <div className="flex text-center text-white text-xl md:text-3xl font-bold">
               <div
                 style={{
                   width: `${
@@ -157,29 +131,6 @@ const CheckApplyResult = () => {
               </div>
             </div>
           </div>
-
-          {/* <div>
-            <BarChart
-              width={800}
-              height={400}
-              data={data}
-              margin={{
-                top: 5,
-                // right: 30,
-                // left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <ReferenceLine y={0} stroke="#000" />
-              <Bar dataKey="no" fill="#FF0000" />
-              <Bar dataKey="yes" fill="#00FF00" />
-            </BarChart>
-          </div> */}
 
           <div className="md:flex ">
             <div className="mt-20">

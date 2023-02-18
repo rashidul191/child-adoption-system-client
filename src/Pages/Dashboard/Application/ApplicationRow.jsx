@@ -28,32 +28,6 @@ const ApplicationRow = ({ index, application, refetch }) => {
       });
   };
 
-  // handle Application Approve admin and employer
-  // const handleApplicationApprove = (id) => {
-  //   fetch(`https://child-adoption-system-server.onrender.com/application/${id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "content-type": "application/json",
-  //       authorization: `Bearer ${localStorage.getItem("access-token")}`,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       if (res.status === 403 || res.status === 401) {
-  //         signOut(auth);
-  //         localStorage.removeItem("access-token");
-  //         navigate("/login");
-  //         toast.error("Failed To make Employer");
-  //       }
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       if (data?.modifiedCount > 0) {
-  //         toast.success(`Application Delete Successfully`);
-  //         refetch();
-  //       }
-  //     });
-  // };
-
   // handleApplicationDelete
   const handleApplicationDelete = (_id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -181,7 +155,7 @@ const ApplicationRow = ({ index, application, refetch }) => {
       <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />
       {/* application form modal */}
       <div className="modal md:pt-16">
-        <div className="modal-box w-3/4 ml-48  max-w-5xl">
+        <div className="modal-box md:w-3/4 md:ml-48 max-w-5xl">
           <label
             htmlFor={`my-modal-${_id}`}
             className="btn btn-sm btn-circle absolute right-2 top-2"

@@ -36,8 +36,8 @@ const ApplicationRowModal = ({ childApplicationData }) => {
 
   return (
     <div>
-      <div className="text-center font-semibold">
-        <h1 className="text-4xl ">Child Adoption System-Ador</h1>
+      <div className="text-center font-bold">
+        <h1 className="text-xl md:text-4xl ">Child Adoption System-Ador</h1>
         <p>Every Child Should Get A Quality Place and Education</p>
         <div>
           <p>Email: casa@gmail.com</p>
@@ -47,108 +47,199 @@ const ApplicationRowModal = ({ childApplicationData }) => {
           <p>West Shewrapara, Mirpur-10, Dhaka, Bangladesh</p>
         </div>
       </div>
-      <hr />
-      {/* Child Information Here */}
-      <div>
-        <h1 className="text-2xl font-semibold">Child Information</h1>
-        <img
-          className="w-32"
-          src={childApplicationData?.child?.img}
-          alt={childApplicationData?.child?.name}
-        />
+      <hr className="my-5" />
+      <div className="md:mx-20">
+        {/* Child Information Here */}
         <div>
-          <p>
-            Name: <span>{childApplicationData?.child?.name}</span>
-          </p>
-          <p>
-            Gender: <span>{childApplicationData?.child?.gender}</span>
-          </p>
-          <p>
-            Age: <span>{childApplicationData?.child?.age}</span>
-          </p>
+          <h1 className="text-xl md:text-2xl font-bold">Child Information</h1>
+          <div className="md:text-xl grid grid-cols-3 mb-2 items-start">
+            <div className="col-span-2">
+              <div className="md:text-xl grid grid-cols-3 md:mt-3">
+                <p className="col-span-2">
+                  Name:{" "}
+                  <span className="underline font-semibold">
+                    {childApplicationData?.child?.name}
+                  </span>
+                </p>
+                <p>
+                  Gender:{" "}
+                  <span className="underline font-semibold">
+                    {childApplicationData?.child?.gender}
+                  </span>
+                </p>
+              </div>
+              <div className="md:text-xl grid grid-cols-3 my-2">
+                <p>
+                  Age:{" "}
+                  <span className="underline font-semibold">
+                    {childApplicationData?.child?.age}
+                  </span>
+                </p>
+                <p className="col-span-2">
+                  Child Type:{" "}
+                  <span className="underline font-semibold">
+                    {childApplicationData?.child?.childType}
+                  </span>
+                </p>
+              </div>
+            </div>
+            <img
+              className="w-40 ml-auto"
+              src={childApplicationData?.child?.img}
+              alt={childApplicationData?.child?.name}
+            />
+          </div>
+          <div className="md:text-xl grid grid-cols-3 my-2">
+            <p>
+              Agency:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.child?.agency}
+              </span>
+            </p>
+            <p>
+              Disabilities:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.child?.disabilities}
+              </span>
+            </p>
+            <p>
+              Religion:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.child?.religion}
+              </span>
+            </p>
+          </div>
+          <div className="md:text-xl grid grid-cols-3">
+            <p className="col-span-2">
+              Location:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.child?.location}
+              </span>
+            </p>
+            <p>
+              City:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.child?.city}
+              </span>
+            </p>
+          </div>
         </div>
-        <p>
-          Religion: <span>{childApplicationData?.child?.religion}</span>
-        </p>
-        <p>
-          Agency: <span>{childApplicationData?.child?.agency}</span>
-        </p>
-        <p>
-          Child Type: <span>{childApplicationData?.child?.childType}</span>
-        </p>
-        <p>
-          Disabilities: <span>{childApplicationData?.child?.disabilities}</span>
-        </p>
-        <p>
-          Location: <span>{childApplicationData?.child?.location}</span>
-        </p>
-        <p>
-          City: <span>{childApplicationData?.child?.city}</span>
-        </p>
-      </div>
-      {/* Parent-1 Information Here */}
-      <div>
-        <h1 className="text-2xl font-semibold">Parent-1 Information</h1>
+        {/* Parent-1 Information Here */}
+        <hr className="my-3 md:my-5" />
         <div>
-          <p>
-            Name: <span>{childApplicationData?.data?.displayName}</span>
-          </p>
-          <p>
-            Gender: <span>{childApplicationData?.data?.gender}</span>
-          </p>
-        </div>
-        <p>
-          Citizenship: <span>{childApplicationData?.data?.citizenship}</span>
-        </p>
-        <p>
-          Birth Date: <span>{childApplicationData?.data?.birthDate}</span>
-        </p>
-        <p>
-          NID / Passport: <span>{childApplicationData?.data?.nidPassport}</span>
-        </p>
-      </div>
+          <h1 className="text-xl md:text-2xl font-bold">
+            Parent-1 Information
+          </h1>
+          <div className="md:text-xl grid grid-cols-2 md:grid-cols-3 my-2">
+            <p>
+              Name:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.displayName}
+              </span>
+            </p>
+            <p>
+              Gender:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.gender}
+              </span>
+            </p>
 
-      {/* Parent-2 Information Here */}
-      <div>
-        <h1 className="text-2xl font-semibold">Parent-2 Information</h1>
-        <div>
-          <p>
-            Name: <span>{childApplicationData?.data?.displayName2}</span>
-          </p>
-          <p>
-            Gender: <span>{childApplicationData?.data?.gender2}</span>
-          </p>
+            <p>
+              Citizenship:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.citizenship}
+              </span>
+            </p>
+            <p>
+              Birth Date:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.birthDate}
+              </span>
+            </p>
+            <p className="col-span-2">
+              NID / Passport:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.nidPassport}
+              </span>
+            </p>
+          </div>
         </div>
-        <p>
-          Citizenship: <span>{childApplicationData?.data?.citizenship2}</span>
-        </p>
-        <p>
-          Birth Date: <span>{childApplicationData?.data?.birthDate2}</span>
-        </p>
-        <p>
-          NID / Passport:{" "}
-          <span>{childApplicationData?.data?.nidPassport2}</span>
-        </p>
-      </div>
-
-      {/* Contact Information */}
-      <div>
-        <h1 className="text-2xl font-semibold">Contact Information</h1>
-        <p>
-          Email: <span>{childApplicationData?.email}</span>
-        </p>
-        <p>
-          Location: <span>{childApplicationData?.data?.address}</span>
-        </p>
-        <p>
-          City: <span>{childApplicationData?.data?.city}</span>
-        </p>
-        <p>
-          Zip Code: <span>{childApplicationData?.data?.zipCode}</span>
-        </p>
-        <p>
-          Country: <span>{childApplicationData?.data?.country}</span>
-        </p>
+        <hr className="my-3 md:my-5" />
+        {/* Parent-2 Information Here */}
+        <div>
+          <h1 className="text-xl md:text-2xl font-bold">
+            Parent-2 Information
+          </h1>
+          <div className="md:text-xl grid grid-cols-2 md:grid-cols-3 my-2">
+            <p>
+              Name:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.displayName2}
+              </span>
+            </p>
+            <p>
+              Gender:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.gender2}
+              </span>
+            </p>
+            <p>
+              Citizenship:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.citizenship2}
+              </span>
+            </p>
+            <p>
+              Birth Date:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.birthDate2}
+              </span>
+            </p>
+            <p className="col-span-2">
+              NID / Passport:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.nidPassport2}
+              </span>
+            </p>
+          </div>
+        </div>
+        <hr className="my-3 md:my-5" />
+        {/* Contact Information */}
+        <div className="mb-5">
+          <h1 className="text-xl md:text-2xl font-bold">Contact Information</h1>
+          <div className="md:text-xl grid grid-cols-2 md:grid-cols-3 my-2 mx-auto">
+            <p>
+              Email:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.email}
+              </span>
+            </p>
+            <p className="md:mx-5">
+              City:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.city}
+              </span>
+            </p>
+            <p>
+              Zip Code:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.zipCode}
+              </span>
+            </p>
+            <p className="col-span-2">
+              Location:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.address}
+              </span>
+            </p>
+            <p className="md:ml-1">
+              Country:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.country}
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="text-center">

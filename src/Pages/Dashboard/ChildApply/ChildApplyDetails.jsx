@@ -90,7 +90,7 @@ const ChildApplyDetails = ({ childApply }) => {
       <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />
       {/* application form modal */}
       <div className="modal md:pt-16">
-        <div className="modal-box w-3/4 ml-48  max-w-5xl">
+        <div className="modal-box md:w-3/4 md:ml-48  max-w-5xl">
           <label
             htmlFor={`my-modal-${_id}`}
             className="btn btn-sm btn-circle absolute right-2 top-2"

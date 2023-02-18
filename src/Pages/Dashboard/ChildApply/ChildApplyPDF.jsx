@@ -307,7 +307,6 @@ const ChildApplyPDF = ({ childApply }) => {
           </div>
         </div>
 
-        
         <Text
           style={{ textAlign: "center", marginTop: "20px" }}
           render={({ pageNumber, totalPages }) =>

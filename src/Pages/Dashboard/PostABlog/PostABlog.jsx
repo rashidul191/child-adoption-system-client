@@ -80,7 +80,6 @@ const PostABlog = () => {
     <section>
       <h1 className="md:text-xl font-bold uppercase">Post A Blog</h1>
       <hr />
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2 ">
           <div className="form-control w-full max-w-xs">
@@ -146,20 +145,6 @@ const PostABlog = () => {
             </label>
           </div>
 
-          {/* <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text">Date:</span>
-            </label>
-            <input
-              {...postABlog("currentDate")}
-              type="text"
-              value={currentDate}
-              disabled
-              className="input input-bordered input-sm md:w-96 max-w-xs"
-            />
-
-          </div> */}
-
           <div className="form-control w-full max-w-xs mt-0">
             <label className="label">
               <span className="label-text">Full Name:</span>
@@ -192,13 +177,13 @@ const PostABlog = () => {
           </label>
           <textarea
             ref={blogDescription}
-            className="textarea textarea-bordered h-48"
+            className="textarea textarea-bordered h-48 w-80 md:w-5/6"
             placeholder="Text Here"
           ></textarea>
         </div>
 
         <input
-          className="btn btn-primary text-white w-full md:w-96 rounded-none mt-3"
+          className="btn btn-primary text-white w-80 md:w-96 rounded-none mt-3"
           type="submit"
           value="Post A Blog"
         />

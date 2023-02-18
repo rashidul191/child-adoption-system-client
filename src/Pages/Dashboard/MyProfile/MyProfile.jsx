@@ -82,7 +82,7 @@ const MyProfile = () => {
                   width={150}
                   src={
                     photoURL
-                      ? userInfo.data.img || photoURL
+                      ? userInfo?.data?.img || photoURL
                       : `https://i.ibb.co/tmprR1w/profile-icon.webp`
                   }
                   alt={displayName}
