@@ -48,14 +48,17 @@ const EditMyProfile = ({ user, userData }) => {
             phone: data.phone,
           };
 
-          fetch(`https://child-adoption-system-server.onrender.com/api/v1/user/${userData?.email}`, {
-            method: "PUT",
-            headers: {
-              "Content-type": "application/json",
-              authorization: `Bearer ${localStorage.getItem("access-token")}`,
-            },
-            body: JSON.stringify(usrProfileUpdateInfo),
-          })
+          fetch(
+            `https://child-adoption-system-server.onrender.com/api/v1/user/${userData?.email}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("access-token")}`,
+              },
+              body: JSON.stringify(usrProfileUpdateInfo),
+            }
+          )
             .then((res) => {
               if (res.status === 401 || res.status === 403) {
                 signOut(auth);
@@ -137,7 +140,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="text"
                   placeholder="Full Name"
                   defaultValue={displayName}
-                  className="input input-bordered input-sm md:w-96 max-w-xs"
+                  className="input input-bordered input-sm md:w-72 max-w-xs"
                 />
                 <label className="label">
                   {errors.displayName?.type === "required" && (
@@ -161,7 +164,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="email"
                   defaultValue={userData?.email}
                   disabled
-                  className="input input-bordered  input-sm md:w-96 max-w-xs"
+                  className="input input-bordered  input-sm md:w-72 max-w-xs"
                 />
               </div>
 
@@ -177,7 +180,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="text"
                   placeholder="Address"
                   defaultValue={userData?.address}
-                  className="input input-bordered  input-sm md:w-96 max-w-xs"
+                  className="input input-bordered  input-sm md:w-72 max-w-xs"
                 />
                 <label className="label">
                   {errors.address?.type === "required" && (
@@ -200,7 +203,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="text"
                   placeholder="Zip Code"
                   defaultValue={userData?.zipCode}
-                  className="input input-bordered input-sm md:w-96 max-w-xs"
+                  className="input input-bordered input-sm md:w-72 max-w-xs"
                 />
                 <label className="label">
                   {errors.zipCode?.type === "required" && (
@@ -223,7 +226,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="text"
                   placeholder="Phone Number"
                   defaultValue={userData?.phone}
-                  className="input input-bordered  input-sm md:w-96 max-w-xs"
+                  className="input input-bordered input-sm md:w-72 max-w-xs"
                 />
                 <label className="label">
                   {errors.phone?.type === "required" && (
@@ -234,7 +237,7 @@ const EditMyProfile = ({ user, userData }) => {
                 </label>
 
                 <input
-                  className="btn border-none bg-[#FF428D] text-white btn-sm md:w-52"
+                  className="mt-3 btn border-none bg-primary text-white font-bold md:w-52"
                   type="submit"
                   value="Save Change"
                 />

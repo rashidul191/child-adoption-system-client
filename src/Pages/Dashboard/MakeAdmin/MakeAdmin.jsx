@@ -59,14 +59,17 @@ const MakeAdmin = () => {
               </tr>
             </thead>
             <tbody>
-              {users?.data?.slice(skip, skip + limit)?.map((user, index) => (
-                <MakeAdminRow
-                  key={user._id}
-                  user={user}
-                  index={index}
-                  refetch={refetch}
-                ></MakeAdminRow>
-              ))}
+              {users?.data
+                ?.slice(skip, skip + limit)
+                ?.reverse()
+                ?.map((user, index) => (
+                  <MakeAdminRow
+                    key={user._id}
+                    user={user}
+                    index={index}
+                    refetch={refetch}
+                  ></MakeAdminRow>
+                ))}
             </tbody>
           </table>
         </div>

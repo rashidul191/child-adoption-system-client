@@ -52,14 +52,17 @@ const BlogManage = () => {
             </div>
           ) : (
             <tbody>
-              {allBlogs?.data?.slice(skip, skip + limit)?.map((blog, index) => (
-                <BlogRow
-                  key={blog._id}
-                  blog={blog}
-                  index={index}
-                  refetch={refetch}
-                ></BlogRow>
-              ))}
+              {allBlogs?.data
+                ?.slice(skip, skip + limit)
+                ?.reverse()
+                ?.map((blog, index) => (
+                  <BlogRow
+                    key={blog._id}
+                    blog={blog}
+                    index={index}
+                    refetch={refetch}
+                  ></BlogRow>
+                ))}
             </tbody>
           )}
         </table>

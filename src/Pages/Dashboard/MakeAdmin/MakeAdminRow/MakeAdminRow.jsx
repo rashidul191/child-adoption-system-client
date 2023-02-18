@@ -180,7 +180,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
               role === "admin" && "hidden"
             }`}
           >
-            Make Employer
+           <span> Make Employer</span>
           </button>
         )}
       </td>
