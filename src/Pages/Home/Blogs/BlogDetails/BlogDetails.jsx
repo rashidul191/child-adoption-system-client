@@ -14,6 +14,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import RelatedBlogs from "../RelatedBlogs";
+import BlogCommentInput from "./BlogCommentInput";
+import BlogUserComments from "./BlogUserComments";
 
 const BlogDetails = () => {
   const { blogTitle, id } = useParams();
@@ -57,64 +59,85 @@ const BlogDetails = () => {
 
   return (
     <section className="pt-16">
-      <div className="card md:w-3/5 mx-auto bg-base-100">
+      <div className="card md:px-24 bg-base-100">
         <div className="card-body">
-          <img
-            className="mx-auto"
-            width={300}
-            src={blog?.data?.blogImg}
-            alt={blog?.data?.blogTitle}
-          />
-          <h2 className="text-2xl md:text-4xl font-semibold capitalize">
-            {blog?.data?.blogTitle}
-          </h2>
-          <div className="my-6 flex justify-between">
-            <div>
-              <p>{blog?.data?.displayName}</p>
-              <p className="text-[#95959F] text-sm">{blog?.data?.postDate}</p>
-            </div>
-            <div className="cursor-pointer text-xl flex items-center">
-              <span>
-                <FacebookShareButton url={shareUrl}>
-                  <FontAwesomeIcon icon={faSquareFacebook}></FontAwesomeIcon>
-                </FacebookShareButton>
-              </span>
-              <span className="mx-4">
-                <LinkedinShareButton url={shareUrl}>
-                  <FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon>
-                </LinkedinShareButton>
-              </span>
-              <span>
-                <div className="dropdown dropdown-end text-center">
-                  <label tabIndex={0}>
-                    <div className="dropdown dropdown-hover">
-                      <label tabIndex={0}>
-                        <CopyToClipboard text={shareUrl}>
-                          <FontAwesomeIcon icon={faLink}></FontAwesomeIcon>
-                        </CopyToClipboard>
-                      </label>
-
-                      <ul tabIndex={0} className="dropdown-content">
-                        <div className="compact dropdown-content shadow bg-[#474747] w-32 py-1">
-                          <span className="text-sm text-white">
-                            Copy To Clipboard
-                          </span>
-                        </div>
-                      </ul>
-                    </div>
-                  </label>
-                  <div
-                    tabIndex={0}
-                    className="compact dropdown-content shadow bg-[#474747] w-32 py-1"
-                  >
-                    <span className="text-sm text-white">Copied!</span>
-                  </div>
+          <div>
+            <img
+              className="mx-auto"
+              width={300}
+              src={blog?.data?.blogImg}
+              alt="img-here"
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="col-span-2 ">
+              <h2 className="text-2xl md:text-4xl font-semibold capitalize">
+                {blog?.data?.blogTitle}
+              </h2>
+              <div className="my-6 flex justify-between">
+                <div>
+                  <p>{blog?.data?.displayName}</p>
+                  <p className="text-[#95959F] text-sm">
+                    {blog?.data?.postDate}
+                  </p>
                 </div>
-              </span>
+                <div className="cursor-pointer text-xl flex items-center">
+                  <span>
+                    <FacebookShareButton url={shareUrl}>
+                      <FontAwesomeIcon
+                        icon={faSquareFacebook}
+                      ></FontAwesomeIcon>
+                    </FacebookShareButton>
+                  </span>
+                  <span className="mx-4">
+                    <LinkedinShareButton url={shareUrl}>
+                      <FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon>
+                    </LinkedinShareButton>
+                  </span>
+                  <span>
+                    <div className="dropdown dropdown-end text-center">
+                      <label tabIndex={0}>
+                        <div className="dropdown dropdown-hover">
+                          <label tabIndex={0}>
+                            <CopyToClipboard text={shareUrl}>
+                              <FontAwesomeIcon icon={faLink}></FontAwesomeIcon>
+                            </CopyToClipboard>
+                          </label>
+                          <ul tabIndex={0} className="dropdown-content">
+                            <div className="compact dropdown-content shadow bg-[#474747] w-32 py-1">
+                              <span className="text-sm text-white">
+                                Copy To Clipboard
+                              </span>
+                            </div>
+                          </ul>
+                        </div>
+                      </label>
+                      <div
+                        tabIndex={0}
+                        className="compact dropdown-content shadow bg-[#474747] w-32 py-1"
+                      >
+                        <span className="text-sm text-white">Copied!</span>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+              </div>
+              <hr />
+              <p className="text-justify">{blog?.data?.description}</p>
+
+              {/* comment input here */}
+              <div>
+                <BlogCommentInput blog={blog}></BlogCommentInput>
+              </div>
+            </div>
+            {/* comment here */}
+            <div className="md:ml-3">
+              <h2 className="text-xl font-bold">Comments are: </h2>
+              <div className="border-5 border">
+                <BlogUserComments blog={blog}></BlogUserComments>
+              </div>
             </div>
           </div>
-          <hr />
-          <p className="text-justify">{blog?.data?.description}</p>
         </div>
       </div>
       <div className="py-12 bg-[#F6F9FC]">

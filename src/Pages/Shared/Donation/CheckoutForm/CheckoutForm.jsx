@@ -86,8 +86,6 @@ const CheckoutForm = ({ amountCard }) => {
       setCardError(intentError?.message);
     } else {
       setCardError("");
-      // console.log(paymentIntent);
-
       fetch(
         "https://child-adoption-system-server.onrender.com/api/v1/payment",
         {
@@ -98,7 +96,6 @@ const CheckoutForm = ({ amountCard }) => {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data?.data?.insertedId) {
             toast.success("Completed your Donation");
           }
@@ -122,7 +119,7 @@ const CheckoutForm = ({ amountCard }) => {
             className="mb-5 border p-2"
             options={{
               style: {
-                base: {               
+                base: {
                   fontSize: "16px",
                   color: "#424770",
                   "::placeholder:": {

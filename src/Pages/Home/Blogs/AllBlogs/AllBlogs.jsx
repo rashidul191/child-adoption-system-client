@@ -14,7 +14,7 @@ const AllBlogs = () => {
   const [count, setCount] = useState(1);
   let limit = 9;
   const skip = (count - 1) * limit;
-  console.log("skip: ", skip);
+
   // react query
   const { data: seeAllBlogs, isLoading } = useQuery(["SeeAllBlogs"], () =>
     fetch("https://child-adoption-system-server.onrender.com/api/v1/blog", {
@@ -29,7 +29,6 @@ const AllBlogs = () => {
     return <Loading></Loading>;
   }
 
-  console.log(seeAllBlogs?.data);
   return (
     <section className="md:pt-16">
       <div className="bg-info py-10">

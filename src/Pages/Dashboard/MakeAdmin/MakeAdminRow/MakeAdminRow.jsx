@@ -8,7 +8,6 @@ import { signOut } from "firebase/auth";
 import auth from "../../../../firebase.init";
 
 const MakeAdminRow = ({ user, index, refetch }) => {
-  // console.log(user);
   const navigate = useNavigate();
   const { email, role } = user;
 
@@ -180,7 +179,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
               role === "admin" && "hidden"
             }`}
           >
-           <span> Make Employer</span>
+            <span> Make Employer</span>
           </button>
         )}
       </td>

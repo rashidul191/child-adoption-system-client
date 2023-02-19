@@ -65,7 +65,6 @@ const PostABlog = () => {
               return res.json();
             })
             .then((data) => {
-              console.log(data);
               if (data?.data?.insertedId) {
                 toast.success("Post A Blog successfully");
                 window.location.reload();

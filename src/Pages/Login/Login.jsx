@@ -52,7 +52,6 @@ const Login = () => {
   let from = location.state?.from?.pathname || "/";
   useEffect(() => {
     if (token) {
-      // console.log(user);
       navigate(from, { replace: true });
     }
   }, [token, navigate, from]);
@@ -229,7 +228,7 @@ const Login = () => {
                   </div>
 
                   <input
-                    className="btn btn-secondary rounded-none"
+                    className="btn btn-secondary rounded-none font-bold"
                     type="submit"
                     value={`Login`}
                   />
@@ -257,7 +256,6 @@ const Login = () => {
                   >
                     ✕
                   </label>
-
                   <label className="label">
                     <span className="label-text">Email:</span>
                   </label>
@@ -277,14 +275,9 @@ const Login = () => {
                   >
                     Send Email
                   </button>
-                  {/* <div className="modal-action">
-                  <label htmlFor="forgot-password-modal" className="btn btn-info">
-                    Send Email
-                  </label>
-                </div> */}
                 </div>
               </div>
-
+              <div className="divider">OR</div>
               <SocialLogin></SocialLogin>
             </div>
           </div>

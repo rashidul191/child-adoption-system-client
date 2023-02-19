@@ -2,8 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const BlogsGrid = ({ blog }) => {
-  // console.log(blog);
-
   const navigate = useNavigate();
   const { _id, blogImg, blogTitle, postDate } = blog;
   const handleBlogsDetails = (id) => {
@@ -17,9 +15,9 @@ const BlogsGrid = ({ blog }) => {
           <img src={blogImg} alt="blog-img" />
         </figure>
         <div className="card-body flex justify-center items-center">
-          <h2 className="text-2xl font-semibold hover:underline cursor-pointer ">            
+          <h2 className="text-2xl font-semibold hover:underline cursor-pointer ">
             {blogTitle.length >= 30 ? blogTitle?.slice(0, 30) : blogTitle}{" "}
-              {blogTitle.length >= 30 && `....`}
+            {blogTitle.length >= 30 && `....`}
           </h2>
         </div>
       </div>

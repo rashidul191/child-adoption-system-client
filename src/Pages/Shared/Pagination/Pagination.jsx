@@ -1,9 +1,6 @@
 import React from "react";
 
 const Pagination = ({ dataLength, count, setCount, limit }) => {
-  console.log("data length: ", dataLength-1);
-  console.log("limit: ", limit);
-  console.log("count: ", count);
   return (
     <div className="flex justify-center my-10">
       <div className="btn-group ">

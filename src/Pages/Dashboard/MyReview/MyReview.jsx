@@ -46,7 +46,6 @@ const MyReview = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.data);
         if (data?.data?.acknowledged) {
           toast.success("Thanks your comment / feedback");
           event.target.reset();

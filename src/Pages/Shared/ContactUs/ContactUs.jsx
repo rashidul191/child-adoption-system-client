@@ -18,7 +18,6 @@ const ContactUs = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     alert("Your message send successfully");
     window.location.reload();
   };

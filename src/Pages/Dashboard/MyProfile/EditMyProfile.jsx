@@ -16,10 +16,8 @@ const EditMyProfile = ({ user, userData }) => {
     handleSubmit,
   } = useForm();
 
-  // console.log(photoURL);
   const imageStorageKey = `830f12aefec823fea323e5fd7f93c732`;
   const onSubmit = async (data) => {
-    // console.log(data, userData.email);
     await updateProfile({
       displayName: data.displayName,
       address: data.address,
@@ -68,7 +66,6 @@ const EditMyProfile = ({ user, userData }) => {
               return res.json();
             })
             .then((data) => {
-              // console.log(data?.data?.user?.acknowledged);
               if (data?.data?.user?.acknowledged) {
                 toast.success("Update Profile Done");
                 window.location.reload();

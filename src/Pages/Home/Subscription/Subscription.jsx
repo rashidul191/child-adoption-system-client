@@ -23,7 +23,6 @@ const Subscription = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data?.data?.acknowledged) {
           Swal.fire({
             position: "top-end",

@@ -26,7 +26,6 @@ const CheckApplyResult = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-  // console.log(eligibilityScore?.data[0]);
 
   // pieChart data
   const pieChartData = [

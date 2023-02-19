@@ -11,7 +11,6 @@ const CheckForApply = () => {
 
   const { register: checkForApply, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     let allowValue = [];
     let notAllowValue = [];
 
@@ -41,7 +40,6 @@ const CheckForApply = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (!data?.data?.acknowledged) {
           toast.error("Failed submit eligibility score!!! please try again");
         } else {

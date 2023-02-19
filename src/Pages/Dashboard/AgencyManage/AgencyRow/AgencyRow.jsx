@@ -49,7 +49,6 @@ const AgencyRow = ({ index, agency, refetch }) => {
               return res.json();
             })
             .then((data) => {
-              console.log(data);
               if (data?.deletedCount > 0) {
                 toast.success(`${agencyName} delete successfully`);
                 refetch();

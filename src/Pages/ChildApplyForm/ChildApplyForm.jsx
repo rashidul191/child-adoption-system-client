@@ -29,8 +29,6 @@ const ChildApplyForm = () => {
     ).then((res) => res.json())
   );
 
-  // console.log(child);
-
   const {
     register: childApplyForm,
     formState: { errors },

@@ -26,7 +26,6 @@ const Register = () => {
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
   const [token] = useToken(user);
-  // console.log("Token: ",token);
 
   let errorElement;
   const {
@@ -40,10 +39,8 @@ const Register = () => {
       const displayName = data?.displayName;
       const email = data?.email;
       const password = data?.password;
-      // console.log(data);
       await createUserWithEmailAndPassword(email, password);
       await updateProfile({ displayName });
-      //  console.log(data);
     } else {
       errorElement = (
         <span className="text-error">sorry password is not same</span>
@@ -54,7 +51,6 @@ const Register = () => {
   let from = location.state?.from?.pathname || "/";
   useEffect(() => {
     if (token) {
-      // console.log(user)
       navigate(from, { replace: true });
     }
   }, [token, navigate, from]);
@@ -62,8 +58,6 @@ const Register = () => {
   if (loading || updating) {
     return <Loading></Loading>;
   }
-
-  console.log("user: ", user);
 
   if (error || updateError) {
     errorElement = (
@@ -182,28 +176,6 @@ const Register = () => {
                     <label className="label">
                       <span className="label-text">Password:</span>
                     </label>
-                    {/* <input
-                    {...register("password", {
-                      required: {
-                        value: true,
-                        message: "Password is required",
-                      },
-                      pattern: {
-                        value: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
-                        message: (
-                          <>
-                            <li>Must be 6 characters or longer</li>
-                            <li>Must be 1 Letters</li>
-                            <li>Must be 1 Digits</li>
-                            <li>Must be 1 Special characters</li>
-                          </>
-                        ),
-                      },
-                    })}
-                    type={`${showPassword ? "text" : "password"}`}
-                    placeholder="password"
-                    className="input input-bordered w-full max-w-xs"
-                  /> */}
 
                     <div className="flex">
                       <input
@@ -213,7 +185,8 @@ const Register = () => {
                             message: "Password is required",
                           },
                           pattern: {
-                            value: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
+                            value:
+                              /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/,
                             message: (
                               <>
                                 <li>Must be 6 characters or longer</li>
@@ -264,21 +237,6 @@ const Register = () => {
                     <label className="label">
                       <span className="label-text">Confirm Password:</span>
                     </label>
-                    {/* <input
-                    {...register("confirmPassword", {
-                      required: {
-                        value: true,
-                        message: "Confirm Password is required",
-                      },
-                      minLength: {
-                        value: 6,
-                        message: "Must be 6 characters or longer",
-                      },
-                    })}
-                    type={`${showPassword ? "text" : "password"}`}
-                    placeholder="Confirm password"
-                    className="input input-bordered w-full max-w-xs"
-                  /> */}
 
                     <div className="flex">
                       <input
@@ -356,7 +314,7 @@ const Register = () => {
                   </span>
 
                   <input
-                    className={`btn btn-secondary rounded-none ${
+                    className={`btn btn-secondary rounded-none  font-bold ${
                       agree ? "none" : "btn-disabled"
                     }`}
                     type="submit"
@@ -364,6 +322,7 @@ const Register = () => {
                   />
                 </form>
               </div>
+              <div className="divider">OR</div>
               <SocialLogin></SocialLogin>
             </div>
           </div>

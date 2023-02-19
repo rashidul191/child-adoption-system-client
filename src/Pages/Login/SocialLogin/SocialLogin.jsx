@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import useToken from "../../../hooks/useToken";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const SocialLogin = () => {
   const navigate = useNavigate();
@@ -49,10 +51,10 @@ const SocialLogin = () => {
 
   return (
     <div className="text-center">
-      <div className="divider">OR</div>
       <span>{errorElement}</span>
       <button onClick={() => signInWithGoogle()} className="btn btn-outline">
-        Continue With Google
+        <FontAwesomeIcon className="text-2xl" icon={faGoogle}></FontAwesomeIcon>
+        <span className="ml-5"> Login With Google</span>
       </button>
     </div>
   );

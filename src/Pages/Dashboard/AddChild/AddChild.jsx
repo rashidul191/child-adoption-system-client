@@ -20,7 +20,6 @@ const AddChild = () => {
   const onSubmit = (data) => {
     // image storage in imgbb website
     const image = data.img[0];
-    // console.log("Image: ", image);
     const formData = new FormData();
     formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
@@ -30,7 +29,6 @@ const AddChild = () => {
     })
       .then((res) => res.json())
       .then((imgStoreOutput) => {
-        // console.log(imgStoreOutput);
         if (imgStoreOutput.success) {
           const img = imgStoreOutput.data.url;
           const childInfo = {
