@@ -65,11 +65,10 @@ const BlogDetails = () => {
             src={blog?.data?.blogImg}
             alt={blog?.data?.blogTitle}
           />
-
-          <h2 className="text-2xl md:text-5xl font-semibold text-center capitalize">
+          <h2 className="text-2xl md:text-4xl font-semibold capitalize">
             {blog?.data?.blogTitle}
           </h2>
-          <div className="my-10 flex justify-between">
+          <div className="my-6 flex justify-between">
             <div>
               <p>{blog?.data?.displayName}</p>
               <p className="text-[#95959F] text-sm">{blog?.data?.postDate}</p>

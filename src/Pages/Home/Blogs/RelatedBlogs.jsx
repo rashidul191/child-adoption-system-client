@@ -7,12 +7,10 @@ const RelatedBlogs = ({ blog }) => {
   const { _id, blogImg, blogTitle, displayName, postDate, description } = blog;
 
   const handleBlogsDetails = (id) => {
-    // console.log(id);
     navigate(`/blog/${blogTitle}/${id}`);
     window.location.reload();
   };
   const currentDate = format(new Date(), "PP");
-  //   const postDateInt = parseInt(postDate.split(" ")[1]);
   let toDay = false;
   if (currentDate === postDate) {
     toDay = true;
@@ -39,10 +37,13 @@ const RelatedBlogs = ({ blog }) => {
           <span className="hover:underline capitalize"> {blogTitle}</span>
           {toDay && <div className="badge badge-secondary">NEW</div>}
         </h2>
-        <span className="my-6"> {setDescription}</span>
+        <span className="my-4"> {setDescription}</span>
         <hr />
         <div className="card-actions justify-between">
-          <div className=" ">By <span className="text-[#9F9F9F] font-semibold">{displayName}</span></div>
+          <div className=" ">
+            By{" "}
+            <span className="text-[#9F9F9F] font-semibold">{displayName}</span>
+          </div>
           <div className="text-[#9F9F9F] font-semibold">{postDate}</div>
         </div>
       </div>
