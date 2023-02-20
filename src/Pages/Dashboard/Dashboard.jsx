@@ -20,42 +20,49 @@ const Dashboard = () => {
           className="drawer-toggle"
         />
         <div className="drawer-content mx-5 md:mx-10">
-          {/* <h2 className="text-xl md:text-4xl text-sky-400 uppercase">
-          Welcome to{" "}
-          <span className="text-black">
-            {user?.displayName}{" "}
-            <span className="text-green-500">
-              {admin && "(Admin)"} {employer && "(Employer)"}
-            </span>
-          </span>
-        </h2> */}
           <Outlet />
         </div>
         <div className="drawer-side md:ml-10">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-52 md:w-auto rounded-lg bg-accent text-base-content">
             <li className="bg-white">
-              <CustomLink to={`/dashboard`}>My Profile</CustomLink>
+              <CustomLink className="font-bold text-teal-600" to={`/dashboard`}>
+                My Profile
+              </CustomLink>
             </li>
 
             {!admin && !employer && (
               <>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/review`}>Add Review</CustomLink>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/review`}
+                  >
+                    Add Review
+                  </CustomLink>
                 </li>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/check-eligibility`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/check-eligibility`}
+                  >
                     Check Eligibility
                   </CustomLink>
                 </li>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/eligibility-score`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/eligibility-score`}
+                  >
                     Eligibility Score
                   </CustomLink>
                 </li>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/child-apply`}>
-                    Child Apply
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/you-application`}
+                  >
+                    Your Application
                   </CustomLink>
                 </li>
               </>
@@ -64,41 +71,67 @@ const Dashboard = () => {
             {(admin || employer) && (
               <>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/application`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/application`}
+                  >
                     All Application
                   </CustomLink>
                 </li>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/add-child`}>Add Child</CustomLink>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/add-child`}
+                  >
+                    Add Child
+                  </CustomLink>
                 </li>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/child-manage`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/child-manage`}
+                  >
                     Child Manage
                   </CustomLink>
                 </li>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/add-agency`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/add-agency`}
+                  >
                     Add Agency
                   </CustomLink>
                 </li>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/agency-manage`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/agency-manage`}
+                  >
                     Agency Manage
                   </CustomLink>
                 </li>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/post-a-blog`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/post-a-blog`}
+                  >
                     Post A Blog
                   </CustomLink>
                 </li>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/blogs-manage`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/blogs-manage`}
+                  >
                     Blog Manage
                   </CustomLink>
                 </li>
 
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/all-donation`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/all-donation`}
+                  >
                     All Donation{" "}
                   </CustomLink>
                 </li>
@@ -108,7 +141,10 @@ const Dashboard = () => {
             {admin && (
               <>
                 <li className="bg-white">
-                  <CustomLink to={`/dashboard/user-manage`}>
+                  <CustomLink
+                    className="font-bold text-teal-600"
+                    to={`/dashboard/user-manage`}
+                  >
                     User Manage{" "}
                   </CustomLink>
                 </li>

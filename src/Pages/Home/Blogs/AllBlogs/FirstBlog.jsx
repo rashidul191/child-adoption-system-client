@@ -26,13 +26,13 @@ const FirstBlog = ({ blog }) => {
     >
       <div className="hero-overlay bg-opacity-20"></div>
       <div className="hero-content text-white">
-        <div className="max-w-md">
+        <div className="max-w-lg">
           <div className="bg-black bg-opacity-60">
             <h1 className="mt-52 p-5 text-2xl font-bold hover:underline cursor-pointer">
               <span>
                 {" "}
-                {blogTitle.length > 22
-                  ? `${blogTitle.slice(0, 22)} ...`
+                {blogTitle.length > 30
+                  ? `${blogTitle.slice(0, 30)} ...`
                   : blogTitle}
               </span>
               {toDay && <div className="badge badge-secondary">NEW</div>}

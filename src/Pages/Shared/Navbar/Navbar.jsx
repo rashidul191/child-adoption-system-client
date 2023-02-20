@@ -15,39 +15,42 @@ const Navbar = () => {
 
   const menubar = (
     <>
-      <CustomLink to="/">
+      <CustomLink className="font-bold text-teal-600" to="/">
         <li>
           <span>Home</span>
         </li>
       </CustomLink>
 
-      <CustomLink to="/about">
+      <CustomLink className="font-bold text-teal-600" to="/about">
         <li>
           <span>About</span>
         </li>
       </CustomLink>
 
-      <CustomLink to="/all-blogs">
+      <CustomLink className="font-bold text-teal-600" to="/all-blogs">
         <li>
           <span>Blogs</span>
         </li>
       </CustomLink>
 
-      <CustomLink to="/contact-us">
+      <CustomLink className="font-bold text-teal-600" to="/contact-us">
         {" "}
         <li>
           <span>Contact Us</span>
         </li>
       </CustomLink>
 
-      <CustomLink to="/donation">
+      <CustomLink className="font-bold text-teal-600" to="/donation">
         <li>
           <span>Donate</span>
         </li>
       </CustomLink>
 
       {!user && (
-        <CustomLink className="btn btn-primary" to="/login">
+        <CustomLink
+          className="btn btn-primary font-bold text-white"
+          to="/login"
+        >
           <li>
             <span>Login</span>
           </li>
@@ -85,9 +88,9 @@ const Navbar = () => {
           </div>
           <Link
             to="/"
-            className="btn btn-ghost normal-case text-xl btn-sm px-0"
+            className="btn btn-ghost normal-case text-2xl btn-sm px-5 font-bold"
           >
-            child-Adoption-System-Ador
+            Ador
           </Link>
         </div>
         <div
@@ -118,7 +121,7 @@ const Navbar = () => {
                   tabIndex={0}
                   className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                 >
-                  <CustomLink to="/dashboard">
+                  <CustomLink className="font-bold" to="/dashboard">
                     <li>
                       <span>Dashboard</span>
                     </li>

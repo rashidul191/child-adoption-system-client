@@ -74,7 +74,7 @@ const CheckApplyResult = () => {
           <div>
             <div className="text-center text-green-600 font-bold">
               <h2 className="text-3xl "> Congratulation </h2>
-              <p className="text-xl ">You are Eligibility for Child Adoption</p>
+              <p className="text-xl ">You are Eligible for Child Adoption</p>
             </div>
             <h1 className="text-center font-bold text-xl my-5">
               Because your score is:{" "}
@@ -88,9 +88,7 @@ const CheckApplyResult = () => {
           <div>
             <div className="text-red-600 text-center  font-bold">
               <h1 className="text-3xl">Sorry</h1>
-              <p className="text-xl">
-                You are Not Eligibility for Child Adoption
-              </p>
+              <p className="text-xl">You are Not Eligibe for Child Adoption</p>
             </div>
             <h1 className="text-center font-bold text-xl my-5">
               Because your score is:{" "}

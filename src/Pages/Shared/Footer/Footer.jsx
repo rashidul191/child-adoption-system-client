@@ -64,14 +64,14 @@ const Footer = () => {
         <div>
           <span className="footer-title">Payment Support</span>
           <img
-            width={400}
+            width={350}
             src="https://i.ibb.co/8YJ313G/payment.png"
             alt="payment method"
           />
         </div>
       </div>
       <div className="footer-center p-2 bg-white text-base-content text-sm">
-        <p>Copyright © {year} - All right child-Adoption-System-Ador</p>
+        <p>copyright © {year} - all right child-Adoption-System-Ador</p>
       </div>
     </footer>
   );
