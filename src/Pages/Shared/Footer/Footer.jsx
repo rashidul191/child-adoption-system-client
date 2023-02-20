@@ -5,10 +5,10 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-base-200 py-5">
-      <div className="footer grid grid-cols-2 md:grid-cols-3 p-10 text-base-content">
+      <div className="footer grid grid-cols-2 md:grid-cols-3 px-10 py-5 text-base-content">
         <div>
           <p>
-            Child-Adoption-System
+            child-Adoption-System-Ador
             <br />
             Providing reliable services since 2022
           </p>
@@ -36,12 +36,12 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">Company</span>
-          <Link
+          {/* <Link
             to="/our-project"
             className="link link-hover hover:font-bold hover:text-base hover:text-blue-500"
           >
             Our Project
-          </Link>
+          </Link> */}
           <Link
             to="/all-blogs"
             className="link link-hover hover:font-bold hover:text-base hover:text-blue-500"
@@ -70,8 +70,8 @@ const Footer = () => {
           />
         </div>
       </div>
-      <div className=" footer-center p-4 bg-white text-base-content">
-        <p>Copyright © {year} - All right Child-Adoption-System</p>
+      <div className="footer-center p-2 bg-white text-base-content text-sm">
+        <p>Copyright © {year} - All right child-Adoption-System-Ador</p>
       </div>
     </footer>
   );

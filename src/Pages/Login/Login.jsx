@@ -103,7 +103,7 @@ const Login = () => {
   };
 
   return (
-    <section className="pt-16">
+    <section className="md:pt-16">
       <div
         style={{
           backgroundImage: `url(${bgImage})`,

@@ -12,7 +12,7 @@ const EmailVerification = () => {
   };
 
   return (
-    <section className="pt-16">
+    <section className="md:pt-16">
     <div className=" text-center border-dotted border-2 border-indigo-600 my-10 md:m-28">
       <div className="m-5 md:my-10">
         <h4 className="md:text-xl ">Your Email is not verify</h4>

@@ -58,7 +58,7 @@ const BlogDetails = () => {
   };
 
   return (
-    <section className="pt-16">
+    <section className="md:pt-16">
       <div className="card md:px-24 bg-base-100">
         <div className="card-body">
           <div>

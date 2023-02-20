@@ -87,7 +87,7 @@ const EditMyProfile = ({ user, userData }) => {
           <div className="flex justify-center items-center">
             <div>
               <div className="avatar">
-                <div className="w-40 rounded-full">
+                <div className="w-32 rounded-full">
                   <img
                     width={150}
                     src={
@@ -101,7 +101,7 @@ const EditMyProfile = ({ user, userData }) => {
               </div>
               <br />
               <div className="form-control w-full max-w-xs mt-0">
-                <div className="flex items-center ml-6">
+                <div className="flex items-center ml-3">
                   <div className="flex items-center">
                     <label className="block">
                       <span className="sr-only">Upload Photo</span>
@@ -137,7 +137,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="text"
                   placeholder="Full Name"
                   defaultValue={displayName}
-                  className="input input-bordered input-sm md:w-72 max-w-xs"
+                  className="input input-bordered input-sm md:w-52 lg:w-64 max-w-xs"
                 />
                 <label className="label">
                   {errors.displayName?.type === "required" && (
@@ -161,7 +161,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="email"
                   defaultValue={userData?.email}
                   disabled
-                  className="input input-bordered  input-sm md:w-72 max-w-xs"
+                  className="input input-bordered  input-sm md:w-52 lg:w-64 max-w-xs"
                 />
               </div>
 
@@ -177,7 +177,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="text"
                   placeholder="Address"
                   defaultValue={userData?.address}
-                  className="input input-bordered  input-sm md:w-72 max-w-xs"
+                  className="input input-bordered  input-sm md:w-52 lg:w-64 max-w-xs"
                 />
                 <label className="label">
                   {errors.address?.type === "required" && (
@@ -200,7 +200,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="text"
                   placeholder="Zip Code"
                   defaultValue={userData?.zipCode}
-                  className="input input-bordered input-sm md:w-72 max-w-xs"
+                  className="input input-bordered input-sm md:w-52 lg:w-64 max-w-xs"
                 />
                 <label className="label">
                   {errors.zipCode?.type === "required" && (
@@ -223,7 +223,7 @@ const EditMyProfile = ({ user, userData }) => {
                   type="text"
                   placeholder="Phone Number"
                   defaultValue={userData?.phone}
-                  className="input input-bordered input-sm md:w-72 max-w-xs"
+                  className="input input-bordered input-sm md:w-52 lg:w-64 max-w-xs"
                 />
                 <label className="label">
                   {errors.phone?.type === "required" && (
@@ -234,7 +234,7 @@ const EditMyProfile = ({ user, userData }) => {
                 </label>
 
                 <input
-                  className="mt-3 btn border-none bg-primary text-white font-bold md:w-52"
+                  className="mt-3 btn btn-sm border-none bg-primary text-white font-bold md:w-52"
                   type="submit"
                   value="Save Change"
                 />

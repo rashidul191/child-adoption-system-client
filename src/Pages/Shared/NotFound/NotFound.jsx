@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <section className="pt-16">
+    <section className="md:pt-16">
       <div className="text-center text-error my-10 md:my-32">
         <h1 className="text-5xl font-bold">404</h1>
         <h4 className="text-xl">Error !!! Sorry Page Not Found</h4>

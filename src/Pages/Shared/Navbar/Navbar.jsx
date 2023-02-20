@@ -60,7 +60,7 @@ const Navbar = () => {
       <div className="navbar bg-white border-b-2 border-black md:fixed md:z-50">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden pl-0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -78,13 +78,16 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 m-2 shadow bg-base-100 rounded-box w-52 "
             >
               {menubar}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            child-Adoption-System
+          <Link
+            to="/"
+            className="btn btn-ghost normal-case text-xl btn-sm px-0"
+          >
+            child-Adoption-System-Ador
           </Link>
         </div>
         <div
@@ -96,7 +99,10 @@ const Navbar = () => {
           {user && (
             <div className="flex-none gap-2">
               <div className="dropdown dropdown-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <label
+                  tabIndex={0}
+                  className="btn btn-ghost btn-circle avatar pr-0"
+                >
                   <div className="w-10 rounded-full">
                     <img
                       src={
@@ -142,7 +148,7 @@ const Navbar = () => {
           <label
             htmlFor="dashboard-drawer"
             tabIndex="1"
-            className="btn btn-ghost lg:hidden"
+            className="btn btn-ghost lg:hidden pl-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

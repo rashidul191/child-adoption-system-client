@@ -12,12 +12,16 @@ const Banner = () => {
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className=" text-4xl font-bold">Every Child Should Get</h1>
-            <h1 className="mb-5 text-3xl font-bold">
+          <div className="max-w-md mt-36">
+            <h1 className="text-3xl md:text-4xl font-bold">
+              Every Child Should Get
+            </h1>
+            <h1 className="my-3 text-2xl md:text-3xl font-bold">
               A Quality Place and Education
             </h1>
-            <p className="mb-5">You can change a life of your support.</p>
+            <p className="my-5">
+              Insha Allah !! You can change a life of your support.
+            </p>
             <Link to={"/donation"}>
               <button className="btn btn-secondary rounded-none font-bold">
                 Donate Now

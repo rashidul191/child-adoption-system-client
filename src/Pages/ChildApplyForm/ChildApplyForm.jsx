@@ -75,11 +75,11 @@ const ChildApplyForm = () => {
   }
 
   return (
-    <section className="pt-16">
+    <section className="md:pt-16">
       <div className=" mb-16">
         <div className="bg-info py-10">
-          <h1 className="text-center text-2xl font-bold uppercase text-white">
-            Apply Form
+          <h1 className="text-center md:text-2xl font-bold uppercase text-white">
+            Adoption Application Form
           </h1>
           <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
         </div>

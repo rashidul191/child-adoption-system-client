@@ -77,7 +77,7 @@ const MyProfile = () => {
         <div className="flex justify-center items-center col-span-1">
           <div>
             <div className="avatar">
-              <div className="w-40 rounded-full">
+              <div className="w-32 rounded-full">
                 <img
                   width={150}
                   src={
@@ -92,7 +92,7 @@ const MyProfile = () => {
             <br />
             <button
               onClick={() => setProfileEdit(!profileEdit)}
-              className="btn bg-[#FF428D] border-none text-white ml-6"
+              className="btn btn-sm bg-[#FF428D] border-none text-white ml-3"
             >
               Edit Profile
             </button>

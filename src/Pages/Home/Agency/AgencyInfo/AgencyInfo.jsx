@@ -18,7 +18,7 @@ const AgencyInfo = () => {
     return <Loading></Loading>;
   }
   return (
-    <section className="pt-16">
+    <section className="md:pt-16">
       <div className="bg-info py-10">
         <h1 className="text-center text-2xl font-bold uppercase text-white">
           {agency?.data?.agencyName}

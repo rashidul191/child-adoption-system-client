@@ -78,7 +78,7 @@ const CheckApplyResult = () => {
             </div>
             <h1 className="text-center font-bold text-xl my-5">
               Because your score is:{" "}
-              <span className="text-red-600">
+              <span className="text-green-600">
                 {" "}
                 Yes = {eligibilityScore?.data[0]?.allowValue?.length * 10}%
               </span>

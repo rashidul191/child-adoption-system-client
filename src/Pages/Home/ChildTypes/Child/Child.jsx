@@ -44,12 +44,18 @@ const Child = () => {
   }
 
   return (
-    <section className="pt-16">
-      <div className="card w-10/12 bg-base-100 shadow-xl mx-auto my-10 md:mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 ml-10 mx-auto">
+    <section className="md:pt-16">
+      <div className="bg-info py-10">
+        <h1 className="text-center text-2xl font-bold uppercase text-white">
+          About Child
+        </h1>
+        <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
+      </div>
+      <div className="card w-10/12 bg-base-100 shadow-sm rounded-none mx-auto my-5 md:my-10 md:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2  mx-auto">
           <div className="md:ml-28">
             <img width={200} src={img} alt={name} />
-            <h2 className="text-xl">
+            <h2 className="text-xl mt-2">
               Name: <span className="text-2xl font-bold">{name}</span>
             </h2>
             <p>
@@ -106,7 +112,7 @@ const Child = () => {
                   <tr>
                     <td>
                       {" "}
-                      <Link to={`/child-adaption-form/${id}`}>
+                      <Link to={`/child-adoption-form/${id}`}>
                         <button className="btn btn-info text-white rounded-none btn-block">
                           Child Adoption
                         </button>
@@ -118,8 +124,8 @@ const Child = () => {
             </div>
           </div>
         </div>
-        <p className="ml-10 mb-10 mt-4 md:mx-36">
-          <span className="font-bold">Description:</span> {description}
+        <p className="sm:ml-10 mb-10 mt-4 md:mx-36 text-justify">
+          <span className="font-bold">More about child:</span> {description}
         </p>
       </div>
     </section>

@@ -23,7 +23,7 @@ const AllChild = () => {
   }
 
   return (
-    <section className="pt-16">
+    <section className="md:pt-16">
       <div className="bg-info py-5 text-white">
         <h1 className="text-center text-3xl font-bold uppercase">
           {childType}

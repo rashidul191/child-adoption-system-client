@@ -9,7 +9,7 @@ const Children = (props) => {
   const { img, name, age, location, _id } = props.children;
 
   return (
-    <div className="card md:w-60  lg:w-96 bg-base-100 shadow-xl mx-auto my-3">
+    <div className="card md:w-60  lg:w-96 bg-base-100 shadow-md mx-auto my-3">
       <figure className="px-10 pt-10">
         <img width={180} src={img} alt={name} className="rounded-xl" />
       </figure>
@@ -27,7 +27,7 @@ const Children = (props) => {
           <Link to={`/child/${_id}`}>
             {" "}
             <button className="btn btn-info btn-sm text-white">
-              Details
+              More Details
               <FontAwesomeIcon
                 className="ml-2"
                 icon={faArrowRight}
