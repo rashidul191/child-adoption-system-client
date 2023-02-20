@@ -90,11 +90,11 @@ const AgencyRow = ({ index, agency, refetch }) => {
         </div>
       </td>
       <td>By : {agencyDirectorName}</td>
-      <th>
+      {/* <th>
         <button className="rounded-lg bg-[#FF428D] btn-sm text-white">
           Edit
         </button>
-      </th>
+      </th> */}
       <th>
         <button
           onClick={() => handleAgencyDelete(_id)}

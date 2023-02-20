@@ -39,7 +39,7 @@ const ChildManage = () => {
               <th>S/N</th>
               <th>Name</th>
               <th>Child Type</th>
-              <th>Edit Child Info </th>
+              {/* <th>Edit Child Info </th> */}
               <th>Delete Child</th>
             </tr>
           </thead>

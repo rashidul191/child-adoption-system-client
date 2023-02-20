@@ -39,7 +39,7 @@ const AgencyManage = () => {
               <th>S/N</th>
               <th>Agency Name</th>
               <th>Agency Director Name</th>
-              <th>Edit Agency Info </th>
+              {/* <th>Edit Agency Info </th> */}
               <th>Delete Agency</th>
             </tr>
           </thead>
