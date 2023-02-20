@@ -76,7 +76,7 @@ const MakeAdmin = () => {
       {/* pagination */}
       {users?.data?.length >= limit && (
         <Pagination
-          data={users?.data}
+          dataLength={users?.data?.length}
           count={count}
           setCount={setCount}
           limit={limit}

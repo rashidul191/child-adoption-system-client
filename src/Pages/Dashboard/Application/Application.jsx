@@ -65,7 +65,7 @@ const Application = () => {
       {/* pagination */}
       {allApplication?.data?.length >= limit && (
         <Pagination
-          data={allApplication?.data}
+          dataLength={allApplication?.data?.length}
           count={count}
           setCount={setCount}
           limit={limit}

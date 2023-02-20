@@ -13,7 +13,7 @@ const AllAgency = () => {
   const skip = (count - 1) * limit;
   // query
   const { data: allAgency, isLoading } = useQuery(["agencyInfo"], () =>
-    fetch("https://child-adoption-system-server.onrender.com/allAgency", {
+    fetch("https://child-adoption-system-server.onrender.com/api/v1/agency", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -32,14 +32,14 @@ const AllAgency = () => {
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-10">
-        {allAgency?.slice(skip, skip + limit)?.map((agency) => (
+        {allAgency?.data?.slice(skip, skip + limit)?.map((agency) => (
           <AgencyGrid key={agency._id} agency={agency}></AgencyGrid>
         ))}
       </div>
       {/* pagination */}
-      {allAgency.length >= limit && (
+      {allAgency?.data?.length >= limit && (
         <Pagination
-          data={allAgency}
+          dataLength={allAgency?.data?.length}
           count={count}
           setCount={setCount}
           limit={limit}

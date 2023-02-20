@@ -62,7 +62,7 @@ const ChildManage = () => {
       {/* pagination */}
       {allChild?.data.length >= limit && (
         <Pagination
-          data={allChild.data}
+          dataLength={allChild?.data?.length}
           count={count}
           setCount={setCount}
           limit={limit}

@@ -40,7 +40,7 @@ const AllChild = () => {
       {/* pagination */}
       {allChildren?.data?.length >= limit && (
         <Pagination
-          data={allChildren?.data}
+          dataLength={allChildren?.data?.length}
           count={count}
           setCount={setCount}
           limit={limit}

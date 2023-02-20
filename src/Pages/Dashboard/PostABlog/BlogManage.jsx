@@ -71,7 +71,7 @@ const BlogManage = () => {
       {/* pagination */}
       {allBlogs?.data?.length >= limit && (
         <Pagination
-          data={allBlogs?.data}
+          dataLength={allBlogs?.data?.length}
           count={count}
           setCount={setCount}
           limit={limit}

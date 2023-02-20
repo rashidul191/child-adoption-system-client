@@ -68,7 +68,7 @@ const AgencyManage = () => {
       {/* pagination */}
       {allAgency?.data?.length >= limit && (
         <Pagination
-          data={allAgency?.data}
+          dataLength={allAgency?.data?.length}
           count={count}
           setCount={setCount}
           limit={limit}

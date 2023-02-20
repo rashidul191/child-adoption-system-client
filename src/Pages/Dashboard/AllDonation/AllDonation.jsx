@@ -61,7 +61,7 @@ const AllDonation = () => {
       {/* pagination */}
       {allDonation?.data?.length >= limit && (
         <Pagination
-          data={allDonation?.data}
+          dataLength={allDonation?.data?.length}
           count={count}
           setCount={setCount}
           limit={limit}
