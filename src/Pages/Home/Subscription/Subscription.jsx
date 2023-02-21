@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const Subscription = () => {
@@ -34,7 +33,13 @@ const Subscription = () => {
           });
           window.location.reload();
         } else {
-          toast.error("Submit is failed");
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: `Failed email submit`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };

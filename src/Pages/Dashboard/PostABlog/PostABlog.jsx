@@ -2,11 +2,11 @@ import React, { useRef } from "react";
 import { signOut } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 import auth from "../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { format } from "date-fns";
+import Swal from "sweetalert2";
 
 const PostABlog = () => {
   DynamicTitle("Post A Blog");
@@ -66,10 +66,23 @@ const PostABlog = () => {
             })
             .then((data) => {
               if (data?.data?.insertedId) {
-                toast.success("Post A Blog successfully");
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: `Post a Blog done`,
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+
                 window.location.reload();
               } else {
-                toast.error("Failed to Your Post A Blog");
+                Swal.fire({
+                  position: "top-center",
+                  icon: "error",
+                  title: `Failed to Post A Blog`,
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
               }
             });
         }

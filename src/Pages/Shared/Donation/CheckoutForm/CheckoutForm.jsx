@@ -2,8 +2,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useState, useRef, useEffect } from "react";
 import { format } from "date-fns";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { toast } from "react-toastify";
+
 import auth from "../../../../firebase.init";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ amountCard }) => {
   const date = new Date();
@@ -75,7 +76,6 @@ const CheckoutForm = ({ amountCard }) => {
     const donation = {
       date: currentDate,
       paymentSystem: "card",
-      // amount: amount * 100,
       amount: amount,
       cardNumber: paymentMethod?.card?.last4,
       name: user?.displayName || "",
@@ -97,7 +97,13 @@ const CheckoutForm = ({ amountCard }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data?.data?.insertedId) {
-            toast.success("Completed your Donation");
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "Thanks for your Donation",
+              showConfirmButton: false,
+              timer: 1500,
+            });
           }
         });
 
@@ -114,7 +120,7 @@ const CheckoutForm = ({ amountCard }) => {
       )}
       <div className="card-body">
         <form onSubmit={handleSubmit}>
-          <p>Card Number , MM/YY & CVC *:</p>
+          <p>Card Number, MM/YY, CVC & ZIP Here*:</p>
           <CardElement
             className="mb-5 border p-2"
             options={{

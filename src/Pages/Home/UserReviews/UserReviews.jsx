@@ -39,7 +39,7 @@ const UserReviews = () => {
   };
 
   return (
-    <section className="my-10 py-10 bg-[#EBF1F6]">
+    <section className="my-10 py-4 bg-[#EBF1F6]">
       <div>
         <h1 className="text-center text-3xl font-bold uppercase">
           User Reviews

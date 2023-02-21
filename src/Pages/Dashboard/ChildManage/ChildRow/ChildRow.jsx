@@ -25,7 +25,13 @@ const ChildRow = ({ index, child, refetch }) => {
           setChildWithId(data?.data);
           setEditChild(true);
         } else {
-          toast.error("something is wrong!! can't edit child");
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: `something is wrong!! can't edit child`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };

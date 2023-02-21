@@ -3,7 +3,7 @@ import React from "react";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import auth from "../../../firebase.init";
 
 const EditMyProfile = ({ user, userData }) => {
@@ -67,10 +67,22 @@ const EditMyProfile = ({ user, userData }) => {
             })
             .then((data) => {
               if (data?.data?.user?.acknowledged) {
-                toast.success("Update Profile Done");
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: `Update profile Done`,
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
                 window.location.reload();
               } else {
-                toast.error("Failed to Update Profile");
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: `Failed to update profile`,
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
               }
             });
         }

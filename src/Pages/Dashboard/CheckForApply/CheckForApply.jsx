@@ -3,10 +3,12 @@ import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckForApply = () => {
   DynamicTitle("Check Eligibility");
+  const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
   const { register: checkForApply, handleSubmit } = useForm();
@@ -41,9 +43,22 @@ const CheckForApply = () => {
       .then((res) => res.json())
       .then((data) => {
         if (!data?.data?.acknowledged) {
-          toast.error("Failed submit eligibility score!!! please try again");
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: `Failed submit eligibility score!!! please try again`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         } else {
-          toast.success("Submit eligibility score");
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Submit Eligible Score`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/dashboard/eligibility-score");
         }
         window.location.reload();
       });
@@ -61,7 +76,10 @@ const CheckForApply = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div className="">
-                <h2>Q1: বিবাহিত কিন্তু স্বামী/স্ত্রী মারা গেছে? </h2>
+                <h2 className="font-bold">
+                  Q1: বিবাহিত কিন্তু স্বামী/স্ত্রী মারা গেছে ? <br />
+                  <span>Married but spouse dead ?</span>{" "}
+                </h2>
                 <label htmlFor="q1-yes">Yes</label>
                 <input
                   id="q1-yes"
@@ -84,7 +102,10 @@ const CheckForApply = () => {
               </div>
 
               <div className="">
-                <h2>Q2: দ্বিতীয় বিবাহে কি আগ্রহ আছে? </h2>
+                <h2 className="font-bold">
+                  Q2: দ্বিতীয় বিবাহে কি আগ্রহ আছে ? <br />{" "}
+                  <span>Are you interested in a second marriage ?</span>{" "}
+                </h2>
                 <label htmlFor="q2-yes">Yes</label>
                 <input
                   type="radio"
@@ -108,7 +129,10 @@ const CheckForApply = () => {
               </div>
 
               <div className="">
-                <h2>Q3:আর্থিক সচ্ছলতা ও সামাজিক স্বাচ্ছন্দ্য আছে ? </h2>
+                <h2 className="font-bold">
+                  Q3:আর্থিক সচ্ছলতা ও সামাজিক স্বাচ্ছন্দ্য আছে ? <br />{" "}
+                  <span>Is there financial solvency and social comfort ?</span>{" "}
+                </h2>
                 <label htmlFor="q3-yes">Yes</label>
                 <input
                   type="radio"
@@ -131,7 +155,10 @@ const CheckForApply = () => {
               </div>
 
               <div className="">
-                <h2>Q4: আপনারা কি নিঃসন্তান? </h2>
+                <h2 className="font-bold">
+                  Q4: আপনারা কি নিঃসন্তান ? <br />{" "}
+                  <span>Are you childless ?</span>{" "}
+                </h2>
                 <label htmlFor="q4-yes">Yes</label>
                 <input
                   type="radio"
@@ -154,8 +181,12 @@ const CheckForApply = () => {
               </div>
 
               <div className="">
-                <h2>
+                <h2 className="font-bold">
                   Q5: পিতা ও মাতা দুজনই কি মানসিক ও শারীরিক দিক থেকে সুস্থ ?{" "}
+                  <br />
+                  <span>
+                    Are both parents mentally and physically healthy ?
+                  </span>
                 </h2>
                 <label htmlFor="q5-yes">Yes</label>
                 <input
@@ -179,8 +210,10 @@ const CheckForApply = () => {
               </div>
 
               <div className="">
-                <h2>
+                <h2 className="font-bold">
                   Q6: পালক সন্তানকে নিজ সন্তান হিসেবে লালন-পালন করতে পারবেন ?{" "}
+                  <br />
+                  <span>Can you raise a foster child as your own child ?</span>
                 </h2>
                 <label htmlFor="q6-yes">Yes</label>
                 <input
@@ -204,7 +237,10 @@ const CheckForApply = () => {
               </div>
 
               <div className="">
-                <h2>Q7: আপনাদের কি নিজের সন্তান রয়েছে? </h2>
+                <h2 className="font-bold">
+                  Q7: আপনাদের কি নিজের সন্তান রয়েছে ? <br />
+                  <span>Do you have children of your own ?</span>{" "}
+                </h2>
                 <label htmlFor="q7-yes">Yes</label>
                 <input
                   type="radio"
@@ -227,8 +263,10 @@ const CheckForApply = () => {
               </div>
 
               <div className="">
-                <h2>
-                  Q8: আপনাদের সন্তান কি বড় হয়ে গেছে কিন্তু আপনাদের সাথে থাকে না?{" "}
+                <h2 className="font-bold">
+                  Q8: আপনাদের সন্তান কি বড় হয়ে গেছে কিন্তু আপনাদের সাথে থাকে না
+                  ? <br />{" "}
+                  <span>Are your children grown but not with you ?</span>
                 </h2>
                 <label htmlFor="q8-yes">Yes</label>
                 <input
@@ -252,7 +290,10 @@ const CheckForApply = () => {
               </div>
 
               <div className="">
-                <h2>Q9: আপনাদের সন্তান জন্মদানে অক্ষমতা রয়েছে?, </h2>
+                <h2 className="font-bold">
+                  Q9: আপনাদের সন্তান জন্মদানে অক্ষমতা রয়েছে ? <br />
+                  <span>Are you infertile ?</span>
+                </h2>
                 <label htmlFor="q9-yes">Yes</label>
                 <input
                   type="radio"
@@ -275,7 +316,10 @@ const CheckForApply = () => {
               </div>
 
               <div className="">
-                <h2>Q10: আপনারা কি বিবাহ বিচ্ছেদে আগ্রহী ? </h2>
+                <h2 className="font-bold">
+                  Q10: আপনারা কি বিবাহ বিচ্ছেদে আগ্রহী ? <br />{" "}
+                  <span>Are you interested in divorce ?</span>{" "}
+                </h2>
                 <label htmlFor="q10-yes">Yes</label>
                 <input
                   type="radio"
@@ -298,7 +342,7 @@ const CheckForApply = () => {
               </div>
             </div>
             <input
-              className="btn btn-secondary md:w-96 mt-5 rounded-none"
+              className="btn btn-primary md:w-96 mt-5 rounded-none text-white font-bold"
               type="submit"
               value="Submit"
             />

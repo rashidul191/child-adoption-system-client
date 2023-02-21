@@ -225,9 +225,9 @@ const Register = () => {
                           {errors?.password?.message}
                         </span>
                       )}
-                      {errors?.password?.type === "pattern" && (
+                      {errors.password?.type === "pattern" && (
                         <span className="label-text-alt text-error">
-                          {errors?.password?.message}
+                          {errors.password?.message}
                         </span>
                       )}
                     </label>
@@ -286,7 +286,7 @@ const Register = () => {
                           {errors.confirmPassword?.message}
                         </span>
                       )}
-                      {errors.confirmPassword?.type === "minLength" && (
+                      {errors.confirmPassword?.type === "pattern" && (
                         <span className="label-text-alt text-error">
                           {errors.confirmPassword?.message}
                         </span>
@@ -304,14 +304,6 @@ const Register = () => {
                     />
                     <label htmlFor="showPassword">Terms & Conditions</label>
                   </div>
-
-                  <span>
-                    {errors.password?.type === "pattern" && (
-                      <span className="label-text-alt text-error">
-                        {errors.password?.message}
-                      </span>
-                    )}
-                  </span>
 
                   <input
                     className={`btn btn-secondary rounded-none  font-bold ${

@@ -1,43 +1,29 @@
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import DynamicTitle from "../DynamicTitle/DynamicTitle";
-import CheckoutForm from "./CheckoutForm/CheckoutForm";
 import DonationFirstPage from "./DonationFirstPage";
-import MobileBanking from "./MobileBanking/MobileBanking";
-
-const stripePromise = loadStripe(
-  "pk_test_51LpY8iE01qgurHugwgq5f5TBPj3khq3unaaKZRf9OOn5lOI5fxLskN6TeOc1y2kak2kNf5Y9gU6e36gmbZcbWLy100l4rI3NqF"
-);
 
 const Donation = () => {
-  DynamicTitle("Donate");
-  const [donation, setDonation] = useState(false);
-  const [card, setCard] = useState(true);
-  const [mobileBanking, setMobileBanking] = useState(false);
-  const [amount, setAmount] = useState(0);
+  DynamicTitle("Donation");
+  const navigate = useNavigate();
   const [otherAmount, setOtherAmount] = useState(0);
-
+  const [error, setError] = useState(false);
   const { register: donationAmount, handleSubmit } = useForm();
-  const handleCard = () => {
-    setCard(true);
-    setMobileBanking(false);
-  };
-  const handleMobileBanking = () => {
-    setMobileBanking(true);
-    setCard(false);
-  };
-
   const handleOtherAmount = (event) => {
     event.preventDefault();
-    setOtherAmount(event.target.value);
+    const userAmount = event.target.value;
+    if (userAmount > 99 && userAmount < 1000000) {
+      setOtherAmount(userAmount);
+      setError(false);
+    } else {
+      setError(true);
+    }
   };
 
   const onSubmit = (data) => {
-    setAmount(data.amount);
-    setDonation(true);
+    navigate(`/donation/${data.amount}`);
   };
 
   return (
@@ -48,13 +34,8 @@ const Donation = () => {
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
-      {/* <DonationFirstPage></DonationFirstPage> */}
 
-      <div
-        className={` bg-[#EBF1F6] ${
-          donation ? "hidden" : "block"
-        } py-10 md:my-10 w-full md:w-11/12 mx-auto`}
-      >
+      <div className={` bg-[#EBF1F6]py-10 md:my-10 w-full md:w-11/12 mx-auto`}>
         <div className="md:w-2/3 mx-auto">
           <div className="text-center mx-5">
             <p className="mb-6">
@@ -84,7 +65,7 @@ const Donation = () => {
                       {...donationAmount("amount")}
                       value="1000"
                     />
-                    <span className="font-bold">1000 Taka</span>
+                    <span className="font-bold">1,000 Taka</span>
                   </label>
                   <br />
                   <label htmlFor="q2" className="label cursor-pointer -mb-5">
@@ -96,7 +77,7 @@ const Donation = () => {
                       {...donationAmount("amount")}
                       value="2000"
                     />
-                    <span className="font-bold">2000 Taka</span>
+                    <span className="font-bold">2,000 Taka</span>
                   </label>
                   <br />
                   <label htmlFor="q3" className="label cursor-pointer -mb-5">
@@ -108,7 +89,7 @@ const Donation = () => {
                       {...donationAmount("amount")}
                       value="3000"
                     />
-                    <span className="font-bold">3000 Taka</span>
+                    <span className="font-bold">3,000 Taka</span>
                   </label>
                   <br />
                   <label htmlFor="q4" className="label cursor-pointer -mb-5">
@@ -120,7 +101,7 @@ const Donation = () => {
                       {...donationAmount("amount")}
                       value="4000"
                     />
-                    <span className="font-bold">4000 Taka</span>
+                    <span className="font-bold">4,000 Taka</span>
                   </label>
                   <br />
                   <label htmlFor="q5" className="label cursor-pointer mb-2">
@@ -132,7 +113,7 @@ const Donation = () => {
                       {...donationAmount("amount")}
                       value="5000"
                     />
-                    <span className="font-bold">5000 Taka</span>
+                    <span className="font-bold">5,000 Taka</span>
                   </label>
                 </div>
               </div>
@@ -158,6 +139,18 @@ const Donation = () => {
                 </span>
               </label>
               <br />
+              {error && (
+                <>
+                  <span className="text-error text-xm font-bold">
+                    Minimum Donation 100 Taka ,
+                  </span>
+                  <br />
+                  <span className="text-error text-xm font-bold">
+                    Maximum Donation 9,99,999 Taka
+                  </span>
+                </>
+              )}
+
               <input
                 className="btn btn-secondary font-bold w-full md:w-96 mt-5 rounded-none"
                 type="submit"
@@ -178,7 +171,7 @@ const Donation = () => {
       </div>
 
       {/* handle card and mobile banking */}
-      <div className={` ${donation ? "block" : "hidden"}`}>
+      {/* <div className={` ${donation ? "block" : "hidden"}`}>
         <div className="my-5 md:my-20">
           <div className="w-96 md:w-2/5 bg-base-100 border border-3 mx-auto">
             <div className="card-body">
@@ -218,7 +211,7 @@ const Donation = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -70,7 +70,7 @@ const CheckApplyResult = () => {
       </div>
       <hr />
       <div className="mt-5">
-        {eligibilityScore?.data[0]?.allowValue?.length * 10 >= 50 ? (
+        {eligibilityScore?.data[0]?.allowValue?.length * 10 >= 60 ? (
           <div>
             <div className="text-center text-green-600 font-bold">
               <h2 className="text-3xl "> Congratulation </h2>
@@ -85,19 +85,27 @@ const CheckApplyResult = () => {
             </h1>
           </div>
         ) : (
-          <div>
-            <div className="text-red-600 text-center  font-bold">
-              <h1 className="text-3xl">Sorry</h1>
-              <p className="text-xl">You are Not Eligibe for Child Adoption</p>
-            </div>
-            <h1 className="text-center font-bold text-xl my-5">
-              Because your score is:{" "}
-              <span className="text-red-600">
-                {" "}
-                No = {eligibilityScore?.data[0]?.notAllowValue?.length * 10}%
-              </span>
-            </h1>
-          </div>
+          <>
+            {eligibilityScore?.data[0] && (
+              <div>
+                <div className="text-red-600 text-center  font-bold">
+                  <h1 className="text-3xl">Sorry</h1>
+                  <p className="text-xl">
+                    You are Not Eligibe for Child Adoption
+                  </p>
+                </div>
+                <h1 className="text-center font-bold text-xl my-5">
+                  Because your score is:{" "}
+                  <span className="text-red-600">
+                    {" "}
+                    No = {eligibilityScore?.data[0]?.notAllowValue?.length *
+                      10}{" "}
+                    %
+                  </span>
+                </h1>
+              </div>
+            )}
+          </>
         )}
       </div>
 

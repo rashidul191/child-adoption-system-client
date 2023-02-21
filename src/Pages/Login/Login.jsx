@@ -14,6 +14,7 @@ import useToken from "../../hooks/useToken";
 import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 const Login = () => {
   DynamicTitle("Login");
@@ -43,10 +44,20 @@ const Login = () => {
       /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{6,}$/.test(password)
     ) {
       signInWithEmailAndPassword(email, password);
-      // toast.success("Login Successfully");
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Login Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } else {
       toast.error("Provide a valid email and password");
     }
+  };
+
+  const handleForgotEmailFiled = () => {
+    setEmptyEmailFiled(false);
   };
 
   let from = location.state?.from?.pathname || "/";
@@ -92,12 +103,17 @@ const Login = () => {
       if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         await sendPasswordResetEmail(email);
         setEmptyEmailFiled(false);
-        toast.success("Send Email !! please check index/spam folder");
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `sent an email, Please check your inbox/spam folder`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       } else {
         toast.error("Provide a valid email");
       }
     } else {
-      toast.error("Email Filed is empty");
       setEmptyEmailFiled(true);
     }
   };
@@ -260,6 +276,7 @@ const Login = () => {
                     <span className="label-text">Email:</span>
                   </label>
                   <input
+                    onChange={handleForgotEmailFiled}
                     ref={emailRef}
                     type="email"
                     placeholder="example@gmail.com"
@@ -275,6 +292,12 @@ const Login = () => {
                   >
                     Send Email
                   </button>
+                  {/* Error Message Here */}
+                  {emptyEmailFiled ? (
+                    <p className="text-error font-bold">Email Filed is empty</p>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
               <div className="divider">OR</div>

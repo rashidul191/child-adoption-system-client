@@ -5,8 +5,8 @@ import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import auth from "../../../firebase.init";
-import { toast } from "react-toastify";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
+import Swal from "sweetalert2";
 
 const AddAgency = () => {
   DynamicTitle("Add Agency");
@@ -59,10 +59,22 @@ const AddAgency = () => {
             })
             .then((data) => {
               if (data?.insertedId) {
-                toast.success("Agency information added successfully");
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "Agency Added Done",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
                 window.location.reload();
               } else {
-                toast.error("Failed to add Agency Information");
+                Swal.fire({
+                  position: "top-center",
+                  icon: "error",
+                  title: "Failed to add Agency",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
               }
             });
         }

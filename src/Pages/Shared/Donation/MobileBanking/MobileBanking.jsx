@@ -1,7 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { format } from "date-fns";
+import Swal from "sweetalert2";
 
-const MobileBanking = ({amount}) => {
+const MobileBanking = ({ amount }) => {
+  const date = new Date();
+  const currentDate = format(date, "PP");
   // personal number donate event handle
   const {
     register,
@@ -10,7 +14,32 @@ const MobileBanking = ({amount}) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const donation = {
+      date: currentDate,
+      paymentSystem: "mobile banking",
+      amount: amount,
+      mobileNumber: data?.number,
+      trxId: data?.trxId,
+      email: data?.email || "",
+    };
+
+    fetch("https://child-adoption-system-server.onrender.com/api/v1/payment", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ donation }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.data?.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Thanks for your Donation",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
@@ -77,25 +106,12 @@ const MobileBanking = ({amount}) => {
               Amount (tk)* :
             </label>
             <input
-              {...register("amount", {
-                required: {
-                  value: true,
-                  message: "Amount is required",
-                },
-              })}
               type="text"
               id="amount"
               placeholder="Amount"
               value={amount}
               className="input input-bordered input-sm w-72 md:w-52 max-w-xs"
             />
-            <label className="label">
-              {errors.amount?.type === "required" && (
-                <span className="label-text-alt text-error">
-                  {errors.amount?.message}
-                </span>
-              )}
-            </label>
           </div>
 
           <div className="form-control w-full max-w-xs">

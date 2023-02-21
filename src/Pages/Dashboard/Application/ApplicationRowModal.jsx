@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { toast } from "react-toastify";
+
+import Swal from "sweetalert2";
 import auth from "../../../firebase.init";
 import useAdmin from "../../../hooks/useAdmin";
 import useEmployer from "../../../hooks/useEmployer";
@@ -22,13 +23,26 @@ const ApplicationRowModal = ({ childApplicationData }) => {
     )
       .then((res) => {
         if (res.status === 403 || res.status === 401) {
-          toast.error("Failed To approve");
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: `Failed to approved`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
         return res.json();
       })
       .then((data) => {
         if (data?.data?.modifiedCount > 0) {
-          toast.success(`Application Approved Successful`);
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Application Approved Successfully`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+
           window.location.reload();
         }
       });

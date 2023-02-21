@@ -6,11 +6,12 @@ import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
 import { Navigate, useParams } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase.init";
-import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Swal from "sweetalert2";
 
 const ChildApplyForm = () => {
   DynamicTitle("Child Application");
+  const currentYear = new Date().getFullYear();
   const { id } = useParams();
   const [user] = useAuthState(auth);
 
@@ -62,10 +63,22 @@ const ChildApplyForm = () => {
       })
       .then((data) => {
         if (data?.data?.insertedId) {
-          toast.success("Your Apply Successfully");
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your application Done",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           window.location.reload();
         } else {
-          toast.error("Failed to Apply");
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: "Failed application!!!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
@@ -145,7 +158,7 @@ const ChildApplyForm = () => {
                     <option selected>Please select Gender</option>
                     <option value={`Male`}>Male</option>
                     <option value={`Female`}>Female</option>
-                    <option value={`Other`}>Other</option>
+                    {/* <option value={`Other`}>Other</option> */}
                   </select>
                   <label className="label">
                     {errors.gender?.type === "required" && (
@@ -198,7 +211,10 @@ const ChildApplyForm = () => {
                     })}
                     type="date"
                     placeholder="Birth Date"
+                    name="date"
                     className="input input-bordered input-sm md:w-96 max-w-lg"
+                    min="1950-01-01"
+                    max={`${currentYear - 18}-12-31`}
                   />
                   <label className="label">
                     {errors.birthDate?.type === "required" && (
@@ -288,7 +304,7 @@ const ChildApplyForm = () => {
                     <option selected>Please select Gender</option>
                     <option value={`Male`}>Male</option>
                     <option value={`Female`}>Female</option>
-                    <option value={`Other`}>Other</option>
+                    {/* <option value={`Other`}>Other</option> */}
                   </select>
                   <label className="label">
                     {errors.gender2?.type === "required" && (
@@ -342,6 +358,8 @@ const ChildApplyForm = () => {
                     type="date"
                     placeholder="Birth Date"
                     className="input input-bordered input-sm md:w-96"
+                    min="1950-01-01"
+                    max={`${currentYear - 18}-12-31`}
                   />
                   <label className="label">
                     {errors.birthDate2?.type === "required" && (

@@ -15,32 +15,37 @@ const Navbar = () => {
 
   const menubar = (
     <>
-      <CustomLink className="font-bold text-teal-600" to="/">
+      <CustomLink className="font-bold text-teal-600 " to="/">
         <li>
           <span>Home</span>
         </li>
       </CustomLink>
 
-      <CustomLink className="font-bold text-teal-600" to="/about">
+      <CustomLink className="font-bold text-teal-600 " to="/about">
         <li>
           <span>About</span>
         </li>
       </CustomLink>
+      <CustomLink className="font-bold text-teal-600 " to="/all-agency">
+        <li>
+          <span>Agency</span>
+        </li>
+      </CustomLink>
 
-      <CustomLink className="font-bold text-teal-600" to="/all-blogs">
+      <CustomLink className="font-bold text-teal-600 " to="/all-blogs">
         <li>
           <span>Blogs</span>
         </li>
       </CustomLink>
 
-      <CustomLink className="font-bold text-teal-600" to="/contact-us">
+      <CustomLink className="font-bold text-teal-600  " to="/contact-us">
         {" "}
         <li>
           <span>Contact Us</span>
         </li>
       </CustomLink>
 
-      <CustomLink className="font-bold text-teal-600" to="/donation">
+      <CustomLink className="font-bold text-teal-600 " to="/donation">
         <li>
           <span>Donate</span>
         </li>
@@ -94,7 +99,8 @@ const Navbar = () => {
           </Link>
         </div>
         <div
-          className={`${!user ? "navbar-end" : "navbar-center"} hidden lg:flex`}
+          // className={`${!user ? "navbar-end" : "navbar-center"} hidden lg:flex`}
+          className={`navbar-center hidden lg:flex`}
         >
           <ul className="menu menu-horizontal p-0">{menubar}</ul>
         </div>

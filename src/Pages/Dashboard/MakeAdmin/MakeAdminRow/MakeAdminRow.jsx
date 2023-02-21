@@ -38,13 +38,18 @@ const MakeAdminRow = ({ user, index, refetch }) => {
               signOut(auth);
               localStorage.removeItem("access-token");
               navigate("/login");
-              toast.error("Failed To make Admin");
             }
             return res.json();
           })
           .then((data) => {
             if (data?.data?.modifiedCount > 0) {
-              toast.success(`Now ${email} Admin successfully`);
+              Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: `Now ${email} is Admin successfully`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
               refetch();
             }
           });
@@ -80,17 +85,21 @@ const MakeAdminRow = ({ user, index, refetch }) => {
               signOut(auth);
               localStorage.removeItem("access-token");
               navigate("/login");
-              toast.error("Failed To make Employer");
             }
             return res.json();
           })
           .then((data) => {
             if (data?.data?.modifiedCount > 0) {
-              toast.success(`Now ${email} Employer successfully`);
+              Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: `Now ${email} is Employer successfully`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
               refetch();
             }
           });
-
         Swal.fire("Employer!", `Now, ${email} is employer`, "success");
       }
     });

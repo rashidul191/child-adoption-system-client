@@ -1,10 +1,10 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 import Loading from "../../Shared/Loading/Loading";
+import Swal from "sweetalert2";
 
 const MyReview = () => {
   DynamicTitle("Add Review");
@@ -47,12 +47,24 @@ const MyReview = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data?.data?.acknowledged) {
-          toast.success("Thanks your comment / feedback");
-          event.target.reset();
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Thanks for your comment / feedback`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          window.location.reload();
         } else {
-          toast.error("Error! Try Again");
-          event.target.reset();
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: `Error!!! Try again`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
+        window.location.reload();
       });
   };
 

@@ -1,9 +1,12 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import Swal from "sweetalert2";
+import auth from "../../../../firebase.init";
 
 const UserCommentAre = ({ userBlogComment }) => {
+  const [user] = useAuthState(auth);
   const [deleteComment, setDeleteComment] = useState(false);
   const { _id, userImg, userName, userComment } = userBlogComment;
 
@@ -12,14 +15,22 @@ const UserCommentAre = ({ userBlogComment }) => {
       `https://child-adoption-system-server.onrender.com/api/v1/userComment/${id}`,
       {
         method: "DELETE",
-        headers: {},
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
       }
     )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data?.data);
         if (data?.data?.deletedCount > 0) {
-          toast.success("Delete Comment");
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Delete Comment",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           window.location.reload();
         }
       });
@@ -43,12 +54,14 @@ const UserCommentAre = ({ userBlogComment }) => {
               </p>
               <p className="">{userComment} </p>
             </div>
-            <button
-              onClick={() => setDeleteComment(!deleteComment)}
-              className="text-xl font-bold rotate-90 ml-3"
-            >
-              ...
-            </button>
+            {user?.email === userBlogComment?.userEmail && (
+              <button
+                onClick={() => setDeleteComment(!deleteComment)}
+                className="text-xl font-bold rotate-90 ml-3"
+              >
+                ...
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -3,10 +3,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../../firebase.init";
 import SocialLogin from "../../../Login/SocialLogin/SocialLogin";
-import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../Shared/Loading/Loading";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const BlogCommentInput = ({ blog }) => {
   const [error, setError] = useState(false);
@@ -53,7 +53,13 @@ const BlogCommentInput = ({ blog }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data?.data?.insertedId) {
-            toast.success("comments done");
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "Comment Done",
+              showConfirmButton: false,
+              timer: 1500,
+            });
           }
           window.location.reload();
         });

@@ -32,6 +32,7 @@ import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 import About from "./Pages/Shared/About/About";
 import ContactUs from "./Pages/Shared/ContactUs/ContactUs";
 import Donation from "./Pages/Shared/Donation/Donation";
+import FinalDonation from "./Pages/Shared/Donation/FinalDonation";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Members from "./Pages/Shared/Members/Members";
 import Navbar from "./Pages/Shared/Navbar/Navbar";
@@ -52,6 +53,10 @@ function App() {
         <Route path="/child/:id" element={<Child></Child>}></Route>
         <Route path="/all-agency" element={<AllAgency></AllAgency>}></Route>
         <Route path="/donation" element={<Donation></Donation>}></Route>
+        <Route
+          path="/donation/:amount"
+          element={<FinalDonation></FinalDonation>}
+        ></Route>
         <Route path="/agency/:id" element={<AgencyInfo></AgencyInfo>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
@@ -96,7 +101,10 @@ function App() {
             path="eligibility-score"
             element={<CheckApplyResult></CheckApplyResult>}
           ></Route>
-          <Route path="you-application" element={<ChildApply></ChildApply>}></Route>
+          <Route
+            path="you-application"
+            element={<ChildApply></ChildApply>}
+          ></Route>
           <Route path="add-child" element={<AddChild></AddChild>}></Route>
           <Route
             path="application"

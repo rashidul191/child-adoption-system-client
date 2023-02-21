@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import auth from "../../../firebase.init";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
@@ -66,10 +66,23 @@ const AddChild = () => {
             })
             .then((data) => {
               if (data?.insertedId) {
-                toast.success("Child Information added successfully");
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "Child Added Done",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+
                 window.location.reload();
               } else {
-                toast.error("Failed to add Information");
+                Swal.fire({
+                  position: "top-center",
+                  icon: "error",
+                  title: "Failed to add child",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
               }
             });
         }
