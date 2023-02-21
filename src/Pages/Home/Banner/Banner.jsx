@@ -30,28 +30,6 @@ const Banner = () => {
           </div>
         </div>
       </div>
-
-      {/* <div>
-        <div className="carousel-item">
-          <img src="https://placeimg.com/400/300/arch" alt="Drink" />
-        </div>
-        <div className="carousel-item">
-          <img src="https://placeimg.com/400/300/arch" alt="Drink" />
-        </div>
-        <div className="carousel-item">
-          <img src="https://placeimg.com/400/300/arch" alt="Drink" />
-        </div>
-        <div className="carousel-item">
-          <img src="https://placeimg.com/400/300/arch" alt="Drink" />
-        </div>
-        <div className="carousel-item">
-          <img src="https://placeimg.com/400/300/arch" alt="Drink" />
-        </div>
-        <div className="carousel-item">
-          <img src="https://placeimg.com/400/300/arch" alt="Drink" />
-        </div>
-      </div>
-    </div> */}
     </section>
   );
 };

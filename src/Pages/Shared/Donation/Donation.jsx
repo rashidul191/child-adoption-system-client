@@ -169,49 +169,6 @@ const Donation = () => {
           </div>
         </div>
       </div>
-
-      {/* handle card and mobile banking */}
-      {/* <div className={` ${donation ? "block" : "hidden"}`}>
-        <div className="my-5 md:my-20">
-          <div className="w-96 md:w-2/5 bg-base-100 border border-3 mx-auto">
-            <div className="card-body">
-              <div className="bg-blue-300 text-center py-3 uppercase text-white font-bold">
-                {" "}
-                <p>
-                  <span
-                    className={`mr-4 p-3  cursor-pointer   ${
-                      card && "bg-blue-600"
-                    }  `}
-                    onClick={handleCard}
-                  >
-                    Cards
-                  </span>{" "}
-                  <span
-                    className={`mr-4 p-3  cursor-pointer   ${
-                      mobileBanking && "bg-blue-600"
-                    }  `}
-                    onClick={handleMobileBanking}
-                  >
-                    Mobile Banking
-                  </span>
-                </p>{" "}
-              </div>
-
-              <div className="">
-                <div className={`${card ? "block" : "hidden"}`}>
-                  <Elements stripe={stripePromise}>
-                    <CheckoutForm amountCard={amount} />
-                  </Elements>
-                </div>
-
-                <div className={`${mobileBanking ? "block" : "hidden"}`}>
-                  <MobileBanking amount={amount} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </section>
   );
 };

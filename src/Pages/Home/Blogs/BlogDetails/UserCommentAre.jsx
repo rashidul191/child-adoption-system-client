@@ -22,7 +22,6 @@ const UserCommentAre = ({ userBlogComment }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data?.data);
         if (data?.data?.deletedCount > 0) {
           Swal.fire({
             position: "top-center",
@@ -35,8 +34,6 @@ const UserCommentAre = ({ userBlogComment }) => {
         }
       });
   };
-
-  // console.log(userBlogComment);
   return (
     <div className="my-3">
       <div className="flex justify-start items-start">

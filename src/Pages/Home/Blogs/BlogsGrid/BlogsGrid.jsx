@@ -21,26 +21,6 @@ const BlogsGrid = ({ blog }) => {
           </h2>
         </div>
       </div>
-
-      {/* <div className="card w-full rounded-none mx-auto ">
-        <div
-          style={{
-            width:`auto`,
-            backgroundImage: `url(${blogImg})`,
-            backgroundRepeat: "no-repeat",
-          }}
-          className="card-body hover:scale-110 transition duration-300 ease-in-out text-white text-center hover:underline"
-        >
-          <div className="bg-gray-500 bg-opacity-50">
-            <div className="my-24">
-              <h2 className="text-2xl  font-semibold  cursor-pointer ">
-                {blogTitle}
-              </h2>
-             
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };

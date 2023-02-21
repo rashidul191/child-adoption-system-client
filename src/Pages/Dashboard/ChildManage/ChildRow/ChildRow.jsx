@@ -12,13 +12,15 @@ const ChildRow = ({ index, child, refetch }) => {
   const { _id, img, name, location, childType } = child;
 
   const handleChildEdit = (id) => {
-    //fetch(`https://child-adoption-system-server.onrender.com/api/v1/child/${id}`, {
-    fetch(`http://localhost:5000/api/v1/child/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/child/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.data) {
@@ -128,10 +130,6 @@ const ChildRow = ({ index, child, refetch }) => {
           </button>
         </th>
       </tr>
-
-      {/* <div>
-        <ChildEdit childWithId={childWithId}></ChildEdit>
-      </div> */}
     </>
   );
 };

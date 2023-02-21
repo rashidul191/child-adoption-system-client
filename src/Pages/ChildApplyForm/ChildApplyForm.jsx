@@ -158,7 +158,6 @@ const ChildApplyForm = () => {
                     <option selected>Please select Gender</option>
                     <option value={`Male`}>Male</option>
                     <option value={`Female`}>Female</option>
-                    {/* <option value={`Other`}>Other</option> */}
                   </select>
                   <label className="label">
                     {errors.gender?.type === "required" && (
@@ -304,7 +303,6 @@ const ChildApplyForm = () => {
                     <option selected>Please select Gender</option>
                     <option value={`Male`}>Male</option>
                     <option value={`Female`}>Female</option>
-                    {/* <option value={`Other`}>Other</option> */}
                   </select>
                   <label className="label">
                     {errors.gender2?.type === "required" && (
