@@ -24,8 +24,8 @@ const MakeAdminRow = ({ user, index, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          // `https://child-adoption-system-server.onrender.com/api/v1/user/admin/${email}`,
-          `http://localhost:5000/api/v1/user/admin/${email}`,
+          `https://child-adoption-system-server.onrender.com/api/v1/user/admin/${email}`,
+          //`http://localhost:5000/api/v1/user/admin/${email}`,
           {
             method: "PUT",
             headers: {
@@ -81,8 +81,8 @@ const MakeAdminRow = ({ user, index, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          // `https://child-adoption-system-server.onrender.com/api/v1/user/employer/${email}`,
-          `http://localhost:5000/api/v1/user/employer/${email}`,
+          `https://child-adoption-system-server.onrender.com/api/v1/user/employer/${email}`,
+          //`http://localhost:5000/api/v1/user/employer/${email}`,
           {
             method: "PUT",
             headers: {
