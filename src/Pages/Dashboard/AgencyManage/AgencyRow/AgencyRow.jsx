@@ -53,9 +53,10 @@ const AgencyRow = ({ index, agency, refetch }) => {
               return res.json();
             })
             .then((data) => {
-              if (data?.deletedCount > 0) {
-                toast.success(`${agencyName} delete successfully`);
+              if (data?.data?.deletedCount > 0) {
+                toast.success(`Delete ${agencyName} successfully`);
                 refetch();
+                window.location.reload();
               }
             });
 
