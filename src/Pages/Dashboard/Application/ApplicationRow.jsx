@@ -89,12 +89,12 @@ const ApplicationRow = ({ index, application, refetch }) => {
     <>
       <tr>
         {/* <th>{index + 1}</th> */}
-        <th>#</th>
+        {/* <th>#</th> */}
         <td>
-          P1:{" "}
+          Name P1:{" "}
           <span className="font-bold">{application?.data?.displayName}</span>
           <br />
-          P2:{" "}
+          Name P2:{" "}
           <span className="font-bold ">{application?.data?.displayName2}</span>
         </td>
 
@@ -115,6 +115,9 @@ const ApplicationRow = ({ index, application, refetch }) => {
               </div>
             </div>
           </div>
+        </td>
+        <td>
+          <div className="font-bold">{application?.applicationDate}</div>
         </td>
         <th>
           {/* The button to open modal */}

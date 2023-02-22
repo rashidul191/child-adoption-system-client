@@ -11,7 +11,7 @@ const AgencyGrid = ({ agency }) => {
   return (
     <div className="card w-5/6 bg-base-100 shadow-md mx-auto md:my-5">
       <figure>
-        <img src={agencyImg} alt={agencyName} />
+        <img className="w-full h-44" src={agencyImg} alt={agencyName} />
       </figure>
       <div className="card-body">
         <h2 className="text-xl font-bold uppercase">{agencyName}</h2>
@@ -26,7 +26,7 @@ const AgencyGrid = ({ agency }) => {
         <div className="card-actions justify-end">
           <button
             onClick={() => handleAgencyLearnMore(_id)}
-            className="btn btn-primary text-white"
+            className="btn btn-primary text-white btn-sm font-bold"
           >
             Learn More
           </button>

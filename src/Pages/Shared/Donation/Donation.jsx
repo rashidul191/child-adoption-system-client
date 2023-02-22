@@ -8,13 +8,13 @@ import DonationFirstPage from "./DonationFirstPage";
 const Donation = () => {
   DynamicTitle("Donation");
   const navigate = useNavigate();
-  const [otherAmount, setOtherAmount] = useState(0);
+  const [otherAmount, setOtherAmount] = useState(100);
   const [error, setError] = useState(false);
   const { register: donationAmount, handleSubmit } = useForm();
 
   const handleOtherAmount = (event) => {
     event.preventDefault();
-    const userAmount = event.target.value;
+    const userAmount = parseInt(event.target.value);
     if (userAmount > 99 && userAmount < 1000000) {
       setOtherAmount(userAmount);
       setError(false);
@@ -24,11 +24,8 @@ const Donation = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data.amount);
-    // navigate(`/donation/${data.amount}`);
-
-    if (data.amount > 99 && data.amount < 1000000) {
-      navigate(`/donation/${data.amount}`);
+    if (parseInt(data.amount) < 1000000 && otherAmount < 1000000) {
+      navigate(`/donation/${data.amount || otherAmount}`);
       setError(false);
     } else {
       setError(true);
@@ -143,7 +140,7 @@ const Donation = () => {
                     onChange={handleOtherAmount}
                     type="text"
                     className="input input-bordered input-sm w-32 max-w-xs"
-                    defaultValue={1000}
+                    defaultValue={100}
                   />{" "}
                   Taka
                 </span>

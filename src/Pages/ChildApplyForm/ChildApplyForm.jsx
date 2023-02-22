@@ -3,14 +3,17 @@ import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading/Loading";
 import DynamicTitle from "../Shared/DynamicTitle/DynamicTitle";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Swal from "sweetalert2";
+import { format } from "date-fns";
 
 const ChildApplyForm = () => {
   DynamicTitle("Child Application");
+  const applicationDate = format(new Date(), "PP");
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
   const { id } = useParams();
   const [user] = useAuthState(auth);
@@ -39,9 +42,12 @@ const ChildApplyForm = () => {
   const onSubmit = async (data) => {
     const childApplyFormData = {
       email: user?.email,
+      applicationDate,
       data,
       child: child?.data,
     };
+
+    // console.log(childApplyFormData);
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/childApply`,
       {
@@ -70,6 +76,7 @@ const ChildApplyForm = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate("/dashboard/you-application");
           window.location.reload();
         } else {
           Swal.fire({
@@ -98,6 +105,7 @@ const ChildApplyForm = () => {
         </div>
         <div className="card w-96 md:w-3/4 bg-base-100 shadow-md mx-auto">
           <div className="card-body">
+            {/* child info start */}
             <div className="flex items-center space-x-3 justify-center">
               <div className="avatar">
                 <div className="mask mask-squircle w-16 h-16">
@@ -110,7 +118,8 @@ const ChildApplyForm = () => {
                 <div className="text-sm">{child?.data?.agency}</div>
               </div>
             </div>
-
+            {/* child info end */}
+            {/* Parent  and Contact info form start */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <h2 className="text-xl md:text-3xl font-bold">
@@ -210,8 +219,7 @@ const ChildApplyForm = () => {
                     })}
                     type="date"
                     placeholder="Birth Date"
-                    name="date"
-                    className="input input-bordered input-sm md:w-96 max-w-lg"
+                    className="input input-bordered input-sm md:w-96"
                     min="1950-01-01"
                     max={`${currentYear - 18}-12-31`}
                   />
@@ -421,6 +429,16 @@ const ChildApplyForm = () => {
 
                   <div className="form-control w-full max-w-sm mx-auto">
                     <input
+                      type="text"
+                      disabled
+                      value={applicationDate}
+                      placeholder="Address line 2 optional"
+                      className="input input-bordered input-sm md:w-96 max-w-lg"
+                    />
+                  </div>
+
+                  <div className="form-control w-full max-w-sm mx-auto">
+                    <input
                       {...childApplyForm("phoneNumber", {
                         required: {
                           value: true,
@@ -468,13 +486,6 @@ const ChildApplyForm = () => {
                         </span>
                       )}
                     </label>
-                  </div>
-                  <div className="form-control w-full max-w-sm mx-auto">
-                    <input
-                      type="text"
-                      placeholder="Address line 2 optional"
-                      className="input input-bordered input-sm md:w-96 max-w-lg"
-                    />
                   </div>
 
                   <div className="form-control w-full max-w-sm mx-auto">
@@ -587,6 +598,7 @@ const ChildApplyForm = () => {
                 />
               </div>
             </form>
+            {/* Parent and Contact info form start */}
           </div>
         </div>
       </div>

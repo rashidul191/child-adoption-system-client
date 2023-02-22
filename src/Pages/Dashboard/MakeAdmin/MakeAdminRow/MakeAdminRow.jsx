@@ -12,7 +12,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
   const { email, role } = user;
 
   // handle Make Admin
-  const handleMakeAdmin = () => {
+  const handleMakeAdmin = (email) => {
     Swal.fire({
       title: "Are you sure?",
       text: `User from make an Admin, ${email}`,
@@ -24,7 +24,8 @@ const MakeAdminRow = ({ user, index, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://child-adoption-system-server.onrender.com/api/v1/user/admin/${email}`,
+          // `https://child-adoption-system-server.onrender.com/api/v1/user/admin/${email}`,
+          `http://localhost:5000/api/v1/user/admin/${email}`,
           {
             method: "PUT",
             headers: {
@@ -50,16 +51,25 @@ const MakeAdminRow = ({ user, index, refetch }) => {
                 showConfirmButton: false,
                 timer: 1500,
               });
+              Swal.fire("Admin!", `Now, ${email} is admin`, "success");
               refetch();
+              window.location.reload();
+            } else {
+              Swal.fire({
+                position: "top-center",
+                icon: "error",
+                title: `error!! some think wrong!! try again`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
             }
           });
-
-        Swal.fire("Admin!", `Now, ${email} is admin`, "success");
       }
     });
   };
   // handle Make Employer
-  const handleMakeEmployer = () => {
+  const handleMakeEmployer = (email) => {
+    console.log(email);
     Swal.fire({
       title: "Are you sure?",
       text: `User from make an Employer, ${email}`,
@@ -71,7 +81,8 @@ const MakeAdminRow = ({ user, index, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://child-adoption-system-server.onrender.com/api/v1/user/employer/${email}`,
+          // `https://child-adoption-system-server.onrender.com/api/v1/user/employer/${email}`,
+          `http://localhost:5000/api/v1/user/employer/${email}`,
           {
             method: "PUT",
             headers: {
@@ -97,16 +108,25 @@ const MakeAdminRow = ({ user, index, refetch }) => {
                 showConfirmButton: false,
                 timer: 1500,
               });
+              Swal.fire("Employer!", `Now, ${email} is employer`, "success");
               refetch();
+              window.location.reload();
+            } else {
+              Swal.fire({
+                position: "top-center",
+                icon: "error",
+                title: `error!! some think wrong!! try again`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
             }
           });
-        Swal.fire("Employer!", `Now, ${email} is employer`, "success");
       }
     });
   };
 
   // handle Delete User
-  const handleDeleteUser = () => {
+  const handleDeleteUser = (email) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -171,7 +191,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
           <p className="text-green-500 font-bold uppercase">Already Admin</p>
         ) : (
           <button
-            onClick={handleMakeAdmin}
+            onClick={() => handleMakeAdmin(email)}
             className="btn btn-primary btn-sm text-white"
           >
             Make Admin
@@ -183,7 +203,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
           <p className="text-green-500 font-bold uppercase">Already Employer</p>
         ) : (
           <button
-            onClick={handleMakeEmployer}
+            onClick={() => handleMakeEmployer(email)}
             className={`btn btn-info btn-sm text-white ${
               role === "admin" && "hidden"
             }`}
@@ -194,7 +214,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       </td>
       <td>
         <button
-          onClick={handleDeleteUser}
+          onClick={() => handleDeleteUser(email)}
           className="btn btn-error btn-sm text-white"
         >
           <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>

@@ -47,7 +47,7 @@ const ContactUs = () => {
                     </span>{" "}
                     Call Us
                   </h2>
-                  <h2 className="text-xl font-bold">+880-1629226069</h2>
+                  <h2 className="text-xl font-bold">+880-9696 860 878</h2>
                 </div>
               </div>
             </div>

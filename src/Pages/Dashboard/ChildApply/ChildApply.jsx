@@ -9,7 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import ChildApplyDetails from "./ChildApplyDetails";
 
 const ChildApply = () => {
-  DynamicTitle("Child Apply");
+  DynamicTitle("Your Application");
   const [user] = useAuthState(auth);
   const { data: childApplyAll, isLoading } = useQuery(["childApply"], () =>
     fetch(
@@ -48,19 +48,18 @@ const ChildApply = () => {
               <tr>
                 <th>Name</th>
                 <th>Child Info</th>
-                <th>Action</th>
+                <th>Apply Date</th>
+                <th>View Apply</th>
                 <th>Apply form Download</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                {childApplyAll?.data?.map((childApply) => (
-                  <ChildApplyDetails
-                    key={childApply._id}
-                    childApply={childApply}
-                  ></ChildApplyDetails>
-                ))}
-              </tr>
+              {childApplyAll?.data?.map((childApply) => (
+                <ChildApplyDetails
+                  key={childApply._id}
+                  childApply={childApply}
+                ></ChildApplyDetails>
+              ))}
             </tbody>
           </table>
         </div>

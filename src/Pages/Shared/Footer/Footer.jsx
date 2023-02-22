@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-center p-2 bg-white text-base-content text-sm">
-        <p>copyright © {year} - all right child-Adoption-System-Ador</p>
+        <p>copyright © {year} - all rights child-Adoption-System-Ador</p>
       </div>
     </footer>
   );

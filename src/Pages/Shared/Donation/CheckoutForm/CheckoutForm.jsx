@@ -150,7 +150,6 @@ const CheckoutForm = ({ amountCard }) => {
             ref={amountRef}
             className="input input-bordered input-sm w-full rounded-none"
           />
-
           <button
             className="btn btn-secondary rounded-none my-10 font-bold"
             type="submit"

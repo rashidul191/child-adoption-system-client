@@ -25,66 +25,73 @@ const ChildApplyDetails = ({ childApply }) => {
 
   return (
     <>
-      <td>
-        <div className="flex items-center space-x-3">
-          <div>
-            <div className="font-bold">
-              Name: {childApply?.data?.displayName}
-            </div>
-            <div className="font-bold">
-              Name: {childApply?.data?.displayName2}
-            </div>
-            <div className="text-sm opacity-50">
-              {childApply?.data?.address}
+      <tr>
+        <td>
+          <div className="flex items-center space-x-3">
+            <div>
+              <div className="font-bold">
+                Name P1: {childApply?.data?.displayName}
+              </div>
+              <div className="font-bold">
+                Name P2: {childApply?.data?.displayName2}
+              </div>
+              <div className="text-sm opacity-50">
+                {childApply?.data?.address}
+              </div>
             </div>
           </div>
-        </div>
-      </td>
-      <td>
-        <div className="avatar">
-          <div className="mask mask-squircle w-12 h-12">
-            <img src={childApply?.child?.img} alt={childApply?.child?.name} />
+        </td>
+        <td>
+          <div className="avatar">
+            <div className="mask mask-squircle w-12 h-12">
+              <img src={childApply?.child?.img} alt={childApply?.child?.name} />
+            </div>
           </div>
-        </div>
-        <br />
-        {childApply?.child?.name}
-        <br />
-        <span className="badge badge-ghost badge-sm">
-          {childApply?.child?.agency}
-        </span>
-      </td>
-      <td>
-        <label
-          htmlFor={`my-modal-${_id}`}
-          onClick={() => handleFindApplicationId(_id)}
-          className="btn btn-success btn-sm modal-button text-white font-bold"
-        >
-          View Application
-        </label>
-      </td>
-      <td>
-        <PDFDownloadLink
-          document={<ChildApplyPDF childApply={childApply} />}
-          fileName={`apply-form`}
-        >
-          {({ loading }) =>
-            loading ? (
-              <p>Loading....</p>
-            ) : (
-              <button className="btn btn-primary btn-sm">Download</button>
-            )
-          }
-        </PDFDownloadLink>
-        {childApply.role === "approved" ? (
-          <p className="text-success uppercase font-semibold">
-            Already Approved
-          </p>
-        ) : (
-          <>
-            <p className="text-error font-semibold">Processing </p>
-          </>
-        )}
-      </td>
+          <br />
+          {childApply?.child?.name}
+          <br />
+          <span className="badge badge-ghost badge-sm">
+            {childApply?.child?.agency}
+          </span>
+        </td>
+        <td>
+          <div className="font-bold">{childApply?.applicationDate}</div>
+        </td>
+        <td>
+          <label
+            htmlFor={`my-modal-${_id}`}
+            onClick={() => handleFindApplicationId(_id)}
+            className="btn btn-success btn-sm modal-button text-white font-bold"
+          >
+            View Application
+          </label>
+        </td>
+        <td>
+          {childApply.role === "approved" ? (
+            <>
+              <PDFDownloadLink
+                document={<ChildApplyPDF childApply={childApply} />}
+                fileName={`apply-form`}
+              >
+                {({ loading }) =>
+                  loading ? (
+                    <p>Loading....</p>
+                  ) : (
+                    <button className="btn btn-primary btn-sm">Download</button>
+                  )
+                }
+              </PDFDownloadLink>
+              <p className="text-success uppercase font-semibold">
+                Already Approved
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="text-error font-semibold">Processing... </p>
+            </>
+          )}
+        </td>
+      </tr>
 
       {/* Put this part before </body> tag */}
       <input type="checkbox" id={`my-modal-${_id}`} className="modal-toggle" />

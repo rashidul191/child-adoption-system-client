@@ -292,7 +292,7 @@ const CheckForApply = () => {
               <div className="">
                 <h2 className="font-bold">
                   Q9: আপনাদের সন্তান জন্মদানে অক্ষমতা রয়েছে ? <br />
-                  <span>Are you infertile ?</span>
+                  <span>Do you have infertility ?</span>
                 </h2>
                 <label htmlFor="q9-yes">Yes</label>
                 <input

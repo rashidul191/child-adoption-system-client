@@ -203,33 +203,21 @@ const EditMyProfile = ({ user, userData }) => {
               <div className="form-control w-full max-w-xs">
                 <label className="label">Zip Code:</label>
                 <input
-                  {...userProfile("zipCode", {
-                    required: {
-                      value: true,
-                      message: "Zip Code is required",
-                    },
-                  })}
+                  {...userProfile("zipCode")}
                   type="text"
                   placeholder="Zip Code"
                   defaultValue={userData?.zipCode}
                   className="input input-bordered input-sm md:w-52 lg:w-64 max-w-xs"
                 />
-                <label className="label">
-                  {errors.zipCode?.type === "required" && (
-                    <span className="label-text-alt text-error">
-                      {errors.zipCode?.message}
-                    </span>
-                  )}
-                </label>
               </div>
 
               <div className="form-control w-full max-w-xs">
                 <label className="label">Phone:</label>
                 <input
                   {...userProfile("phone", {
-                    required: {
-                      value: true,
-                      message: "Full Name is required",
+                    pattern: {
+                      value: /1?([1-9])(\d{9})/,
+                      message: "Provide a valid Phone Number",
                     },
                   })}
                   type="text"
@@ -238,7 +226,7 @@ const EditMyProfile = ({ user, userData }) => {
                   className="input input-bordered input-sm md:w-52 lg:w-64 max-w-xs"
                 />
                 <label className="label">
-                  {errors.phone?.type === "required" && (
+                  {errors.phone?.type === "pattern" && (
                     <span className="label-text-alt text-error">
                       {errors.phone?.message}
                     </span>

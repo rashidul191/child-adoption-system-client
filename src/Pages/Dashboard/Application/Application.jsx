@@ -39,10 +39,11 @@ const Application = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>S/N</th>
+              {/* <th>S/N</th> */}
               <th>Parent Info</th>
               <th>Child Info</th>
-              <th>Action</th>
+              <th>Apply Date</th>
+              <th>View Apply</th>
               <th>Delete Child</th>
             </tr>
           </thead>

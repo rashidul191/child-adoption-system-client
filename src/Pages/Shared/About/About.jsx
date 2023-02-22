@@ -99,13 +99,13 @@ const About = () => {
             Find loving parents for children in need of adoption, and guide
             parents through every step of the adoption process.
           </p>
-          <h2 className="text-xl md:text-2xl font-bold mt-8 mb-3">
+          {/* <h2 className="text-xl md:text-2xl font-bold mt-8 mb-3">
             International Adoption
           </h2>
           <p>
             Our Hague-Accredited program connects children from South Africa,
             Colombia, and Bulgaria to their forever families.
-          </p>
+          </p> */}
           <h2 className="text-xl md:text-2xl font-bold mt-8 mb-3">
             Special Needs Adoption
           </h2>
@@ -113,7 +113,9 @@ const About = () => {
             Placing children with severe medical challenges with loving adoptive
             families who are able to care for their ongoing needs.
           </p>
-          <h2 className="text-xl md:text-2xl font-bold mt-8 mb-3">Granny Program</h2>
+          <h2 className="text-xl md:text-2xl font-bold mt-8 mb-3">
+            Child Development Program
+          </h2>
           <p>
             Pairing children living in long-term facilities with a caregiver who
             provides them with consistent, one-on-one care and attention.
