@@ -80,7 +80,7 @@ const AgencyRow = ({ index, agency, refetch }) => {
   return (
     <tr>
       {/* <th>{index + 1}</th> */}
-      <th>#</th>
+      {/* <th>#</th> */}
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">

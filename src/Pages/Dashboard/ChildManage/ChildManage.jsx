@@ -36,10 +36,10 @@ const ChildManage = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>S/N</th>
-              <th>Name</th>
+              {/* <th>S/N</th> */}
+              <th>Name Info</th>
               <th>Child Type</th>
-              <th>Edit Child Info </th>
+              <th>Edit Child </th>
               <th>Delete Child</th>
             </tr>
           </thead>

@@ -1,13 +1,14 @@
 import { signOut } from "firebase/auth";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../../firebase.init";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const AddChild = () => {
   DynamicTitle("Add Child");
+  const navigate = useNavigate();
   const aboutChildRef = useRef("");
   const {
     register: childInfo,
@@ -73,7 +74,7 @@ const AddChild = () => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
-
+                navigate("/dashboard/child-manage");
                 window.location.reload();
               } else {
                 Swal.fire({

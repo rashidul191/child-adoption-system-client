@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { signOut } from "firebase/auth";
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 import auth from "../../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 
 const PostABlog = () => {
   DynamicTitle("Post A Blog");
-  //   const currentDate = format(new Date(), 'yyyy-MM-dd');
+  const navigate = useNavigate();
   const postDate = format(new Date(), "PP");
   const blogDescription = useRef("");
   const {
@@ -73,7 +73,7 @@ const PostABlog = () => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
-
+                navigate("/dashboard/blogs-manage");
                 window.location.reload();
               } else {
                 Swal.fire({

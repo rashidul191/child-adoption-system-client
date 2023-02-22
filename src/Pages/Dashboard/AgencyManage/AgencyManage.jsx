@@ -36,8 +36,8 @@ const AgencyManage = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>S/N</th>
-              <th>Agency Name</th>
+              {/* <th>S/N</th> */}
+              <th>Agency Info</th>
               <th>Agency Director Name</th>
               <th>Edit Agency Info </th>
               <th>Delete Agency</th>

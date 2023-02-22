@@ -92,30 +92,35 @@ const AddAgency = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2">
           <div className="form-control w-full max-w-xs mt-0">
-            <label className="label">
-              <span className="label-text">Agency Image:</span>
+            <label className="label" htmlFor="childImage">
+              Child Image:
             </label>
             <div className="flex items-center">
-              <label className="w-full  px-4 py-3 bg-white text-blue rounded-lg tracking-wide uppercase border border-blue-100 cursor-pointer hover:bg-blue-500 hover:text-white">
-                <FontAwesomeIcon
-                  className="text-xl mr-4"
-                  icon={faCloudUpload}
-                ></FontAwesomeIcon>
-                <span className="mt-2 text-base leading-normal">Upload</span>
-                <input
-                  {...agencyInfo("img", {
-                    required: {
-                      value: true,
-                      message: "Agency Image is required",
-                    },
-                  })}
-                  type="file"
-                  name="img"
-                  id=""
-                  className="hidden"
-                />
-              </label>
+              <div className="flex items-center space-x-6">
+                <label className="block">
+                  <span className="sr-only">Agency Image:</span>
+                  <input
+                    {...agencyInfo("img", {
+                      required: {
+                        value: true,
+                        message: "Agency Image is required",
+                      },
+                    })}
+                    type="file"
+                    name="img"
+                    id="childImage"
+                    className="block w-full text-sm text-slate-500
+      file:mr-4 file:py-2 file:px-4
+      file:rounded-full file:border-0
+      file:text-sm file:font-semibold
+      file:bg-violet-50 file:text-violet-700
+      hover:file:bg-violet-100
+    "
+                  />
+                </label>
+              </div>
             </div>
+
             <label className="label">
               {errors.img?.type === "required" && (
                 <span className="label-text-alt text-error">
@@ -124,6 +129,7 @@ const AddAgency = () => {
               )}
             </label>
           </div>
+
           <div className="form-control w-full max-w-xs mt-0">
             <label className="label">
               <span className="label-text">Agency Full Name:</span>

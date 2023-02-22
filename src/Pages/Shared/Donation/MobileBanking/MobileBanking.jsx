@@ -60,7 +60,7 @@ const MobileBanking = ({ amount }) => {
               {...register("email", {
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Provide a valid Email",
+                  message: "Provide a valid email",
                 },
               })}
               type="email"
@@ -87,6 +87,10 @@ const MobileBanking = ({ amount }) => {
                   value: true,
                   message: "Number is required",
                 },
+                pattern: {
+                  value: /1?([1-9])(\d{9})/,
+                  message: "Provide a valid number",
+                },
               })}
               type="text"
               id="number"
@@ -95,6 +99,11 @@ const MobileBanking = ({ amount }) => {
             />
             <label className="label">
               {errors.number?.type === "required" && (
+                <span className="label-text-alt text-error">
+                  {errors.number?.message}
+                </span>
+              )}
+              {errors.number?.type === "pattern" && (
                 <span className="label-text-alt text-error">
                   {errors.number?.message}
                 </span>

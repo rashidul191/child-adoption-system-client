@@ -184,7 +184,7 @@ const MakeAdminRow = ({ user, index, refetch }) => {
   return (
     <tr>
       {/* <td className="font-bold">{index + 1}</td> */}
-      <td className="font-bold">#</td>
+      {/* <td className="font-bold">#</td> */}
       <td className="font-bold">{email}</td>
       <td>
         {role === "admin" ? (

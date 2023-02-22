@@ -37,7 +37,7 @@ const BlogManage = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>S/N</th>
+              {/* <th>S/N</th> */}
               <th>Blog Title</th>
               <th>Blog By</th>
               <th>Post Date</th>

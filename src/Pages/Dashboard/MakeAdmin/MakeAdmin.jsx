@@ -50,7 +50,7 @@ const MakeAdmin = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>S.N</th>
+                {/* <th>S.N</th> */}
                 <th>Email</th>
                 <th>Make Admin</th>
                 <th>Make Employer</th>

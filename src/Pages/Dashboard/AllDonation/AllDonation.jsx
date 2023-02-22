@@ -25,19 +25,21 @@ const AllDonation = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
+
+  // console.log(allDonation.data);
   return (
     <section>
-      <h1 className="md:text-xl font-bold uppercase">User Manage</h1>
+      <h1 className="md:text-xl font-bold uppercase">All Donation</h1>
       <hr />
       <div>
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             <thead>
               <tr>
-                <th>S.N</th>
+                {/* <th>S.N</th> */}
                 <th>Amount</th>
                 <th>Payment System</th>
-                <th>Number</th>
+                <th>Card number / TrxId</th>
                 <th>Date</th>
                 <th>Email</th>
               </tr>

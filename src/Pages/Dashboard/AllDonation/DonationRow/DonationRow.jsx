@@ -1,8 +1,7 @@
 import React from "react";
 
 const DonationRow = ({ donation, index }) => {
-  const { email, amount, cardNumber, phoneNumber, paymentSystem, date } =
-    donation;
+  const { email, amount, cardNumber, trxId, paymentSystem, date } = donation;
   let paymentMethod;
   if (paymentSystem === "card") {
     paymentMethod = "card";
@@ -12,12 +11,14 @@ const DonationRow = ({ donation, index }) => {
   return (
     <tr className="font-bold">
       {/* <td>{index + 1}</td> */}
-      <td>#</td>
+    {/* <td>#</td> */}
       <td>৳ {amount}</td>
       <td>{paymentMethod}</td>
-      <td>{cardNumber || phoneNumber}</td>
+      <td>{cardNumber || trxId}</td>
       <td>{date}</td>
-      <td>{email}</td>
+      <td>
+        {email ? email : <span className="text-info">Anonymous Donor</span>}
+      </td>
     </tr>
   );
 };
