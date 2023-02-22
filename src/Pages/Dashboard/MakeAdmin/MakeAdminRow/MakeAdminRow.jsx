@@ -25,7 +25,6 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       if (result.isConfirmed) {
         fetch(
           `https://child-adoption-system-server.onrender.com/api/v1/user/admin/${email}`,
-          //`http://localhost:5000/api/v1/user/admin/${email}`,
           {
             method: "PUT",
             headers: {
@@ -54,14 +53,6 @@ const MakeAdminRow = ({ user, index, refetch }) => {
               Swal.fire("Admin!", `Now, ${email} is admin`, "success");
               refetch();
               window.location.reload();
-            } else {
-              Swal.fire({
-                position: "top-center",
-                icon: "error",
-                title: `error!! some think wrong!! try again`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
             }
           });
       }
@@ -82,7 +73,6 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       if (result.isConfirmed) {
         fetch(
           `https://child-adoption-system-server.onrender.com/api/v1/user/employer/${email}`,
-          //`http://localhost:5000/api/v1/user/employer/${email}`,
           {
             method: "PUT",
             headers: {
@@ -111,14 +101,6 @@ const MakeAdminRow = ({ user, index, refetch }) => {
               Swal.fire("Employer!", `Now, ${email} is employer`, "success");
               refetch();
               window.location.reload();
-            } else {
-              Swal.fire({
-                position: "top-center",
-                icon: "error",
-                title: `error!! some think wrong!! try again`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
             }
           });
       }
