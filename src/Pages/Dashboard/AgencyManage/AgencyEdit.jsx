@@ -1,15 +1,19 @@
-import { faCloudUpload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { signOut } from "firebase/auth";
-import React, { useRef } from "react";
-import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router-dom";
-import auth from "../../../firebase.init";
+import React from "react";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../Shared/Loading/Loading";
 import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
+import { signOut } from "firebase/auth";
+import auth from "../../../firebase.init";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCloudUpload } from "@fortawesome/free-solid-svg-icons";
 
-const AddAgency = () => {
-  DynamicTitle("Add Agency");
+const AgencyEdit = () => {
+  DynamicTitle("Edit Agency Info");
+  const { id } = useParams();
   const navigate = useNavigate();
   const aboutAgencyRef = useRef("");
   const {
@@ -17,6 +21,28 @@ const AddAgency = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const {
+    data: agencyWithId,
+    isLoading,
+    refetch,
+  } = useQuery(["agencyWithId"], () =>
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/agency/${id}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    ).then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
+  //   console.log(agencyWithId.data);
 
   const imageStorageKey = `830f12aefec823fea323e5fd7f93c732`;
 
@@ -43,9 +69,10 @@ const AddAgency = () => {
           };
 
           fetch(
-            "https://child-adoption-system-server.onrender.com/api/v1/agency",
+            `https://child-adoption-system-server.onrender.com/api/v1/agency/${id}`,
             {
-              method: "POST",
+              // fetch(`http://localhost:5000/api/v1/agency/${id}`, {
+              method: "PATCH",
               headers: {
                 "Content-type": "application/json",
                 authorization: `Bearer ${localStorage.getItem("access-token")}`,
@@ -62,21 +89,29 @@ const AddAgency = () => {
               return res.json();
             })
             .then((data) => {
-              if (data?.data?.insertedId) {
+              if (data?.data?.modifiedCount) {
                 Swal.fire({
                   position: "top-center",
                   icon: "success",
-                  title: "Agency Added Done",
+                  title: "Update Agency Info Done",
                   showConfirmButton: false,
                   timer: 1500,
                 });
                 navigate("/dashboard/agency-manage");
                 window.location.reload();
+              } else if (!data?.data?.modifiedCount) {
+                Swal.fire({
+                  position: "top-center",
+                  icon: "info",
+                  title: "Already Update Agency Info",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
               } else {
                 Swal.fire({
                   position: "top-center",
                   icon: "error",
-                  title: "Failed to add Agency",
+                  title: "Failed to Update Agency Info",
                   showConfirmButton: false,
                   timer: 1500,
                 });
@@ -85,9 +120,10 @@ const AddAgency = () => {
         }
       });
   };
+
   return (
     <section>
-      <h1 className="md:text-xl font-bold uppercase">Add Agency</h1>
+      <h1 className="md:text-xl font-bold uppercase">Edit Agency</h1>
       <hr />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2">
@@ -137,6 +173,7 @@ const AddAgency = () => {
               })}
               type="text"
               placeholder="Agency Full Name"
+              defaultValue={agencyWithId?.data?.agencyName}
               className="input input-bordered input-sm md:w-96 max-w-xs"
             />
             <label className="label">
@@ -161,6 +198,7 @@ const AddAgency = () => {
               })}
               type="text"
               placeholder="Agency Location"
+              defaultValue={agencyWithId?.data?.agencyLocation}
               className="input input-bordered input-sm md:w-96 max-w-xs"
             />
             <label className="label">
@@ -184,6 +222,7 @@ const AddAgency = () => {
               })}
               type="text"
               placeholder="Agency Director Full Name"
+              defaultValue={agencyWithId?.data?.agencyDirectorName}
               className="input input-bordered input-sm md:w-96 max-w-xs"
             />
             <label className="label">
@@ -204,6 +243,7 @@ const AddAgency = () => {
             ref={aboutAgencyRef}
             className="textarea textarea-bordered h-24 w-80 md:w-5/6"
             placeholder="About Agency Here"
+            defaultValue={agencyWithId?.data?.description}
           ></textarea>
         </div>
 
@@ -217,4 +257,4 @@ const AddAgency = () => {
   );
 };
 
-export default AddAgency;
+export default AgencyEdit;

@@ -23,7 +23,7 @@ const ChildTypes = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center font-bold">
               <p className="link link-hover text-blue-500">
                 Infant Child
                 <FontAwesomeIcon
@@ -44,7 +44,7 @@ const ChildTypes = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center font-bold">
               <p className="link link-hover text-blue-500">
                 Foster Care Child
                 <FontAwesomeIcon
@@ -64,7 +64,7 @@ const ChildTypes = () => {
                 className="rounded-xl"
               />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center font-bold">
               <p className="link link-hover text-blue-500">
                 Street Child
                 <FontAwesomeIcon

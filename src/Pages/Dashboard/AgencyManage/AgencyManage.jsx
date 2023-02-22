@@ -39,7 +39,7 @@ const AgencyManage = () => {
               <th>S/N</th>
               <th>Agency Name</th>
               <th>Agency Director Name</th>
-              {/* <th>Edit Agency Info </th> */}
+              <th>Edit Agency Info </th>
               <th>Delete Agency</th>
             </tr>
           </thead>
@@ -52,6 +52,7 @@ const AgencyManage = () => {
             <tbody>
               {allAgency?.data
                 ?.slice(skip, skip + limit)
+                ?.reverse()
                 ?.map((agency, index) => (
                   <AgencyRow
                     key={agency._id}

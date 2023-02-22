@@ -5,12 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import ChildApplyForm from "./Pages/ChildApplyForm/ChildApplyForm";
 import AddAgency from "./Pages/Dashboard/AddAgency/AddAgency";
 import AddChild from "./Pages/Dashboard/AddChild/AddChild";
+import AgencyEdit from "./Pages/Dashboard/AgencyManage/AgencyEdit";
 import AgencyManage from "./Pages/Dashboard/AgencyManage/AgencyManage";
 import AllDonation from "./Pages/Dashboard/AllDonation/AllDonation";
 import Application from "./Pages/Dashboard/Application/Application";
 import CheckApplyResult from "./Pages/Dashboard/CheckApplyResult/CheckApplyResult";
 import CheckForApply from "./Pages/Dashboard/CheckForApply/CheckForApply";
 import ChildApply from "./Pages/Dashboard/ChildApply/ChildApply";
+import ChildEdit from "./Pages/Dashboard/ChildManage/ChildEdit";
 import ChildManage from "./Pages/Dashboard/ChildManage/ChildManage";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
@@ -114,10 +116,18 @@ function App() {
             path="child-manage"
             element={<ChildManage></ChildManage>}
           ></Route>
+          <Route
+            path="child-manage/:id"
+            element={<ChildEdit></ChildEdit>}
+          ></Route>
           <Route path="add-agency" element={<AddAgency></AddAgency>}></Route>
           <Route
             path="agency-manage"
             element={<AgencyManage></AgencyManage>}
+          ></Route>
+          <Route
+            path="agency-manage/:id"
+            element={<AgencyEdit></AgencyEdit>}
           ></Route>
           <Route path="user-manage" element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path="post-a-blog" element={<PostABlog></PostABlog>}></Route>

@@ -2,16 +2,20 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "firebase/auth";
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../../../firebase.init";
 import { toast } from "react-toastify";
 
 const AgencyRow = ({ index, agency, refetch }) => {
+  const navigate = useNavigate();
   const { _id, agencyImg, agencyName, agencyLocation, agencyDirectorName } =
     agency;
+  const handleAgencyEdit = (id) => {
+    navigate(`/dashboard/agency-manage/${id}`);
+  };
 
-  const handleAgencyDelete = (_id) => {
+  const handleAgencyDelete = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -32,7 +36,7 @@ const AgencyRow = ({ index, agency, refetch }) => {
       .then((result) => {
         if (result.isConfirmed) {
           fetch(
-            `https://child-adoption-system-server.onrender.com/api/v1/agency/${_id}`,
+            `https://child-adoption-system-server.onrender.com/api/v1/agency/${id}`,
             {
               method: "DELETE",
               headers: {
@@ -90,11 +94,14 @@ const AgencyRow = ({ index, agency, refetch }) => {
         </div>
       </td>
       <td>By : {agencyDirectorName}</td>
-      {/* <th>
-        <button className="rounded-lg bg-[#FF428D] btn-sm text-white">
+      <th>
+        <button
+          onClick={() => handleAgencyEdit(_id)}
+          className="rounded-lg bg-[#FF428D] btn-sm text-white"
+        >
           Edit
         </button>
-      </th> */}
+      </th>
       <th>
         <button
           onClick={() => handleAgencyDelete(_id)}

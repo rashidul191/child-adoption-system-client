@@ -65,7 +65,7 @@ const AddChild = () => {
               return res.json();
             })
             .then((data) => {
-              if (data?.insertedId) {
+              if (data?.data?.insertedId) {
                 Swal.fire({
                   position: "top-center",
                   icon: "success",
@@ -277,7 +277,7 @@ const AddChild = () => {
               Child Location:
             </label>
             <input
-              {...childInfo("currentDate", {
+              {...childInfo("location", {
                 required: {
                   value: true,
                   message: "Child Location is required",

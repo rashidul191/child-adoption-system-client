@@ -3,39 +3,14 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import ChildEdit from "../ChildEdit";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ChildRow = ({ index, child, refetch }) => {
-  const [editChild, setEditChild] = useState(false);
-  const [childWithId, setChildWithId] = useState({});
+  const navigator = useNavigate();
   const { _id, img, name, location, childType } = child;
 
   const handleChildEdit = (id) => {
-    fetch(
-      `https://child-adoption-system-server.onrender.com/api/v1/child/${id}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data) {
-          setChildWithId(data?.data);
-          setEditChild(true);
-        } else {
-          Swal.fire({
-            position: "top-center",
-            icon: "error",
-            title: `something is wrong!! can't edit child`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
+    navigator(`/dashboard/child-manage/${id}`);
   };
 
   const handleChildDelete = (id) => {
@@ -95,7 +70,6 @@ const ChildRow = ({ index, child, refetch }) => {
   };
   return (
     <>
-      {/* <tr className={`${editChild && "hidden"}`}> */}
       <tr>
         {/* <th>{index + 1}</th> */}
         <th>#</th>
@@ -113,14 +87,14 @@ const ChildRow = ({ index, child, refetch }) => {
           </div>
         </td>
         <td>{childType}</td>
-        {/* <th>
+        <th>
           <button
             onClick={() => handleChildEdit(_id)}
             className="rounded-lg bg-[#FF428D] btn-sm text-white"
           >
             Edit
           </button>
-        </th> */}
+        </th>
         <th>
           <button
             onClick={() => handleChildDelete(_id)}

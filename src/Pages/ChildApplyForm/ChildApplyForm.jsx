@@ -226,21 +226,21 @@ const ChildApplyForm = () => {
 
                 <div className="form-control w-full max-w-sm mx-auto">
                   <label className="label">
-                    <span className="label-text">NID / Passport Number:</span>
+                    <span className="label-text">NID Number:</span>
                   </label>
                   <input
                     {...childApplyForm("nidPassport", {
                       required: {
                         value: true,
-                        message: "NID / Passport Number is required",
+                        message: "NID Number is required",
                       },
                       pattern: {
                         value: /1?([1-9])/,
-                        message: "Provide a valid NID / Passport Number",
+                        message: "Provide a valid NID Number",
                       },
                     })}
                     type="text"
-                    placeholder="NID / Passport Number"
+                    placeholder="NID Number"
                     className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
                   <label className="label">
@@ -370,21 +370,21 @@ const ChildApplyForm = () => {
 
                 <div className="form-control w-full max-w-sm mx-auto">
                   <label className="label">
-                    <span className="label-text">NID / Passport Number:</span>
+                    <span className="label-text">NID Number:</span>
                   </label>
                   <input
                     {...childApplyForm("nidPassport2", {
                       required: {
                         value: true,
-                        message: "NID / Passport Number is required",
+                        message: "NID Number is required",
                       },
                       pattern: {
                         value: /1?([1-9])/,
-                        message: "Provide a valid NID / Passport Number",
+                        message: "Provide a valid NID Number",
                       },
                     })}
                     type="text"
-                    placeholder="NID / Passport Number"
+                    placeholder="NID Number"
                     className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
                   <label className="label">
