@@ -1,6 +1,4 @@
-import {
-  faHandHoldingDollar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHandHoldingDollar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
@@ -17,9 +15,8 @@ const DonationFirstPage = () => {
           </div>
         </div>
         <div className="items-center text-center m-4">
-          <h2 className="text-xl font-bold">SADAQA</h2>
-          <div className="">
-            <p className="font-bold text-secondary"></p>
+          <h2 className="text-xl md:text-2xl font-bold">SADAQA</h2>
+          <div className="font-semibold">
             <p> BANK ACCOUNT</p>
             <p>The City Bank Ltd.</p>
             <p>Acc Name: Child Adoption System Ador</p>
@@ -40,9 +37,8 @@ const DonationFirstPage = () => {
           </div>
         </div>
         <div className="items-center text-center m-4">
-          <h2 className="text-xl font-bold">ZAKAT</h2>
-          <div className="">
-            <p className="font-bold text-secondary"></p>
+          <h2 className="text-xl md:text-2xl font-bold">ZAKAT</h2>
+          <div className="font-semibold">
             <p> BANK ACCOUNT</p>
             <p>The City Bank Ltd.</p>
             <p>Acc Name: Child Adoption System Ador</p>
@@ -63,9 +59,8 @@ const DonationFirstPage = () => {
           </div>
         </div>
         <div className="items-center text-center m-4">
-          <h2 className="text-xl font-bold">OTHER OPTIONS</h2>
-          <div className="">
-            <p className="font-bold text-secondary"></p>
+          <h2 className="text-xl md:text-2xl font-bold">OTHER OPTIONS</h2>
+          <div className="font-semibold">
             <p> PAY ONLINE</p>
             <p>BKASH(Send Money) 017304*****</p>
             <p>NAGAD(Send Money) 017304*****</p>

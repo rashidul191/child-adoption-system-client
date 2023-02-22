@@ -71,7 +71,6 @@ const AgencyEdit = () => {
           fetch(
             `https://child-adoption-system-server.onrender.com/api/v1/agency/${id}`,
             {
-              // fetch(`http://localhost:5000/api/v1/agency/${id}`, {
               method: "PATCH",
               headers: {
                 "Content-type": "application/json",

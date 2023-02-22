@@ -11,6 +11,7 @@ const Donation = () => {
   const [otherAmount, setOtherAmount] = useState(0);
   const [error, setError] = useState(false);
   const { register: donationAmount, handleSubmit } = useForm();
+
   const handleOtherAmount = (event) => {
     event.preventDefault();
     const userAmount = event.target.value;
@@ -23,7 +24,15 @@ const Donation = () => {
   };
 
   const onSubmit = (data) => {
-    navigate(`/donation/${data.amount}`);
+    console.log(data.amount);
+    // navigate(`/donation/${data.amount}`);
+
+    if (data.amount > 99 && data.amount < 1000000) {
+      navigate(`/donation/${data.amount}`);
+      setError(false);
+    } else {
+      setError(true);
+    }
   };
 
   return (
@@ -130,6 +139,7 @@ const Donation = () => {
                   {" "}
                   Other:
                   <input
+                    id="q6"
                     onChange={handleOtherAmount}
                     type="text"
                     className="input input-bordered input-sm w-32 max-w-xs"
@@ -152,7 +162,7 @@ const Donation = () => {
               )}
 
               <input
-                className="btn btn-secondary font-bold w-full md:w-96 mt-5 rounded-none"
+                className="btn btn-secondary font-bold w-full md:w-96 mt-5 rounded-none text-white"
                 type="submit"
                 value="Give Now"
               />
