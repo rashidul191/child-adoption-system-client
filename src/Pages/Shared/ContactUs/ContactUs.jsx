@@ -24,8 +24,6 @@ const ContactUs = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(data);
-
     const contactInfo = {
       name: data.displayName,
       phoneNumber: data.phone,
@@ -35,13 +33,16 @@ const ContactUs = () => {
     };
     console.log("contact Message: ", contactInfo);
 
-    fetch(`http://localhost:5000/api/v1/contactUs`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(contactInfo),
-    })
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/contactUs`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(contactInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data.data);

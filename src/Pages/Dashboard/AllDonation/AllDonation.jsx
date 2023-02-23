@@ -26,7 +26,6 @@ const AllDonation = () => {
     return <Loading></Loading>;
   }
 
-  // console.log(allDonation.data);
   return (
     <section>
       <h1 className="md:text-xl font-bold uppercase">All Donation</h1>

@@ -8,9 +8,14 @@ import Pagination from "../../Shared/Pagination/Pagination";
 
 const ChildManage = () => {
   DynamicTitle("Child Manage");
+  // const [childType, setChildType] = useState("Infant-Child");
+  const [allTypeChild, setAllTypeChild] = useState([]);
   const [count, setCount] = useState(1);
+
+  // console.log(childType);
   let limit = 8;
   const skip = (count - 1) * limit;
+
   // react query
   const {
     data: allChild,
@@ -24,13 +29,47 @@ const ChildManage = () => {
       },
     }).then((res) => res.json())
   );
+  const handleChildList = (event) => {
+    const childType = event.target.value;
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/child/childType/${childType}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setAllTypeChild(data);
+      });
+  };
 
   if (isLoading) {
     return <Loading></Loading>;
   }
+
   return (
     <section>
-      <h1 className="md:text-xl font-bold uppercase">Child Manage</h1>
+      <div className="md:flex justify-between">
+        <h1 className="md:text-xl font-bold uppercase">Child Manage</h1>
+        <div>
+          <span className="font-semibold">
+            sort child list:
+            <select
+              onChange={handleChildList}
+              className="input input-bordered input-sm w-56 max-w-xs ml-2"
+            >
+              <option selected value={`Infant-Child`}>
+                Infant-Child
+              </option>
+              <option value={`Foster-Care-Child`}>Foster-Care-Child</option>
+              <option value={`Street-Child`}>Street-Child</option>
+            </select>
+          </span>
+        </div>
+      </div>
       <hr />
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
@@ -43,7 +82,8 @@ const ChildManage = () => {
               <th>Delete Child</th>
             </tr>
           </thead>
-          <tbody>
+
+          <tbody className={allTypeChild?.data && "hidden"}>
             {allChild?.data
               ?.slice(skip, skip + limit)
               ?.reverse()
@@ -56,18 +96,44 @@ const ChildManage = () => {
                 ></ChildRow>
               ))}
           </tbody>
+
+          <tbody>
+            {allTypeChild?.data
+              ?.slice(skip, skip + limit)
+              ?.reverse()
+              ?.map((child, index) => (
+                <ChildRow
+                  key={child._id}
+                  child={child}
+                  index={index}
+                  // refetch={refetch}
+                ></ChildRow>
+              ))}
+          </tbody>
         </table>
       </div>
 
       {/* pagination */}
-      {allChild?.data.length >= limit && (
-        <Pagination
-          dataLength={allChild?.data?.length}
-          count={count}
-          setCount={setCount}
-          limit={limit}
-        ></Pagination>
-      )}
+      <span className={allTypeChild?.data && "hidden"}>
+        {allChild?.data?.length >= limit && (
+          <Pagination
+            dataLength={allChild?.data?.length}
+            count={count}
+            setCount={setCount}
+            limit={limit}
+          ></Pagination>
+        )}
+      </span>
+      <span>
+        {allTypeChild?.data?.length >= limit && (
+          <Pagination
+            dataLength={allChild?.data?.length}
+            count={count}
+            setCount={setCount}
+            limit={limit}
+          ></Pagination>
+        )}
+      </span>
     </section>
   );
 };
