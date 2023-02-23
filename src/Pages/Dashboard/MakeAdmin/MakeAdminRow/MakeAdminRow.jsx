@@ -50,10 +50,11 @@ const MakeAdminRow = ({ user, index, refetch }) => {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              Swal.fire("Admin!", `Now, ${email} is admin`, "success");
+
               refetch();
               window.location.reload();
             }
+            Swal.fire("Admin!", `Now, ${email} is admin`, "success");
           });
       }
     });
@@ -98,10 +99,11 @@ const MakeAdminRow = ({ user, index, refetch }) => {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              Swal.fire("Employer!", `Now, ${email} is employer`, "success");
+
               refetch();
               window.location.reload();
             }
+            Swal.fire("Employer!", `Now, ${email} is employer`, "success");
           });
       }
     });

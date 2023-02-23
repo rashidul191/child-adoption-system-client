@@ -4,12 +4,18 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useRef } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import auth from "../../../firebase.init";
 import DynamicTitle from "../DynamicTitle/DynamicTitle";
 
 const ContactUs = () => {
   DynamicTitle("Contact-Us");
+  const contactMessageRef = useRef("");
+
+  const [user] = useAuthState(auth);
 
   const {
     register: contactUs,
@@ -18,8 +24,46 @@ const ContactUs = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    alert("Your message send successfully");
-    window.location.reload();
+    // console.log(data);
+
+    const contactInfo = {
+      name: data.displayName,
+      phoneNumber: data.phone,
+      email: data.email,
+      subject: data.subject,
+      message: contactMessageRef.current.value,
+    };
+    console.log("contact Message: ", contactInfo);
+
+    fetch(`http://localhost:5000/api/v1/contactUs`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(contactInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.data);
+        if (data?.data?.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Thanks your feedback. Please check mail`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          // window.location.reload();
+        } else {
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: `Something is wrong!! please try again.`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
@@ -101,6 +145,7 @@ const ContactUs = () => {
                     type="text"
                     placeholder="Name"
                     id="name"
+                    defaultValue={user?.displayName}
                     className="input input-bordered input-sm w-full md:w-56 max-w-xs"
                   />
                   <label className="label">
@@ -124,6 +169,7 @@ const ContactUs = () => {
                     type="email"
                     id="email"
                     placeholder="example@gmail.com"
+                    defaultValue={user?.email}
                     className="input input-bordered input-sm w-full md:w-56 max-w-xs"
                   />
                   <label className="label">
@@ -142,6 +188,10 @@ const ContactUs = () => {
                 <div className="form-control w-full md:w-56 max-w-xs">
                   <input
                     {...contactUs("phone", {
+                      // required: {
+                      //   value: true,
+                      //   message: "Phone Number is required",
+                      // },
                       pattern: {
                         value: /^[0-9]{1,13}$/,
                         message: "Provide a valid Phone Number",
@@ -153,11 +203,11 @@ const ContactUs = () => {
                     className="input input-bordered input-sm w-full md:w-56 max-w-xs"
                   />
                   <label className="label">
-                    {errors.phone?.type === "required" && (
+                    {/* {errors.phone?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.phone?.message}
                       </span>
-                    )}
+                    )} */}
                     {errors.phone?.type === "pattern" && (
                       <span className="label-text-alt text-error">
                         {errors.phone?.message}
@@ -193,13 +243,14 @@ const ContactUs = () => {
                   className="textarea textarea-bordered h-24 input-sm w-full"
                   placeholder="Message"
                   id="aboutChild"
+                  ref={contactMessageRef}
                 ></textarea>
               </div>
 
               <input
                 className="btn btn-primary text-white mt-5 w-48 md:w-96"
                 type="submit"
-                value="Send"
+                value="Send Message"
               />
             </form>
           </div>
