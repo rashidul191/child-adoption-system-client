@@ -76,13 +76,13 @@ const CheckApplyResult = () => {
               <h2 className="text-3xl "> Congratulation </h2>
               <p className="text-xl ">You are Eligible for Child Adoption</p>
             </div>
-            <h1 className="text-center font-bold text-xl my-5">
+            {/* <h1 className="text-center font-bold text-xl my-5">
               Because your score is:{" "}
               <span className="text-green-600">
                 {" "}
                 Yes = {eligibilityScore?.data[0]?.allowValue?.length * 10}%
               </span>
-            </h1>
+            </h1> */}
           </div>
         ) : (
           <>
@@ -94,7 +94,7 @@ const CheckApplyResult = () => {
                     You are Not Eligibe for Child Adoption
                   </p>
                 </div>
-                <h1 className="text-center font-bold text-xl my-5">
+                {/* <h1 className="text-center font-bold text-xl my-5">
                   Because your score is:{" "}
                   <span className="text-red-600">
                     {" "}
@@ -102,12 +102,13 @@ const CheckApplyResult = () => {
                       10}{" "}
                     %
                   </span>
-                </h1>
+                </h1> */}
               </div>
             )}
           </>
         )}
       </div>
+      <hr className="my-4" />
 
       {eligibilityScore?.data[0] ? (
         <div className="mx-4 md:mx-8">

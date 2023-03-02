@@ -31,6 +31,7 @@ const ChildManage = () => {
   );
   const handleChildList = (event) => {
     const childType = event.target.value;
+    // console.log("child Type: ", childType);
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/child/childType/${childType}`,
       {

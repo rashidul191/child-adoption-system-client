@@ -203,12 +203,24 @@ const EditMyProfile = ({ user, userData }) => {
               <div className="form-control w-full max-w-xs">
                 <label className="label">Zip Code:</label>
                 <input
-                  {...userProfile("zipCode")}
+                  {...userProfile("zipCode", {
+                    pattern: {
+                      value: /1?([1-9])(\d{3})/,
+                      message: "Provide a valid Zip Code",
+                    },
+                  })}
                   type="text"
                   placeholder="Zip Code"
                   defaultValue={userData?.zipCode}
                   className="input input-bordered input-sm md:w-52 lg:w-64 max-w-xs"
                 />
+                <label className="label">
+                  {errors.zipCode?.type === "pattern" && (
+                    <span className="label-text-alt text-error">
+                      {errors.zipCode?.message}
+                    </span>
+                  )}
+                </label>
               </div>
 
               <div className="form-control w-full max-w-xs">

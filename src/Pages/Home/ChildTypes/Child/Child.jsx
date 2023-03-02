@@ -28,7 +28,9 @@ const Child = () => {
   const {
     img,
     name,
-    age,
+    ageYear,
+    ageMonth,
+    addChildYear,
     location,
     city,
     disabilities,
@@ -38,6 +40,10 @@ const Child = () => {
     agency,
     description,
   } = child?.data;
+
+  let currentYear = new Date().getFullYear();
+  let childDifferentAge = currentYear - parseInt(addChildYear);
+  let updateChildAge = parseInt(ageYear) + childDifferentAge;
 
   if (error) {
     console.log(error);
@@ -59,7 +65,10 @@ const Child = () => {
               Name: <span className="text-2xl font-bold">{name}</span>
             </h2>
             <p>
-              Age: <span className="font-bold">{age}</span>
+              Age:{" "}
+              <span className="font-bold">
+                {updateChildAge} year, {ageMonth} month
+              </span>
             </p>
           </div>
           <div className="md:ml-5">

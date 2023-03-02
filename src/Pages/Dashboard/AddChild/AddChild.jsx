@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { signOut } from "firebase/auth";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -8,6 +9,8 @@ import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 
 const AddChild = () => {
   DynamicTitle("Add Child");
+  const addChildYear = new Date().getFullYear();
+  // console.log(addChildDate)
   const navigate = useNavigate();
   const aboutChildRef = useRef("");
   const {
@@ -33,9 +36,11 @@ const AddChild = () => {
         if (imgStoreOutput.success) {
           const img = imgStoreOutput.data.url;
           const childInfo = {
+            addChildYear,
             img: img,
             name: data.displayName,
-            age: data.age,
+            ageYear: data.ageYear,
+            ageMonth: data.ageMonth,
             childType: data.childType,
             gender: data.gender,
             religion: data.religion,
@@ -97,7 +102,7 @@ const AddChild = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 ">
           <div className="form-control w-full max-w-xs mt-0">
             <label className="label" htmlFor="childImage">
-              Child Image:
+              Child Image*:
             </label>
             <div className="flex items-center">
               <div className="flex items-center space-x-6">
@@ -136,7 +141,7 @@ const AddChild = () => {
 
           <div className="form-control w-full max-w-xs mt-0">
             <label className="label" htmlFor="childFullName">
-              Child Full Name:
+              Child Full Name*:
             </label>
             <input
               {...childInfo("displayName", {
@@ -160,25 +165,48 @@ const AddChild = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childAge">
-              Child Age:
-            </label>
-            <input
-              {...childInfo("age", {
-                required: {
-                  value: true,
-                  message: "Child Age required",
-                },
-              })}
-              type="text"
-              placeholder="Age"
-              id="childAge"
-              className="input input-bordered input-sm md:w-96 max-w-xs"
-            />
+            <div className="grid grid-cols-2 gap-x-2">
+              <div>
+                <label className="label" htmlFor="childAgeYear">
+                  Child Age *: Year
+                </label>
+                <input
+                  {...childInfo("ageYear", {
+                    required: {
+                      // value: true,
+                      message: "Child age year required",
+                    },
+                  })}
+                  defaultValue={0}
+                  type="text"
+                  placeholder="Year"
+                  id="childAgeYear"
+                  className="input input-bordered input-sm w-36 max-w-xs"
+                />
+              </div>
+              <div>
+                <label className="label" htmlFor="childAgeMonth">
+                  Month
+                </label>
+                <input
+                  {...childInfo("ageMonth", {
+                    // required: {
+                    //   value: true,
+                    //   message: "Child age month required",
+                    // },
+                  })}
+                  type="text"
+                  defaultValue={0}
+                  placeholder="Month"
+                  id="childAgeMonth"
+                  className="input input-bordered input-sm w-36 max-w-xs"
+                />
+              </div>
+            </div>
             <label className="label">
-              {errors.age?.type === "required" && (
+              {errors.ageYear?.type === "required" && (
                 <span className="label-text-alt text-error">
-                  {errors.age?.message}
+                  {errors.ageYear?.message}
                 </span>
               )}
             </label>
@@ -383,14 +411,14 @@ const AddChild = () => {
           </label>
           <textarea
             ref={aboutChildRef}
-            className="textarea textarea-bordered h-24 w-80 md:w-10/12"
+            className="textarea textarea-bordered h-40 w-80 md:w-10/12"
             placeholder="About Description"
             id="aboutChild"
           ></textarea>
         </div>
 
         <input
-          className="btn btn-primary text-white w-80 md:md:w-96 rounded-none mt-3 mb-10"
+          className="btn btn-primary text-white w-80 md:md:w-96 rounded-none mt-3 mb-10 font-bold"
           type="submit"
           value="Add Child"
         />

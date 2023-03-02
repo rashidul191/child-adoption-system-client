@@ -57,7 +57,7 @@ const TotalActivity = () => {
           <p className="text-4xl font-bold">
             <CountUp end={users?.data} />
           </p>
-          <h2 className="text-2xl uppercase">Users</h2>
+          <h2 className="text-2xl uppercase font-semibold">Users</h2>
         </div>
       </div>
       <div className="card w-3/4 md:w-96 bg-base-100 border rounded-none mx-auto">
@@ -68,7 +68,7 @@ const TotalActivity = () => {
           <p className="text-4xl font-bold">
             <CountUp end={allChild?.data} />
           </p>
-          <h2 className="text-2xl uppercase">Child</h2>
+          <h2 className="text-2xl uppercase font-semibold">Child</h2>
         </div>
       </div>
       <div className="card w-3/4 md:w-96 bg-base-100 border rounded-none mx-auto">
@@ -79,7 +79,7 @@ const TotalActivity = () => {
           <p className="text-4xl font-bold">
             <CountUp end={allAgency?.data?.length} />
           </p>
-          <h2 className="text-2xl uppercase">Agency</h2>
+          <h2 className="text-2xl uppercase font-semibold">Agency</h2>
         </div>
       </div>
     </section>

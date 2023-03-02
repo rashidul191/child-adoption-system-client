@@ -10,21 +10,19 @@ const Subscription = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    fetch(
-      `https://child-adoption-system-server.onrender.com/api/v1/subscription`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    // fetch(`https://child-adoption-system-server.onrender.com/api/v1/subscription`,{
+    fetch(`http://localhost:5000/api/v1/subscription`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data?.data?.acknowledged) {
           Swal.fire({
-            position: "top-end",
+            position: "top-center",
             icon: "success",
             title:
               "Subscribe our new letter to stay updated every moment, Please Check Mail",
@@ -36,7 +34,7 @@ const Subscription = () => {
           Swal.fire({
             position: "top-center",
             icon: "error",
-            title: `Failed email submit`,
+            title: `Failed Subscription`,
             showConfirmButton: false,
             timer: 1500,
           });

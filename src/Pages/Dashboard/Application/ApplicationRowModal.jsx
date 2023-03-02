@@ -59,6 +59,12 @@ const ApplicationRowModal = ({ childApplicationData }) => {
         </div>
         <div>
           <p>West Shewrapara, Mirpur-10, Dhaka, Bangladesh</p>
+          <p>
+            Application Date:
+            <span className=" font-semibold text-info ml-2">
+              {childApplicationData?.applicationDate}
+            </span>
+          </p>
         </div>
       </div>
       <hr className="my-5" />
@@ -253,17 +259,17 @@ const ApplicationRowModal = ({ childApplicationData }) => {
                 {childApplicationData?.data?.country}
               </span>
             </p>
-            <p className="col-span-2">
+            {/* <p className="col-span-2">
               Application Date:{" "}
               <span className="underline font-semibold">
                 {childApplicationData?.applicationDate}
               </span>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
-
-      <div className="text-center">
+      <hr />
+      <div className="text-center mt-4">
         {!admin && !employer ? (
           <>
             {childApplicationData?.role === "approved" ? (

@@ -49,8 +49,8 @@ const ChildApply = () => {
                 <th>Name</th>
                 <th>Child Info</th>
                 <th>Apply Date</th>
-                <th>View Apply</th>
-                <th>Apply form Download</th>
+                <th className="text-center">View Apply</th>
+                <th>Download Form</th>
               </tr>
             </thead>
             <tbody>

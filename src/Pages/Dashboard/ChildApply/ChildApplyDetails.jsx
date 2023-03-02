@@ -63,12 +63,12 @@ const ChildApplyDetails = ({ childApply }) => {
             onClick={() => handleFindApplicationId(_id)}
             className="btn btn-success btn-sm modal-button text-white font-bold"
           >
-            View Application
+            View apply
           </label>
         </td>
         <td>
           {childApply.role === "approved" ? (
-            <>
+            <div className="text-center">
               <PDFDownloadLink
                 document={<ChildApplyPDF childApply={childApply} />}
                 fileName={`apply-form`}
@@ -77,14 +77,16 @@ const ChildApplyDetails = ({ childApply }) => {
                   loading ? (
                     <p>Loading....</p>
                   ) : (
-                    <button className="btn btn-primary btn-sm">Download</button>
+                    <button className="btn btn-primary btn-sm text-white font-bold">
+                      Download
+                    </button>
                   )
                 }
               </PDFDownloadLink>
-              <p className="text-success uppercase font-semibold">
-                Already Approved
+              <p className="text-success uppercase font-semibold text-sm">
+                Approved
               </p>
-            </>
+            </div>
           ) : (
             <>
               <p className="text-error font-semibold">Processing... </p>

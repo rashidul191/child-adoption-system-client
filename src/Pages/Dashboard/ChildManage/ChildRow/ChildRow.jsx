@@ -46,7 +46,7 @@ const ChildRow = ({ index, child, refetch }) => {
             .then((res) => res.json())
             .then((data) => {
               if (data?.data?.deletedCount > 0) {
-                toast.success(`${name} is delete successfully`);
+                toast.success(`Deleted ' ${name} '`);
                 refetch();
               }
             });

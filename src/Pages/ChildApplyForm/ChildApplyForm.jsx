@@ -46,8 +46,6 @@ const ChildApplyForm = () => {
       data,
       child: child?.data,
     };
-
-    // console.log(childApplyFormData);
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/childApply`,
       {
@@ -103,7 +101,7 @@ const ChildApplyForm = () => {
           </h1>
           <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
         </div>
-        <div className="card w-96 md:w-3/4 bg-base-100 shadow-md mx-auto">
+        <div className="card w-96 md:w-3/4 bg-base-100 shadow-sm mx-auto">
           <div className="card-body">
             {/* child info start */}
             <div className="flex items-center space-x-3 justify-center">
@@ -126,7 +124,7 @@ const ChildApplyForm = () => {
                   Parent 1 Information
                 </h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-4">
                 <div className="form-control w-full max-w-sm mx-auto ">
                   <label className="label">
                     <span className="label-text">Full Name:</span>
@@ -270,7 +268,7 @@ const ChildApplyForm = () => {
                   Parent 2 Information
                 </h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-4">
                 <div className="form-control w-full max-w-sm mx-auto">
                   <label className="label">
                     <span className="label-text">Full Name:</span>
@@ -416,14 +414,14 @@ const ChildApplyForm = () => {
                     Contact Information
                   </h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-4">
                   <div className="form-control w-full max-w-sm mx-auto">
                     <input
                       {...childApplyForm("email")}
                       type="email"
                       value={user?.email}
                       disabled
-                      className="input input-bordered input-sm md:w-96 max-w-lg"
+                      className="input input-bordered input-sm md:w-96 max-w-lg mb-3"
                     />
                   </div>
 
@@ -433,7 +431,7 @@ const ChildApplyForm = () => {
                       disabled
                       value={applicationDate}
                       placeholder="Address line 2 optional"
-                      className="input input-bordered input-sm md:w-96 max-w-lg"
+                      className="input input-bordered input-sm md:w-96 max-w-lg mb-3"
                     />
                   </div>
 
@@ -476,7 +474,7 @@ const ChildApplyForm = () => {
                         },
                       })}
                       type="text"
-                      placeholder="Address line 1"
+                      placeholder="Address"
                       className="input input-bordered input-sm md:w-96 max-w-lg"
                     />
                     <label className="label">
@@ -592,7 +590,7 @@ const ChildApplyForm = () => {
 
               <div className="">
                 <input
-                  className="btn btn-info rounded-none sm:w-full mx-auto text-white"
+                  className="btn btn-info rounded-none w-full mx-auto text-white"
                   type="submit"
                   value="Apply Now"
                 />

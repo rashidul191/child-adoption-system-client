@@ -57,7 +57,8 @@ const ChildEdit = () => {
           const childInfo = {
             img: img,
             name: data?.displayName,
-            age: data?.age,
+            ageYear: data?.ageYear,
+            ageMonth: data?.ageMonth,
             childType: data?.childType,
             gender: data?.gender,
             religion: data?.religion,
@@ -196,26 +197,48 @@ const ChildEdit = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childAge">
-              Child Age:
-            </label>
-            <input
-              {...childInfo("age", {
-                required: {
-                  value: true,
-                  message: "Child Age required",
-                },
-              })}
-              type="text"
-              placeholder="Age"
-              id="childAge"
-              defaultValue={childWithId?.data?.age}
-              className="input input-bordered input-sm md:w-96 max-w-xs"
-            />
+            <div className="grid grid-cols-2 gap-x-2">
+              <div>
+                <label className="label" htmlFor="childAgeYear">
+                  Child Age *: Year
+                </label>
+                <input
+                  {...childInfo("ageYear", {
+                    required: {
+                      // value: true,
+                      message: "Child age year required",
+                    },
+                  })}
+                  defaultValue={childWithId?.data?.ageYear}
+                  type="text"
+                  placeholder="Year"
+                  id="childAgeYear"
+                  className="input input-bordered input-sm w-36 max-w-xs"
+                />
+              </div>
+              <div>
+                <label className="label" htmlFor="childAgeMonth">
+                  Month
+                </label>
+                <input
+                  {...childInfo("ageMonth", {
+                    // required: {
+                    //   value: true,
+                    //   message: "Child age month required",
+                    // },
+                  })}
+                  type="text"
+                  defaultValue={childWithId?.data?.ageMonth}
+                  placeholder="Month"
+                  id="childAgeMonth"
+                  className="input input-bordered input-sm w-36 max-w-xs"
+                />
+              </div>
+            </div>
             <label className="label">
-              {errors.age?.type === "required" && (
+              {errors.ageYear?.type === "required" && (
                 <span className="label-text-alt text-error">
-                  {errors.age?.message}
+                  {errors.ageYear?.message}
                 </span>
               )}
             </label>
@@ -427,7 +450,7 @@ const ChildEdit = () => {
           </label>
           <textarea
             ref={aboutChildRef}
-            className="textarea textarea-bordered h-24 w-80 md:w-10/12"
+            className="textarea textarea-bordered h-40 w-80 md:w-10/12"
             placeholder="About Description"
             defaultValue={childWithId?.data?.description}
             id="aboutChild"
@@ -437,7 +460,7 @@ const ChildEdit = () => {
         <input
           className="btn btn-primary text-white w-80 md:md:w-96 rounded-none mt-3 mb-10"
           type="submit"
-          value="Add Child"
+          value="Update Child"
         />
       </form>
     </section>
