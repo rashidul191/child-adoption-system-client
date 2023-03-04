@@ -19,7 +19,7 @@ const Footer = () => {
             to="/about"
             className="link link-hover hover:font-bold hover:text-base hover:text-blue-500"
           >
-            About Us
+            About
           </Link>
           <Link
             to="/contact-us"
@@ -46,7 +46,7 @@ const Footer = () => {
             to="/all-blogs"
             className="link link-hover hover:font-bold hover:text-base hover:text-blue-500"
           >
-            Blog
+            Blogs
           </Link>
           <Link
             to="/donation"
@@ -70,7 +70,7 @@ const Footer = () => {
           />
         </div>
       </div>
-      <div className="footer-center p-2 bg-white text-base-content text-sm">
+      <div className="footer-center p-2 bg-white text-base-content text-sm font-semibold">
         <p>copyright © {year} - all rights child-Adoption-System-Ador</p>
       </div>
     </footer>

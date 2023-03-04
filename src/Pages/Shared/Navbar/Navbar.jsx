@@ -55,7 +55,7 @@ const Navbar = () => {
 
       {!user && (
         <CustomLink
-          className="btn btn-primary font-bold text-white"
+          className="btn btn-success btn-md font-bold text-white"
           to="/login"
         >
           <li>

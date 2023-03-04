@@ -100,14 +100,19 @@ const ContactUs = () => {
             <div className="text-center md:text-right md:mr-14">
               <div className=" mb-5">
                 <div className="md:pr-3 md:border-r-2 md:border-indigo-500">
-                  <h2 className="text-xl uppercase text-[#8EA246]">
-                    {" "}
-                    <span>
-                      <FontAwesomeIcon className="text-2xl" icon={faEnvelope} />
-                    </span>{" "}
-                    Email
-                  </h2>
-                  <h2 className="text-xl font-bold">casa@gmail.com</h2>
+                  <a href="mailto:rashidul.nk9090@email.com">
+                    <h2 className="text-xl uppercase text-[#8EA246]">
+                      {" "}
+                      <span>
+                        <FontAwesomeIcon
+                          className="text-2xl"
+                          icon={faEnvelope}
+                        />
+                      </span>{" "}
+                      Email
+                    </h2>{" "}
+                    <h2 className="text-xl font-bold">casa@gmail.com</h2>
+                  </a>
                 </div>
               </div>
             </div>

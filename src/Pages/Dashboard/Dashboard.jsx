@@ -38,7 +38,7 @@ const Dashboard = () => {
                     className="font-bold text-teal-600"
                     to={`/dashboard/review`}
                   >
-                    Add Review
+                    Review
                   </CustomLink>
                 </li>
                 <li className="bg-white">
@@ -75,7 +75,7 @@ const Dashboard = () => {
                     className="font-bold text-teal-600"
                     to={`/dashboard/application`}
                   >
-                    All Application
+                    User Application
                   </CustomLink>
                 </li>
                 <li className="bg-white">
@@ -91,7 +91,7 @@ const Dashboard = () => {
                     className="font-bold text-teal-600"
                     to={`/dashboard/child-manage`}
                   >
-                    Child Manage
+                    Manage Child
                   </CustomLink>
                 </li>
                 <li className="bg-white">
@@ -107,7 +107,7 @@ const Dashboard = () => {
                     className="font-bold text-teal-600"
                     to={`/dashboard/agency-manage`}
                   >
-                    Agency Manage
+                    Manage Agency
                   </CustomLink>
                 </li>
                 <li className="bg-white">
@@ -123,7 +123,7 @@ const Dashboard = () => {
                     className="font-bold text-teal-600"
                     to={`/dashboard/blogs-manage`}
                   >
-                    Blog Manage
+                    Manage Blog
                   </CustomLink>
                 </li>
 
@@ -132,7 +132,7 @@ const Dashboard = () => {
                     className="font-bold text-teal-600"
                     to={`/dashboard/all-donation`}
                   >
-                    All Donation{" "}
+                    Donation{" "}
                   </CustomLink>
                 </li>
               </>
@@ -145,7 +145,7 @@ const Dashboard = () => {
                     className="font-bold text-teal-600"
                     to={`/dashboard/user-manage`}
                   >
-                    User Manage{" "}
+                    Manage User
                   </CustomLink>
                 </li>
               </>

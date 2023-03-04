@@ -34,17 +34,19 @@ const Agency = () => {
             <AgencyGrid key={agency._id} agency={agency}></AgencyGrid>
           ))}
       </div>
-      <div className="text-center">
-        <Link to={`/all-agency`}>
-          <button className="btn btn-primary rounded-none w-60 text-white font-bold">
-            See More
-            <FontAwesomeIcon
-              className="ml-4"
-              icon={faArrowRight}
-            ></FontAwesomeIcon>
-          </button>
-        </Link>
-      </div>
+      {allAgency.data.length > 3 && (
+        <div className="text-center">
+          <Link to={`/all-agency`}>
+            <button className="btn btn-primary rounded-none w-60 text-white font-bold">
+              See More
+              <FontAwesomeIcon
+                className="ml-4"
+                icon={faArrowRight}
+              ></FontAwesomeIcon>
+            </button>
+          </Link>
+        </div>
+      )}
     </section>
   );
 };
