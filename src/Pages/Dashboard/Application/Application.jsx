@@ -8,7 +8,7 @@ import Pagination from "../../Shared/Pagination/Pagination";
 const Application = () => {
   DynamicTitle("Application");
   const [count, setCount] = useState(1);
-  let limit = 8;
+  let limit = 9;
   const skip = (count - 1) * limit;
   // react query
   const {

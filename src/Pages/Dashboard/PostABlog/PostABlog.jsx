@@ -95,9 +95,7 @@ const PostABlog = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2 ">
           <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text">Date:</span>
-            </label>
+            <label className="label font-bold">Date*:</label>
             <input
               {...postABlog("postDate")}
               type="text"
@@ -106,10 +104,9 @@ const PostABlog = () => {
               className="input input-bordered input-sm md:w-96 max-w-xs"
             />
           </div>
-
           <div className="form-control w-full max-w-xs mt-0">
-            <label className="label" htmlFor="childImage">
-              Photo:
+            <label className="label font-bold" htmlFor="childImage">
+              Photo*:
             </label>
             <div className="flex items-center">
               <div className="flex items-center space-x-6">
@@ -134,9 +131,7 @@ const PostABlog = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text">Blog Title:</span>
-            </label>
+            <label className="label font-bold">Blog Title*:</label>
             <input
               {...postABlog("blogTitle", {
                 required: {
@@ -156,11 +151,8 @@ const PostABlog = () => {
               )}
             </label>
           </div>
-
           <div className="form-control w-full max-w-xs mt-0">
-            <label className="label">
-              <span className="label-text">Full Name:</span>
-            </label>
+            <label className="label font-bold">Blogger by*:</label>
             <input
               {...postABlog("displayName", {
                 required: {
@@ -184,9 +176,7 @@ const PostABlog = () => {
         </div>
 
         <div className="form-control">
-          <label className="label">
-            <span className="label-text">Blog Description:</span>
-          </label>
+          <label className="label font-bold">Blog Description:</label>
           <textarea
             ref={blogDescription}
             className="textarea textarea-bordered h-48 w-80 md:w-5/6"

@@ -60,7 +60,10 @@ const Child = () => {
       <div className="card w-10/12 bg-base-100 shadow-sm rounded-none mx-auto my-5 md:my-10 md:mb-16">
         <div className="grid grid-cols-1 md:grid-cols-2  mx-auto">
           <div className="md:ml-28">
-            <img width={200} src={img} alt={name} />
+            {/* The button to open modal */}
+            <label htmlFor={`my-modal-${id}`}>
+              <img width={200} src={img} alt={name} />
+            </label>
             <h2 className="text-xl mt-2">
               Name: <span className="text-2xl font-bold">{name}</span>
             </h2>
@@ -136,6 +139,23 @@ const Child = () => {
         <p className="sm:ml-10 mb-10 mt-4 md:mx-36 text-justify">
           <span className="font-bold">More about child:</span> {description}
         </p>
+      </div>
+
+      {/* img size modal here */}
+      {/* Put this part before </body> tag */}
+      <input type="checkbox" id={`my-modal-${id}`} className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box md:w-3/4 max-w-5xl">
+          <label
+            htmlFor={`my-modal-${id}`}
+            className="btn btn-sm btn-circle absolute right-2 top-2"
+          >
+            ✕
+          </label>
+          <div>
+            <img width={1000} src={img} alt={name} />
+          </div>
+        </div>
       </div>
     </section>
   );

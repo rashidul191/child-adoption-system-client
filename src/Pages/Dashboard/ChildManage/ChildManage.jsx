@@ -13,7 +13,7 @@ const ChildManage = () => {
   const [count, setCount] = useState(1);
 
   // console.log(childType);
-  let limit = 8;
+  let limit = 9;
   const skip = (count - 1) * limit;
 
   // react query

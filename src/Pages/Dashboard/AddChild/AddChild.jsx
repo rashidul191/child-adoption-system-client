@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import { signOut } from "firebase/auth";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -10,7 +9,6 @@ import DynamicTitle from "../../Shared/DynamicTitle/DynamicTitle";
 const AddChild = () => {
   DynamicTitle("Add Child");
   const addChildYear = new Date().getFullYear();
-  // console.log(addChildDate)
   const navigate = useNavigate();
   const aboutChildRef = useRef("");
   const {
@@ -101,7 +99,7 @@ const AddChild = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2 ">
           <div className="form-control w-full max-w-xs mt-0">
-            <label className="label" htmlFor="childImage">
+            <label className="label font-bold" htmlFor="childImage">
               Child Image*:
             </label>
             <div className="flex items-center">
@@ -140,7 +138,7 @@ const AddChild = () => {
           </div>
 
           <div className="form-control w-full max-w-xs mt-0">
-            <label className="label" htmlFor="childFullName">
+            <label className="label font-bold" htmlFor="childFullName">
               Child Full Name*:
             </label>
             <input
@@ -167,14 +165,17 @@ const AddChild = () => {
           <div className="form-control w-full max-w-xs">
             <div className="grid grid-cols-2 gap-x-2">
               <div>
-                <label className="label" htmlFor="childAgeYear">
+                <label className="label font-bold" htmlFor="childAgeYear">
                   Child Age *: Year
                 </label>
                 <input
                   {...childInfo("ageYear", {
                     required: {
-                      // value: true,
                       message: "Child age year required",
+                    },
+                    pattern: {
+                      value: /^[0-9]{1,100}$/,
+                      message: "Provide a valid age year",
                     },
                   })}
                   defaultValue={0}
@@ -183,17 +184,22 @@ const AddChild = () => {
                   id="childAgeYear"
                   className="input input-bordered input-sm w-36 max-w-xs"
                 />
+                {errors.ageYear?.type === "pattern" && (
+                  <span className="label-text-alt text-error">
+                    {errors.ageYear?.message}
+                  </span>
+                )}
               </div>
               <div>
-                <label className="label" htmlFor="childAgeMonth">
+                <label className="label font-bold" htmlFor="childAgeMonth">
                   Month
                 </label>
                 <input
                   {...childInfo("ageMonth", {
-                    // required: {
-                    //   value: true,
-                    //   message: "Child age month required",
-                    // },
+                    pattern: {
+                      value: /^[0-9]{1,100}$/,
+                      message: "Provide a valid age month",
+                    },
                   })}
                   type="text"
                   defaultValue={0}
@@ -201,9 +207,14 @@ const AddChild = () => {
                   id="childAgeMonth"
                   className="input input-bordered input-sm w-36 max-w-xs"
                 />
+                {errors.ageMonth?.type === "pattern" && (
+                  <span className="label-text-alt text-error">
+                    {errors.ageMonth?.message}
+                  </span>
+                )}
               </div>
             </div>
-            <label className="label">
+            <label className="label font-bold">
               {errors.ageYear?.type === "required" && (
                 <span className="label-text-alt text-error">
                   {errors.ageYear?.message}
@@ -213,8 +224,8 @@ const AddChild = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childType">
-              Child Type:
+            <label className="label font-bold" htmlFor="childType">
+              Child Type*:
             </label>
 
             <select
@@ -243,8 +254,8 @@ const AddChild = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childGander">
-              Child Gander:
+            <label className="label font-bold" htmlFor="childGander">
+              Child Gander*:
             </label>
             <select
               id="childGander"
@@ -262,7 +273,7 @@ const AddChild = () => {
               <option value={`Female`}>Female</option>
               <option value={`Other`}>Other</option>
             </select>
-            <label className="label">
+            <label className="label font-bold">
               {errors.gender?.type === "required" && (
                 <span className="label-text-alt text-error">
                   {errors.gender?.message}
@@ -272,8 +283,8 @@ const AddChild = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childReligion">
-              Child Religion:
+            <label className="label font-bold" htmlFor="childReligion">
+              Child Religion*:
             </label>
             <select
               id="childReligion"
@@ -302,8 +313,8 @@ const AddChild = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childLocation">
-              Child Location:
+            <label className="label font-bold" htmlFor="childLocation">
+              Child Location*:
             </label>
             <input
               {...childInfo("location", {
@@ -327,8 +338,8 @@ const AddChild = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="city">
-              City:
+            <label className="label font-bold" htmlFor="city">
+              City*:
             </label>
             <input
               {...childInfo("city", {
@@ -352,8 +363,8 @@ const AddChild = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="disabilities">
-              Disabilities:
+            <label className="label font-bold" htmlFor="disabilities">
+              Disabilities*:
             </label>
             <select
               id="disabilities"
@@ -380,8 +391,8 @@ const AddChild = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="agencyName">
-              Agency Name:
+            <label className="label font-bold" htmlFor="agencyName">
+              Agency Name*:
             </label>
             <input
               {...childInfo("agency", {
@@ -406,7 +417,7 @@ const AddChild = () => {
         </div>
 
         <div className="form-control">
-          <label className="label" htmlFor="aboutChild">
+          <label className="label font-bold" htmlFor="aboutChild">
             About Child:
           </label>
           <textarea

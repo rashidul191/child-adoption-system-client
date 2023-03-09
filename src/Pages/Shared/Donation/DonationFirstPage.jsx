@@ -18,12 +18,12 @@ const DonationFirstPage = () => {
           <h2 className="text-xl md:text-2xl font-bold">SADAQA</h2>
           <div className="font-semibold">
             <p> BANK ACCOUNT</p>
-            <p>The City Bank Ltd.</p>
-            <p>Acc Name: Child Adoption System Ador</p>
-            <p>Acc No: 14018737****</p>
-            <p>New Market Branch</p>
-            <p>SWIFT Code: CIBLBDDH</p>
-            <p>Routing Number: 2252****</p>
+            <p>Dutch-Bangla Bank Limited.</p>
+            <p>Acc Name: MD RASHIUDL ISLAM</p>
+            <p>Acc No: 1641050101941</p>
+            <p>Mirpur 10 Branch</p>
+            <p>SWIFT Code: DBBLBDDH</p>
+            <p>Routing Number: 90263136</p>
           </div>
         </div>
       </div>
@@ -40,12 +40,12 @@ const DonationFirstPage = () => {
           <h2 className="text-xl md:text-2xl font-bold">ZAKAT</h2>
           <div className="font-semibold">
             <p> BANK ACCOUNT</p>
-            <p>The City Bank Ltd.</p>
-            <p>Acc Name: Child Adoption System Ador</p>
-            <p>Acc No: 14018737****</p>
-            <p>New Market Branch</p>
-            <p>SWIFT Code: CIBLBDDH</p>
-            <p>Routing Number: 2252****</p>
+            <p>Dutch-Bangla Bank Limited.</p>
+            <p>Acc Name: MD RASHIUDL ISLAM</p>
+            <p>Acc No: 1641050101941</p>
+            <p>Mirpur 10 Branch</p>
+            <p>SWIFT Code: DBBLBDDH</p>
+            <p>Routing Number: 90263136</p>
           </div>
         </div>
       </div>
@@ -62,11 +62,15 @@ const DonationFirstPage = () => {
           <h2 className="text-xl md:text-2xl font-bold">OTHER OPTIONS</h2>
           <div className="font-semibold">
             <p> PAY ONLINE</p>
-            <p>BKASH(Send Money) 017304*****</p>
-            <p>NAGAD(Send Money) 017304*****</p>
-            <p>Roket(Send Money) 017304*****</p>
-            <p>Call us on: 017304*****</p>
-            <p>Email: casa@gmail.com</p>
+            <p>BKASH (Send Money) 01629226069</p>
+            <p>NAGAD (Send Money) 01629226069</p>
+            <p>Roket (Send Money) 016292260696</p>
+            <p>Call us on: +880-9696 860 878</p>
+            <a href="mailto:childadoptionsystemador@gmail.com">
+              <p className="text-info">
+                Email: childadoptionsystemador@gmail.com
+              </p>
+            </a>
           </div>
         </div>
       </div>

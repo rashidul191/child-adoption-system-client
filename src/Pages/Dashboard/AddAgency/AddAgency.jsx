@@ -1,5 +1,3 @@
-import { faCloudUpload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "firebase/auth";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -41,7 +39,6 @@ const AddAgency = () => {
             agencyDirectorName: data.directorName,
             description: aboutAgencyRef.current.value,
           };
-
           fetch(
             "https://child-adoption-system-server.onrender.com/api/v1/agency",
             {
@@ -92,12 +89,12 @@ const AddAgency = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2">
           <div className="form-control w-full max-w-xs mt-0">
-            <label className="label" htmlFor="childImage">
-              Child Image:
+            <label className="label font-bold" htmlFor="childImage">
+              Agency Image*:
             </label>
             <div className="flex items-center">
               <div className="flex items-center space-x-6">
-                <label className="block">
+                <label className="block font-bold">
                   <span className="sr-only">Agency Image:</span>
                   <input
                     {...agencyInfo("img", {
@@ -120,7 +117,6 @@ const AddAgency = () => {
                 </label>
               </div>
             </div>
-
             <label className="label">
               {errors.img?.type === "required" && (
                 <span className="label-text-alt text-error">
@@ -129,11 +125,8 @@ const AddAgency = () => {
               )}
             </label>
           </div>
-
           <div className="form-control w-full max-w-xs mt-0">
-            <label className="label">
-              <span className="label-text">Agency Full Name:</span>
-            </label>
+            <label className="label font-bold">Agency Full Name*:</label>
             <input
               {...agencyInfo("agencyName", {
                 required: {
@@ -155,9 +148,7 @@ const AddAgency = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text">Agency Location:</span>
-            </label>
+            <label className="label font-bold">Agency Location*:</label>
             <input
               {...agencyInfo("location", {
                 required: {
@@ -178,9 +169,7 @@ const AddAgency = () => {
             </label>
           </div>
           <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text">Agency Director Name:</span>
-            </label>
+            <label className="label font-bold">Agency Director Name*:</label>
             <input
               {...agencyInfo("directorName", {
                 required: {
@@ -203,9 +192,7 @@ const AddAgency = () => {
         </div>
 
         <div className="form-control">
-          <label className="label">
-            <span className="label-text">About Agency:</span>
-          </label>
+          <label className="label font-bold">About Agency:</label>
           <textarea
             ref={aboutAgencyRef}
             className="textarea textarea-bordered h-24 w-80 md:w-5/6"

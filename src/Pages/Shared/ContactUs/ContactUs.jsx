@@ -8,15 +8,11 @@ import React, { useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import auth from "../../../firebase.init";
 import DynamicTitle from "../DynamicTitle/DynamicTitle";
 
 const ContactUs = () => {
   DynamicTitle("Contact-Us");
   const contactMessageRef = useRef("");
-
-  const [user] = useAuthState(auth);
-
   const {
     register: contactUs,
     formState: { errors },
@@ -33,38 +29,38 @@ const ContactUs = () => {
     };
     console.log("contact Message: ", contactInfo);
 
-    fetch(
-      `https://child-adoption-system-server.onrender.com/api/v1/contactUs`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(contactInfo),
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.data);
-        if (data?.data?.insertedId) {
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: `Thanks your feedback. Please check mail`,
-            showConfirmButton: false,
-            timer: 2000,
-          });
-          // window.location.reload();
-        } else {
-          Swal.fire({
-            position: "top-center",
-            icon: "error",
-            title: `Something is wrong!! please try again.`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
+    // fetch(
+    //   `https://child-adoption-system-server.onrender.com/api/v1/contactUs`,
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(contactInfo),
+    //   }
+    // )
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data.data);
+    //     if (data?.data?.insertedId) {
+    //       Swal.fire({
+    //         position: "top-center",
+    //         icon: "success",
+    //         title: `Thanks your feedback. Please check mail`,
+    //         showConfirmButton: false,
+    //         timer: 2000,
+    //       });
+    //       // window.location.reload();
+    //     } else {
+    //       Swal.fire({
+    //         position: "top-center",
+    //         icon: "error",
+    //         title: `Something is wrong!! please try again.`,
+    //         showConfirmButton: false,
+    //         timer: 1500,
+    //       });
+    //     }
+    //   });
   };
 
   return (
@@ -92,7 +88,7 @@ const ContactUs = () => {
                     </span>{" "}
                     Call Us
                   </h2>
-                  <h2 className="text-xl font-bold">+880-9696 860 878</h2>
+                  <h2 className=" font-bold">+880-9696 860 878</h2>
                 </div>
               </div>
             </div>
@@ -100,7 +96,7 @@ const ContactUs = () => {
             <div className="text-center md:text-right md:mr-14">
               <div className=" mb-5">
                 <div className="md:pr-3 md:border-r-2 md:border-indigo-500">
-                  <a href="mailto:rashidul.nk9090@email.com">
+                  <a href="mailto:childadoptionsystemador@gmail.com">
                     <h2 className="text-xl uppercase text-[#8EA246]">
                       {" "}
                       <span>
@@ -111,7 +107,9 @@ const ContactUs = () => {
                       </span>{" "}
                       Email
                     </h2>{" "}
-                    <h2 className="text-xl font-bold">casa@gmail.com</h2>
+                    <h2 className="text-sm font-bold hover:underline">
+                      childadoptionsystemador@gmail.com
+                    </h2>
                   </a>
                 </div>
               </div>
@@ -120,19 +118,25 @@ const ContactUs = () => {
             <div className="text-center md:text-right md:mr-14">
               <div className="">
                 <div className="md:pr-3 md:border-r-2 md:border-indigo-500">
-                  <h2 className="text-xl uppercase text-[#8EA246]">
-                    {" "}
-                    <span>
-                      <FontAwesomeIcon
-                        className="text-2xl"
-                        icon={faLocationDot}
-                      />
-                    </span>{" "}
-                    Address
-                  </h2>
-                  <h2 className="text-xl font-bold">
-                    Mirpur-10, Dhaka, Bangladesh
-                  </h2>
+                  <a
+                    target="_blank"
+                    href="https://www.google.com/maps/place/%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8%E0%A6%BE+%E0%A6%A8%E0%A7%80%E0%A6%A1%E0%A6%BC+(Bashna+Nir)/@23.7880058,90.374184,45m/data=!3m1!1e3!4m6!3m5!1s0x3755c1bae422e91d:0xb437e5d06e95c142!8m2!3d23.7881005!4d90.374196!16s%2Fg%2F11rz2yxwch"
+                  >
+                    <h2 className="text-xl uppercase text-[#8EA246]">
+                      {" "}
+                      <span>
+                        <FontAwesomeIcon
+                          className="text-2xl"
+                          icon={faLocationDot}
+                        />
+                      </span>{" "}
+                      Address
+                    </h2>
+
+                    <h2 className="text-sm font-bold hover:underline">
+                      West Shewrapara, Dhaka, Bangladesh
+                    </h2>
+                  </a>
                 </div>
               </div>
             </div>
@@ -151,7 +155,6 @@ const ContactUs = () => {
                     type="text"
                     placeholder="Name"
                     id="name"
-                    defaultValue={user?.displayName}
                     className="input input-bordered input-sm w-full md:w-56 max-w-xs"
                   />
                   <label className="label">
@@ -175,7 +178,6 @@ const ContactUs = () => {
                     type="email"
                     id="email"
                     placeholder="example@gmail.com"
-                    defaultValue={user?.email}
                     className="input input-bordered input-sm w-full md:w-56 max-w-xs"
                   />
                   <label className="label">

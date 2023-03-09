@@ -25,7 +25,6 @@ const AgencyInfo = () => {
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
-
       <div
         style={{
           backgroundImage: `url(${agency?.data?.agencyImg})`,
@@ -38,12 +37,15 @@ const AgencyInfo = () => {
         >
           <div className="card w-4/5 mx-auto bg-base-100 shadow-xl">
             <div className="card-body">
-              <img
-                className="mx-auto"
-                width={300}
-                src={agency?.data?.agencyImg}
-                alt={agency?.data?.agencyName}
-              />
+              {/* The button to open modal */}
+              <label htmlFor={`my-modal-${id}`}>
+                <img
+                  className="mx-auto"
+                  width={300}
+                  src={agency?.data?.agencyImg}
+                  alt={agency?.data?.agencyName}
+                />
+              </label>
               <hr />
               <h2 className="text-2xl">
                 Agency Name:{" "}
@@ -69,6 +71,31 @@ const AgencyInfo = () => {
                 <span className="font-bold">About Agency:</span>{" "}
                 {agency?.data?.description}
               </p>
+            </div>
+          </div>
+
+          {/* img size modal here */}
+          {/* Put this part before </body> tag */}
+          <input
+            type="checkbox"
+            id={`my-modal-${id}`}
+            className="modal-toggle"
+          />
+          <div className="modal">
+            <div className="modal-box md:w-3/4 max-w-5xl">
+              <label
+                htmlFor={`my-modal-${id}`}
+                className="btn btn-sm btn-circle absolute right-2 top-2"
+              >
+                ✕
+              </label>
+              <div>
+                <img                 
+                  width={1000}
+                  src={agency?.data?.agencyImg}
+                  alt={agency?.data?.agencyName}
+                />
+              </div>
             </div>
           </div>
         </div>

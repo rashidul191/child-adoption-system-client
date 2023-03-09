@@ -132,8 +132,8 @@ const ChildEdit = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 sm:grid-cols-2 ">
           <div className="form-control w-full max-w-xs mt-0">
-            <label className="label" htmlFor="childImage">
-              Child Image:
+            <label className="label font-bold" htmlFor="childImage">
+              Child Image*:
             </label>
             <div className="flex items-center">
               <div className="flex items-center space-x-6">
@@ -171,8 +171,8 @@ const ChildEdit = () => {
           </div>
 
           <div className="form-control w-full max-w-xs mt-0">
-            <label className="label" htmlFor="childFullName">
-              Child Full Name:
+            <label className="label font-bold" htmlFor="childFullName">
+              Child Full Name*:
             </label>
             <input
               {...childInfo("displayName", {
@@ -195,11 +195,10 @@ const ChildEdit = () => {
               )}
             </label>
           </div>
-
           <div className="form-control w-full max-w-xs">
             <div className="grid grid-cols-2 gap-x-2">
               <div>
-                <label className="label" htmlFor="childAgeYear">
+                <label className="label font-bold" htmlFor="childAgeYear">
                   Child Age *: Year
                 </label>
                 <input
@@ -208,6 +207,10 @@ const ChildEdit = () => {
                       // value: true,
                       message: "Child age year required",
                     },
+                    pattern: {
+                      value: /^[0-9]{1,100}$/,
+                      message: "Provide a valid age year",
+                    },
                   })}
                   defaultValue={childWithId?.data?.ageYear}
                   type="text"
@@ -215,17 +218,22 @@ const ChildEdit = () => {
                   id="childAgeYear"
                   className="input input-bordered input-sm w-36 max-w-xs"
                 />
+                {errors.ageYear?.type === "pattern" && (
+                  <span className="label-text-alt text-error">
+                    {errors.ageYear?.message}
+                  </span>
+                )}
               </div>
               <div>
-                <label className="label" htmlFor="childAgeMonth">
+                <label className="label font-bold" htmlFor="childAgeMonth">
                   Month
                 </label>
                 <input
                   {...childInfo("ageMonth", {
-                    // required: {
-                    //   value: true,
-                    //   message: "Child age month required",
-                    // },
+                    pattern: {
+                      value: /^[0-9]{1,100}$/,
+                      message: "Provide a valid age month",
+                    },
                   })}
                   type="text"
                   defaultValue={childWithId?.data?.ageMonth}
@@ -233,6 +241,11 @@ const ChildEdit = () => {
                   id="childAgeMonth"
                   className="input input-bordered input-sm w-36 max-w-xs"
                 />
+                {errors.ageMonth?.type === "pattern" && (
+                  <span className="label-text-alt text-error">
+                    {errors.ageMonth?.message}
+                  </span>
+                )}
               </div>
             </div>
             <label className="label">
@@ -245,8 +258,8 @@ const ChildEdit = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childType">
-              Child Type:
+            <label className="label font-bold" htmlFor="childType">
+              Child Type*:
             </label>
 
             <select
@@ -276,8 +289,8 @@ const ChildEdit = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childGander">
-              Child Gander:
+            <label className="label font-bold" htmlFor="childGander">
+              Child Gander*:
             </label>
             <select
               id="childGander"
@@ -304,10 +317,9 @@ const ChildEdit = () => {
               )}
             </label>
           </div>
-
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childReligion">
-              Child Religion:
+            <label className="label font-bold" htmlFor="childReligion">
+              Child Religion*:
             </label>
             <select
               id="childReligion"
@@ -337,8 +349,8 @@ const ChildEdit = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="childLocation">
-              Child Location:
+            <label className="label font-bold" htmlFor="childLocation">
+              Child Location*:
             </label>
             <input
               {...childInfo("location", {
@@ -363,8 +375,8 @@ const ChildEdit = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="city">
-              City:
+            <label className="label font-bold" htmlFor="city">
+              City*:
             </label>
             <input
               {...childInfo("city", {
@@ -389,8 +401,8 @@ const ChildEdit = () => {
           </div>
 
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="disabilities">
-              Disabilities:
+            <label className="label font-bold" htmlFor="disabilities">
+              Disabilities*:
             </label>
             <select
               id="disabilities"
@@ -416,10 +428,9 @@ const ChildEdit = () => {
               )}
             </label>
           </div>
-
           <div className="form-control w-full max-w-xs">
-            <label className="label" htmlFor="agencyName">
-              Agency Name:
+            <label className="label font-bold" htmlFor="agencyName">
+              Agency Name*:
             </label>
             <input
               {...childInfo("agency", {
@@ -434,7 +445,7 @@ const ChildEdit = () => {
               defaultValue={childWithId?.data?.agency}
               className="input input-bordered input-sm md:w-96 max-w-xs"
             />
-            <label className="label">
+            <label className="label font-bold">
               {errors.agency?.type === "required" && (
                 <span className="label-text-alt text-error">
                   {errors.agency?.message}
@@ -443,9 +454,8 @@ const ChildEdit = () => {
             </label>
           </div>
         </div>
-
         <div className="form-control">
-          <label className="label" htmlFor="aboutChild">
+          <label className="label font-bold" htmlFor="aboutChild">
             About Child:
           </label>
           <textarea

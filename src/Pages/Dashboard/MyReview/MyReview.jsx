@@ -79,7 +79,7 @@ const MyReview = () => {
         <form onSubmit={handleReviewSubmit}>
           <div className="form-control w-full max-w-md">
             <label className="label">
-              <span className="label-text">Name: </span>
+              <span className="label-text font-bold">Name*: </span>
             </label>
             <input
               type="text"
@@ -94,7 +94,7 @@ const MyReview = () => {
 
           <div className="form-control w-full max-w-md">
             <label className="label">
-              <span className="label-text">Email: </span>
+              <span className="label-text font-bold">Email*: </span>
             </label>
             <input
               type="email"
@@ -106,10 +106,9 @@ const MyReview = () => {
               className="input input-accent w-full max-w-md"
             />
           </div>
-
           <div>
             <label htmlFor="rating" className="label">
-              <span className="label-text">Rating: </span>
+              <span className="label-text font-bold">Rating*: </span>
             </label>
             <select
               id="rating"
@@ -126,9 +125,10 @@ const MyReview = () => {
             </select>
             <div className="form-control">
               <label htmlFor="comment" className="label">
-                <span className="label-text">Comment: </span>
+                <span className="label-text font-bold">Comment: </span>
               </label>
               <textarea
+                required
                 className="textarea textarea-accent h-24  w-full max-w-md"
                 id="comment"
                 name="comment"
