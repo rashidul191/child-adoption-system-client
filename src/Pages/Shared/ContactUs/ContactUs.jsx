@@ -5,7 +5,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useRef } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import DynamicTitle from "../DynamicTitle/DynamicTitle";
@@ -27,40 +26,39 @@ const ContactUs = () => {
       subject: data.subject,
       message: contactMessageRef.current.value,
     };
-    console.log("contact Message: ", contactInfo);
-
-    // fetch(
-    //   `https://child-adoption-system-server.onrender.com/api/v1/contactUs`,
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(contactInfo),
-    //   }
-    // )
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data.data);
-    //     if (data?.data?.insertedId) {
-    //       Swal.fire({
-    //         position: "top-center",
-    //         icon: "success",
-    //         title: `Thanks your feedback. Please check mail`,
-    //         showConfirmButton: false,
-    //         timer: 2000,
-    //       });
-    //       // window.location.reload();
-    //     } else {
-    //       Swal.fire({
-    //         position: "top-center",
-    //         icon: "error",
-    //         title: `Something is wrong!! please try again.`,
-    //         showConfirmButton: false,
-    //         timer: 1500,
-    //       });
-    //     }
-    //   });
+    // console.log("contact Message: ", contactInfo);
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/contactUs`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(contactInfo),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data.data);
+        if (data?.data?.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Thanks your feedback. Please check mail`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          // window.location.reload();
+        } else {
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: `Something is wrong!! please try again.`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (

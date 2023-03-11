@@ -77,8 +77,8 @@ const CheckForApply = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div className="">
                 <h2 className="font-bold">
-                  Q1: বিবাহিত কিন্তু স্বামী/স্ত্রী মারা গেছে ? <br />
-                  <span>Married but spouse dead ?</span>{" "}
+                  Q1: আপনি কি নিঃসন্তান দম্পতি ? <br />
+                  <span>Are you a childless couple ?</span>{" "}
                 </h2>
                 <label htmlFor="q1-yes">Yes</label>
                 <input
@@ -103,8 +103,12 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q2: দ্বিতীয় বিবাহে কি আগ্রহ আছে ? <br />{" "}
-                  <span>Are you interested in a second marriage ?</span>{" "}
+                  Q2: আপনি কি একজন পালক সন্তানকে নিজের মতো করে গড়ে তুলতে
+                  শারীরিকভাবে সক্ষম? <br />{" "}
+                  <span>
+                    Are you physically capable of raising a foster child as your
+                    own ?
+                  </span>{" "}
                 </h2>
                 <label htmlFor="q2-yes">Yes</label>
                 <input
@@ -130,8 +134,11 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q3:আর্থিক সচ্ছলতা ও সামাজিক স্বাচ্ছন্দ্য আছে ? <br />{" "}
-                  <span>Is there financial solvency and social comfort ?</span>{" "}
+                  Q3: আর্থিক সচ্ছলতা ও সামাজিক স্বাচ্ছন্দ্য আছে ? <br />{" "}
+                  <span>
+                    Are you a woman who is married, but whose husband has died
+                    and is not interested in a second marriage ?
+                  </span>{" "}
                 </h2>
                 <label htmlFor="q3-yes">Yes</label>
                 <input
@@ -156,8 +163,12 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q4: আপনারা কি নিঃসন্তান ? <br />{" "}
-                  <span>Are you childless ?</span>{" "}
+                  Q4: পালক সন্তান দত্তক নেওয়ার জন্য আপনার কি আর্থিক উপায় এবং
+                  সামাজিক স্বাচ্ছন্দ্য আছে ? <br />{" "}
+                  <span>
+                    Do you have financial means and social comfort to adopt a
+                    foster child ?
+                  </span>{" "}
                 </h2>
                 <label htmlFor="q4-yes">Yes</label>
                 <input
@@ -182,10 +193,11 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q5: পিতা ও মাতা দুজনই কি মানসিক ও শারীরিক দিক থেকে সুস্থ ?{" "}
-                  <br />
+                  Q5: আপনি কি এমন একজন দম্পতি যাদের নিজের সন্তান বড় হয়েছে
+                  কিন্তু আপনার সাথে থাকেন না? <br />
                   <span>
-                    Are both parents mentally and physically healthy ?
+                    Are you a couple whose own children are grown but do not
+                    live with you ?
                   </span>
                 </h2>
                 <label htmlFor="q5-yes">Yes</label>
@@ -211,9 +223,12 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q6: পালক সন্তানকে নিজ সন্তান হিসেবে লালন-পালন করতে পারবেন ?{" "}
-                  <br />
-                  <span>Can you raise a foster child as your own child ?</span>
+                  Q6: আপনি কি একজন অবিবাহিত মহিলা যিনি বিয়ে না করার সিদ্ধান্ত
+                  নিয়েছেন বা বিবাহযোগ্য বয়স হয়নি ? <br />
+                  <span>
+                    Are you an unmarried woman who has decided not to marry or
+                    is not of marriageable age ?
+                  </span>
                 </h2>
                 <label htmlFor="q6-yes">Yes</label>
                 <input
@@ -238,8 +253,8 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q7: আপনাদের কি নিজের সন্তান রয়েছে ? <br />
-                  <span>Do you have children of your own ?</span>{" "}
+                  Q7: আপনি কি আর্থিকভাবে সুস্থ ? <br />
+                  <span>Are you financially sound ?</span>{" "}
                 </h2>
                 <label htmlFor="q7-yes">Yes</label>
                 <input
@@ -264,9 +279,13 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q8: আপনাদের সন্তান কি বড় হয়ে গেছে কিন্তু আপনাদের সাথে থাকে না
+                  Q8: আপনি কি একজন বন্ধ্যা দম্পতি যারা সন্তান ধারণ করতে সক্ষম কিন্তু বিবাহবিচ্ছেদ বা দ্বিতীয় বিয়েতে আগ্রহী নন
                   ? <br />{" "}
-                  <span>Are your children grown but not with you ?</span>
+                  <span>
+                    {" "}
+                    Are you an infertile couple who is capable of bearing
+                    children but not interested in divorce or second marriage ?
+                  </span>
                 </h2>
                 <label htmlFor="q8-yes">Yes</label>
                 <input
@@ -291,8 +310,8 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q9: আপনাদের সন্তান জন্মদানে অক্ষমতা রয়েছে ? <br />
-                  <span>Do you have infertility ?</span>
+                  Q9: আপনার বয়স কি কমপক্ষে 18 বছর ? <br />
+                  <span>Are you at least 18 years old ?</span>
                 </h2>
                 <label htmlFor="q9-yes">Yes</label>
                 <input
@@ -317,8 +336,8 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q10: আপনারা কি বিবাহ বিচ্ছেদে আগ্রহী ? <br />{" "}
-                  <span>Are you interested in divorce ?</span>{" "}
+                  Q10: আপনার বয়স কি 35-45 বছরের মধ্যে ? <br />{" "}
+                  <span>Are you aged between 35-45 years ?</span>{" "}
                 </h2>
                 <label htmlFor="q10-yes">Yes</label>
                 <input
