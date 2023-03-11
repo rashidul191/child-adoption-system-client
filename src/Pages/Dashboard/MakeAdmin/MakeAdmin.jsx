@@ -40,6 +40,18 @@ const MakeAdmin = () => {
 
   const handleChildList = (event) => {
     const userRole = event.target.value;
+    if (userRole === "all-user") {
+      fetch(`https://child-adoption-system-server.onrender.com/api/v1/user`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setUserRoles(data);
+        });
+    }
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/user/userRole/?userRole=${userRole}`,
       {
@@ -71,9 +83,10 @@ const MakeAdmin = () => {
               onChange={handleChildList}
               className="input input-bordered input-sm w-56 max-w-xs ml-2"
             >
-              <option selected value={`admin`}>
-                Admin
+              <option selected value={`all-user`}>
+                All-User
               </option>
+              <option value={`admin`}>Admin</option>
               <option value={`employer`}>Employer</option>
               {/* <option value={`only-user`}>Only-User</option> */}
             </select>
@@ -137,7 +150,7 @@ const MakeAdmin = () => {
       <span>
         {userRoles?.data?.length >= limit && (
           <Pagination
-            dataLength={users?.data?.length}
+            dataLength={userRoles?.data?.length}
             count={count}
             setCount={setCount}
             limit={limit}

@@ -23,11 +23,15 @@ const MobileBanking = ({ amount }) => {
       email: data?.email || "",
     };
 
-    fetch("https://child-adoption-system-server.onrender.com/api/v1/payment", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ donation }),
-    })
+    console.log(donation);
+    fetch(
+      "https://child-adoption-system-server.onrender.com/api/v1/payment",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ donation }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.data?.insertedId) {
@@ -88,7 +92,8 @@ const MobileBanking = ({ amount }) => {
                   message: "Number is required",
                 },
                 pattern: {
-                  value: /1?([1-9])(\d{9})/,
+                  // value: /1?([1-9])(\d{9})/,
+                  value: /^\d{9,11}$/,
                   message: "Provide a valid number",
                 },
               })}
@@ -134,7 +139,8 @@ const MobileBanking = ({ amount }) => {
                   message: "trxId is required",
                 },
                 pattern: {
-                  value: /^(?=.*\d)(?=.*[a-zA-Z])/,
+                  // value: /^(?=.*\d)(?=.*[a-zA-Z])/,
+                  value: /^[a-zA-Z0-9]{8,10}$/,
                   message: "Provide Valid Transaction ID",
                 },
               })}

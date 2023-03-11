@@ -126,9 +126,7 @@ const ChildApplyForm = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-4">
                 <div className="form-control w-full max-w-sm mx-auto ">
-                  <label className="label">
-                    <span className="label-text">Full Name:</span>
-                  </label>
+                  <label className="label font-bold">Full Name:</label>
                   <input
                     {...childApplyForm("displayName", {
                       required: {
@@ -140,7 +138,7 @@ const ChildApplyForm = () => {
                     placeholder="Full Name"
                     className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.displayName?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.displayName?.message}
@@ -150,9 +148,7 @@ const ChildApplyForm = () => {
                 </div>
 
                 <div className="form-control w-full max-w-sm mx-auto ">
-                  <label className="label">
-                    <span className="label-text">Gander:</span>
-                  </label>
+                  <label className="label font-bold">Gander:</label>
                   <select
                     className="select-bordered input input-sm md:w-96 max-w-lg"
                     {...childApplyForm("gender", {
@@ -166,7 +162,7 @@ const ChildApplyForm = () => {
                     <option value={`Male`}>Male</option>
                     <option value={`Female`}>Female</option>
                   </select>
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.gender?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.gender?.message}
@@ -176,9 +172,7 @@ const ChildApplyForm = () => {
                 </div>
 
                 <div className="form-control w-full max-w-sm mx-auto">
-                  <label className="label">
-                    <span className="label-text">Citizenship:</span>
-                  </label>
+                  <label className="label font-bold">Citizenship:</label>
                   <select
                     className="select-bordered input input-sm md:w-96 max-w-lg"
                     {...childApplyForm("citizenship", {
@@ -195,7 +189,7 @@ const ChildApplyForm = () => {
                       </option>
                     ))}
                   </select>
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.citizenship?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.citizenship?.message}
@@ -205,9 +199,7 @@ const ChildApplyForm = () => {
                 </div>
 
                 <div className="form-control w-full max-w-sm mx-auto">
-                  <label className="label">
-                    <span className="label-text">Birth Date:</span>
-                  </label>
+                  <label className="label font-bold">Birth Date:</label>
                   <input
                     {...childApplyForm("birthDate", {
                       required: {
@@ -221,7 +213,7 @@ const ChildApplyForm = () => {
                     min="1950-01-01"
                     max={`${currentYear - 18}-12-31`}
                   />
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.birthDate?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.birthDate?.message}
@@ -231,9 +223,7 @@ const ChildApplyForm = () => {
                 </div>
 
                 <div className="form-control w-full max-w-sm mx-auto">
-                  <label className="label">
-                    <span className="label-text">NID Number:</span>
-                  </label>
+                  <label className="label font-bold">NID Number:</label>
                   <input
                     {...childApplyForm("nidPassport", {
                       required: {
@@ -241,7 +231,8 @@ const ChildApplyForm = () => {
                         message: "NID Number is required",
                       },
                       pattern: {
-                        value: /1?([1-9])/,
+                        // value: /1?([1-9])/,
+                        value: /^\d{10,16}$/,
                         message: "Provide a valid NID Number",
                       },
                     })}
@@ -249,7 +240,7 @@ const ChildApplyForm = () => {
                     placeholder="NID Number"
                     className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.nidPassport?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.nidPassport?.message}
@@ -270,9 +261,7 @@ const ChildApplyForm = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-4">
                 <div className="form-control w-full max-w-sm mx-auto">
-                  <label className="label">
-                    <span className="label-text">Full Name:</span>
-                  </label>
+                  <label className="label font-bold">Full Name:</label>
                   <input
                     {...childApplyForm("displayName2", {
                       required: {
@@ -284,7 +273,7 @@ const ChildApplyForm = () => {
                     placeholder="Full Name"
                     className="input input-bordered input-sm md:w-96"
                   />
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.displayName2?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.displayName2?.message}
@@ -294,9 +283,7 @@ const ChildApplyForm = () => {
                 </div>
 
                 <div className="form-control w-full max-w-sm mx-auto">
-                  <label className="label">
-                    <span className="label-text">Gander:</span>
-                  </label>
+                  <label className="label font-bold">Gander:</label>
                   <select
                     className="select-bordered input input-sm md:w-96 max-w-lg"
                     {...childApplyForm("gender2", {
@@ -310,7 +297,7 @@ const ChildApplyForm = () => {
                     <option value={`Male`}>Male</option>
                     <option value={`Female`}>Female</option>
                   </select>
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.gender2?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.gender2?.message}
@@ -320,9 +307,7 @@ const ChildApplyForm = () => {
                 </div>
 
                 <div className="form-control w-full max-w-sm mx-auto">
-                  <label className="label">
-                    <span className="label-text">Citizenship:</span>
-                  </label>
+                  <label className="label font-bold">Citizenship:</label>
                   <select
                     className="select-bordered input input-sm md:w-96 max-w-lg"
                     {...childApplyForm("citizenship2", {
@@ -339,7 +324,7 @@ const ChildApplyForm = () => {
                       </option>
                     ))}
                   </select>
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.citizenship2?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.citizenship2?.message}
@@ -349,9 +334,7 @@ const ChildApplyForm = () => {
                 </div>
 
                 <div className="form-control w-full max-w-sm mx-auto">
-                  <label className="label">
-                    <span className="label-text">Birth Date:</span>
-                  </label>
+                  <label className="label font-bold">Birth Date:</label>
                   <input
                     {...childApplyForm("birthDate2", {
                       required: {
@@ -365,7 +348,7 @@ const ChildApplyForm = () => {
                     min="1950-01-01"
                     max={`${currentYear - 18}-12-31`}
                   />
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.birthDate2?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.birthDate2?.message}
@@ -375,9 +358,7 @@ const ChildApplyForm = () => {
                 </div>
 
                 <div className="form-control w-full max-w-sm mx-auto">
-                  <label className="label">
-                    <span className="label-text">NID Number:</span>
-                  </label>
+                  <label className="label font-bold">NID Number:</label>
                   <input
                     {...childApplyForm("nidPassport2", {
                       required: {
@@ -385,7 +366,8 @@ const ChildApplyForm = () => {
                         message: "NID Number is required",
                       },
                       pattern: {
-                        value: /1?([1-9])/,
+                        // value: /1?([1-9])/,
+                        value: /^\d{10,16}$/,
                         message: "Provide a valid NID Number",
                       },
                     })}
@@ -393,7 +375,7 @@ const ChildApplyForm = () => {
                     placeholder="NID Number"
                     className="input input-bordered input-sm md:w-96 max-w-lg"
                   />
-                  <label className="label">
+                  <label className="label font-bold">
                     {errors.nidPassport2?.type === "required" && (
                       <span className="label-text-alt text-error">
                         {errors.nidPassport2?.message}
@@ -443,7 +425,7 @@ const ChildApplyForm = () => {
                           message: "Phone Number is required",
                         },
                         pattern: {
-                          value: /1?([1-9])(\d{9})/,
+                          value: /^\d{9,11}$/,
                           message: "Provide a valid Phone Number",
                         },
                       })}
@@ -451,7 +433,7 @@ const ChildApplyForm = () => {
                       placeholder="Phone Number"
                       className="input input-bordered input-sm md:w-96 max-w-lg"
                     />
-                    <label className="label">
+                    <label className="label font-bold">
                       {errors.phoneNumber?.type === "required" && (
                         <span className="label-text-alt text-error">
                           {errors.phoneNumber?.message}
@@ -477,7 +459,7 @@ const ChildApplyForm = () => {
                       placeholder="Address"
                       className="input input-bordered input-sm md:w-96 max-w-lg"
                     />
-                    <label className="label">
+                    <label className="label font-bold">
                       {errors.address?.type === "required" && (
                         <span className="label-text-alt text-error">
                           {errors.address?.message}
@@ -498,7 +480,7 @@ const ChildApplyForm = () => {
                       placeholder="City"
                       className="input input-bordered input-sm md:w-96 max-w-lg"
                     />
-                    <label className="label">
+                    <label className="label font-bold">
                       {errors.city?.type === "required" && (
                         <span className="label-text-alt text-error">
                           {errors.city?.message}
@@ -519,7 +501,7 @@ const ChildApplyForm = () => {
                       placeholder="State"
                       className="input input-bordered input-sm md:w-96 max-w-lg"
                     />
-                    <label className="label">
+                    <label className="label font-bold">
                       {errors.state?.type === "required" && (
                         <span className="label-text-alt text-error">
                           {errors.state?.message}
@@ -536,7 +518,7 @@ const ChildApplyForm = () => {
                           message: "Zip code is required",
                         },
                         pattern: {
-                          value: /1?([1-9])(\d{3})/,
+                          value: /^\d{4,5}$/,
                           message: "Provide a valid Zip Code",
                         },
                       })}
@@ -544,7 +526,7 @@ const ChildApplyForm = () => {
                       placeholder="Zip code"
                       className="input input-bordered input-sm md:w-96 max-w-lg"
                     />
-                    <label className="label">
+                    <label className="label font-bold">
                       {errors.zipCode?.type === "required" && (
                         <span className="label-text-alt text-error">
                           {errors.zipCode?.message}
@@ -577,7 +559,7 @@ const ChildApplyForm = () => {
                         </option>
                       ))}
                     </select>
-                    <label className="label">
+                    <label className="label font-bold">
                       {errors.country?.type === "required" && (
                         <span className="label-text-alt text-error">
                           {errors.country?.message}

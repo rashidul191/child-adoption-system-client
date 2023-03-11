@@ -46,6 +46,8 @@ const EditMyProfile = ({ user, userData }) => {
             phone: data.phone,
           };
 
+          console.log(usrProfileUpdateInfo);
+
           fetch(
             `https://child-adoption-system-server.onrender.com/api/v1/user/${userData?.email}`,
             {
@@ -70,7 +72,7 @@ const EditMyProfile = ({ user, userData }) => {
                 Swal.fire({
                   position: "top-center",
                   icon: "success",
-                  title: `Update profile Done`,
+                  title: `Update profile`,
                   showConfirmButton: false,
                   timer: 1500,
                 });
@@ -205,7 +207,7 @@ const EditMyProfile = ({ user, userData }) => {
                 <input
                   {...userProfile("zipCode", {
                     pattern: {
-                      value: /1?([1-9])(\d{3})/,
+                      value: /^\d{4,5}$/,
                       message: "Provide a valid Zip Code",
                     },
                   })}
@@ -228,7 +230,7 @@ const EditMyProfile = ({ user, userData }) => {
                 <input
                   {...userProfile("phone", {
                     pattern: {
-                      value: /1?([1-9])(\d{9})/,
+                      value: /^\d{9,11}$/,
                       message: "Provide a valid Phone Number",
                     },
                   })}

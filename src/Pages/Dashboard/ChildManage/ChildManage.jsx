@@ -17,7 +17,7 @@ const ChildManage = () => {
   const skip = (count - 1) * limit;
 
   // react query
-  const {
+    const {
     data: allChild,
     isLoading,
     refetch,
@@ -28,10 +28,23 @@ const ChildManage = () => {
         authorization: `Bearer ${localStorage.getItem("access-token")}`,
       },
     }).then((res) => res.json())
-  );
+    );
+
   const handleChildList = (event) => {
-    const childType = event.target.value;
+    const childType = event.target.value || "All-Child";
     // console.log("child Type: ", childType);
+    if (childType === "All-Child") {
+      fetch(`https://child-adoption-system-server.onrender.com/api/v1/child`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setAllTypeChild(data);
+        });
+    }
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/child/childType/${childType}`,
       {
@@ -59,12 +72,13 @@ const ChildManage = () => {
           <span className="font-semibold">
             sort child list:
             <select
-              onChange={handleChildList}
+              onChange={handleChildList}              
               className="input input-bordered input-sm w-56 max-w-xs ml-2"
             >
-              <option selected value={`Infant-Child`}>
-                Infant-Child
+              <option selected value={`All-Child`}>
+                All-Child
               </option>
+              <option value={`Infant-Child`}>Infant-Child</option>
               <option value={`Foster-Care-Child`}>Foster-Care-Child</option>
               <option value={`Street-Child`}>Street-Child</option>
             </select>
@@ -84,7 +98,7 @@ const ChildManage = () => {
             </tr>
           </thead>
 
-          <tbody className={allTypeChild?.data && "hidden"}>
+            <tbody className={allTypeChild?.data && "hidden"}>
             {allChild?.data
               ?.slice(skip, skip + limit)
               ?.reverse()
@@ -115,7 +129,7 @@ const ChildManage = () => {
       </div>
 
       {/* pagination */}
-      <span className={allTypeChild?.data && "hidden"}>
+          <span className={allTypeChild?.data && "hidden"}>
         {allChild?.data?.length >= limit && (
           <Pagination
             dataLength={allChild?.data?.length}
@@ -128,7 +142,7 @@ const ChildManage = () => {
       <span>
         {allTypeChild?.data?.length >= limit && (
           <Pagination
-            dataLength={allChild?.data?.length}
+            dataLength={allTypeChild?.data?.length}
             count={count}
             setCount={setCount}
             limit={limit}
