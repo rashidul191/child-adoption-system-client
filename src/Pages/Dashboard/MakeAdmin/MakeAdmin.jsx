@@ -38,9 +38,10 @@ const MakeAdmin = () => {
     })
   );
 
+  // console.log(userRoles);
   const handleChildList = (event) => {
     const userRole = event.target.value;
-    if (userRole === "all-user") {
+    if (userRole == "all-user") {
       fetch(`https://child-adoption-system-server.onrender.com/api/v1/user`, {
         method: "GET",
         headers: {
@@ -51,20 +52,21 @@ const MakeAdmin = () => {
         .then((data) => {
           setUserRoles(data);
         });
+    } else {
+      fetch(
+        `https://child-adoption-system-server.onrender.com/api/v1/user/userRole/?userRole=${userRole}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("access-token")}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setUserRoles(data);
+        });
     }
-    fetch(
-      `https://child-adoption-system-server.onrender.com/api/v1/user/userRole/?userRole=${userRole}`,
-      {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("access-token")}`,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setUserRoles(data);
-      });
   };
 
   if (isLoading) {

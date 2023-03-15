@@ -60,7 +60,7 @@ const AllDonation = () => {
       </div>
 
       {/* pagination */}
-      {allDonation?.data?.length >= limit && (
+      {allDonation?.data?.length > limit && (
         <Pagination
           dataLength={allDonation?.data?.length}
           count={count}
