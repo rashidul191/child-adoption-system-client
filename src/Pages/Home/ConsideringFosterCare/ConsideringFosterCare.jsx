@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ConsideringFosterCare = () => {
   return (
@@ -48,15 +49,18 @@ const ConsideringFosterCare = () => {
             </p>
           </div>
           <div className="box">
-            <FontAwesomeIcon
-              className="text-8xl mr-4  text-[#f2c821]"
-              icon={faUsers}
-            ></FontAwesomeIcon>
-            <h2 className="text-2xl font-bold">Contact Us</h2>
-            <p className="font-sans">
-              Our staff are here to answer all of your adoption and foster care
-              questions.
-            </p>
+            <Link to={"/contact-us"}>
+              {" "}
+              <FontAwesomeIcon
+                className="text-8xl mr-4  text-[#f2c821]"
+                icon={faUsers}
+              ></FontAwesomeIcon>
+              <h2 className="text-2xl font-bold">Contact Us</h2>
+              <p className="font-sans">
+                Our staff are here to answer all of your adoption and foster
+                care questions.
+              </p>
+            </Link>
           </div>
           <div className="box">
             <FontAwesomeIcon

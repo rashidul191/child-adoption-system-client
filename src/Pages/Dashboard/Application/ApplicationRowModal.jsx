@@ -1,6 +1,5 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-
 import Swal from "sweetalert2";
 import auth from "../../../firebase.init";
 import useAdmin from "../../../hooks/useAdmin";
@@ -10,6 +9,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   const [employer] = useEmployer(user);
+
   const handleApplicationApprove = (id) => {
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/childApply/${id}`,
@@ -89,16 +89,19 @@ const ApplicationRowModal = ({ childApplicationData }) => {
                 </p>
               </div>
               <div className="md:text-xl grid grid-cols-3 my-2">
-                <p>
+                <p className="col-span-2">
                   Age:{" "}
                   <span className="underline font-semibold">
-                    {childApplicationData?.child?.age}
+                    {childApplicationData?.child?.ageYear} Year ,
+                  </span>
+                  <span className="underline font-semibold">
+                    {childApplicationData?.child?.ageMonth} Month
                   </span>
                 </p>
-                <p className="col-span-2">
-                  Child Type:{" "}
+                <p>
+                  Religion:{" "}
                   <span className="underline font-semibold">
-                    {childApplicationData?.child?.childType}
+                    {childApplicationData?.child?.religion}
                   </span>
                 </p>
               </div>
@@ -123,9 +126,9 @@ const ApplicationRowModal = ({ childApplicationData }) => {
               </span>
             </p>
             <p>
-              Religion:{" "}
+              Child Type:{" "}
               <span className="underline font-semibold">
-                {childApplicationData?.child?.religion}
+                {childApplicationData?.child?.childType}
               </span>
             </p>
           </div>
@@ -144,6 +147,29 @@ const ApplicationRowModal = ({ childApplicationData }) => {
             </p>
           </div>
         </div>
+        <hr className="my-3 md:my-5" />
+        {/* user eligibility score start */}
+        <div className="grid grid-cols-3 font-bold">
+          <h2 className="text-xl md:text-2xl font-bold">
+            Eligible score is :{" "}
+          </h2>
+          <p className="text-success md:text-xl ">
+            Yes:{" "}
+            {childApplicationData?.eligibilityScore?.allowValue.length
+              ? childApplicationData?.eligibilityScore?.allowValue.length * 10
+              : 0}{" "}
+            %
+          </p>
+          <p className="text-error md:text-xl ">
+            No:{" "}
+            {childApplicationData?.eligibilityScore?.allowValue.length
+              ? childApplicationData?.eligibilityScore?.notAllowValue.length *
+                10
+              : 0}{" "}
+            %
+          </p>
+        </div>
+
         {/* Parent-1 Information Here */}
         <hr className="my-3 md:my-5" />
         <div>

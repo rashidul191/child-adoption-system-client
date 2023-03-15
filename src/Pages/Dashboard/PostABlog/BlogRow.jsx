@@ -39,7 +39,7 @@ const BlogRow = ({ blog, index, refetch }) => {
             .then((res) => res.json())
             .then((data) => {
               if (data?.data?.deletedCount > 0) {
-                toast.success(`"${blogTitle}" is delete successfully`);
+                toast.success(`Deleted "${blogTitle}"`);
                 refetch();
               }
             });

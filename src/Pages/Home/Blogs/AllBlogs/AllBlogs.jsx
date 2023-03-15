@@ -56,7 +56,7 @@ const AllBlogs = () => {
         <div className="mx-3">
           <div className="hidden sm:block">
             {seeAllBlogs?.data
-              ?.slice(skip, skip + (seeAllBlogs?.data.length - 4))
+              ?.slice(skip, skip + (seeAllBlogs?.data.length - 3))
               ?.reverse()
               ?.map((blog) => (
                 <AllBlogGrid key={blog._id} blog={blog}></AllBlogGrid>

@@ -99,12 +99,42 @@ const BlogCommentInput = ({ blog }) => {
             />
           ) : (
             <div>
-              <button className="btn btn-primary rounded-none text-white font-bold my-5 md:w-52">
-                <Link to={"/login"}>Comment</Link>
-              </button>
-              <SocialLogin></SocialLogin>
+              {/* The button to open modal */}
+              <label
+                htmlFor="my-modal-3"
+                className="btn btn-primary rounded-none text-white font-bold my-5 md:w-52"
+              >
+                Comment
+              </label>
             </div>
           )}
+        </div>
+
+        {/* login modal here */}
+
+        {/* Put this part before </body> tag */}
+        <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+        <div className="modal">
+          <div className="modal-box relative">
+            <label
+              htmlFor="my-modal-3"
+              className="btn btn-sm btn-circle absolute right-2 top-2"
+            >
+              ✕
+            </label>
+            <h3 className="text-lg font-bold text-center mb-4">
+              Please Login, Before comments !!!
+            </h3>
+
+            <div className="flex flex-col border-opacity-50">
+              <button className="btn btn-success text-white font-bold w-52 ml-20 sm:ml-32">
+                {" "}
+                <Link to={"/login"}>Login</Link>
+              </button>
+              <div className="divider">OR</div>
+              <SocialLogin></SocialLogin>
+            </div>
+          </div>
         </div>
       </form>
     </div>

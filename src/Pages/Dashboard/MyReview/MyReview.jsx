@@ -125,7 +125,7 @@ const MyReview = () => {
             </select>
             <div className="form-control">
               <label htmlFor="comment" className="label">
-                <span className="label-text font-bold">Comment: </span>
+                <span className="label-text font-bold">Comment*: </span>
               </label>
               <textarea
                 required

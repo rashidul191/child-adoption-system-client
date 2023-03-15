@@ -63,8 +63,9 @@ const BlogDetails = () => {
         <div className="card-body">
           <div>
             <img
-              className="mx-auto"
-              width={300}
+              className="mx-auto sm:h-52 sm:w-2/3"
+              // height={50}
+              // width={3000}
               src={blog?.data?.blogImg}
               alt="img-here"
             />
@@ -76,7 +77,7 @@ const BlogDetails = () => {
               </h2>
               <div className="my-6 flex justify-between">
                 <div>
-                  <p>{blog?.data?.displayName}</p>
+                  <p className="font-semibold">{blog?.data?.displayName}</p>
                   <p className="text-[#95959F] text-sm">
                     {blog?.data?.postDate}
                   </p>

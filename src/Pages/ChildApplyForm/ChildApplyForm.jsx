@@ -23,7 +23,7 @@ const ChildApplyForm = () => {
     fetch(`https://restcountries.com/v3.1/all`).then((res) => res.json())
   );
 
-  // react query
+  // react query, child information here
   const { data: child, isLoading2 } = useQuery(["childApplyForm"], () =>
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/child/${id}`,
@@ -32,6 +32,21 @@ const ChildApplyForm = () => {
       }
     ).then((res) => res.json())
   );
+
+  // react query, user eligibility score result here
+  const { data: eligibilityScore, isLoading3 } = useQuery(
+    ["eligibilityScore"],
+    () =>
+      fetch(
+        `https://child-adoption-system-server.onrender.com/api/v1/checkEligibility/?email=${user?.email}`,
+        {
+          method: "GET",
+          headers: { "content-type": "application/json" },
+        }
+      ).then((res) => res.json())
+  );
+
+  // console.log(eligibilityScore?.data[0]?.allowValue.length * 10);
 
   const {
     register: childApplyForm,
@@ -45,6 +60,7 @@ const ChildApplyForm = () => {
       applicationDate,
       data,
       child: child?.data,
+      eligibilityScore:eligibilityScore?.data[0]
     };
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/childApply`,
@@ -88,7 +104,7 @@ const ChildApplyForm = () => {
       });
   };
 
-  if (isLoading || isLoading2) {
+  if (isLoading || isLoading2 || isLoading3) {
     return <Loading></Loading>;
   }
 
@@ -103,19 +119,40 @@ const ChildApplyForm = () => {
         </div>
         <div className="card w-96 md:w-3/4 bg-base-100 shadow-sm mx-auto">
           <div className="card-body">
-            {/* child info start */}
-            <div className="flex items-center space-x-3 justify-center">
-              <div className="avatar">
-                <div className="mask mask-squircle w-16 h-16">
-                  <img src={child?.data?.img} alt={child?.data?.name} />
+            <div
+              className={`${
+                eligibilityScore?.data[0] && "grid grid-cols-2 mx-auto"
+              }`}
+            >
+              {/* child info start */}
+              <div className="flex items-center space-x-3 justify-center">
+                <div className="avatar">
+                  <div className="mask mask-squircle w-16 h-16">
+                    <img src={child?.data?.img} alt={child?.data?.name} />
+                  </div>
+                </div>
+                <div>
+                  <div className="font-bold">{child?.data?.name}</div>
+                  <div className="text-sm">{child?.data?.location}</div>
+                  <div className="text-sm">{child?.data?.agency}</div>
                 </div>
               </div>
-              <div>
-                <div className="font-bold">{child?.data?.name}</div>
-                <div className="text-sm">{child?.data?.location}</div>
-                <div className="text-sm">{child?.data?.agency}</div>
-              </div>
+              {/* child info end */}
+              {/* user eligibility score start */}
+              {eligibilityScore?.data[0] && (
+                <div className="text-center font-bold">
+                  <h2>Eligible score is: </h2>
+                  <p className="text-success">
+                    Yes: {eligibilityScore?.data[0]?.allowValue.length * 10} %
+                  </p>
+                  <p className="text-error">
+                    No: {eligibilityScore?.data[0]?.notAllowValue.length * 10} %
+                  </p>
+                </div>
+              )}
+              {/* user eligibility score end */}
             </div>
+
             {/* child info end */}
             {/* Parent  and Contact info form start */}
             <form onSubmit={handleSubmit(onSubmit)}>

@@ -94,7 +94,7 @@ const AgencyRow = ({ index, agency, refetch }) => {
           </div>
         </div>
       </td>
-      <td>By : {agencyDirectorName}</td>
+      <td>By : <span className="font-bold">{agencyDirectorName}</span></td>
       <th>
         <button
           onClick={() => handleAgencyEdit(_id)}
