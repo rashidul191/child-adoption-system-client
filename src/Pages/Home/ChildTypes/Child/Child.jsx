@@ -62,7 +62,12 @@ const Child = () => {
           <div className="md:ml-28">
             {/* The button to open modal */}
             <label htmlFor={`my-modal-${id}`}>
-              <img width={200} src={img} alt={name} />
+              <img
+                className="cursor-zoom-in"
+                width={200}
+                src={img}
+                alt={name}
+              />
             </label>
             <h2 className="text-xl mt-2">
               Name: <span className="text-2xl font-bold">{name}</span>

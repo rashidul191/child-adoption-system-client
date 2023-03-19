@@ -40,14 +40,14 @@ const AgencyInfo = () => {
               {/* The button to open modal */}
               <label htmlFor={`my-modal-${id}`}>
                 <img
-                  className="mx-auto"
+                  className="mx-auto cursor-zoom-in"
                   width={300}
                   src={agency?.data?.agencyImg}
                   alt={agency?.data?.agencyName}
                 />
               </label>
               <hr />
-              <h2 className="text-2xl">
+              <h2 className=" text-xl md:text-2xl">
                 Agency Name:{" "}
                 <span className="font-bold">{agency?.data?.agencyName}</span>
               </h2>
@@ -90,7 +90,7 @@ const AgencyInfo = () => {
                 ✕
               </label>
               <div>
-                <img                 
+                <img
                   width={1000}
                   src={agency?.data?.agencyImg}
                   alt={agency?.data?.agencyName}

@@ -24,7 +24,7 @@ const AllChild = () => {
 
   return (
     <section className="md:pt-16">
-      <div className="bg-info py-5 text-white">
+      <div className="bg-info py-5 md:py-8 text-white">
         <h1 className="text-center text-3xl font-bold uppercase">
           {childType}
         </h1>

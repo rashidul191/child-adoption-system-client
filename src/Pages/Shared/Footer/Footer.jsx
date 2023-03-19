@@ -15,10 +15,14 @@ const Footer = () => {
         <div className="col-span-2">
           <p className="font-bold">child-Adoption-System-Ador</p>
           <p>Providing reliable services since 2023</p>
-          <p>
-            <FontAwesomeIcon className="font-bold mr-3" icon={faPhone} />
-            +880-9696 860 878
-          </p>
+          <a href="tel:+8809696860878">
+            <p>
+              <FontAwesomeIcon className="font-bold mr-3" icon={faPhone} />
+              <span className="link link-hover hover:font-bold hover:text-blue-500">
+                +880-9696 860 878
+              </span>
+            </p>
+          </a>
           <a href="mailto:childadoptionsystemador@gmail.com">
             <p>
               <FontAwesomeIcon className="font-bold mr-3" icon={faEnvelope} />

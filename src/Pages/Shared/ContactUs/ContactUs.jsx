@@ -78,16 +78,20 @@ const ContactUs = () => {
           <div>
             <div className="text-center md:text-right md:mr-14">
               <div className=" mb-5">
-                <div className="md:pr-3 md:border-r-2 md:border-indigo-500">
-                  <h2 className="text-xl uppercase text-[#8EA246]">
-                    {" "}
-                    <span>
-                      <FontAwesomeIcon className="text-2xl" icon={faPhone} />
-                    </span>{" "}
-                    Call Us
-                  </h2>
-                  <h2 className=" font-bold">+880-9696 860 878</h2>
-                </div>
+                <a href="tel:+8809696860878">
+                  <div className="md:pr-3 md:border-r-2 md:border-indigo-500">
+                    <h2 className="text-xl uppercase text-[#8EA246]">
+                      {" "}
+                      <span>
+                        <FontAwesomeIcon className="text-2xl" icon={faPhone} />
+                      </span>{" "}
+                      Call Us
+                    </h2>
+                    <h2 className="text-sm font-bold link link-hover hover:text-blue-500">
+                      +880-9696 860 878
+                    </h2>
+                  </div>
+                </a>
               </div>
             </div>
 
