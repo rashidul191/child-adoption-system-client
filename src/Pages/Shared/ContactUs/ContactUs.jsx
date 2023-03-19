@@ -4,7 +4,7 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import DynamicTitle from "../DynamicTitle/DynamicTitle";
@@ -12,6 +12,10 @@ import DynamicTitle from "../DynamicTitle/DynamicTitle";
 const ContactUs = () => {
   DynamicTitle("Contact-Us");
   const contactMessageRef = useRef("");
+  let num1 = Math.ceil(Math.random() * 10);
+  let num2 = Math.ceil(Math.random() * 10);
+
+  const [error, setError] = useState("");
   const {
     register: contactUs,
     formState: { errors },
@@ -19,6 +23,11 @@ const ContactUs = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    let sumNumber = num1 + num2;
+    let captcha = parseInt(data?.captcha);
+    if (sumNumber !== captcha) {
+      setError("Provide a valid math");
+    }
     const contactInfo = {
       name: data.displayName,
       phoneNumber: data.phone,
@@ -26,6 +35,7 @@ const ContactUs = () => {
       subject: data.subject,
       message: contactMessageRef.current.value,
     };
+
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/contactUs`,
       {
@@ -142,81 +152,84 @@ const ContactUs = () => {
             </div>
           </div>
           <div className="col-span-2 ml-7 sm:ml-0">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                <div className="form-control w-full md:w-56 max-w-xs">
-                  <input
-                    {...contactUs("displayName", {
-                      required: {
-                        value: true,
-                        message: "Name is required",
-                      },
-                    })}
-                    type="text"
-                    placeholder="Name"
-                    id="name"
-                    className="input input-bordered input-sm w-full md:w-56 max-w-xs"
-                  />
-                  <label className="label">
-                    {errors.displayName?.type === "required" && (
-                      <span className="label-text-alt text-error">
-                        {errors.displayName?.message}
-                      </span>
-                    )}
-                  </label>
-                </div>
-
-                <div className="form-control w-full md:w-56 max-w-xs">
-                  <input
-                    {...contactUs("email", {
-                      required: { value: true, message: "Email is required" },
-                      pattern: {
-                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                        message: "Provide a valid Email",
-                      },
-                    })}
-                    type="email"
-                    id="email"
-                    placeholder="example@gmail.com"
-                    className="input input-bordered input-sm w-full md:w-56 max-w-xs"
-                  />
-                  <label className="label">
-                    {errors.email?.type === "required" && (
-                      <span className="label-text-alt text-error">
-                        {errors.email?.message}
-                      </span>
-                    )}
-                    {errors.email?.type === "pattern" && (
-                      <span className="label-text-alt text-error">
-                        {errors.email?.message}
-                      </span>
-                    )}
-                  </label>
-                </div>
-                <div className="form-control w-full md:w-56 max-w-xs">
-                  <input
-                    {...contactUs("phone", {
-                      pattern: {
-                        value: /^[0-9]{1,13}$/,
-                        message: "Provide a valid Phone Number",
-                      },
-                    })}
-                    type="text"
-                    id="phone"
-                    placeholder="Phone Number"
-                    className="input input-bordered input-sm w-full md:w-56 max-w-xs"
-                  />
-                  <label className="label">
-                    {errors.phone?.type === "pattern" && (
-                      <span className="label-text-alt text-error">
-                        {errors.phone?.message}
-                      </span>
-                    )}
-                  </label>
-                </div>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="grid grid-cols-3 gap-2"
+            >
+              {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-2"> */}
+              <div className="form-control w-full md:w-56 max-w-xs col-span-3 md:col-auto">
+                <input
+                  {...contactUs("displayName", {
+                    required: {
+                      value: true,
+                      message: "Name is required",
+                    },
+                  })}
+                  type="text"
+                  placeholder="Name"
+                  id="name"
+                  className="input input-bordered input-sm w-full md:w-56 max-w-xs"
+                />
+                <label className="label">
+                  {errors.displayName?.type === "required" && (
+                    <span className="label-text-alt text-error">
+                      {errors.displayName?.message}
+                    </span>
+                  )}
+                </label>
               </div>
 
-              <div className="form-control w-full pr-6 sm:pr-12">
+              <div className="form-control w-full md:w-56 max-w-xs col-span-3 md:col-auto">
+                <input
+                  {...contactUs("email", {
+                    required: { value: true, message: "Email is required" },
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Provide a valid Email",
+                    },
+                  })}
+                  type="email"
+                  id="email"
+                  placeholder="example@gmail.com"
+                  className="input input-bordered input-sm w-full md:w-56 max-w-xs"
+                />
+                <label className="label">
+                  {errors.email?.type === "required" && (
+                    <span className="label-text-alt text-error">
+                      {errors.email?.message}
+                    </span>
+                  )}
+                  {errors.email?.type === "pattern" && (
+                    <span className="label-text-alt text-error">
+                      {errors.email?.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+              <div className="form-control w-full md:w-56 max-w-xs col-span-3 md:col-auto">
+                <input
+                  {...contactUs("phone", {
+                    pattern: {
+                      value: /^[0-9]{1,13}$/,
+                      message: "Provide a valid Phone Number",
+                    },
+                  })}
+                  type="text"
+                  id="phone"
+                  placeholder="Phone Number"
+                  className="input input-bordered input-sm w-full md:w-56 max-w-xs"
+                />
+                <label className="label">
+                  {errors.phone?.type === "pattern" && (
+                    <span className="label-text-alt text-error">
+                      {errors.phone?.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+              {/* </div> */}
+
+              <div className="form-control w-full pr-6 sm:pr-12 col-span-3">
                 <input
                   {...contactUs("subject", {
                     required: {
@@ -226,7 +239,7 @@ const ContactUs = () => {
                   })}
                   type="text"
                   placeholder="Subject"
-                  className="input input-bordered input-md w-full "
+                  className="input input-bordered input-sm w-full "
                 />
                 <label className="label">
                   {errors.subject?.type === "required" && (
@@ -237,13 +250,48 @@ const ContactUs = () => {
                 </label>
               </div>
 
-              <div className="form-control w-full pr-6 sm:pr-12">
+              <div className="form-control w-full pr-6 sm:pr-12 col-span-3">
                 <textarea
                   className="textarea textarea-bordered h-24 input-sm w-full"
                   placeholder="Message"
                   id="aboutChild"
                   ref={contactMessageRef}
+                  required
                 ></textarea>
+              </div>
+
+              <div className="form-control w-full pr-6 sm:pr-12 mt-5 col-span-3 md:col-auto">
+                <input
+                  {...contactUs("captcha", {
+                    required: {
+                      value: true,
+                      message: "This field is required",
+                    },
+                    pattern: {
+                      value: /^[0-9]{1,2}$/,
+                      message: "Provide a valid math",
+                    },
+                  })}
+                  type="text"
+                  className="input input-bordered input-md w-full"
+                  placeholder={`${num1} + ${num2} = ?`}
+                />
+                <label className="label">
+                  {errors.captcha?.type === "pattern" && (
+                    <span className="label-text-alt text-error">
+                      {errors.captcha?.message}
+                    </span>
+                  )}
+
+                  {error || errors.captcha?.type === "required" ? (
+                    <span className="label-text-alt text-error">
+                      {errors.captcha?.message} <br /> {error}
+                      <br />
+                    </span>
+                  ) : (
+                    <span></span>
+                  )}
+                </label>
               </div>
 
               <input
