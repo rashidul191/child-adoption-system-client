@@ -157,7 +157,7 @@ const CheckForApply = () => {
                   className="radio"
                   required
                   {...checkForApply("q[3]")}
-                  value="yes"
+                  value="no"
                 />
               </div>
 
@@ -253,8 +253,13 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q7: আপনি কি আর্থিকভাবে সুস্থ ? <br />
-                  <span>Are you financially sound ?</span>{" "}
+                  Q7: আপনি কি একজন বন্ধ্যা দম্পতি যারা সন্তান ধারণ করতে সক্ষম
+                  কিন্তু বিবাহবিচ্ছেদ বা দ্বিতীয় বিয়েতে আগ্রহী নন ? <br />
+                  <span>
+                    {" "}
+                    Are you an infertile couple who is capable of bearing
+                    children but not interested in divorce or second marriage ?
+                  </span>{" "}
                 </h2>
                 <label htmlFor="q7-yes">Yes</label>
                 <input
@@ -279,13 +284,8 @@ const CheckForApply = () => {
 
               <div className="">
                 <h2 className="font-bold">
-                  Q8: আপনি কি একজন বন্ধ্যা দম্পতি যারা সন্তান ধারণ করতে সক্ষম কিন্তু বিবাহবিচ্ছেদ বা দ্বিতীয় বিয়েতে আগ্রহী নন
-                  ? <br />{" "}
-                  <span>
-                    {" "}
-                    Are you an infertile couple who is capable of bearing
-                    children but not interested in divorce or second marriage ?
-                  </span>
+                  Q8: আপনি কি আর্থিকভাবে সুস্থ ? <br />{" "}
+                  <span> Are you financially sound ?</span>
                 </h2>
                 <label htmlFor="q8-yes">Yes</label>
                 <input

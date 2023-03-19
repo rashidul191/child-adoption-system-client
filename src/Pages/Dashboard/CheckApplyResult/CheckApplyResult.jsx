@@ -76,13 +76,6 @@ const CheckApplyResult = () => {
               <h2 className="text-3xl "> Congratulation </h2>
               <p className="text-xl ">You are Eligible for Child Adoption</p>
             </div>
-            {/* <h1 className="text-center font-bold text-xl my-5">
-              Because your score is:{" "}
-              <span className="text-green-600">
-                {" "}
-                Yes = {eligibilityScore?.data[0]?.allowValue?.length * 10}%
-              </span>
-            </h1> */}
           </div>
         ) : (
           <>
@@ -91,36 +84,26 @@ const CheckApplyResult = () => {
                 <div className="text-red-600 text-center  font-bold">
                   <h1 className="text-3xl">Sorry</h1>
                   <p className="text-xl">
-                    You are Not Eligibe for Child Adoption
+                    You are Not Eligible for Child Adoption
                   </p>
                 </div>
-                {/* <h1 className="text-center font-bold text-xl my-5">
-                  Because your score is:{" "}
-                  <span className="text-red-600">
-                    {" "}
-                    No = {eligibilityScore?.data[0]?.notAllowValue?.length *
-                      10}{" "}
-                    %
-                  </span>
-                </h1> */}
               </div>
             )}
           </>
         )}
       </div>
       <hr className="my-4" />
-
       {eligibilityScore?.data[0] ? (
-        <div className="mx-4 md:mx-8">
+        <div className="md:mx-8">
           <div>
-            <div className="flex text-center text-white text-xl md:text-3xl font-bold">
+            <div className="flex text-white text-xl md:text-3xl sm:font-bold">
               <div
                 style={{
                   width: `${
                     eligibilityScore?.data[0]?.allowValue?.length * 10
                   }%`,
                 }}
-                className=" h-20 bg-green-600 pt-5"
+                className="h-32 bg-green-600 flex justify-center items-center"
               >
                 {" "}
                 Yes = {eligibilityScore?.data[0]?.allowValue?.length * 10}%{" "}
@@ -131,7 +114,7 @@ const CheckApplyResult = () => {
                     eligibilityScore?.data[0]?.notAllowValue?.length * 10
                   }%`,
                 }}
-                className=" h-20 bg-red-600 pt-5"
+                className="h-32 bg-red-600 flex justify-center items-center"
               >
                 No = {eligibilityScore?.data[0]?.notAllowValue?.length * 10}%{" "}
               </div>
