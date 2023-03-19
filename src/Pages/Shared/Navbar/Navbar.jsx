@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import CustomLink from "../CustomLink/CustomLink";
+import logo from "../../../images/logo.png";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -95,8 +96,9 @@ const Navbar = () => {
           </div>
           <Link
             to="/"
-            className="btn btn-ghost normal-case text-2xl btn-sm px-5 font-bold"
+            className="btn btn-ghost normal-case text-2xl btn-sm sm:px-5 font-bold hover:bg-white"
           >
+            <img className="w-10" src={logo} alt="" />
             Ador
           </Link>
         </div>

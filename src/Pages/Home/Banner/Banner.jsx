@@ -32,7 +32,7 @@ const Banner = () => {
                 Bangladesh.
               </h4>
               <Link to={"/donation"}>
-                <button className="btn btn-primary btn-sm text-xs sm:btn-lg sm:text-xl rounded-none font-bold">
+                <button className="btn btn-primary btn-sm text-xs sm:btn-md rounded-none font-bold">
                   Donate Now
                 </button>
               </Link>
@@ -55,7 +55,7 @@ const Banner = () => {
                 Insha Allah !! You can change a life of your support.
               </h5>
               <Link to={"/donation"}>
-                <button className="btn btn-secondary btn-sm text-xs sm:btn-lg sm:text-xl rounded-none font-bold">
+                <button className="btn btn-secondary btn-sm text-xs sm:btn-md rounded-none font-bold">
                   Donate Now
                 </button>
               </Link>
@@ -75,7 +75,7 @@ const Banner = () => {
                 all of your adoption and foster care questions.
               </h4>
               <Link to={"/contact-us"}>
-                <button className="btn btn-primary btn-sm text-xs sm:btn-lg sm:text-xl rounded-none font-bold">
+                <button className="btn btn-primary btn-sm text-xs sm:btn-md rounded-none font-bold">
                   Contact Us
                 </button>
               </Link>
