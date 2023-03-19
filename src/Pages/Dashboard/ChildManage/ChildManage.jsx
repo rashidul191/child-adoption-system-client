@@ -8,11 +8,9 @@ import Pagination from "../../Shared/Pagination/Pagination";
 
 const ChildManage = () => {
   DynamicTitle("Child Manage");
-  // const [childType, setChildType] = useState("Infant-Child");
   const [allTypeChild, setAllTypeChild] = useState([]);
   const [count, setCount] = useState(1);
 
-  // console.log(childType);
   let limit = 9;
   const skip = (count - 1) * limit;
 
@@ -32,7 +30,6 @@ const ChildManage = () => {
 
   const handleChildList = (event) => {
     const childType = event.target.value || "All-Child";
-    // console.log("child Type: ", childType);
     if (childType === "All-Child") {
       fetch(`https://child-adoption-system-server.onrender.com/api/v1/child`, {
         method: "GET",

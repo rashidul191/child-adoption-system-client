@@ -5,7 +5,6 @@ import ApplicationRowModal from "../Application/ApplicationRowModal";
 import { useState } from "react";
 
 const ChildApplyDetails = ({ childApply }) => {
-  // console.log(childApply);
   const { _id } = childApply;
   const [childApplicationData, setChildApplicationData] = useState({});
   const handleFindApplicationId = (id) => {

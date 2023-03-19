@@ -14,7 +14,6 @@ const useEmployer = (user) => {
         method: "GET",
         headers: {
           "content-type": "application/json",
-          // authorization: `Bearer ${localStorage.getItem("access-token")}`,
         },
       }
     )

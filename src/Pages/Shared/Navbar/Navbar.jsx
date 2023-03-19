@@ -102,10 +102,7 @@ const Navbar = () => {
             Ador
           </Link>
         </div>
-        <div
-          // className={`${!user ? "navbar-end" : "navbar-center"} hidden lg:flex`}
-          className={`navbar-center hidden lg:flex`}
-        >
+        <div className={`navbar-center hidden lg:flex`}>
           <ul className="menu menu-horizontal p-0">{menubar}</ul>
         </div>
         <div className={`${user && "navbar-end "}`}>
@@ -137,9 +134,6 @@ const Navbar = () => {
                     </li>
                   </CustomLink>
 
-                  {/* <li>
-                    <a>Settings</a>
-                  </li> */}
                   <li>
                     <button
                       className="btn btn-error btn-sm text-white mt-3"
@@ -180,7 +174,6 @@ const Navbar = () => {
           </label>
         </div>
       )}
-      {/* </div> */}
     </section>
   );
 };

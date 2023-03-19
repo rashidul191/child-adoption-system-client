@@ -1,8 +1,10 @@
 import React from "react";
+import { LightSpeed } from "react-reveal";
 
 const UserReview = ({ review }) => {
   const { displayName, comment, rating, photoURL, img } = review;
   return (
+    <LightSpeed>
     <div className="card h-[260px] w-11/12 bg-base-100 rounded-none mx-auto mb-5">
       <div className="avatar bg-[#EBF1F6] pt-2">
         <div className="w-16 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -23,7 +25,8 @@ const UserReview = ({ review }) => {
           comment.length > 120 ? `${comment.slice(0, 120)} ....` : comment
         }`}</span>
       </div>
-    </div>
+      </div>
+      </LightSpeed>
   );
 };
 

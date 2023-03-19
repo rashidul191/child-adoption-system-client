@@ -70,12 +70,6 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">Company</span>
-          {/* <Link
-            to="/our-project"
-            className="link link-hover hover:font-bold hover:text-blue-500"
-          >
-            Our Project
-          </Link> */}
           <Link
             to="/all-blogs"
             className="link link-hover hover:font-bold hover:text-blue-500"

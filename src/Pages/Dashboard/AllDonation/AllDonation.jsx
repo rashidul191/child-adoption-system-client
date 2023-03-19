@@ -11,7 +11,7 @@ const AllDonation = () => {
   const [count, setCount] = useState(1);
   let limit = 9;
   const skip = (count - 1) * limit;
-  // query
+  // react query
   const { data: allDonation, isLoading } = useQuery(["donation"], () =>
     fetch(`https://child-adoption-system-server.onrender.com/api/v1/payment`, {
       method: "GET",

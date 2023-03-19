@@ -7,8 +7,6 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 
 const ApplicationRow = ({ index, application, refetch }) => {
-  // console.log(application)
-  // const navigate = useNavigate();
   const { _id } = application;
   const [childApplicationData, setChildApplicationData] = useState({});
 
@@ -133,16 +131,6 @@ const ApplicationRow = ({ index, application, refetch }) => {
           {application?.role && (
             <p className="text-success">Already Approved</p>
           )}
-          {/* {application?.role ? (
-            <p className="p-success">Already Approved</p>
-          ) : (
-            <button
-              onClick={() => handleApplicationApprove(_id)}
-              className="btn btn-primary btn-sm p-white"
-            >
-              Approve
-            </button>
-          )} */}
         </th>
         <th>
           <button

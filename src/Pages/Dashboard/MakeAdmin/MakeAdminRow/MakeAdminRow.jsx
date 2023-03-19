@@ -61,7 +61,6 @@ const MakeAdminRow = ({ user, index, refetch }) => {
   };
   // handle Make Employer
   const handleMakeEmployer = (email) => {
-    // console.log(email);
     Swal.fire({
       title: "Are you sure?",
       text: `User from make an Employer, ${email}`,

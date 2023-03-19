@@ -46,8 +46,6 @@ const ChildApplyForm = () => {
       ).then((res) => res.json())
   );
 
-  // console.log(eligibilityScore?.data[0]?.allowValue.length * 10);
-
   const {
     register: childApplyForm,
     formState: { errors },
@@ -63,7 +61,6 @@ const ChildApplyForm = () => {
       eligibilityScore: eligibilityScore?.data[0],
     };
 
-    console.log(childApplyFormData);
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/childApply`,
       {
@@ -270,7 +267,6 @@ const ChildApplyForm = () => {
                         message: "NID Number is required",
                       },
                       pattern: {
-                        // value: /1?([1-9])/,
                         value: /^\d{10,16}$/,
                         message: "Provide a valid NID Number",
                       },
@@ -405,7 +401,6 @@ const ChildApplyForm = () => {
                         message: "NID Number is required",
                       },
                       pattern: {
-                        // value: /1?([1-9])/,
                         value: /^\d{10,16}$/,
                         message: "Provide a valid NID Number",
                       },
@@ -552,7 +547,6 @@ const ChildApplyForm = () => {
                     <input
                       {...childApplyForm("city", {
                         required: {
-                          // value: true,
                           message: "City is required",
                         },
                       })}

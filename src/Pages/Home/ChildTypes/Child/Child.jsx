@@ -8,11 +8,7 @@ const Child = () => {
   DynamicTitle("Child Details");
   const { id } = useParams();
   // react query
-  const {
-    data: child,
-    isLoading,
-    error,
-  } = useQuery(["child"], () =>
+  const { data: child, isLoading } = useQuery(["child"], () =>
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/child/${id}`,
       {
@@ -44,10 +40,6 @@ const Child = () => {
   let currentYear = new Date().getFullYear();
   let childDifferentAge = currentYear - parseInt(addChildYear);
   let updateChildAge = parseInt(ageYear) + childDifferentAge;
-
-  if (error) {
-    console.log(error);
-  }
 
   return (
     <section className="md:pt-16">

@@ -4,6 +4,7 @@ import bannerPic1 from "../../../images/banner-pic-1.jpg";
 import bannerPic2 from "../../../images/banner-pic-2.jpg";
 import bannerPic3 from "../../../images/banner-pic-3.jpg";
 import Slider from "react-slick";
+import { LightSpeed } from "react-reveal";
 
 const Banner = () => {
   var settings = {
@@ -18,7 +19,7 @@ const Banner = () => {
   return (
     <section className="lg:pt-16 text-center">
       <Slider {...settings}>
-        <div>
+        <LightSpeed left>
           <div className="card rounded-none image-full">
             <figure className="rounded-none">
               <img src={bannerPic1} alt="image1" />
@@ -32,13 +33,14 @@ const Banner = () => {
                 Bangladesh.
               </h4>
               <Link to={"/donation"}>
-                <button className="btn btn-primary btn-sm text-xs sm:btn-md rounded-none font-bold">
+                <button className="btn btn-primary btn-sm text-xs sm:btn-md rounded-none font-bold text-white">
                   Donate Now
                 </button>
               </Link>
             </div>
           </div>
-        </div>
+        </LightSpeed>
+
         <div>
           <div className="card rounded-none image-full ">
             <figure className="rounded-none">
@@ -75,7 +77,7 @@ const Banner = () => {
                 all of your adoption and foster care questions.
               </h4>
               <Link to={"/contact-us"}>
-                <button className="btn btn-primary btn-sm text-xs sm:btn-md rounded-none font-bold">
+                <button className="btn btn-primary btn-sm text-xs sm:btn-md rounded-none font-bold text-white">
                   Contact Us
                 </button>
               </Link>

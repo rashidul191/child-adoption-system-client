@@ -46,8 +46,6 @@ const EditMyProfile = ({ user, userData }) => {
             phone: data.phone,
           };
 
-          console.log(usrProfileUpdateInfo);
-
           fetch(
             `https://child-adoption-system-server.onrender.com/api/v1/user/${userData?.email}`,
             {
@@ -171,7 +169,6 @@ const EditMyProfile = ({ user, userData }) => {
                   </span>
                 </label>
                 <input
-                  // {...userProfile("email")}
                   type="email"
                   defaultValue={userData?.email}
                   disabled

@@ -42,8 +42,6 @@ const AgencyEdit = () => {
     return <Loading></Loading>;
   }
 
-  //   console.log(agencyWithId.data);
-
   const imageStorageKey = `830f12aefec823fea323e5fd7f93c732`;
 
   const onSubmit = async (data) => {

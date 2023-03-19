@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Shared/Loading/Loading";
 import UserReview from "./UserReview";
+import { Zoom } from "react-reveal";
 
 const UserReviews = () => {
   const { data: reviews, isLoading } = useQuery(["review"], () =>
@@ -40,12 +41,14 @@ const UserReviews = () => {
 
   return (
     <section className="my-10 py-4 bg-[#EBF1F6]">
-      <div>
-        <h1 className="text-center text-3xl font-bold uppercase">
-          User Reviews
-        </h1>
-        <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
-      </div>
+      <Zoom>
+        <div>
+          <h1 className="text-center text-3xl font-bold uppercase">
+            User Reviews
+          </h1>
+          <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
+        </div>
+      </Zoom>
       <div className="mt-5">
         <div className="md:hidden">
           <Slider {...settings}>

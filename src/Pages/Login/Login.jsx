@@ -258,7 +258,6 @@ const Login = () => {
               </div>
 
               {/* Forgot Password modal */}
-
               <input
                 type="checkbox"
                 id="forgot-password-modal"

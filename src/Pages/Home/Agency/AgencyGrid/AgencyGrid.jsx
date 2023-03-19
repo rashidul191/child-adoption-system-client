@@ -1,4 +1,5 @@
 import React from "react";
+import { Fade } from "react-reveal";
 import { useNavigate } from "react-router-dom";
 
 const AgencyGrid = ({ agency }) => {
@@ -9,6 +10,7 @@ const AgencyGrid = ({ agency }) => {
     navigate(`/agency/${id}`);
   };
   return (
+    <Fade left>
     <div className="card w-5/6 bg-base-100 shadow-md mx-auto md:my-5">
       <figure>
         <img className="w-full h-44" src={agencyImg} alt={agencyName} />
@@ -32,7 +34,8 @@ const AgencyGrid = ({ agency }) => {
           </button>
         </div>
       </div>
-    </div>
+      </div>
+      </Fade>
   );
 };
 

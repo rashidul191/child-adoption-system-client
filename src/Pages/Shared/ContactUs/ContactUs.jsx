@@ -26,7 +26,6 @@ const ContactUs = () => {
       subject: data.subject,
       message: contactMessageRef.current.value,
     };
-    // console.log("contact Message: ", contactInfo);
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/contactUs`,
       {
@@ -39,7 +38,6 @@ const ContactUs = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data.data);
         if (data?.data?.insertedId) {
           Swal.fire({
             position: "top-center",
@@ -48,7 +46,7 @@ const ContactUs = () => {
             showConfirmButton: false,
             timer: 2000,
           });
-          // window.location.reload();
+          window.location.reload();
         } else {
           Swal.fire({
             position: "top-center",
@@ -198,10 +196,6 @@ const ContactUs = () => {
                 <div className="form-control w-full md:w-56 max-w-xs">
                   <input
                     {...contactUs("phone", {
-                      // required: {
-                      //   value: true,
-                      //   message: "Phone Number is required",
-                      // },
                       pattern: {
                         value: /^[0-9]{1,13}$/,
                         message: "Provide a valid Phone Number",
@@ -213,11 +207,6 @@ const ContactUs = () => {
                     className="input input-bordered input-sm w-full md:w-56 max-w-xs"
                   />
                   <label className="label">
-                    {/* {errors.phone?.type === "required" && (
-                      <span className="label-text-alt text-error">
-                        {errors.phone?.message}
-                      </span>
-                    )} */}
                     {errors.phone?.type === "pattern" && (
                       <span className="label-text-alt text-error">
                         {errors.phone?.message}

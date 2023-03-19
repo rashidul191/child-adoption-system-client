@@ -64,8 +64,6 @@ const BlogDetails = () => {
           <div>
             <img
               className="mx-auto sm:h-52 sm:w-2/3"
-              // height={50}
-              // width={3000}
               src={blog?.data?.blogImg}
               alt="img-here"
             />

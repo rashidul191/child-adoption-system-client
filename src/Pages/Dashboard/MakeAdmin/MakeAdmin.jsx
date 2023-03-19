@@ -37,8 +37,6 @@ const MakeAdmin = () => {
       return res.json();
     })
   );
-
-  // console.log(userRoles);
   const handleChildList = (event) => {
     const userRole = event.target.value;
     if (userRole == "all-user") {
@@ -90,7 +88,6 @@ const MakeAdmin = () => {
               </option>
               <option value={`admin`}>Admin</option>
               <option value={`employer`}>Employer</option>
-              {/* <option value={`only-user`}>Only-User</option> */}
             </select>
           </span>
         </div>

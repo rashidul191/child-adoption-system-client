@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
 });
 
 const ChildApplyPDF = ({ childApply }) => {
-  console.log(childApply);
   return (
     <Document>
       <Page size="A4" style={styles.page}>
