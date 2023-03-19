@@ -98,7 +98,7 @@ const Navbar = () => {
             to="/"
             className="btn btn-ghost normal-case text-2xl btn-sm sm:px-5 font-bold hover:bg-white"
           >
-            <img className="w-10" src={logo} alt="" />
+            <img className="w-[44px]" src={logo} alt="" />
             Ador
           </Link>
         </div>
