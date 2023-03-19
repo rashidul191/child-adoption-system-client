@@ -60,8 +60,10 @@ const ChildApplyForm = () => {
       applicationDate,
       data,
       child: child?.data,
-      eligibilityScore:eligibilityScore?.data[0]
+      eligibilityScore: eligibilityScore?.data[0],
     };
+
+    console.log(childApplyFormData);
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/childApply`,
       {
@@ -493,7 +495,7 @@ const ChildApplyForm = () => {
                         },
                       })}
                       type="text"
-                      placeholder="Address"
+                      placeholder="Village / House No"
                       className="input input-bordered input-sm md:w-96 max-w-lg"
                     />
                     <label className="label font-bold">
@@ -507,9 +509,50 @@ const ChildApplyForm = () => {
 
                   <div className="form-control w-full max-w-sm mx-auto">
                     <input
-                      {...childApplyForm("city", {
+                      {...childApplyForm("upazila", {
                         required: {
                           value: true,
+                          message: "Upazila is required",
+                        },
+                      })}
+                      type="text"
+                      placeholder="Upazila"
+                      className="input input-bordered input-sm md:w-96 max-w-lg"
+                    />
+                    <label className="label font-bold">
+                      {errors.upazila?.type === "required" && (
+                        <span className="label-text-alt text-error">
+                          {errors.upazila?.message}
+                        </span>
+                      )}
+                    </label>
+                  </div>
+
+                  <div className="form-control w-full max-w-sm mx-auto">
+                    <input
+                      {...childApplyForm("district", {
+                        required: {
+                          value: true,
+                          message: "District is required",
+                        },
+                      })}
+                      type="text"
+                      placeholder="District"
+                      className="input input-bordered input-sm md:w-96 max-w-lg"
+                    />
+                    <label className="label font-bold">
+                      {errors.district?.type === "required" && (
+                        <span className="label-text-alt text-error">
+                          {errors.district?.message}
+                        </span>
+                      )}
+                    </label>
+                  </div>
+                  <div className="form-control w-full max-w-sm mx-auto">
+                    <input
+                      {...childApplyForm("city", {
+                        required: {
+                          // value: true,
                           message: "City is required",
                         },
                       })}
@@ -521,27 +564,6 @@ const ChildApplyForm = () => {
                       {errors.city?.type === "required" && (
                         <span className="label-text-alt text-error">
                           {errors.city?.message}
-                        </span>
-                      )}
-                    </label>
-                  </div>
-
-                  <div className="form-control w-full max-w-sm mx-auto">
-                    <input
-                      {...childApplyForm("state", {
-                        required: {
-                          value: true,
-                          message: "State is required",
-                        },
-                      })}
-                      type="text"
-                      placeholder="State"
-                      className="input input-bordered input-sm md:w-96 max-w-lg"
-                    />
-                    <label className="label font-bold">
-                      {errors.state?.type === "required" && (
-                        <span className="label-text-alt text-error">
-                          {errors.state?.message}
                         </span>
                       )}
                     </label>

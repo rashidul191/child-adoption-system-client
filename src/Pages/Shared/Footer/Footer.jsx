@@ -22,7 +22,7 @@ const Footer = () => {
           <a href="mailto:childadoptionsystemador@gmail.com">
             <p>
               <FontAwesomeIcon className="font-bold mr-3" icon={faEnvelope} />
-              <span className="hover:underline">
+              <span className="link link-hover hover:font-bold hover:text-blue-500">
                 childadoptionsystemador@gmail.com
               </span>
             </p>
@@ -36,7 +36,7 @@ const Footer = () => {
                 className="font-bold mr-3"
                 icon={faLocationDot}
               />
-              <span className="hover:underline">
+              <span className="link link-hover hover:font-bold hover:text-blue-500">
                 West Shewrapara, Dhaka, Bangladesh
               </span>
             </p>

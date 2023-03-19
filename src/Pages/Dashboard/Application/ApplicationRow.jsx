@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 
 const ApplicationRow = ({ index, application, refetch }) => {
+  // console.log(application)
   // const navigate = useNavigate();
   const { _id } = application;
   const [childApplicationData, setChildApplicationData] = useState({});

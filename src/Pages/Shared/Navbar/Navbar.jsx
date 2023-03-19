@@ -106,7 +106,7 @@ const Navbar = () => {
         >
           <ul className="menu menu-horizontal p-0">{menubar}</ul>
         </div>
-        <div className={`${user && "navbar-end md:mr-5"}`}>
+        <div className={`${user && "navbar-end "}`}>
           {user && (
             <div className="flex-none gap-2">
               <div className="dropdown dropdown-end">

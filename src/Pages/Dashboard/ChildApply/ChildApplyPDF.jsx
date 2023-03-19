@@ -14,12 +14,12 @@ const styles = StyleSheet.create({
   },
 
   highlightText: {
-    fontSize: "20px",
+    fontSize: "18px",
     fontWeight: "bold",
     textAlign: "center",
     textTransform: "capitalize",
     backgroundColor: "yellow",
-    margin: "20px 0px 10px 0px",
+    margin: "12px 0px 7px 0px",
   },
   displayFlex: {
     flexDirection: "row",
@@ -31,13 +31,13 @@ const styles = StyleSheet.create({
 
   textStyle: {
     fontWeight: "bold",
-    fontSize: "16px",
+    fontSize: "14px",
     textDecoration: "underline",
   },
 });
 
 const ChildApplyPDF = ({ childApply }) => {
-  // console.log(childApply);
+  console.log(childApply);
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -45,11 +45,11 @@ const ChildApplyPDF = ({ childApply }) => {
           <Text style={styles.hederText}>Child Adoption System-Ador</Text>
           <Text>Every Child Should Get A Quality Place and Education</Text>
           <div>
-            <Text>Email: casa@gmail.com</Text>
+            <Text>Email: childadoptionsystemador@gmail.com</Text>
             <Text>Call: 01629226069</Text>
           </div>
           <div>
-            <Text>West Shewrapara, Mirpur-10, Dhaka</Text>
+            <Text>West Shewrapara, Mirpur-10, Dhaka,</Text>
             <Text>Bangladesh</Text>
             <Text>
               Application Date:{" "}
@@ -62,7 +62,6 @@ const ChildApplyPDF = ({ childApply }) => {
         {/* Child Information Here */}
         <div>
           <Text style={styles.highlightText}>Child Information</Text>
-
           <div style={styles.displayFlex}>
             <div>
               <div style={styles.displayFlex}>
@@ -78,14 +77,25 @@ const ChildApplyPDF = ({ childApply }) => {
                     {childApply?.child?.gender}
                   </Text>
                 </Text>
-                <Text>
-                  Age:{" "}
-                  <Text style={styles.textStyle}>{childApply?.child?.age}</Text>{" "}
-                </Text>
               </div>
 
               <div style={styles.displayFlex}>
-                <Text style={styles.marginStyle}>
+                <Text
+                  style={{
+                    marginRight: "15px",
+                  }}
+                >
+                  Age:{" "}
+                  <Text style={styles.textStyle}>
+                    {childApply?.child?.ageYear} Year,{" "}
+                    {childApply?.child?.ageMonth} Month
+                  </Text>{" "}
+                </Text>
+                <Text
+                  style={{
+                    marginRight: "15px",
+                  }}
+                >
                   Religion:{" "}
                   <Text style={styles.textStyle}>
                     {childApply?.child?.religion}
@@ -93,30 +103,31 @@ const ChildApplyPDF = ({ childApply }) => {
                 </Text>
 
                 <Text style={styles.marginStyle}>
-                  Child Type:{" "}
-                  <Text style={styles.textStyle}>
-                    {childApply?.child?.childType}
-                  </Text>
-                </Text>
-                <Text style={styles.marginStyle}>
                   Disabilities:{" "}
                   <Text style={styles.textStyle}>
                     {childApply?.child?.disabilities}
                   </Text>
                 </Text>
               </div>
-
-              <div style={styles.displayFlex}>
+              <div>
                 <Text style={styles.marginStyle}>
                   Location:{" "}
                   <Text style={styles.textStyle}>
                     {childApply?.child?.location}
                   </Text>
                 </Text>
+              </div>
+              <div style={styles.displayFlex}>
                 <Text style={styles.marginStyle}>
                   City:{" "}
                   <Text style={styles.textStyle}>
                     {childApply?.child?.city}
+                  </Text>
+                </Text>
+                <Text style={styles.marginStyle}>
+                  Child Type:{" "}
+                  <Text style={styles.textStyle}>
+                    {childApply?.child?.childType}
                   </Text>
                 </Text>
               </div>
@@ -130,6 +141,7 @@ const ChildApplyPDF = ({ childApply }) => {
             </div>
           </div>
         </div>
+
         {/* Parent-1 Information Here */}
         <div>
           <Text style={styles.highlightText}>Parent-1 Information</Text>
@@ -238,19 +250,24 @@ const ChildApplyPDF = ({ childApply }) => {
             </Text>
 
             <Text style={styles.marginStyle}>
-              City:{" "}
-              <Text style={styles.textStyle}>{childApply?.data?.city}</Text>
+              Zip Code:{" "}
+              <Text style={styles.textStyle}>{childApply?.data?.zipCode}</Text>
             </Text>
           </div>
           <div style={styles.displayFlex}>
             <Text style={styles.marginStyle}>
-              State:{" "}
-              <Text style={styles.textStyle}>{childApply?.data?.state}</Text>
+              Upazila:{" "}
+              <Text style={styles.textStyle}>{childApply?.data?.upazila}</Text>
             </Text>
 
             <Text style={styles.marginStyle}>
-              Zip Code:{" "}
-              <Text style={styles.textStyle}>{childApply?.data?.zipCode}</Text>
+              District:{" "}
+              <Text style={styles.textStyle}>{childApply?.data?.district}</Text>
+            </Text>
+
+            <Text style={styles.marginStyle}>
+              City:{" "}
+              <Text style={styles.textStyle}>{childApply?.data?.city}</Text>
             </Text>
 
             <Text style={styles.marginStyle}>
@@ -259,13 +276,63 @@ const ChildApplyPDF = ({ childApply }) => {
             </Text>
           </div>
         </div>
+
+        {/* Eligibility Score Here */}
+        <div>
+          <div style={styles.displayFlex}>
+            <Text
+              style={{
+                fontSize: "18px",
+                fontWeight: "bold",
+                textAlign: "center",
+                textTransform: "capitalize",
+                backgroundColor: "yellow",
+                marginRight: "28px",
+              }}
+            >
+              Eligible Score Is:{" "}
+            </Text>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: "14px",
+                color: "green",
+                marginRight: "28px",
+              }}
+            >
+              Yes:{" "}
+              <Text style={styles.textStyle}>
+                {childApply?.eligibilityScore?.allowValue.length
+                  ? childApply?.eligibilityScore?.allowValue.length * 10
+                  : 0}
+              </Text>{" "}
+              %
+            </Text>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: "14px",
+                color: "red",
+              }}
+            >
+              No:{" "}
+              <Text style={styles.textStyle}>
+                {childApply?.eligibilityScore?.notAllowValue.length
+                  ? childApply?.eligibilityScore?.notAllowValue.length * 10
+                  : 0}
+              </Text>{" "}
+              %
+            </Text>
+          </div>
+        </div>
+
         {/* Approve Signature */}
         <div>
           <div style={styles.displayFlex}>
             <div>
               <Text
                 style={{
-                  marginTop: "30px",
+                  marginTop: "25px",
                 }}
               >
                 ............................
@@ -282,7 +349,7 @@ const ChildApplyPDF = ({ childApply }) => {
             <div>
               <Text
                 style={{
-                  margin: "30px 0px 0px 90px",
+                  margin: "25px 0px 0px 90px",
                 }}
               >
                 {childApply?.child?.agency}
@@ -300,7 +367,7 @@ const ChildApplyPDF = ({ childApply }) => {
             <div>
               <Text
                 style={{
-                  marginTop: "30px",
+                  marginTop: "25px",
                 }}
               >
                 Md Rashidul Islam
@@ -318,7 +385,7 @@ const ChildApplyPDF = ({ childApply }) => {
         </div>
 
         <Text
-          style={{ textAlign: "center", marginTop: "20px" }}
+          style={{ textAlign: "center", marginTop: "30px" }}
           render={({ pageNumber, totalPages }) =>
             `${pageNumber} / ${totalPages}`
           }

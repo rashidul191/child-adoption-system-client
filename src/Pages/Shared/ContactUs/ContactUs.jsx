@@ -105,7 +105,7 @@ const ContactUs = () => {
                       </span>{" "}
                       Email
                     </h2>{" "}
-                    <h2 className="text-sm font-bold hover:underline">
+                    <h2 className="text-sm font-bold link link-hover hover:text-blue-500">
                       childadoptionsystemador@gmail.com
                     </h2>
                   </a>
@@ -131,7 +131,7 @@ const ContactUs = () => {
                       Address
                     </h2>
 
-                    <h2 className="text-sm font-bold hover:underline">
+                    <h2 className="text-sm font-bold link link-hover hover:text-blue-500">
                       West Shewrapara, Dhaka, Bangladesh
                     </h2>
                   </a>

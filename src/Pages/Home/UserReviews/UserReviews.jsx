@@ -46,7 +46,7 @@ const UserReviews = () => {
         </h1>
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
-      <div className="my-10">
+      <div className="mt-5">
         <div className="md:hidden">
           <Slider {...settings}>
             {reviews?.data

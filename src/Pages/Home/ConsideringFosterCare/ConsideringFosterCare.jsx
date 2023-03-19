@@ -18,8 +18,8 @@ const ConsideringFosterCare = () => {
         <div className="border-dotted border-b-4 border-indigo-600 w-28 mx-auto mt-1"></div>
       </div>
 
-      <div className="card lg:card-side bg-base-100 rounded-none my-10">
-        <figure className="shadow-xl rounded-lg">
+      <div className="card lg:card-side bg-base-100 rounded-none mt-10">
+        <figure className="">
           <img
             width={550}
             className="hidden md:block"
@@ -30,7 +30,7 @@ const ConsideringFosterCare = () => {
         <div className="card-body grid grid-cols-1 md:grid-cols-2 gap-10 text-center">
           <div className="box">
             <FontAwesomeIcon
-              className="text-8xl mr-4 text-[#f2c821]"
+              className="text-8xl mr-4 text-[#CCD47E]"
               icon={faFileLines}
             ></FontAwesomeIcon>
             <h2 className="text-2xl font-bold">Apply Online</h2>
@@ -40,7 +40,7 @@ const ConsideringFosterCare = () => {
           </div>
           <div className="box">
             <FontAwesomeIcon
-              className="text-8xl mr-4  text-[#f2c821]"
+              className="text-8xl mr-4  text-[#BDCDE6]"
               icon={faBookOpenReader}
             ></FontAwesomeIcon>
             <h2 className="text-2xl font-bold">Adoption Funding Options</h2>
@@ -64,7 +64,7 @@ const ConsideringFosterCare = () => {
           </div>
           <div className="box">
             <FontAwesomeIcon
-              className="text-8xl mr-4  text-[#f2c821]"
+              className="text-8xl mr-4  text-[#eca76b]"
               icon={faChalkboardUser}
             ></FontAwesomeIcon>
             <h2 className="text-2xl font-bold">Informational Meeting</h2>

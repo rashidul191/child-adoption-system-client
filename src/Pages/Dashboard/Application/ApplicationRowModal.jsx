@@ -54,7 +54,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
         <h1 className="text-xl md:text-4xl ">Child Adoption System-Ador</h1>
         <p>Every Child Should Get A Quality Place and Education</p>
         <div>
-          <p>Email: casa@gmail.com</p>
+          <p>Email: childadoptionsystemador@gmail.com</p>
           <p>Call: 01629226069</p>
         </div>
         <div>
@@ -150,7 +150,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
         <hr className="my-3 md:my-5" />
         {/* user eligibility score start */}
         <div className="grid grid-cols-3 font-bold">
-          <h2 className="text-xl md:text-2xl font-bold">
+          <h2 className="text-xl md:text-2xl font-bold col-span-3 md:col-auto">
             Eligible score is :{" "}
           </h2>
           <p className="text-success md:text-xl ">
@@ -177,7 +177,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
             Parent-1 Information
           </h1>
           <div className="md:text-xl grid grid-cols-2 md:grid-cols-3 my-2">
-            <p>
+            <p className="col-span-2 md:col-auto">
               Name:{" "}
               <span className="underline font-semibold">
                 {childApplicationData?.data?.displayName}
@@ -196,7 +196,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
                 {childApplicationData?.data?.citizenship}
               </span>
             </p>
-            <p>
+            <p className="col-span-2 md:col-auto">
               Birth Date:{" "}
               <span className="underline font-semibold">
                 {childApplicationData?.data?.birthDate}
@@ -217,7 +217,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
             Parent-2 Information
           </h1>
           <div className="md:text-xl grid grid-cols-2 md:grid-cols-3 my-2">
-            <p>
+            <p className="col-span-2 md:col-auto">
               Name:{" "}
               <span className="underline font-semibold">
                 {childApplicationData?.data?.displayName2}
@@ -235,7 +235,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
                 {childApplicationData?.data?.citizenship2}
               </span>
             </p>
-            <p>
+            <p className="col-span-2 md:col-auto">
               Birth Date:{" "}
               <span className="underline font-semibold">
                 {childApplicationData?.data?.birthDate2}
@@ -260,11 +260,17 @@ const ApplicationRowModal = ({ childApplicationData }) => {
                 {childApplicationData?.email}
               </span>
             </p>
-
-            <p className="md:mx-5">
-              City:{" "}
+            <p className="">
+              Phone:{" "}
               <span className="underline font-semibold">
-                {childApplicationData?.data?.city}
+                {childApplicationData?.data?.phoneNumber}
+              </span>
+            </p>
+
+            <p className="col-span-2">
+              Address:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.address}
               </span>
             </p>
             <p>
@@ -273,10 +279,23 @@ const ApplicationRowModal = ({ childApplicationData }) => {
                 {childApplicationData?.data?.zipCode}
               </span>
             </p>
-            <p className="col-span-2">
-              Location:{" "}
+
+            <p>
+              Upazila:{" "}
               <span className="underline font-semibold">
-                {childApplicationData?.data?.address}
+                {childApplicationData?.data?.upazila}
+              </span>
+            </p>
+            <p>
+              District:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.district}
+              </span>
+            </p>
+            <p className="md:mx-5">
+              City:{" "}
+              <span className="underline font-semibold">
+                {childApplicationData?.data?.city}
               </span>
             </p>
             <p className="">
@@ -285,12 +304,6 @@ const ApplicationRowModal = ({ childApplicationData }) => {
                 {childApplicationData?.data?.country}
               </span>
             </p>
-            {/* <p className="col-span-2">
-              Application Date:{" "}
-              <span className="underline font-semibold">
-                {childApplicationData?.applicationDate}
-              </span>
-            </p> */}
           </div>
         </div>
       </div>
@@ -319,7 +332,7 @@ const ApplicationRowModal = ({ childApplicationData }) => {
             ) : (
               <label
                 htmlFor="my-modal-15"
-                className="btn btn-primary btn-sm text-white w-96"
+                className="btn btn-primary font-bold text-white md:w-96"
                 onClick={() =>
                   handleApplicationApprove(childApplicationData?._id)
                 }
