@@ -18,7 +18,7 @@ const ChildEdit = () => {
   const {
     data: childWithId,
     isLoading,
-    refetch,
+    // refetch,
   } = useQuery(["childWithId"], () =>
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/child/${id}`,

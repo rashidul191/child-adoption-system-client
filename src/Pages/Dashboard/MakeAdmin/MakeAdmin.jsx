@@ -39,7 +39,7 @@ const MakeAdmin = () => {
   );
   const handleChildList = (event) => {
     const userRole = event.target.value;
-    if (userRole == "all-user") {
+    if (userRole === "all-user") {
       fetch(`https://child-adoption-system-server.onrender.com/api/v1/user`, {
         method: "GET",
         headers: {

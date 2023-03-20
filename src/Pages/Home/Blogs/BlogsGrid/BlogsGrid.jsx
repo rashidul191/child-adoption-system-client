@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const BlogsGrid = ({ blog }) => {
   const navigate = useNavigate();
-  const { _id, blogImg, blogTitle, postDate } = blog;
+  const { _id, blogImg, blogTitle } = blog;
   const handleBlogsDetails = (id) => {
     navigate(`/blog/${blogTitle}/${id}`);
   };

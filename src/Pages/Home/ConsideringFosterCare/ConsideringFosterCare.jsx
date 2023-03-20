@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Zoom, LightSpeed, Flip, Bounce } from "react-reveal";
+import { Zoom, LightSpeed, Bounce } from "react-reveal";
 
 const ConsideringFosterCare = () => {
   return (

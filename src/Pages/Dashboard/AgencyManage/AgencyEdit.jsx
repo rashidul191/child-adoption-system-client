@@ -8,8 +8,6 @@ import { useForm } from "react-hook-form";
 import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
 import Swal from "sweetalert2";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudUpload } from "@fortawesome/free-solid-svg-icons";
 
 const AgencyEdit = () => {
   DynamicTitle("Edit Agency Info");
@@ -25,7 +23,7 @@ const AgencyEdit = () => {
   const {
     data: agencyWithId,
     isLoading,
-    refetch,
+    // refetch,
   } = useQuery(["agencyWithId"], () =>
     fetch(
       `https://child-adoption-system-server.onrender.com/api/v1/agency/${id}`,
