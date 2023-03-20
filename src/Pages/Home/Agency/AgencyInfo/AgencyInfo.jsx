@@ -35,39 +35,38 @@ const AgencyInfo = () => {
           style={{ backgroundColor: "rgb(192,192,192,0.5)" }}
           className="py-10"
         >
-          <div className="card w-4/5 mx-auto bg-base-100 shadow-xl">
+          <div className="card w-4/5 mx-auto bg-base-100 rounded-none sm:mb-20 sm:pb-8">
             <div className="card-body">
               {/* The button to open modal */}
               <label htmlFor={`my-modal-${id}`}>
                 <img
-                  className="mx-auto cursor-zoom-in"
-                  width={300}
+                  className="mx-auto cursor-zoom-in h-52 w-96"
                   src={agency?.data?.agencyImg}
                   alt={agency?.data?.agencyName}
                 />
               </label>
-              <hr />
-              <h2 className=" text-xl md:text-2xl">
+              <hr className="my-3" />
+              <h2 className=" text-xl md:text-2xl text-center">
                 Agency Name:{" "}
                 <span className="font-bold">{agency?.data?.agencyName}</span>
               </h2>
-              <hr />
-              <p>
+              <hr className="my-3" />
+              <p className="text-center">
                 Agency Director Name:{" "}
                 <span className="font-bold">
                   {agency?.data?.agencyDirectorName}
                 </span>
               </p>
-              <hr />
-              <p>
+              <hr className="my-3" />
+              <p className="text-center">
                 Agency Location:{" "}
                 <span className="font-bold">
                   {agency?.data?.agencyLocation}
                 </span>{" "}
               </p>
 
-              <hr />
-              <p>
+              <hr className="my-3" />
+              <p className="text-justify">
                 <span className="font-bold">About Agency:</span>{" "}
                 {agency?.data?.description}
               </p>

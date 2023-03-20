@@ -26,7 +26,7 @@ const Banner = () => {
             </figure>
             <div className="card-body justify-end items-center mt-16">
               <h2 className="text-2xl md:text-5xl font-bold">
-                STREET IS NO HOME
+                Street Is Not Home
               </h2>
               <h4 className="text-xs sm:text-xl">
                 We are trying to help the most vulnerable street children in
@@ -71,7 +71,7 @@ const Banner = () => {
             </figure>
             <div className="card-body justify-end items-center mt-[85px]">
               <h2 className="text-xl md:text-5xl font-bold">
-                Our staff are here to answer
+                Our Staff Are Here To Answer
               </h2>
               <h4 className="text-xs sm:text-xl">
                 all of your adoption and foster care questions.

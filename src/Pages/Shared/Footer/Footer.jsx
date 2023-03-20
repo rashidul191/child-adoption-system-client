@@ -53,7 +53,7 @@ const Footer = () => {
             to="/about"
             className="link link-hover hover:font-bold hover:text-blue-500"
           >
-            About
+            About Us
           </Link>
           <Link
             to="/contact-us"

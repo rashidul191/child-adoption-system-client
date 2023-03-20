@@ -26,7 +26,7 @@ const Navbar = () => {
 
       <CustomLink className="font-bold text-teal-600 " to="/about">
         <li>
-          <span>About</span>
+          <span>About Us</span>
         </li>
       </CustomLink>
       <CustomLink className="font-bold text-teal-600 " to="/all-agency">

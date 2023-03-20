@@ -47,13 +47,15 @@ const Donation = () => {
             <p className="mb-6">
               Your Donation has the power to transform lives, from sheltering
               those who have no home, to feeding families who have endured
-              hunger for days on end. Please, donate your Zakat/Sadaqah where
-              the need is greatest.
+              hunger for days on end. Please, donate your{" "}
+              <span className="font-bold">Zakat/Sadaqah</span> where the need is
+              greatest.
             </p>
             <p>
-              you can choose to make your donation through Child Adoption System
-              Ador. Doing so will support our appeals, helping thousands of
-              innocent lives living in poverty around the Community.
+              you can choose to make your donation through{" "}
+              <span className="font-bold">Child Adoption System Ador</span> .
+              Doing so will support our appeals, helping thousands of innocent
+              lives living in poverty around the Community.
             </p>
           </div>
           <hr />
