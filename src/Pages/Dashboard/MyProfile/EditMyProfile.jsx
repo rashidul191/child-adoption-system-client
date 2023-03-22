@@ -142,7 +142,7 @@ const EditMyProfile = ({ user, userData }) => {
                 <input
                   {...userProfile("displayName", {
                     required: {
-                      value: true,
+                      // value: true,
                       message: "Full Name is required",
                     },
                   })}
@@ -181,7 +181,7 @@ const EditMyProfile = ({ user, userData }) => {
                 <input
                   {...userProfile("address", {
                     required: {
-                      value: true,
+                      // value: true,
                       message: "Address is required",
                     },
                   })}

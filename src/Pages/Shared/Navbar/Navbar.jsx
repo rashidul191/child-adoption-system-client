@@ -5,10 +5,24 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import CustomLink from "../CustomLink/CustomLink";
 import logo from "../../../images/logo.png";
+import { useQuery } from "@tanstack/react-query";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+
+  const { data: userInfo } = useQuery(["userDB"], () =>
+    fetch(
+      `https://child-adoption-system-server.onrender.com/api/v1/user/email/?email=${user?.email}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      }
+    ).then((res) => res.json())
+  );
 
   const logout = () => {
     signOut(auth);
@@ -23,12 +37,12 @@ const Navbar = () => {
           <span>Home</span>
         </li>
       </CustomLink>
-
-      <CustomLink className="font-bold text-teal-600 " to="/about">
+      <CustomLink className="font-bold text-teal-600 " to="/child-types">
         <li>
-          <span>About Us</span>
+          <span>Child Types</span>
         </li>
       </CustomLink>
+
       <CustomLink className="font-bold text-teal-600 " to="/all-agency">
         <li>
           <span>Agency</span>
@@ -38,6 +52,12 @@ const Navbar = () => {
       <CustomLink className="font-bold text-teal-600 " to="/all-blogs">
         <li>
           <span>Blogs</span>
+        </li>
+      </CustomLink>
+
+      <CustomLink className="font-bold text-teal-600 " to="/about">
+        <li>
+          <span>About Us</span>
         </li>
       </CustomLink>
 
@@ -117,7 +137,7 @@ const Navbar = () => {
                     <img
                       src={
                         user?.photoURL
-                          ? user?.photoURL
+                          ? userInfo?.data?.img || user?.photoURL
                           : `https://i.ibb.co/tmprR1w/profile-icon.webp`
                       }
                       alt={user?.displayName}

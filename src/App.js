@@ -27,6 +27,7 @@ import BlogDetails from "./Pages/Home/Blogs/BlogDetails/BlogDetails";
 import Blogs from "./Pages/Home/Blogs/Blogs";
 import AllChild from "./Pages/Home/ChildTypes/AllChild/AllChild";
 import Child from "./Pages/Home/ChildTypes/Child/Child";
+import ChildTypesAll from "./Pages/Home/ChildTypes/Children/ChildTypesAll";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register/Register";
@@ -48,6 +49,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="/child-types" element={<ChildTypesAll></ChildTypesAll>}></Route>
         <Route
           path="/childType/:childType"
           element={<AllChild></AllChild>}
