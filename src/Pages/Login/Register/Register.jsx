@@ -131,7 +131,7 @@ const Register = () => {
                       })}
                       type="text"
                       placeholder="Full Name"
-                      className="input input-bordered w-full max-w-xs"
+                      className="input  input-sm input-bordered w-full max-w-xs"
                     />
                     <label className="label">
                       {errors.displayName?.type === "required" && (
@@ -156,7 +156,7 @@ const Register = () => {
                       })}
                       type="email"
                       placeholder="example@gmail.com"
-                      className="input input-bordered w-full max-w-xs"
+                      className="input input-sm input-bordered w-full max-w-xs"
                     />
                     <label className="label">
                       {errors.email?.type === "required" && (
@@ -199,7 +199,7 @@ const Register = () => {
                         })}
                         type={`${showPassword ? "text" : "password"}`}
                         placeholder="password"
-                        className="input input-bordered w-full max-w-xs rounded-none rounded-l-lg  "
+                        className="input input-sm input-bordered w-full max-w-xs rounded-none rounded-l-lg  "
                       />
                       <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-r-md border border-r-0  cursor-pointer">
                         <FontAwesomeIcon
@@ -260,7 +260,7 @@ const Register = () => {
                         })}
                         type={`${showConfirmPassword ? "text" : "password"}`}
                         placeholder="password"
-                        className="input input-bordered w-full max-w-xs rounded-none rounded-l-lg  "
+                        className="input input-sm input-bordered w-full max-w-xs rounded-none rounded-l-lg  "
                       />
                       <span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-r-md border border-r-0  cursor-pointer">
                         <FontAwesomeIcon

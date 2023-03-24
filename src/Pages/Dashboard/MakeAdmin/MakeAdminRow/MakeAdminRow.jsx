@@ -108,6 +108,60 @@ const MakeAdminRow = ({ user, index, refetch }) => {
     });
   };
 
+  // handle remove employer
+  const handleRemoveEmployer = (email) => {
+    console.log(email);
+    Swal.fire({
+      title: "Are you sure?",
+      text: `Remove Employer, ${email}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Remove Employer it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://child-adoption-system-server.onrender.com/api/v1/user/removeEmployer/${email}`,
+          {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("access-token")}`,
+            },
+          }
+        )
+          .then((res) => {
+            if (res.status === 403 || res.status === 401) {
+              signOut(auth);
+              localStorage.removeItem("access-token");
+              navigate("/login");
+            }
+            return res.json();
+          })
+          .then((data) => {
+            if (data?.data?.modifiedCount > 0) {
+              Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: `Now ${email} is Remove Employer successfully`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
+
+              refetch();
+              window.location.reload();
+            }
+            Swal.fire(
+              "Remove Employer!",
+              `Now, ${email} is Remove employer`,
+              "success"
+            );
+          });
+      }
+    });
+  };
+
   // handle Delete User
   const handleDeleteUser = (email) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -183,7 +237,17 @@ const MakeAdminRow = ({ user, index, refetch }) => {
       </td>
       <td>
         {role === "employer" ? (
-          <p className="text-green-500 font-bold uppercase">Already Employer</p>
+          <>
+            <button
+              onClick={() => handleRemoveEmployer(email)}
+              className="btn btn-error btn-sm text-white"
+            >
+              Remove Employer
+            </button>
+            <p className="text-green-500 font-bold uppercase">
+              Already Employer
+            </p>
+          </>
         ) : (
           <button
             onClick={() => handleMakeEmployer(email)}

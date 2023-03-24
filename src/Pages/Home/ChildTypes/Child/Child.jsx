@@ -144,7 +144,7 @@ const Child = () => {
                     <td>
                       {approved ? (
                         <button
-                          className="btn btn-info text-white rounded-none w-60 md:w-full "
+                          className="btn btn-info text-white rounded-none w-60 md:w-full"
                           disabled
                         >
                           Child Adoption

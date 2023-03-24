@@ -71,7 +71,7 @@ const CheckForApply = () => {
       </div>
       <hr />
 
-      <div className="card bg-base-100 shadow-xl ">
+      <div className="card bg-base-100 shadow-md">
         <div className="card-body">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">

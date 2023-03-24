@@ -39,7 +39,7 @@ const MakeAdmin = () => {
   );
   const handleChildList = (event) => {
     const userRole = event.target.value;
-    if (userRole === "all-user") {
+    if (userRole === "users") {
       fetch(`https://child-adoption-system-server.onrender.com/api/v1/user`, {
         method: "GET",
         headers: {
@@ -83,7 +83,7 @@ const MakeAdmin = () => {
               onChange={handleChildList}
               className="input input-bordered input-sm w-56 max-w-xs ml-2"
             >
-              <option selected value={`all-user`}>
+              <option selected value={`users`}>
                 All-User
               </option>
               <option value={`admin`}>Admin</option>
